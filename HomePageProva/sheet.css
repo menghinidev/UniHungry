@@ -1,0 +1,41 @@
+#imaginary_container{
+    margin-top: 40%; /* Don't copy this */
+    margin-bottom: 40%;
+}
+.navbar {
+  background-color: #60BB6B;
+  margin-bottom: 0px;
+  border: 0;
+  border-radius: 0;
+}
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+	border-right:0;
+	box-shadow:0 0 0;
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+
+#searchBox {
+  background-image: url('https://amalfinotizie.it/wp-content/uploads/2018/02/Cibo-a-Domicilio-Napoli-Salerno-Roma-Milano-Servizio-Come-Funzione-e-Dove-Ordinare.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+#serch a{
+  font-size: 17px;
+  color: white;
+  font-style: italic;
+}
+
+#foot{
+  margin-top: 10px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
