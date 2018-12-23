@@ -1,0 +1,90 @@
+/*Components*/
+.btn, .btn:hover, .btn:focus {
+    color:white;
+}
+
+.btn:focus {
+        box-shadow: none;
+
+}
+
+.form-control:focus{
+    box-shadow: 0px 0px 5px #60BB6B;
+    border-color: #60BB6B;
+}
+
+.form-check-input:hover, .form-check-input:focus{
+    box-shadow: 0px 0px 3px #60BB6B;
+    border-color: #60BB6B;
+    color: #60BB6B;
+}
+
+a {
+    color: #60BB6B;
+    text-decoration: underline;
+}
+a:hover {
+    color: #1F792A;
+}
+
+a:visited {
+    color: #832250;
+}
+
+.nav-link {
+    color:white;
+    text-decoration: none;
+}
+
+.nav-link:visited {
+    color:white;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    background-color: #60BB6B;
+    color:white;
+
+}
+
+.page-link {
+    text-decoration: none;
+    color: #60BB6B;
+}
+.page-link:hover {
+    color: #1F792A;
+}
+
+
+/*Colors*/
+.green {
+    background-color: #60BB6B;
+}
+
+.green:hover {
+    background-color: #1F792A;
+}
+
+.orange {
+    background-color: #F1B07C;
+}
+
+.orange:hover {
+    background-color: #9D5C28;
+}
+
+.purple {
+    background-color: #C96896;
+}
+
+.purple:hover {
+    background-color:#832250;
+}
+
+/*Single components*/
+
+.navbar {
+    padding: 5px;
+    background-color: #60BB6B;
+    color: white;
+}
