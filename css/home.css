@@ -1,1 +1,16 @@
+.background {
+    position: relative;
+    z-index: -1;
+}
 
+#searchBox {
+    z-index: 1;
+    position:absolute;
+    text-align: center;
+    width: 100%;
+    margin:auto;
+    top:30%;
+}
+#searchBox a, #searchBox a:hover, #searchBox a:visited, #searchBox a:focus {
+    color:white;
+}
