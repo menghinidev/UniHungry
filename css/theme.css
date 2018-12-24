@@ -34,6 +34,7 @@ a:visited {
 .nav-link {
     color:white;
     text-decoration: none;
+    margin-left:10px;
 }
 
 .nav-link:visited {
@@ -44,6 +45,7 @@ a:visited {
 .nav-link:hover {
     background-color: #60BB6B;
     color:white;
+    text-decoration: underline;
 
 }
 

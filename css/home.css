@@ -3,14 +3,47 @@
     z-index: -1;
 }
 
+#brand:hover {
+    background-color:#60BB6B;
+}
+
+#slideshow {
+    position:absolute;
+    top:0%;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-item {
+    height:100%;
+}
+
+.background {
+    height:100%;
+}
+
+img {
+    object-fit: cover;
+}
+
 #searchBox {
     z-index: 1;
     position:absolute;
     text-align: center;
     width: 100%;
     margin:auto;
-    top:30%;
+    top:45%;
 }
 #searchBox a, #searchBox a:hover, #searchBox a:visited, #searchBox a:focus {
     color:white;
+}
+
+#partners {
+    position:absolute;
+    top:100%;
 }
