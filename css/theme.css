@@ -91,3 +91,13 @@ a:visited {
     background-color: #60BB6B;
     color: white;
 }
+
+.fullScreen {
+    max-width: 100%;
+    width: 100%;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}

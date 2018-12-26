@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/home.css">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <title>UniHungry</title>
   </head>
   <body>
@@ -54,11 +61,16 @@
                      </div>
                 </div>
         </nav>
-        <div id="slideshow" class="carousel slide" data-ride="carousel">
+        <div id="slideshow" class="carousel slide" data-ride="carousel"  data-interval="7000">
           <div class="carousel-inner">
               <div class="row" id="searchBox">
               <div class="col-2"></div>
               <div class="col-8 container">
+                  <div class="row">
+                      <div class="col">
+                          <h1 id="caption">Attacco di fame in università?</h1>
+                      </div>
+                  </div>
                   <div class="row">
                       <div class="col">
                           <div class="input-group mb-3">
@@ -96,17 +108,71 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <div id="partners" class="container">
-            
+        <div id="partners" class="container fullScreen">
+            <div class ="row">
+                <div class="col-4 nopadding resBlock">
+                    <a href="#">
+                     <img class="reslogo nopadding img-fluid" src="../res/res1.jpg" alt="logo">
+                     <div class="rescaption">
+                      <h5>MeltingPot</h5>
+                      <p class="truncate">Un incontro tra culture.</p>
+                     </div>
+                     </a>
+                </div>
+                <div class="col-4 nopadding resBlock">
+                    <a href="#">
+                     <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
+                     <div class="rescaption">
+                      <h5>Organik</h5>
+                      <p class="truncate">Amiamo le nostre materie prime.</p>
+                     </div>
+                     </a>
+                </div>
+                <div class="col-4 nopadding resBlock">
+                    <a href="#">
+                    <img class="reslogo nopadding img-fluid" src="../res/res3.jpg" alt="logo">
+                    <div class="rescaption">
+                     <h5>Sogbu</h5>
+                     <p class="truncate">Il gourmet a casa tua.</p>
+                    </div>
+                    </a>
+                </div>
+            </div>
+            <div class ="row">
+                <div class="col-4 nopadding resBlock">
+                    <a href="#">
+                     <img class="reslogo nopadding img-fluid" src="../res/res4.jpg" alt="logo">
+                     <div class="rescaption">
+                      <h5>Angel Burgers</h5>
+                      <p class="truncate">Un hamburger divino.</p>
+                     </div>
+                     </a>
+                </div>
+                <div class="col-4 nopadding resBlock">
+                    <a href="#">
+                     <img class="reslogo nopadding img-fluid" src="../res/res5.jpeg" alt="logo">
+                     <div class="rescaption">
+                      <h5>M&P</h5>
+                      <p class="truncate">Mangia e Parla in allegria.</p>
+                     </div>
+                     </a>
+                </div>
+                <div class="col-4 nopadding resBlock">
+                    <a href="#">
+                    <img class="reslogo nopadding img-fluid" src="../res/res6.png" alt="logo">
+                    <div class="rescaption">
+                     <h5>Mee - Noodle house</h5>
+                     <p class="truncate">I noodle direttamente dal giappone.</p>
+                    </div>
+                    </a>
+                </div>
+            </div>
         </div>
 
 
 
 
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="../js/homeJS.js" charset="utf-8"></script>
   </body>
 </html>

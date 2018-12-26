@@ -37,13 +37,46 @@ img {
     text-align: center;
     width: 100%;
     margin:auto;
-    top:45%;
+    top:40%;
+}
+
+@media screen and (max-width:460px) {
+    #searchBox {
+        top:25%;
+    }
 }
 #searchBox a, #searchBox a:hover, #searchBox a:visited, #searchBox a:focus {
     color:white;
 }
 
+#caption {
+    color:white;
+    text-align:center;
+}
+
 #partners {
     position:absolute;
     top:100%;
+}
+
+.resblock{
+    overflow: hidden;
+}
+
+.reslogo{
+    height:100%;
+    width:100%;
+}
+
+.rescaption {
+    position: absolute;
+    top:80%;
+    color:white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 0 10px;
+    box-sizing: border-box;
+    height:20%;
+    width:100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
