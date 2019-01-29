@@ -46,8 +46,9 @@ img {
         top:25%;
     }
 
-    .rescaption {
+    .rescaption, .rescaption>* {
         font-size:8pt;
+        line-height: 10pt;
     }
 }
 #searchBox a, #searchBox a:hover, #searchBox a:visited, #searchBox a:focus {
@@ -59,7 +60,7 @@ img {
     text-align:center;
 }
 
-#partners {
+#pageFlow {
     position:absolute;
     top:100%;
 }
@@ -85,4 +86,31 @@ img {
 
 .rescaption {
     margin-top:10%;
+}
+
+.title {
+    text-align:center;
+    margin:5%;
+    width:90%;
+    box-sizing: border-box;
+}
+
+.chisiamoBoxorange{
+    text-align: center;
+    padding: 5%;
+    color: white;
+    background-color: #F1B07C;
+}
+.chisiamoBoxpurple{
+    text-align: center;
+    padding: 5%;
+    color: white;
+    background-color: #C96896;
+}
+
+.inputForm {
+    padding:5%;
+    margin: 0px;
+    color:white;
+    background-color:#60BB6B;
 }

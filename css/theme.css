@@ -101,3 +101,7 @@ a:visited {
    padding: 0 !important;
    margin: 0 !important;
 }
+/*behaviour*/
+html {
+    scroll-behavior: smooth;
+}
