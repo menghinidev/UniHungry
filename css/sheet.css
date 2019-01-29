@@ -21,6 +21,10 @@
     background:transparent;
 }
 
+.notUnderlined {
+  text-decoration: none;
+}
+
 #searchBox {
   background-image: url('https://amalfinotizie.it/wp-content/uploads/2018/02/Cibo-a-Domicilio-Napoli-Salerno-Roma-Milano-Servizio-Come-Funzione-e-Dove-Ordinare.jpg');
   background-size: cover;
