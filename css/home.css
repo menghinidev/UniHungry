@@ -109,8 +109,29 @@ img {
 }
 
 .inputForm {
-    padding:5%;
-    margin: 0px;
+    padding:2%;
+    border-radius:10px;
+    margin: 1%;
     color:white;
     background-color:#60BB6B;
+}
+
+.footer {
+    padding-bottom:2%;
+    background-color: #2c2e2c;
+    text-align: center;
+    color: grey;
+}
+
+.backToTop {
+    padding:10px;
+    margin-bottom:2%;
+}
+.backToTop:hover {
+    background-color:#3A3B3A;
+}
+
+.footer a, .footer a:hover, .footer a:visited{
+    color:white;
+    text-decoration: none;
 }
