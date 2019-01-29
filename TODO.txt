@@ -1,0 +1,17 @@
+Lista pagine:
+
+-AdminView(come?)
+
+Samu
+-Home
+-Profilo utente
+-Registrazione fornitore
+-Profilo fornitore/Richiesta modifiche
+
+
+Mengo
+-Contenuti ricerca
+-Carrello
+-Conferma ordine (pagamento)
+-Login/registrazione
+
