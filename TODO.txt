@@ -3,10 +3,11 @@ Lista pagine:
 -AdminView(come?)
 
 Samu
--Home
--Profilo utente
--Registrazione fornitore
--Profilo fornitore/Richiesta modifiche
+>Home (html OK / NO php)
+
+>Login Fornitore
+>Profilo utente
+>Profilo fornitore/Richiesta modifiche
 
 
 Mengo
@@ -14,4 +15,3 @@ Mengo
 -Carrello
 -Conferma ordine (pagamento)
 -Login/registrazione
-
