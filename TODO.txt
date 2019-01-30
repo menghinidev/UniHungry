@@ -5,7 +5,7 @@ Lista pagine:
 Samu
 >Home (html OK / NO php)
 
->Login Fornitore
+>Registrazione nuovo Utente
 >Profilo utente
 >Profilo fornitore/Richiesta modifiche
 
@@ -14,4 +14,4 @@ Mengo
 -Contenuti ricerca
 -Carrello
 -Conferma ordine (pagamento)
--Login/registrazione
+-Login utente registrato

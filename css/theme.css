@@ -21,7 +21,7 @@
 
 a {
     color: #60BB6B;
-    text-decoration: underline;
+    text-decoration: none;
 }
 a:hover {
     color: #1F792A;
@@ -30,6 +30,12 @@ a:hover {
 a:visited {
     color: #832250;
 }
+
+.noVisitedLink, .noVisitedLink:visited , .noVisitedLink:hover{
+    color:white;
+    text-decoration: none;
+}
+
 
 .nav-link {
     color:white;
@@ -55,6 +61,10 @@ a:visited {
 }
 .page-link:hover {
     color: #1F792A;
+}
+
+.dropdown-item:active {
+    background-color: #60BB6B;
 }
 
 
@@ -100,6 +110,28 @@ a:visited {
 .nopadding {
    padding: 0 !important;
    margin: 0 !important;
+}
+
+.footer {
+    padding-bottom:2%;
+    position: absolute;
+    bottom: 0;
+    background-color: #2c2e2c;
+    text-align: center;
+    color: grey;
+}
+
+.backToTop {
+    padding:10px;
+    margin-bottom:2%;
+}
+.backToTop:hover {
+    background-color:#3A3B3A;
+}
+
+.footer a, .footer a:hover, .footer a:visited{
+    color:white;
+    text-decoration: none;
 }
 /*behaviour*/
 html {
