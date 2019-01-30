@@ -1,0 +1,43 @@
+.tabLink {
+    color:white;
+    margin:0px;
+}
+
+.tabLink:hover {
+    text-decoration:none;
+    background-color:transparent;
+}
+
+.nav-tabs .nav-link {
+    border:none;
+    margin-right: 2%;
+}
+
+.nav-tabs .nav-link.active{
+    text-decoration: none;
+    color:white;
+    background-color: transparent;
+    border-bottom: 4px solid white;
+}
+
+.nav-tabs {
+    background-color:transparent;
+    border:none;
+    border-bottom:2px solid white;
+}
+.nav-tabs .nav-link:hover{
+    border:none;
+    border-bottom:4px solid white;
+}
+
+
+.nav-tabs {
+    margin-bottom: 10px;
+}
+
+.tab-pane {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 1%;
+}

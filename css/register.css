@@ -11,4 +11,5 @@
 body {
     background-image: url("../res/bg-smaller.jpg");
     background-position: center;
+    background-attachment: fixed;
 }

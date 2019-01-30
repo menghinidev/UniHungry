@@ -114,8 +114,6 @@ a:visited {
 
 .footer {
     padding-bottom:2%;
-    position: absolute;
-    bottom: 0;
     background-color: #2c2e2c;
     text-align: center;
     color: grey;

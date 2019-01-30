@@ -1,0 +1,18 @@
+#menu-box {
+    background-color: #F1B07C;
+    border-radius: 20px;
+    margin:2% 5%;
+    width:90%;
+    padding:10px;
+}
+
+#menu-box .btn {
+    color:black;
+}
+
+.riepilogoOrdine {
+    text-align:center;
+}
+.prezzo {
+    text-align: right;
+}
