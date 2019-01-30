@@ -117,9 +117,10 @@
                     </div>
                   </div>
                 </div>
+
                 <div class="container riepilogoOrdine fullScreen">
                     <h4>Ordini Passati</h4>
-                    <div class=" row">
+                    <div class="row">
                         <p class="col-4">Id ordine: </p>
                         <p class="col-4">Data e ora: </p>
                         <p class="col-4">Stato ordine </p>
@@ -179,7 +180,43 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                2
+                <form id="modificaform" class="col">
+                        <h2>Modifica informazioni</h2>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="nome">Nome</label>
+                          <input type="text" class="form-control" id="nome">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="cognome">Cognome</label>
+                          <input type="text" class="form-control" id="cognome">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="email">Email</label>
+                          <input type="email" class="form-control" id="email" disabled>
+                          <small id="emailHelp" class="form-text">Ci dispiace non puoi modificare la tua mail</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cellulare">Numero cellulare</label>
+                            <input type="text" class="form-control" id="cellulare">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordOld">Vecchia Password</label>
+                        <input type="password" class="form-control" id="passwordOld">
+                        <label for="passwordNew">Nuova Password</label>
+                        <input type="password" class="form-control" id="passwordNew">
+                        <label for="passwordNewConfirm">Conferma nuova Password</label>
+                        <input type="password" class="form-control" id="passwordNewConfirm">
+                    </div>
+                    <div class="form-row">
+                    <div class="col-4"></div>
+                    <button id="registrati" type="submit" class="col-4 btn green">Modifica</button>
+                    <div class="col-4"></div>
+                    </div>
+                </form>
             </div>
           </div>
       </div>
