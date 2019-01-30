@@ -4,8 +4,8 @@ Lista pagine:
 
 Samu
 >Home (html OK / NO php)
+>Registrazione nuovo Utente (html OK / NO php)
 
->Registrazione nuovo Utente
 >Profilo utente
 >Profilo fornitore/Richiesta modifiche
 
