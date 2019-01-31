@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/fornitore.css">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <title>UniHungry - Profilo</title>
+  </head>
+    <body>
+        <nav class="navbar navbar-expand-md sticky-top">
+             <!-- Brand -->
+             <a id="brand" class="navbar-brand nav-link" href="./HomePage.html">
+                  <img src="../res/logo.png" height="40" alt="UniHungry">
+             </a>
+
+                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                   <ul class="navbar-nav">
+                     <li class="nav-item">
+                       <a class="nav-link" href="./HomePage.html">Home</a>
+                     </li>
+                     <li class="nav-item">
+                       <a class="nav-link" href="./Search.html">Prodotti</a>
+                     </li>
+                   </ul>
+                 </div>
+                 <div class= "ml-auto">
+                    <div class="dropdown">
+                        <button type="button" class="nav-item btn green dropdown-toggle navbar-toggler" data-toggle="dropdown">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="./HomePage.html">Home</a>
+                            <a class="dropdown-item" hhref="./Search.html">Prodotti</a>
+                        </div>
+                    </div>
+                </div>
+        </nav>
+        <div class="container fullScreen">
+            <div class="col-md-4 col-xl-2">
+                <form>
+                    <div id="changeLogo" class="form-group">
+                        <label for="logoupload">
+                        <img class="btn profilePic" src="../res/res1.jpg" alt="">
+                        <input type="file" class="form-control-file" id="logoupload" hidden>
+                        clicca per cambiare logo
+                        </label>
+                    </div>
+                    <hr/>
+                    <div class="form-group">
+                        <label for="nome">Nome Attività</label>
+                        <input type="text" class="form-control" id="nome" value="Melting Pot">
+                    </div>
+                    <div class="form-group">
+                        <label for="descrizione">Descrizione</label>
+                        <textarea class="form-control" id="descrizione" rows="3" aria-describedby="descrizioneHelp" maxlength="100">Cucina multietnica per un vero incontro tra culture.</textarea>
+                        <small id="descrizioneHelp" class="form-text">Max 100 caratteri</small>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    <!-- Optional JavaScript -->
+    </body>
+  </html>
