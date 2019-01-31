@@ -46,14 +46,14 @@
                     </div>
                 </div>
         </nav>
-        <div class="container fullScreen">
-            <div class="col-md-4 col-xl-2">
+        <div class="container nopadding row fullScreen">
+            <div id="profileInfoBox" class="col-md-4 col-xl-2">
                 <form>
                     <div id="changeLogo" class="form-group">
                         <label for="logoupload">
-                        <img class="btn profilePic" src="../res/res1.jpg" alt="">
+                        <img class="btn nopadding profilePic" src="../res/res1.jpg" alt="">
                         <input type="file" class="form-control-file" id="logoupload" hidden>
-                        clicca per cambiare logo
+                        <p>clicca per cambiare logo</p>
                         </label>
                     </div>
                     <hr/>
@@ -66,7 +66,31 @@
                         <textarea class="form-control" id="descrizione" rows="3" aria-describedby="descrizioneHelp" maxlength="100">Cucina multietnica per un vero incontro tra culture.</textarea>
                         <small id="descrizioneHelp" class="form-text">Max 100 caratteri</small>
                     </div>
+                    <div class="form-row">
+                    <div class="col-4"></div>
+                    <button id="registrati" type="submit" class="col-4 btn orange">Modifica</button>
+                    <div class="col-4"></div>
+                    </div>
                 </form>
+            </div>
+            <div id="prodottiBox" class="col">
+                <div id="titleBox" class="row">
+                    <div class="col-6">
+                        <h2>I tuoi prodotti</h2>
+                    </div>
+                    <div class="col">
+                        <div class="tabledispl">
+                            <a id="addLink" href="#">
+                                <img src="../res/plusicon.png" alt="" width=20px;>
+                                <label class="nopadding">Nuovo prodotto</label>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="container row">
+                    [prodotti]
+                </div>
             </div>
         </div>
 

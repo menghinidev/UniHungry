@@ -1,10 +1,49 @@
 .profilePic {
     width:100%;
-    max-width: 250px;
-    border: 5px solid lightgrey;
+    border: 5px solid #F1B07C;
     border-radius: 100%;
+}
+
+
+
+.profilePic:hover {
+    border: 7px solid #F1B07C;
 }
 
 #changeLogo {
     text-align: center;
+}
+
+#profileInfoBox {
+    color:white;
+    background-color: #832250;
+    padding: 10px;
+    margin: 0px;
+}
+
+#profileInfoBox hr {
+    border: 1px solid white;
+}
+
+#prodottiBox {
+    margin-top: 20px;
+}
+
+.tabledispl {
+    display:table;
+    height:100%;
+}
+
+#addLink, #addLink:hover {
+    text-decoration:none;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#addLink:visited {
+    color: #60BB6B;
+}
+
+#addLink:visited:hover, #addLink:hover {
+    color: #598C5F;
 }
