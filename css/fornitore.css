@@ -25,13 +25,26 @@
     border: 1px solid white;
 }
 
+#modificaUtente {
+    margin-top:10px;
+    font-size: 10pt;
+    text-align: center;
+}
+
+#modificaUtente a, #modificaUtente a:hover, #modificaUtente a:visited{
+    color:white;
+}
+
 #prodottiBox {
     margin-top: 20px;
 }
 
+
 .tabledispl {
+    float:right;
     display:table;
     height:100%;
+
 }
 
 #addLink, #addLink:hover {
