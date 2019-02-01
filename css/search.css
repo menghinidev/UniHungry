@@ -2,3 +2,8 @@
   width: 50%;
   margin-top: 2%;
 }
+
+#dropdownMenu2 {
+  border-radius: 0;
+  margin-left: 2px;
+}
