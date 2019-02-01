@@ -2,9 +2,15 @@
     width:100%;
     border: 5px solid #F1B07C;
     border-radius: 100%;
+    max-height:300px;
 }
 
-
+@media screen and (max-width:1200px) {
+    .profilePic {
+        max-height:150px;
+        max-width: 150px;
+    }
+}
 
 .profilePic:hover {
     border: 7px solid #F1B07C;
