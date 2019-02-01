@@ -24,19 +24,27 @@
              <a id="brand" class="navbar-brand nav-link" href="./HomePage.html">
                   <img src="../res/logo.png" height="40px" alt="UniHungry">
              </a>
+             <div class= "ml-auto">
+                 <a class="nav-link nopadding" href="./ProfiloFornitore.html">
+                     Indietro
+                 <img src="../res/back-white.png" alt="Torna indietro" width="30px">
+
+                </a>
+             </div>
         </nav>
         <div id="pageBody" class="container fullScreen ">
-            <div class="row">
-                <div class="col">
-                    <a class="whiteLink" href="./ProfiloFornitore.html">Torna indietro</a>
-                </div>
-            </div>
-            <div class="row">
                     <form id="modificaform" class="col">
                         <div class="form-row">
+                            <div id="selectImg" class="form-group col-md-6">
+                                <label for="imgupload">
+                                <img class="btn nopadding img-thumbnail" id="foodImg" src="../res/default_food.png" alt="immagine cibo default">
+                                <input type="file" class="form-control-file" id="imgupload" hidden>
+                                <p>clicca per caricare un'immagine</p>
+                                </label>
+                            </div>
                             <div class="form-group col-md-6">
-                              <label for="idprodotto">ID prodotto</label>
-                              <input type="text" class="form-control" id="idprodotto" disabled>
+                                  <label for="idprodotto">ID prodotto</label>
+                                  <input type="text" class="form-control" id="idprodotto" disabled>
                             </div>
                         </div>
                         <div class="form-row">
