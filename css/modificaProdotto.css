@@ -1,0 +1,25 @@
+body {
+    background-color: #2c2e2c;
+}
+
+#pageBody {
+    margin-top: 30px;
+}
+
+#modificaform {
+    color:white;
+    background-color: #F1B07C;
+    padding:20px;
+    margin-bottom:10px;
+    border-radius: 20px;
+}
+
+#foodImg {
+    height:150px;
+    width:150px;
+    object-fit: cover;
+}
+
+#selectImg {
+    text-align: left;
+}
