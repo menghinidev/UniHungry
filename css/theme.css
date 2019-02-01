@@ -36,6 +36,15 @@ a:visited {
     text-decoration: none;
 }
 
+.whiteLink, .whiteLink:visited{
+    color:white;
+    text-decoration: none;
+}
+
+ .whiteLink:hover {
+     text-decoration:underline;
+ }
+
 
 .nav-link {
     color:white;
