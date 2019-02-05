@@ -1,0 +1,38 @@
+.labelForm {
+  width: 20%;
+}
+
+.form-control {
+  width: 40%;
+}
+
+#content {
+  border-right: 1px solid rgba(0,0,0,.1);
+}
+
+.backPage {
+  margin-top: 1%;
+  padding-left: 1.25rem;
+  font-size: 20px;
+}
+
+.backPage > a:hover {
+  text-decoration: none;
+}
+
+.labels > div {
+  margin-left: 1%;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.date {
+  width: 100%;
+}
+
+form {
+  margin-top: 5%;
+}

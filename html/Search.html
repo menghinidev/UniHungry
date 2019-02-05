@@ -28,7 +28,7 @@
               <button type="button" class="nav-item btn green dropdown-toggle navbar-toggler" data-toggle="dropdown">
               </button>
               <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item notUnderlined" href="#">
+                  <a class="dropdown-item notUnderlined" href="Cart.html">
                     <img src="../res/shoppingCart.png" height="40" alt="UniHungry"> Cart
                   </a>
                   <a class="dropdown-item notUnderlined" href="#">
@@ -41,7 +41,7 @@
            <div class="collapse navbar-collapse" id="collapsibleNavbar">
              <ul class="navbar-nav">
                <li class="nav-item">
-                 <a class="nav-link" href="#">
+                 <a class="nav-link" href="Cart.html">
                    <img src="../res/shoppingCart.png" height="40" alt="Cart">
                  </a>
                </li>
@@ -54,41 +54,49 @@
            </div>
       </div>
     </nav>
-    <div class="container">
+    <div class="container fullScreen">
       <div class="row">
-          <div class="col">
-              <div class="input-group mb-3 formcrtl">
+          <div class="col-md-12">
+              <div class="input-group mb-3 formcrtl total">
                   <input type="text" class="form-control formcrtl" placeholder="Cerca...">
                   <div class="input-group-append formcrtl">
                     <button type="button" class="btn green" name="button">Vai</button>
+                    <div class="dropdown toShow">
+                        <button class="btn green dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu2">
+                            <a class="dropdown-item" href="#">Accedi</a>
+                            <a class="dropdown-item" href="./Registrati.html">Registrati</a>
+                        </div>
+                    </div>
                   </div>
-                </div>
+              </div>
           </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
-          <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Tutti</label>
+        <div class="col-md-4" id="filters">
+          <div class="form-check toCollapse">
+              <input type="checkbox" class="form-check-input">
+              <label class="form-check-label">Tutti</label>
               <hr/>
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Hamburger</label>
+              <input type="checkbox" class="form-check-input">
+              <label class="form-check-label">Hamburger</label>
               <br>
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Pizza</label>
+              <input type="checkbox" class="form-check-input">
+              <label class="form-check-label">Pizza</label>
               <br>
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Pasta</label>
+              <input type="checkbox" class="form-check-input">
+              <label class="form-check-label">Pasta</label>
               <br>
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Sushi</label>
+              <input type="checkbox" class="form-check-input">
+              <label class="form-check-label">Sushi</label>
           </div>
         </div>
-    <div class="col-md-8">
+    <div class="col-md-8" id="content">
         <div class="row">
             <div class="col-md-4">
                 <div class="form-check">
-                    <img class="reslogo nopadding img-fluid" src="../res/res5.jpeg" alt="logo">
+                    <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
                 </div>
             </div>
             <div class="col-md-8">
@@ -97,7 +105,7 @@
                   Titolo
                 </div>
                 <div class="col-md-4">
-                  Star
+                  Stars
                 </div>
               </div>
               <hr/>
@@ -125,7 +133,7 @@
                 Titolo
               </div>
               <div class="col-md-4">
-                Star
+                Stars
               </div>
             </div>
             <hr/>
@@ -138,8 +146,37 @@
                 <button type="button" class="btn green" name="button">Aggiungi al Carrello</button>
               </div>
             </div>
-          </div> 
+          </div>
         </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-check">
+                    <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
+                </div>
+            </div>
+            <div class="col-md-8">
+              <div class="row">
+                <div class="col-md-8">
+                  Titolo
+                </div>
+                <div class="col-md-4">
+                  Stars
+                </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-md-8">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+                  </p>
+                </div>
+                <div class="col-md-4">
+                  <button type="button" class="btn green" name="button">Aggiungi al Carrello</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <hr/>
     </div>
 </div>
 

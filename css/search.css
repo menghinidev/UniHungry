@@ -1,4 +1,32 @@
 .formcrtl {
-  width: 50%;
+  width: 20%;
   margin-top: 2%;
+}
+
+#dropdownMenu2 {
+  border-radius: 0;
+  margin-left: 2px;
+}
+
+.toShow {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .toShow { display: block; }
+  .toCollapse { display: none; }
+  .total { width: 80%; }
+  #content { text-align: center; }
+  #filters { display: none; }
+}
+
+#content {
+  border-left: 1px solid rgba(0,0,0,.1);
+  max-width: 80%;
+  flex: 0 0 80%;
+}
+
+#filters {
+  max-width: 20%;
+  flex: 0 0 20%;
 }
