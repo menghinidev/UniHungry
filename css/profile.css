@@ -12,14 +12,6 @@ body {
     padding:10px;
 }
 
-#accordion .btn {
-    color:black;
-}
-
-.riepilogoOrdine {
-    text-align:center;
-}
-
 .riepilogoOrdine h4 {
     color: #F1B07C;
 }
@@ -28,16 +20,4 @@ body {
     background-color: #F1B07C;
     color:white;
     border-radius: 10px 10px 0px 0px;
-}
-
-.prezzo {
-    text-align: right;
-}
-
-#accordion {
-    margin-bottom: 5%;
-}
-
-.card{
-    border-radius: 0px;
 }

@@ -1,6 +1,6 @@
 /*Components*/
 .btn, .btn:hover, .btn:focus {
-    color:white;
+
 }
 
 .btn:focus {
@@ -79,27 +79,33 @@ a:visited {
 /*Colors*/
 .green {
     background-color: #60BB6B;
+    color:white;
 }
 
 .green:hover {
     background-color: #1F792A;
+    color:white;
 }
 
 
 .orange {
     background-color: #F1B07C;
+    color:white;
 }
 
 .orange:hover {
     background-color: #9D5C28;
+    color:white;
 }
 
 .purple {
     background-color: #C96896;
+    color:white;
 }
 
 .purple:hover {
     background-color:#832250;
+    color:white;
 }
 
 /*Single components*/

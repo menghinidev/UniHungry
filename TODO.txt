@@ -1,15 +1,15 @@
-Lista pagine:
-
+TODO:
 -AdminView(come?)
+-Notifiche
 
 Samu
 >Home (html OK / NO php)
 >Registrazione nuovo Utente (html OK / NO php)
 >Profilo utente (html OK / NO php)
 >Profilo fornitore + Modifica Listino (html OK / NO php)
-    + richiesta modifiche admin (quali?)
 
->Ordini in corso ed elaborazione (domani/stasera)
+> richiesta modifiche admin (quali?) + stato richieste
+> Ordini in corso ed elaborazione fornitore
 
 
 
