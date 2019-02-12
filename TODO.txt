@@ -6,12 +6,18 @@ Samu
 >Home (html OK / NO php)
 >Registrazione nuovo Utente (html OK / NO php)
 >Profilo utente (html OK / NO php)
+>Profilo fornitore + Modifica Listino (html OK / NO php)
+    + richiesta modifiche admin (quali?)
 
->Profilo fornitore/Richiesta modifiche
+>Ordini in corso ed elaborazione (domani/stasera)
+
 
 
 Mengo
--Contenuti ricerca
+-Contenuti ricerca <--precedenza assoluta
+
 -Carrello
--Conferma ordine (pagamento)
--Login utente registrato
+
+-Conferma ordine pagamento
+
+-Login utente registrato !guarda pagina registrazione (le farei uguali ma col fondo arancione)!
