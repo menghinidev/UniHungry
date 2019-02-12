@@ -15,6 +15,7 @@
 			  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/cart.js"></script>
     <title>UniHungry - Cart</title>
   </head>
   <body>
@@ -25,13 +26,14 @@
     </nav>
     <div class="container fullScreen">
       <div class="row">
-          <div class="col-md-12">
             <div class="backPage">
               <a href="HomePage.html">
                <img src="../res/back-black.png" height="60" alt="Back">
                Torna ai Prodotti
               </a>
             </div>
+          <div class="backPage">
+            <button type="submit" class="btn btn-primary toShow">Ordina ora</button>
           </div>
       </div>
       <hr/>
@@ -149,43 +151,43 @@
           </div>
           <hr/>
         </div>
-        <div class="col-md-4">
-          <div class="row">
-            <div class="col-md-6 labels">
-              <div class="row">
-                <label>Totale Prodotti:</label>
+        <div class="col-md-4 toHide">
+            <div class="row labels">
+              <div class="info head">
+                <label>Totale prodotti:</label>
               </div>
-              <div class="row">
-                <label>Costi Consegna:</label>
-              </div>
-              <div class="row">
-                <label>Totale:</label>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="row">
+              <div class="info">
                 <label>13€</label>
               </div>
-              <div class="row">
+            </div>
+            <div class="row labels">
+              <div class="info head">
+                <label>Costi consegna:</label>
+              </div>
+              <div class="info">
                 <label>2€</label>
               </div>
-              <div class="row">
+            </div>
+            <div class="row labels">
+              <div class="info head">
+                <label>Totale:</label>
+              </div>
+              <div class="info">
                 <label>15€</label>
               </div>
             </div>
-          </div>
           <hr/>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optradio"  data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Paga ora
+              <input type="radio" class="form-check-input" name="optradio" id="ora">Paga ora
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optradio">Paga alla consegna
+              <input type="radio" class="form-check-input" name="optradio" id="consegna" checked>Paga alla consegna
             </label>
           </div>
-          <form class="collapse" id="collapseExample">
+          <form class="collapse" id="myForm">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail4">Nome</label>
@@ -208,6 +210,7 @@
             </div>
             <div class="form-row">
               <div class="form-group col-md-4">
+                <label for="inputState">Anno scadenza</label>
                   <select id="inputState" class="form-control date" placeholder="Anno">
                     <option>19</option>
                     <option>20</option>
@@ -219,6 +222,7 @@
                   </select>
               </div>
               <div class="form-group col-md-4">
+                <label for="inputState">Mese scadenza</label>
                 <select id="inputState" class="form-control date" placeholder="Mese">
                   <option>01</option>
                   <option>02</option>
@@ -235,9 +239,12 @@
                 </select>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary date">Ordina ora</button>
           </form>
+          <div class="sendNext">
+            <button type="submit" class="btn btn-primary order">Ordina ora</button>
+          </div>
         </div>
       </div>
+    </div>
   </body>
 </html>
