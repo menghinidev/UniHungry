@@ -14,9 +14,9 @@ Samu
 
 
 Mengo
--Contenuti ricerca <--precedenza assoluta
+-Contenuti ricerca (Html Ok, va decisa la dimensione delle immagini, no php)
 
--Carrello
+-Carrello (Html ok, no php)
 
 -Conferma ordine pagamento
 
