@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   $("#consegna").click(function() {
       if(this.checked) {
           $('#myForm').collapse('hide');
@@ -6,6 +7,7 @@ $(document).ready(function() {
           $('#myForm').collapse('show');
       }
   });
+
   $("#ora").click(function() {
       if(this.checked) {
           $('#myForm').collapse('show');
@@ -13,4 +15,22 @@ $(document).ready(function() {
           $('#myForm').collapse('hide');
       }
   });
+
+  var alterClass = function() {
+    var ww = document.body.clientWidth;
+    if (ww < 768) {
+      document.getElementById('toHide').style.display = "none";
+      document.getElementById('toShow').style.display = "block";
+    } else {
+      document.getElementById('toHide').style.display = "block";
+      document.getElementById('toShow').style.display = "none";
+    }
+  };
+
+  $(window).resize(function(){
+    alterClass();
+  });
+
+  alterClass();
+
 });

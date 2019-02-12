@@ -1,7 +1,5 @@
 Lista pagine:
 
--AdminView(come?)
-
 Samu
 >Home (html OK / NO php)
 >Registrazione nuovo Utente (html OK / NO php)
@@ -15,9 +13,7 @@ Samu
 
 Mengo
 -Contenuti ricerca (Html Ok, va decisa la dimensione delle immagini, no php)
-
 -Carrello (Html ok, no php)
-
 -Conferma ordine pagamento
-
 -Login utente registrato !guarda pagina registrazione (le farei uguali ma col fondo arancione)!
+-AdminView(come?)
