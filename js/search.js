@@ -5,7 +5,13 @@ $(document).ready(function() {
     if (ww < 768) {
       $('.content').addClass('changeScreen');
       $('.changeScreen').removeClass('content');
+      document.getElementById("filters").classList.add("tab-pane", "fade");
+      document.getElementById("content").classList.add("tab-pane", "fade", "in", "active");
+      document.getElementById('myFiltersNav').style.display = "block";
     } else {
+      document.getElementById("filters").classList.remove("tab-pane", "fade");
+      document.getElementById("content").classList.remove("tab-pane", "fade", "in", "active");
+      document.getElementById('myFiltersNav').style.display = "none";
       $('.changeScreen').addClass('content');
       $('.content').removeClass('changeScreen');
     }

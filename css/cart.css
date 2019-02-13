@@ -55,10 +55,6 @@ form {
   margin-top: 3%;
 }
 
-#toShow {
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
   .toHide { display: none; }
   .toShow { display: block; }

@@ -21,9 +21,11 @@ $(document).ready(function() {
     if (ww < 768) {
       document.getElementById('toHide').style.display = "none";
       document.getElementById('toShow').style.display = "block";
+      document.getElementById('rem').style.display = "none";
     } else {
       document.getElementById('toHide').style.display = "block";
       document.getElementById('toShow').style.display = "none";
+      document.getElementById('rem').style.display = "inline-block";
     }
   };
 
