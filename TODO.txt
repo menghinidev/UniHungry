@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 TODO:
 -AdminView(come?)
 -Notifiche
-=======
-Lista pagine:
->>>>>>> deaea8c281094efbf438667a30d46e2ef83167f9
 
 Samu
 >Home (html OK / NO php)
