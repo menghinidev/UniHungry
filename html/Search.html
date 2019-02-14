@@ -69,12 +69,58 @@
       <div class="row" id="myFiltersNav">
         <div class="col-md-3">
           <ul class="nav nav-tabs">
-            <li><button class="btn orange noradius" data-toggle="tab" href="#content">Prodotti</a></li>
-            <li><button class="btn orange noradius" data-toggle="tab" href="#filters">Filtri</a></li>
+            <li><button class="btn orange noradius active" data-toggle="tab" href="#content">Prodotti</a></li>
+            <li><button class="btn orange noradius" data-toggle="tab" href="#mobileFilters">Filtri</a></li>
           </ul>
         </div>
       </div>
       <div class="row tab-content">
+        <div class="tab-pane fade" id="mobileFilters">
+          <div class="col-md-3">
+            <div class="fixedMargin">
+              <h4>Categorie:</h4>
+              <div class="form-check" id="filtersList">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Tutti</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Hamburger</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Pizza</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Pasta</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Sushi</label>
+              </div>
+              <h4>Fascie di prezzo:</h4>
+              <div>
+                <div class="radio tre">
+                  <input type="radio" name="optradio" checked>
+                </div>
+                <div class="radio tre">
+                  <input type="radio" name="optradio" checked>
+                </div>
+                <div class="radio tre">
+                  <input type="radio" name="optradio" checked>
+                </div>
+              </div>
+              <div>
+                <div class="tre">
+                  Max 5€
+                </div>
+                <div class="tre">
+                  Max 10€
+                </div>
+                <div class="tre">
+                  Max 15€
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="col-md-4" id="filters">
           <div class="form-check">
               <input type="checkbox" class="form-check-input">
@@ -93,7 +139,7 @@
               <label class="form-check-label">Sushi</label>
           </div>
         </div>
-        <div class="col-md-8 content" id="content">
+        <div class="col-md-8 content tab-pane active" id="content">
           <div class="row">
             <div class="col-md-4 centered">
               <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">

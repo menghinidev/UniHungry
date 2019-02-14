@@ -17,6 +17,15 @@
   margin-bottom: 2%;
 }
 
+#filtersList {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#mobileFilters {
+  width: 100%;
+}
+
 .changeScreen {
   max-width: 100%;
   flex: 0 0 100%;
@@ -29,4 +38,28 @@
 
 .centered {
   text-align: center;
+}
+
+.rangelabels {
+  width: 50%;
+  float: left;
+  margin-top: -5%;
+}
+
+.tre {
+  width: 26%;
+  float: left;
+  font-size: 15px;
+}
+
+.fixedMargin {
+  margin-top: 5%;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
 }
