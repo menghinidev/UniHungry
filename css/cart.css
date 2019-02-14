@@ -11,6 +11,7 @@
 }
 
 .backPage {
+  width: 50%;
   margin-top: 1%;
   padding-left: 1.25rem;
   font-size: 20px;
@@ -20,8 +21,16 @@
   text-decoration: none;
 }
 
-.labels > div {
+.labels {
   margin-left: 1%;
+}
+
+.info {
+  width: 50%;
+}
+
+.head {
+  text-align: center;
   font-weight: bold;
 }
 
@@ -35,4 +44,18 @@
 
 form {
   margin-top: 5%;
+}
+
+.order {
+  width: 50%;
+  margin-left: 25%;
+}
+
+.sendNext {
+  margin-top: 3%;
+}
+
+@media screen and (max-width: 768px) {
+  .toHide { display: none; }
+  .toShow { display: block; }
 }

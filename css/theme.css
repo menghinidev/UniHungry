@@ -126,6 +126,10 @@ a:visited {
    margin: 0 !important;
 }
 
+.noradius {
+  border-radius: 0;
+}
+
 .footer {
     padding-bottom:2%;
     background-color: #2c2e2c;
