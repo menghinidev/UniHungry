@@ -14,3 +14,21 @@
 .card{
     border-radius: 0px;
 }
+
+
+#filterBar {
+  padding: 10px 10px;
+  position: absolute;
+  color: white;
+  background-color: #3A3B3A;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+#filterBar .form-group label{
+    margin-right:10px;
+}
+#filterBar .form-group, #filterBar .form-check{
+    margin-right: 20px;
+}

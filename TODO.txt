@@ -7,9 +7,10 @@ Samu
 >Registrazione nuovo Utente (html OK / NO php)
 >Profilo utente (html OK / NO php)
 >Profilo fornitore + Modifica Listino (html OK / NO php)
+> Ordini in corso ed elaborazione fornitore (html OK / NO php)
 
 > richiesta modifiche admin (quali?) + stato richieste
-> Ordini in corso ed elaborazione fornitore
+
 
 
 
