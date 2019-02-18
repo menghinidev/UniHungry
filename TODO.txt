@@ -15,7 +15,7 @@ Samu
 
 
 Mengo
--Contenuti ricerca (Html Ok, va decisa la dimensione delle immagini, no php)
+-Contenuti ricerca (Html Ok, no php)
 -Carrello (Html ok, no php)
 -Conferma ordine pagamento
 -Login utente registrato !guarda pagina registrazione (le farei uguali ma col fondo arancione)!

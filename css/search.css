@@ -29,7 +29,6 @@
 .changeScreen {
   max-width: 100%;
   flex: 0 0 100%;
-  text-align: center;
 }
 
 .nav-tabs {
@@ -63,3 +62,27 @@
 .right {
   text-align: right;
 }
+
+.reduced {
+  max-width: 50%;
+}
+
+ hr {
+   border-top: 0;
+ }
+
+ .marginAccordion {
+   margin-top: 1%;
+   margin-bottom: 1%;
+   margin-right: 5px;
+   font-weight: lighter;
+ }
+
+ .informazionLink {
+   color: #F1B07C;
+   font-weight: bold;
+ }
+
+ .informazionLink:hover {
+   color: #9D5C28;
+ }
