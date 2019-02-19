@@ -19,7 +19,6 @@ $(document).ready(function() {
   var alterClass = function() {
     var ww = document.body.clientWidth;
     if (ww < 768) {
-      document.getElementById('toHide').style.display = "none";
       document.getElementById('toShow').style.display = "block";
       document.getElementById('rem').style.display = "none";
       $('.logo').removeClass('col-2');
@@ -43,7 +42,6 @@ $(document).ready(function() {
       $('.logo').addClass('col-2');
       $('.contenuto').removeClass('col-8');
       $('.contenuto').addClass('col-10');
-      document.getElementById('toHide').style.display = "block";
       document.getElementById('toShow').style.display = "none";
       document.getElementById('rem').style.display = "inline-block";
     }
