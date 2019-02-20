@@ -19,5 +19,5 @@ Mengo
 -Carrello (Html OK, NO php)
 -Conferma ordine pagamento (Html OK, NO php)
 -Pagina conferma ordine (html OK, NO php)
--Login utente registrato !guarda pagina registrazione (le farei uguali ma col fondo arancione)!
+-Login utente registrato (html OK, NO php)
 -AdminView(come?)
