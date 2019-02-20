@@ -15,8 +15,9 @@ Samu
 
 
 Mengo
--Contenuti ricerca (Html Ok, no php)
--Carrello (Html ok, no php)
--Conferma ordine pagamento
+-Contenuti ricerca (Html OK, NO php)
+-Carrello (Html OK, NO php)
+-Conferma ordine pagamento (Html OK, NO php)
+-Pagina conferma ordine (html OK, NO php)
 -Login utente registrato !guarda pagina registrazione (le farei uguali ma col fondo arancione)!
 -AdminView(come?)
