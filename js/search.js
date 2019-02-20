@@ -9,15 +9,11 @@ $(document).ready(function() {
       $('.logo').addClass('col-4');
       $('.contenuto').removeClass('col-10');
       $('.contenuto').addClass('col-8');
-      $('.description').removeClass('col-9');
-      $('.description').addClass('col-12');
       document.getElementById('filters').style.display = "none";
       document.getElementById('myFiltersNav').style.display = "block";
       changeDisplay('buttonAppear', 'block');
       changeDisplay('buttonToHide', 'none');
     } else {
-      $('.description').removeClass('col-12');
-      $('.description').addClass('col-9');
       $('.logo').removeClass('col-4');
       $('.logo').addClass('col-2');
       $('.contenuto').removeClass('col-8');

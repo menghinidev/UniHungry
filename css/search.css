@@ -8,6 +8,11 @@
   flex: 0 0 80%;
 }
 
+.changeScreen {
+  max-width: 100%;
+  flex: 0 0 100%;
+}
+
 #filters {
   max-width: 20%;
   flex: 0 0 20%;
@@ -24,11 +29,6 @@
 
 #mobileFilters {
   width: 100%;
-}
-
-.changeScreen {
-  max-width: 100%;
-  flex: 0 0 100%;
 }
 
 .nav-tabs {
