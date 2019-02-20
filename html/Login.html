@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <title>UniHungry - Login</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-md sticky-top">
+           <!-- Brand -->
+           <a id="brand" class="navbar-brand nav-link" href="./HomePage.html">
+                <img src="../res/logo.png" height="40" alt="UniHungry">
+           </a>
+
+               <div class="collapse navbar-collapse" id="collapsibleNavbar">
+               </div>
+               <div class= "ml-auto">
+                  <div class="dropdown">
+                      <button type="button" class="nav-item btn green dropdown-toggle navbar-toggler" data-toggle="dropdown">
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-right">
+                          <a class="dropdown-item" href="./HomePage.html">HomePage</a>
+                      </div>
+                  </div>
+              </div>
+      </nav>
+    <div class="container">
+            <form id="registerform" class="col">
+                    <h2>Accedi</h2>
+                <div class="form-row">
+                    <div class="form-group col">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" id="email" placeholder="mario.rossi@mail.com">
+                    </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox">
+                        <label class="form-check-label" for="gridCheck">
+                        Accedi come fornitore
+                        </label>
+                    </div>
+                </div>
+                <div class="form-row">
+                  <div class="col">
+                    <button type="submit" class="centered btn green">Accedi</button>
+                  </div>
+                </div>
+            </form>
+    </div>
+
+
+  <!-- Optional JavaScript -->
+  <script src="../js/fornitore.js" charset="utf-8"></script>
+  </body>
+</html>
