@@ -11,4 +11,10 @@ $(document).ready(function() {
     pause: "null"
     });
 
+    $(".scrolling").click(function(event){
+        event.preventDefault();
+        $('html,body').animate({scrollTop:$(this.hash).offset().top},
+        Math.abs(window.scrollY - $(this.hash).offset().top) * 1.5);
+    });
+
 })
