@@ -16,6 +16,12 @@ $(document).ready(function() {
       }
   });
 
+  $(".scrolling").click(function(event){
+      event.preventDefault();
+      $('html,body').animate({scrollTop:$(this.hash).offset().top},
+      Math.abs(window.scrollY - $(this.hash).offset().top) * 1);
+  });
+
   var alterClass = function() {
     var ww = document.body.clientWidth;
     if (ww < 768) {
