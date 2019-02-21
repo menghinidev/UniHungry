@@ -10,6 +10,7 @@ $(document).ready(function() {
       $('.contenuto').removeClass('col-10');
       $('.contenuto').addClass('col-8');
       document.getElementById('filters').style.display = "none";
+      document.getElementById('searchToHide').style.display = "block";
       document.getElementById('myFiltersNav').style.display = "block";
       changeDisplay('buttonAppear', 'block');
       changeDisplay('buttonToHide', 'none');
@@ -22,6 +23,7 @@ $(document).ready(function() {
       changeDisplay('buttonToHide', 'block');
       document.getElementById('filters').style.display = "block";
       document.getElementById('myFiltersNav').style.display = "none";
+      document.getElementById('searchToHide').style.display = "none";
       $('.changeScreen').addClass('content');
       $('.content').removeClass('changeScreen');
     }

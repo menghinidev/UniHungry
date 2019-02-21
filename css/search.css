@@ -8,6 +8,10 @@
   flex: 0 0 80%;
 }
 
+.distanced {
+  margin-top: 2%;
+}
+
 .changeScreen {
   max-width: 100%;
   flex: 0 0 100%;

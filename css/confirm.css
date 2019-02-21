@@ -1,8 +1,12 @@
 .message {
   position: absolute;
   top: 30%;
-  width: 100%;
+  margin-left: 10%;
+  width: 80%;
   text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  padding:20px 20px;
 }
 
 .centered {
@@ -12,4 +16,11 @@
 
 .distance {
   margin-bottom: 2%;
+}
+
+body {
+  background-image: url("../res/bg-smaller.jpg");
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
