@@ -21,3 +21,15 @@ Mengo
 -Pagina conferma ordine (html OK, NO php)
 -Login utente registrato (html OK, NO php)
 -AdminView(come?)
+
+<<<<FIX>>>>
+-Login -> testo bianco no checkBox
+-Search -> searchbar dentro blocco filtri + footer con paginazione e torna in alto
+            ingredienti a icona (i)
+
+-Conferma ordine -> box sfondo img
+-Profilo Fornitore (interno) -> sistemare barra laterale viola /
+***Pagina modifiche con Form richiesta + storico stato modifiche
+***Profilo fornitore (esterno) -> riciclato e senza Form
+***Admin View con storico modifiche e pulsanti approva/Rifiuta
+ ???NOTIFICHE???

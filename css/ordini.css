@@ -7,28 +7,28 @@
     text-align: right;
 }
 
-#accordion {
-    margin-bottom: 5%;
-}
 
 .card{
     border-radius: 0px;
 }
 
 
+
 #filterBar {
+  max-height:20%;
   padding: 10px 10px;
-  position: absolute;
   color: white;
   background-color: #3A3B3A;
-  left: 0;
-  bottom: 0;
   width: 100%;
+  margin: 0px;
 }
 
-#filterBar .form-group label{
-    margin-right:10px;
+#checkBoxes{
+    position:absolute;
+    right:0;
+    padding-left:60px;
 }
-#filterBar .form-group, #filterBar .form-check{
-    margin-right: 20px;
+
+#filterBar label {
+    margin-right:10px;
 }
