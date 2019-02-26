@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/theme.css">
+  <link rel="stylesheet" href="../css/sheet.css">
+  <link rel="stylesheet" href="../css/modifiche.css">
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="../js/modifiche.js"></script>
+  <!-- Page informations and icon -->
+  <title>UniHungry - Modifiche</title>
+  <link rel="shortcut icon" href="../res/icon.ico" />
+</head>
+  <body>
+    <nav class="navbar navbar-expand-md sticky-top">
+           <!-- Brand -->
+           <a id="brand" class="navbar-brand nav-link" href="./HomePage.html">
+                <img src="../res/logo.png" height="40px" alt="UniHungry">
+           </a>
+           <div class= "ml-auto">
+               <a class="nav-link nopadding" href="./ProfiloFornitore.html">
+                   Indietro
+               <img src="../res/back-white.png" alt="Torna indietro" width="30px">
+
+              </a>
+           </div>
+      </nav>
+      <div class="modifyBox">
+        <form action="HomePage.html">
+          <h2>Nuova modifica</h2>
+            <div class="form-row">
+                <div class="form-group col-md">
+                  <div class="row">
+                    <div class="col">
+                      <label for="email">Tipologia modifica</label>
+                      <select class="form-control" id="combo">
+                        <option>..</option>
+                        <option>AGGIUNGI CATEGORIA</option>
+                        <option>AGGIUNGI</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row" id="addCat">
+                    <div class="col">
+                      <label for="categoria">Categoria: </label>
+                      <input type="categoria" class="form-control" placeholder="Inserisci la categoria">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col">
+                  <label for="textArea">Descrizione</label>
+                  <textarea class="form-control" id="textArea" rows="6"></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <button type="submit" class="centered btn green">Invia</button>
+              </div>
+            </div>
+        </form>
+      </div>
+  </body>
+</html>
