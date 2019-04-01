@@ -33,3 +33,7 @@ Mengo
 ***Profilo fornitore (esterno) -> riciclato e senza Form
 ***Admin View con storico modifiche e pulsanti approva/Rifiuta
  ???NOTIFICHE???
+
+-- 1/04/19
+AGGIUNGI MODIFICA -> 	Oggetto, descrizione
+			Rimuovere campo stato dalla view
