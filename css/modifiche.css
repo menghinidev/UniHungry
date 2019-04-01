@@ -7,6 +7,15 @@
   border-radius: 20px;
 }
 
+.title {
+  font-weight: bold;
+}
+
+.blackCol {
+  color: black;
+  text-align: center;
+}
+
 .centered {
   text-align: center;
   width: 33%;
@@ -16,8 +25,6 @@
 
 #addCat {
   display: none;
-  position: absolute;
-  bottom: 0;
   width: 100%;
 }
 
