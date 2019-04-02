@@ -9,7 +9,7 @@ Samu
 >Profilo fornitore + Modifica Listino (html OK / NO php)
 > Ordini in corso ed elaborazione fornitore (html OK / NO php)
 
-> richiesta modifiche admin (quali?) + stato richieste
+> richiesta modifiche admin (iniziata)
 
 
 
@@ -20,20 +20,29 @@ Mengo
 -Conferma ordine pagamento (Html OK, NO php)
 -Pagina conferma ordine (html OK, NO php)
 -Login utente registrato (html OK, NO php)
--AdminView(come?)
+-AdminView (!)
 
 <<<<FIX>>>>
-- (OK) Login -> testo bianco no checkBox
-- (OK) Search -> searchbar dentro blocco filtri + footer con paginazione e torna in alto
-            ingredienti a icona (i)
+-Profilo Fornitore (interno) -> aggiungere modifiche dei campi mancanti + cambio struttura
+-Profilo fornitore (esterno) -> Deve mostrare LOGO, orari, indirizzo, prodotti + aggiungi al carrello.
+-Admin View con storico modifiche e pulsanti approva/Rifiuta
+-Aggiungi modifica -> 	Oggetto, descrizione + Rimuovere campo stato dalla view
 
-- (OK) Conferma ordine -> box sfondo img
--Profilo Fornitore (interno) -> sistemare barra laterale viola /
-***Pagina modifiche con Form richiesta + storico stato modifiche
-***Profilo fornitore (esterno) -> riciclato e senza Form
-***Admin View con storico modifiche e pulsanti approva/Rifiuta
  ???NOTIFICHE???
+ -dropdown notifiche navbar dopo il Login
+ -pagina tutte le notifiche
+ -click notifica link(?)
 
--- 1/04/19
-AGGIUNGI MODIFICA -> 	Oggetto, descrizione
-			Rimuovere campo stato dalla view
+==SESSIONE==
+'logged' true/false
+'userID'
+'fornitore' true/false
+'cart' (?)
+
+^V^ NEXT_GOALS ^v^
+1-login + registrazione (php sicuro)
+2-Navbar php module
+3-Products php module
+4-Ordini + carrello
+5-notifiche
+poi modifiche alla parte "statica"
