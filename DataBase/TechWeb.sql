@@ -1,4 +1,4 @@
--- *********************************************
+﻿-- *********************************************
 -- * SQL MySQL generation                      
 -- *--------------------------------------------
 -- * DB-MAIN version: 11.0.1              
@@ -12,104 +12,111 @@
 -- Database Section
 -- ________________ 
 
-create database FoodCampusLOGICO;
-use FoodCampusLOGICO;
+create database UniHungry;
+use UniHungry;
 
 
 -- Tables Section
 -- _____________ 
 
 create table ADMIN (
-     id_admin char(1) not null,
-     nome char(1) not null,
-     cognome char(1) not null,
-     email char(1) not null,
-     password char(1) not null,
-     telefono char(1) not null,
+     id_admin INT NOT NULL AUTO_INCREMENT,
+     nome VARCHAR(20) not null,
+     cognome VARCHAR(30) not null,
+     email VARCHAR(50) not null,
+     password CHAR(128) not null,
+     salt CHAR(128) not null,
+     telefono CHAR(10) not null,
      constraint IDADMIN primary key (id_admin));
 
 create table CATEGORIA (
-     nome char(1) not null,
+     nome VARCHAR(30)  not null,
      constraint IDCATEGORIA primary key (nome));
 
 create table CLIENTE (
-     id_cliente char(1) not null,
-     nome char(1) not null,
-     cognome char(1) not null,
-     email char(1) not null,
-     password char(1) not null,
-     telefono char(1) not null,
+     id_cliente INT NOT NULL AUTO_INCREMENT,
+     nome VARCHAR(20) not null,
+     cognome VARCHAR(30) not null,
+     email VARCHAR(50) not null,
+     password CHAR(128) not null,
+     salt CHAR(128) not null,
+     telefono CHAR(10) not null,
      constraint IDCLIENTE primary key (id_cliente));
 
 create table FORNITORE (
-     id_fornitore char(1) not null,
-     nome char(1) not null,
-     cognome char(1) not null,
-     email char(1) not null,
-     password char(1) not null,
-     telefono char(1) not null,
-     nome_fornitore char(1) not null,
-     descrizione char(1) not null,
-     descrizione_breve char(1) not null,
-     logo char(1),
+     id_fornitore INT NOT NULL AUTO_INCREMENT,     
+     nome VARCHAR(20) not null,
+     cognome VARCHAR(30) not null,
+     email VARCHAR(50) not null,
+     password CHAR(128) not null,
+     salt CHAR(128) not null,
+     telefono CHAR(10) not null,
+     nome_fornitore VARCHAR(50) not null,
+     descrizione TEXT not null,
+     descrizione_breve char(50) not null,
+     logo VARCHAR(200) not null,
      constraint IDFORNITORE primary key (id_fornitore));
 
 create table MODIFICA (
-     id_modifica char(1) not null,
-     oggetto char(1) not null,
-     descrizione char(1) not null,
-     query char(1),
-     approvata char(1) not null,
-     id_admin char(1) not null,
-     id_fornitore char(1) not null,
+     id_modifica INT NOT NULL AUTO_INCREMENT,
+     oggetto char(30) not null,
+     descrizione TEXT not null,
+     query TEXT,
+     approvata TINYINT(1),
+     id_admin INT not null,
+     id_fornitore INT not null,
      constraint IDMODIFICA primary key (id_modifica));
 
 create table ORARIO_GIORNALIERO (
-     id_fornitore char(1) not null,
-     giorno_settimana char(1) not null,
-     apertura char(1) not null,
-     chiusura char(1) not null,
-     inizio_pausa char(1) not null,
-     fine_pausa char(1) not null,
+     id_fornitore INT not null,
+     giorno_settimana ENUM('lunedì', 'martedì', 'mercoledì', 'giovedì', 'venerdì', 'sabato', 'domenica') not null,
+     apertura TIME not null,
+     chiusura TIME not null,
+     inizio_pausa TIME,
+     fine_pausa TIME,
      constraint IDORARIO_GIORNALIERO primary key (id_fornitore, giorno_settimana));
 
 create table NOTIFICA (
-     id_notifica char(1) not null,
-     testo char(1) not null,
-     visualizzata char(1) not null,
-     per_utente char not null,
-     id_fornitore char(1) not null,
-     id_ordine char(1) not null,
+     id_notifica INT NOT NULL AUTO_INCREMENT,
+     testo TINYTEXT not null,
+     visualizzata TINYINT(1) not null,
+     per_utente TINYINT(1) not null,
+     id_fornitore INT not null,
+     id_ordine INT not null,
      constraint IDNOTIFICA primary key (id_notifica));
 
 create table ORDINAZIONE (
-     id_prodotto char(1) not null,
-     id_ordine char(1) not null,
+     id_prodotto INT not null,
+     id_ordine INT not null,
      quantità int not null,
      constraint IDORDINAZIONE primary key (id_ordine, id_prodotto));
 
 create table ORDINE (
-     id_ordine char(1) not null,
-     data char(1) not null,
-     ora_sottomissione char(1) not null,
-     ora_richiesta char(1),
-     luogo_ritiro char(1) not null,
-     stato_ordine char(1) not null,
-     pagato char not null,
-     id_cliente char(1) not null,
+     id_ordine INT NOT NULL AUTO_INCREMENT,
+     data DATE not null,
+     ora_sottomissione TIME not null,
+     ora_richiesta TIME,
+     luogo_ritiro VARCHAR(100) not null,
+     stato_ordine ENUM('accettato', 'in consegna', 'consegnato', 'rifiutato', 'ricevuto') not null,
+     pagato TINYINT(1) not null,
+     id_cliente INT not null,
      constraint IDORDINE_ID primary key (id_ordine));
 
 create table PRODOTTO (
-     id_prodotto char(1) not null,
-     nome char(1) not null,
-     descrizione char(1) not null,
-     prezzo_unitario char(1) not null,
-     immagine char(1) not null,
-     ingredienti char(1) not null,
-     id_fornitore char(1) not null,
-     categoria char(1) not null,
+     id_prodotto INT NOT NULL AUTO_INCREMENT,
+     nome VARCHAR(30) not null,
+     descrizione VARCHAR(100) not null,
+     prezzo_unitario DECIMAL(4,2) not null,
+     immagine VARCHAR(100) not null,
+     ingredienti TEXT not null,
+     id_fornitore INT not null,
+     categoria VARCHAR(30) not null,
      constraint IDPRODOTTO primary key (id_prodotto));
 
+CREATE TABLE `login_attempts` (
+  `user_id` INT(11) NOT NULL,
+  `time` VARCHAR(30) NOT NULL 
+);
 
 -- Constraints Section
 -- ___________________ 
