@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 02, 2019 alle 17:44
+-- Creato il: Apr 24, 2019 alle 17:22
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.2.12
 
@@ -32,9 +32,6 @@ CREATE TABLE `admin` (
   `id_admin` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` char(128) NOT NULL,
-  `salt` char(128) NOT NULL,
   `telefono` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -58,9 +55,6 @@ CREATE TABLE `cliente` (
   `id_cliente` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` char(128) NOT NULL,
-  `salt` char(128) NOT NULL,
   `telefono` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -74,9 +68,6 @@ CREATE TABLE `fornitore` (
   `id_fornitore` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` char(128) NOT NULL,
-  `salt` char(128) NOT NULL,
   `telefono` char(10) NOT NULL,
   `nome_fornitore` varchar(50) NOT NULL,
   `descrizione` text NOT NULL,
@@ -188,6 +179,22 @@ CREATE TABLE `prodotto` (
   `categoria` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` char(128) NOT NULL,
+  `salt` char(128) NOT NULL,
+  `admin` tinyint(1) NOT NULL,
+  `cliente` tinyint(1) NOT NULL,
+  `fornitore` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 --
 -- Indici per le tabelle scaricate
 --
@@ -253,26 +260,15 @@ ALTER TABLE `prodotto`
   ADD PRIMARY KEY (`id_prodotto`);
 
 --
+-- Indici per le tabelle `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT per le tabelle scaricate
 --
-
---
--- AUTO_INCREMENT per la tabella `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `cliente`
---
-ALTER TABLE `cliente`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `fornitore`
---
-ALTER TABLE `fornitore`
-  MODIFY `id_fornitore` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `modifica`
@@ -297,6 +293,12 @@ ALTER TABLE `ordine`
 --
 ALTER TABLE `prodotto`
   MODIFY `id_prodotto` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
