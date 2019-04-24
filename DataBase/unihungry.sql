@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 24, 2019 alle 17:22
+-- Creato il: Apr 24, 2019 alle 18:08
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.2.12
 
@@ -190,9 +190,7 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `password` char(128) NOT NULL,
   `salt` char(128) NOT NULL,
-  `admin` tinyint(1) NOT NULL,
-  `cliente` tinyint(1) NOT NULL,
-  `fornitore` tinyint(1) NOT NULL
+  `user_type` enum('Admin','Cliente','Fornitore') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

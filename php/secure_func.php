@@ -13,11 +13,11 @@ function sec_session_start() {
 
 
 function login($email, $password, $mysqli) {
-   if ($stmt = $mysqli->prepare("SELECT user_id, password, salt FROM users WHERE email = ? LIMIT 1")) {
+   if ($stmt = $mysqli->prepare("SELECT user_id, password, salt, user_type FROM users WHERE email = ? LIMIT 1")) {
       $stmt->bind_param('s', $email); // esegue il bind del parametro '$email'.
       $stmt->execute();
       $stmt->store_result();
-      $stmt->bind_result($user_id, $db_password, $salt);
+      $stmt->bind_result($user_id, $db_password, $salt, $user_type);
       $stmt->fetch();
       $password = hash('sha512', $password.$salt); // codifica la password usando una chiave univoca.
       if($stmt->num_rows == 1) {
@@ -39,6 +39,7 @@ function login($email, $password, $mysqli) {
                // Login eseguito con successo.
                ################################
                //GESTIRE LA DIFFERENZIAZIONE TRA FORNITORE, CLIENTE, ADMIN
+               $_SESSION['user_type'] = $user_type;
                ################################
                return true;
          } else {
