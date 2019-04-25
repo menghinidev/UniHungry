@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 24, 2019 alle 18:08
+-- Creato il: Apr 25, 2019 alle 11:15
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.2.12
 
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `admin`
+-- Struttura della tabella `admins`
 --
 
-CREATE TABLE `admin` (
+CREATE TABLE `admins` (
   `id_admin` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
@@ -38,20 +38,20 @@ CREATE TABLE `admin` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `categoria`
+-- Struttura della tabella `categorie`
 --
 
-CREATE TABLE `categoria` (
+CREATE TABLE `categorie` (
   `nome` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `cliente`
+-- Struttura della tabella `clienti`
 --
 
-CREATE TABLE `cliente` (
+CREATE TABLE `clienti` (
   `id_cliente` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
@@ -61,18 +61,18 @@ CREATE TABLE `cliente` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `fornitore`
+-- Struttura della tabella `fornitori`
 --
 
-CREATE TABLE `fornitore` (
+CREATE TABLE `fornitori` (
   `id_fornitore` int(11) NOT NULL,
   `nome` varchar(20) NOT NULL,
   `cognome` varchar(30) NOT NULL,
   `telefono` char(10) NOT NULL,
   `nome_fornitore` varchar(50) NOT NULL,
-  `descrizione` text NOT NULL,
+  `descrizione` text,
   `descrizione_breve` char(50) NOT NULL,
-  `logo` varchar(200) NOT NULL,
+  `logo` varchar(200) DEFAULT NULL,
   `indirizzo` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -90,10 +90,10 @@ CREATE TABLE `login_attempts` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `modifica`
+-- Struttura della tabella `modifiche`
 --
 
-CREATE TABLE `modifica` (
+CREATE TABLE `modifiche` (
   `id_modifica` int(11) NOT NULL,
   `oggetto` char(30) NOT NULL,
   `descrizione` text NOT NULL,
@@ -106,10 +106,10 @@ CREATE TABLE `modifica` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `notifica`
+-- Struttura della tabella `notifiche`
 --
 
-CREATE TABLE `notifica` (
+CREATE TABLE `notifiche` (
   `id_notifica` int(11) NOT NULL,
   `testo` tinytext NOT NULL,
   `visualizzata` tinyint(1) NOT NULL,
@@ -121,10 +121,10 @@ CREATE TABLE `notifica` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `orario_giornaliero`
+-- Struttura della tabella `orari_giornalieri`
 --
 
-CREATE TABLE `orario_giornaliero` (
+CREATE TABLE `orari_giornalieri` (
   `id_fornitore` int(11) NOT NULL,
   `giorno_settimana` enum('lunedì','martedì','mercoledì','giovedì','venerdì','sabato','domenica') NOT NULL,
   `apertura` time NOT NULL,
@@ -136,10 +136,10 @@ CREATE TABLE `orario_giornaliero` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ordinazione`
+-- Struttura della tabella `ordinazioni`
 --
 
-CREATE TABLE `ordinazione` (
+CREATE TABLE `ordinazioni` (
   `id_prodotto` int(11) NOT NULL,
   `id_ordine` int(11) NOT NULL,
   `quantità` int(11) NOT NULL
@@ -148,10 +148,10 @@ CREATE TABLE `ordinazione` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `ordine`
+-- Struttura della tabella `ordini`
 --
 
-CREATE TABLE `ordine` (
+CREATE TABLE `ordini` (
   `id_ordine` int(11) NOT NULL,
   `data` date NOT NULL,
   `ora_sottomissione` time NOT NULL,
@@ -165,10 +165,10 @@ CREATE TABLE `ordine` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `prodotto`
+-- Struttura della tabella `prodotti`
 --
 
-CREATE TABLE `prodotto` (
+CREATE TABLE `prodotti` (
   `id_prodotto` int(11) NOT NULL,
   `nome` varchar(30) NOT NULL,
   `descrizione` varchar(100) NOT NULL,
@@ -198,63 +198,63 @@ CREATE TABLE `users` (
 --
 
 --
--- Indici per le tabelle `admin`
+-- Indici per le tabelle `admins`
 --
-ALTER TABLE `admin`
+ALTER TABLE `admins`
   ADD PRIMARY KEY (`id_admin`);
 
 --
--- Indici per le tabelle `categoria`
+-- Indici per le tabelle `categorie`
 --
-ALTER TABLE `categoria`
+ALTER TABLE `categorie`
   ADD PRIMARY KEY (`nome`);
 
 --
--- Indici per le tabelle `cliente`
+-- Indici per le tabelle `clienti`
 --
-ALTER TABLE `cliente`
+ALTER TABLE `clienti`
   ADD PRIMARY KEY (`id_cliente`);
 
 --
--- Indici per le tabelle `fornitore`
+-- Indici per le tabelle `fornitori`
 --
-ALTER TABLE `fornitore`
+ALTER TABLE `fornitori`
   ADD PRIMARY KEY (`id_fornitore`);
 
 --
--- Indici per le tabelle `modifica`
+-- Indici per le tabelle `modifiche`
 --
-ALTER TABLE `modifica`
+ALTER TABLE `modifiche`
   ADD PRIMARY KEY (`id_modifica`);
 
 --
--- Indici per le tabelle `notifica`
+-- Indici per le tabelle `notifiche`
 --
-ALTER TABLE `notifica`
+ALTER TABLE `notifiche`
   ADD PRIMARY KEY (`id_notifica`);
 
 --
--- Indici per le tabelle `orario_giornaliero`
+-- Indici per le tabelle `orari_giornalieri`
 --
-ALTER TABLE `orario_giornaliero`
+ALTER TABLE `orari_giornalieri`
   ADD PRIMARY KEY (`id_fornitore`,`giorno_settimana`);
 
 --
--- Indici per le tabelle `ordinazione`
+-- Indici per le tabelle `ordinazioni`
 --
-ALTER TABLE `ordinazione`
+ALTER TABLE `ordinazioni`
   ADD PRIMARY KEY (`id_ordine`,`id_prodotto`);
 
 --
--- Indici per le tabelle `ordine`
+-- Indici per le tabelle `ordini`
 --
-ALTER TABLE `ordine`
+ALTER TABLE `ordini`
   ADD PRIMARY KEY (`id_ordine`);
 
 --
--- Indici per le tabelle `prodotto`
+-- Indici per le tabelle `prodotti`
 --
-ALTER TABLE `prodotto`
+ALTER TABLE `prodotti`
   ADD PRIMARY KEY (`id_prodotto`);
 
 --
@@ -269,27 +269,27 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT per la tabella `modifica`
+-- AUTO_INCREMENT per la tabella `modifiche`
 --
-ALTER TABLE `modifica`
+ALTER TABLE `modifiche`
   MODIFY `id_modifica` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `notifica`
+-- AUTO_INCREMENT per la tabella `notifiche`
 --
-ALTER TABLE `notifica`
+ALTER TABLE `notifiche`
   MODIFY `id_notifica` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `ordine`
+-- AUTO_INCREMENT per la tabella `ordini`
 --
-ALTER TABLE `ordine`
+ALTER TABLE `ordini`
   MODIFY `id_ordine` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `prodotto`
+-- AUTO_INCREMENT per la tabella `prodotti`
 --
-ALTER TABLE `prodotto`
+ALTER TABLE `prodotti`
   MODIFY `id_prodotto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
