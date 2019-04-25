@@ -2,11 +2,12 @@
 require 'db_connect.php';
 require 'secure_func.php';
 sec_session_start(); // usiamo la nostra funzione per avviare una sessione php sicura
-if(empty($_POST['email'], $_POST['pw'],$_POST['user_type'], $_POST['nome'] , $_POST['cognome'], $_POST['telefono'] )) {
+if(isset($_POST['email'], $_POST['pw'], $_POST['user_type'], $_POST['nome'], $_POST['cognome'], $_POST['telefono'] )) {
     // Recupero i dati postati dal form
     $email = $_POST['email'];
     $password = $_POST['pw'];
     $user_type = $_POST['user_type'];
+
     // Crea una chiave casuale
     $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
     // Crea una password usando la chiave appena creata.
@@ -20,7 +21,7 @@ if(empty($_POST['email'], $_POST['pw'],$_POST['user_type'], $_POST['nome'] , $_P
        {
            $last_id = $mysqli->insert_id;
        }
-    }
+   }
     #####INSERT PERSONAL DATA IN SPECIFIC TABLE#######
 
     if($user_type == "Cliente"){
