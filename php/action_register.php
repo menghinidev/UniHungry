@@ -19,25 +19,41 @@
 
         if ($insert_stmt = $mysqli->prepare("INSERT INTO users (email, password, salt, user_type) VALUES (?, ?, ?, ?)")) {
            $insert_stmt->bind_param('ssss', $email, $password, $random_salt, $user_type);
-           // Esegui la query ottenuta.
            if($insert_stmt->execute())
            {
                $last_id = $mysqli->insert_id;
            }
        }
-        #####INSERT PERSONAL DATA IN SPECIFIC TABLE#######
-
+        ###INSERT PERSONAL DATA IN SPECIFIC TABLE###
         if($user_type == "Cliente"){
             if ($insert_stmt = $mysqli->prepare("INSERT INTO clienti  (id_cliente, nome, cognome, telefono) VALUES (?, ?, ?, ?)")) {
                $insert_stmt->bind_param('isss',$last_id ,$_POST['nome'] , $_POST['cognome'], $_POST['telefono']);
-               // Esegui la query ottenuta.
-               $insert_stmt->execute();
+               if($insert_stmt->execute())
+               {
+                    header('Location: ../html/HomePage.html');
+               } else {
+                   echo "ERROR";
+               }
+
             }
         }
-        else {
+        else if($user_type == "Fornitore") {
             ####CREARE MODIFICA DA SOTTOPORRE AD APPROVAZIONE ADMIN###
+            $query_modifica = "INSERT INTO fornitore  (id_fornitore, nome, cognome, telefono, nome_fornitore, descrizione_breve, indirizzo) VALUES ($last_id, {$_POST['nome']}, {$_POST['cognome']},{$_POST['telefono']}, {$_POST['nome_fornitore']}, {$_POST['descrizione_breve']}, {$_POST['indirizzo']})";
+
+            $oggetto = "Registrazione fornitore {$_POST['nome_fornitore']} ";
+            $descrizione = "{$_POST['descrizione_breve']}<\br> Il fornitore si trova in {$_POST['indirizzo']}";
+            if ($insert_stmt = $mysqli->prepare("INSERT INTO modifiche  (oggetto, descrizione, query, id_fornitore) VALUES (?, ?, ?, ?)")) {
+               $insert_stmt->bind_param('sssi', $oggetto, $descrizione, $query_modifica, $last_id);
+               if($insert_stmt->execute())
+               {
+                   header('Location: ../html/HomePage.html');
+               } else {
+                   header('Location: ../html/error.html');
+               }
+            }
         }
-        header('Location: ../html/HomePage.html');
+
     }
     else {
        // Le variabili corrette non sono state inviate a questa pagina dal metodo POST.

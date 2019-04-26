@@ -36,11 +36,8 @@ function login($email, $password, $mysqli) {
                $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $username); // ci proteggiamo da un attacco XSS
                $_SESSION['username'] = $username;
                $_SESSION['login_string'] = hash('sha512', $password.$user_browser);
-               // Login eseguito con successo.
-               ################################
-               //GESTIRE LA DIFFERENZIAZIONE TRA FORNITORE, CLIENTE, ADMIN
+               //GESTISCO LA DIFFERENZIAZIONE TRA FORNITORE, CLIENTE, ADMIN
                $_SESSION['user_type'] = $user_type;
-               ################################
                return true;
          } else {
             // Password incorretta.

@@ -66,15 +66,15 @@
                       e potrai completare la pagina fornitore dal tuo profilo.</p>
                       <label for="nomefornitore">Nome Attività</label>
                       <input type="text" name="nome_fornitore" class="form-control" id="nomefornitore" placeholder="Pizzeria da Mario">
-                      <label for="descrizione">Descrizione</label>
-                      <textarea class="form-control" name="descrizione" id="descrizione" aria-describedby="descrizioneHelp" maxlength="50" rows="2"></textarea>
-                      <small id="descrizioneHelp" class="form-text">Max 50 caratteri</small>
                       <label for="indirizzo">Indirizzo</label>
                       <input type="text" name="indirizzo" class="form-control" id="indirizzo" placeholder="Via Garibaldi 25">
+                      <label for="descrizione_breve">Descrizione</label>
+                      <textarea class="form-control" name="descrizione_breve" id="descrizione_breve" aria-describedby="descrizioneHelp" maxlength="50" rows="2"></textarea>
+                      <small id="descrizioneHelp" class="form-text">Max 50 caratteri</small>
                   </div>
                   <div class="form-row">
                     <div class="col">
-                      <button id="registrati" type="submit" onclick="registerClick(this.form, this.form.password, $('fornitoreCheck'))" class="centered btn green">Registrati</button>
+                      <button id="registrati" type="submit" onclick="registerClick(this.form, this.form.password)" class="centered btn green">Registrati</button>
                     </div>
                   </div>
               </form>

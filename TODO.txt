@@ -40,9 +40,9 @@ Mengo
 'cart' (?)
 
 ^V^ NEXT_GOALS ^v^
-1-login + registrazione (php sicuro)
+1-login + registrazione (php sicuro) CLIENTI OK // NO FORNITORI
 2-Navbar php module
-3-Products php module
+3-Products php module database
 4-Ordini + carrello
 5-notifiche
 poi modifiche alla parte "statica"
