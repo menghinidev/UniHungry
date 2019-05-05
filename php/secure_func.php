@@ -74,7 +74,7 @@ function checkbrute($user_id, $mysqli, $max_attempts) {
 }
 
 
-function login_check($mysqli) {
+function DB_check($mysqli) {
    // Verifica che tutte le variabili di sessione siano impostate correttamente
    if(isset($_SESSION['user_id'], $_SESSION['username'], $_SESSION['login_string'])) {
      $user_id = $_SESSION['user_id'];
@@ -106,5 +106,19 @@ function login_check($mysqli) {
      return false;
    }
 }
+
+function check_login($mysqli) {
+    if(!DB_check($mysqli)){
+        unset($_SESSION['user_id']);
+        unset($_SESSION['login_string']);
+        unset($_SESSION['username']);
+    }
+}
+
+//TO BE CALLED AFTER CHECK LOGIN
+function is_logged(){
+    return isset($_SESSION['user_id']);
+}
+
 
  ?>
