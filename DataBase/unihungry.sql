@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 25, 2019 alle 11:15
+-- Creato il: Mag 06, 2019 alle 09:17
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.2.12
 
@@ -48,19 +48,6 @@ CREATE TABLE `categorie` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `clienti`
---
-
-CREATE TABLE `clienti` (
-  `id_cliente` int(11) NOT NULL,
-  `nome` varchar(20) NOT NULL,
-  `cognome` varchar(30) NOT NULL,
-  `telefono` char(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `fornitori`
 --
 
@@ -95,11 +82,10 @@ CREATE TABLE `login_attempts` (
 
 CREATE TABLE `modifiche` (
   `id_modifica` int(11) NOT NULL,
-  `oggetto` char(30) NOT NULL,
+  `oggetto` char(100) NOT NULL,
   `descrizione` text NOT NULL,
   `query` text,
   `approvata` tinyint(1) DEFAULT NULL,
-  `id_admin` int(11) NOT NULL,
   `id_fornitore` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -208,12 +194,6 @@ ALTER TABLE `admins`
 --
 ALTER TABLE `categorie`
   ADD PRIMARY KEY (`nome`);
-
---
--- Indici per le tabelle `clienti`
---
-ALTER TABLE `clienti`
-  ADD PRIMARY KEY (`id_cliente`);
 
 --
 -- Indici per le tabelle `fornitori`
