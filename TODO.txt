@@ -34,15 +34,19 @@ Mengo
  -click notifica link(?)
 
 ==SESSIONE==
-'logged' true/false
-'userID'
-'fornitore' true/false
-'cart' (?)
+$_SESSION['user_id'] --> int
+$_SESSION['user_type'] --> Cliente / Fornitore / Admin
+//Array carrello???
 
 ^V^ NEXT_GOALS ^v^
-1-login + registrazione (php sicuro) CLIENTI OK // NO FORNITORI
-2-Navbar php module
-3-Products php module database
-4-Ordini + carrello
-5-notifiche
+1-login + registrazione (php sicuro) OK
+2-Navbar php module QUASI
+3-Admin view per le modifiche (anche abbozzo)
+4-Profilo fornitori
+
+-Products php module database
+-Ordini + carrello
+-notifiche
+-Email
+-Pagine di arrivo statiche
 poi modifiche alla parte "statica"

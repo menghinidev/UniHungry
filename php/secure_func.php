@@ -33,8 +33,6 @@ function login($email, $password, $mysqli) {
 
                $user_id = preg_replace("/[^0-9]+/", "", $user_id); // ci proteggiamo da un attacco XSS
                $_SESSION['user_id'] = $user_id;
-               $username = preg_replace("/[^a-zA-Z0-9_\-]+/", "", $username); // ci proteggiamo da un attacco XSS
-               $_SESSION['username'] = $username;
                $_SESSION['login_string'] = hash('sha512', $password.$user_browser);
                //GESTISCO LA DIFFERENZIAZIONE TRA FORNITORE, CLIENTE, ADMIN
                $_SESSION['user_type'] = $user_type;
@@ -76,10 +74,9 @@ function checkbrute($user_id, $mysqli, $max_attempts) {
 
 function DB_check($mysqli) {
    // Verifica che tutte le variabili di sessione siano impostate correttamente
-   if(isset($_SESSION['user_id'], $_SESSION['username'], $_SESSION['login_string'])) {
+   if(isset($_SESSION['user_id'], $_SESSION['login_string'])) {
      $user_id = $_SESSION['user_id'];
      $login_string = $_SESSION['login_string'];
-     $username = $_SESSION['username'];
      $user_browser = $_SERVER['HTTP_USER_AGENT']; // reperisce la stringa 'user-agent' dell'utente.
      if ($stmt = $mysqli->prepare("SELECT password FROM users WHERE user_id = ? LIMIT 1")) {
         $stmt->bind_param('i', $user_id); // esegue il bind del parametro '$user_id'.
@@ -111,7 +108,6 @@ function login_check($mysqli) {
     if(!DB_check($mysqli)){
         unset($_SESSION['user_id']);
         unset($_SESSION['login_string']);
-        unset($_SESSION['username']);
     }
 }
 
