@@ -24,12 +24,12 @@ $HOME = $prefix.'HomePage.php';
                 </li>
                 <?php } else { ?>
                 <li class="nav-item">
-                 <a class="nav-link" href="Home.php">Home</a>
+                 <a class="nav-link" href="./Home.php">Home</a>
                 </li>
                 <?php } ?>
                 <?php if(is_logged()){ ?>
                     <li class="nav-item">
-                     <a class="nav-link" href="Profilo">Profilo</a>
+                     <a class="nav-link" href="*******">Profilo</a>
                     </li>
                     <!-- Notification dropdown extended page -->
                     <div class="btn-group">
@@ -57,12 +57,12 @@ $HOME = $prefix.'HomePage.php';
                     <a class="dropdown-item scrolling" href="#partners">Partners</a>
                     <a class="dropdown-item scrolling" href="#chisiamo">Chi siamo</a>
                 <?php } else { ?>
-                    <a class="dropdown-item" href="HomePage.php">Home</a>
+                    <a class="dropdown-item" href="./HomePage.php">Home</a>
                 <?php } ?>
                 <!--not logged-->
                 <?php if(!is_logged()){ ?>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="Login.html">Accedi</a>
+                    <a class="dropdown-item" href="./Login.html">Accedi</a>
                     <a class="dropdown-item" href="./Registrati.html">Registrati</a>
                 <?php } else { ?>
                 <!--ProfiloUtente-->
@@ -74,7 +74,7 @@ $HOME = $prefix.'HomePage.php';
                     <a class="dropdown-item" href="*******">Notifiche</a>
                     <a class="dropdown-item" href="*******">Profilo</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="../php/script_logout.php">Logout</a>
+                    <a class="dropdown-item" href="./script_logout.php">Logout</a>
                 <?php } ?>
             </div>
         </div>
@@ -85,15 +85,15 @@ $HOME = $prefix.'HomePage.php';
             <ul class="navbar-nav">
             <?php if(!is_logged()){ ?>
              <li class="nav-item">
-               <a class="btn orange noVisitedLink" href="../php/Login.php">Accedi</a>
+               <a class="btn orange noVisitedLink" href="./Login.php">Accedi</a>
              </li>
              <li class="nav-item">
-               <a class="btn purple noVisitedLink" href="../php/Register.php">Registrati</a>
+               <a class="btn purple noVisitedLink" href="./Register.php">Registrati</a>
              </li>
 
             <?php } else { ?>
                 <li class="nav-item">
-                  <a class="btn purple noVisitedLink" href="../php/script_logout.php">Logout</a>
+                  <a class="btn purple noVisitedLink" href="./script_logout.php">Logout</a>
                 </li>
             <?php } ?>
             </ul>
