@@ -6,7 +6,7 @@ if(isset($_POST['email'], $_POST['pw'])) {
    $email = $_POST['email'];
    $password = $_POST['pw']; // Recupero la password criptata.
    if(login($email, $password, $mysqli) == true) {
-      header('Location: ../html/HomePage.html');
+      header('Location: ../php/HomePage.php');
    } else {
       header('Location: ');
    }

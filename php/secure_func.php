@@ -107,7 +107,7 @@ function DB_check($mysqli) {
    }
 }
 
-function check_login($mysqli) {
+function login_check($mysqli) {
     if(!DB_check($mysqli)){
         unset($_SESSION['user_id']);
         unset($_SESSION['login_string']);
@@ -119,6 +119,7 @@ function check_login($mysqli) {
 function is_logged(){
     return isset($_SESSION['user_id']);
 }
+
 
 
  ?>

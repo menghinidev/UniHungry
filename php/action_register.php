@@ -30,7 +30,12 @@
                $insert_stmt->bind_param('isss',$last_id ,$_POST['nome'] , $_POST['cognome'], $_POST['telefono']);
                if($insert_stmt->execute())
                {
-                    header('Location: ../html/HomePage.html');
+                   #####AUTO LOGIN#####
+                   if(login($email, $password, $mysqli) == true) {
+                      header('Location: ../php/HomePage.php');
+                   } else {
+                      header('Location: NOT LOGGED');
+                   }
                } else {
                    echo "ERROR";
                }
@@ -47,13 +52,12 @@
                $insert_stmt->bind_param('sssi', $oggetto, $descrizione, $query_modifica, $last_id);
                if($insert_stmt->execute())
                {
-                   header('Location: ../html/HomePage.html');
+                  header('Location: CONFIRM')
                } else {
-                   header('Location: ../html/error.html');
+                   header('Location: ERROR');
                }
             }
         }
-
     }
     else {
        // Le variabili corrette non sono state inviate a questa pagina dal metodo POST.

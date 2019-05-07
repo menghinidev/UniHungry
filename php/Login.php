@@ -23,6 +23,7 @@
   <link rel="shortcut icon" href="../res/icon.ico" />
 </head>
 <body>
+    <?php include 'navbar.php'; ?>
     <div class="container">
             <form id="registerform" class="col" action="../php/action_login.php" method="post">
                     <h2>Accedi</h2>
