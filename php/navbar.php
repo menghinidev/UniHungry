@@ -29,7 +29,7 @@ $HOME = $prefix.'HomePage.php';
                 <?php } ?>
                 <?php if(is_logged()){ ?>
                     <li class="nav-item">
-                     <a class="nav-link" href="*******">Profilo</a>
+                     <a class="nav-link" href="./script_profile.php">Profilo</a>
                     </li>
                     <!-- Notification dropdown extended page -->
                     <div class="btn-group">
