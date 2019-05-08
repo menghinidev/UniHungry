@@ -47,6 +47,77 @@
                  DESCRIZIONE
                </div>
              </div>
+             <?php
+             $sql = "SELECT oggetto, descrizione FROM modifiche";
+             $result = $mysqli->query($sql);
+             if ($result->num_rows > 0) {
+               // output data of each row
+               while($row = $result->fetch_assoc()) {
+                 echo'
+                 <hr/>
+                 <div class="row">
+                   <div class="col-4">'
+                    .$row["oggetto"].'
+                   </div>
+                   <div class="col-6">'.
+                    $row["descrizione"].'
+                   </div>
+                   <div class="col-2">
+                     <div class="row">
+                       <div class="col-6">
+                         <button onclick="" class="btn green">Approva</button>
+                       </div>
+                       <div class="col-6">
+                         <button onclick="" class="btn purple">Rifiuta</button>
+                       </div>
+                     </div>
+                   </div>
+                 </div>';
+               }
+             } else {
+               echo'
+               <hr/>
+               <div class="row">
+               <div class="col">
+               echo "0 results";
+               </div>
+               </div>
+               ';
+             }
+              ?>
+           </div>
+         </div>
+         <div class="tab-pane fade in blackCol" id="approved">
+           <div class="container fullScreen">
+             <div class="row title">
+               <div class="col-4">
+                 OGGETTO
+               </div>
+               <div class="col-8">
+                 DESCRIZIONE
+               </div>
+             </div>
+             <hr/>
+             <div class="row">
+               <div class="col-4">
+                 Ciao
+               </div>
+               <div class="col-8">
+                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="tab-pane fade in blackCol" id="denied">
+           <div class="container fullScreen">
+             <div class="row title">
+               <div class="col-4">
+                 OGGETTO
+               </div>
+               <div class="col-6">
+                 DESCRIZIONE
+               </div>
+             </div>
              <hr/>
              <div class="row">
                <div class="col-4">
@@ -57,22 +128,13 @@
                </div>
                <div class="col-2">
                  <div class="row">
-                   <div class="col-6">
+                   <div class="col">
                      <button class="btn green">Approva</button>
-                   </div>
-                   <div class="col-6">
-                     <button class="btn purple">Rifiuta</button>
                    </div>
                  </div>
                </div>
              </div>
            </div>
-         </div>
-         <div class="tab-pane fade in blackCol" id="approved">
-           MADIO
-         </div>
-         <div class="tab-pane fade in blackCol" id="denied">
-           PDIO
          </div>
        </div>
      </div>
