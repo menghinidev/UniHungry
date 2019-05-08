@@ -31,7 +31,7 @@
                if($insert_stmt->execute())
                {
                    #####AUTO LOGIN#####
-                   if(login($email, $password, $mysqli) == true) {
+                   if(login($email, $_POST['pw'], $mysqli) == true) {
                       header('Location: ../php/HomePage.php');
                    } else {
                       header('Location: NOT LOGGED');
@@ -52,7 +52,7 @@
                $insert_stmt->bind_param('sssi', $oggetto, $descrizione, $query_modifica, $last_id);
                if($insert_stmt->execute())
                {
-                  header('Location: CONFIRM')
+                  header('Location: CONFIRM');
                } else {
                    header('Location: ERROR');
                }
