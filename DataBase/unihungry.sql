@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 08, 2019 alle 12:07
+-- Creato il: Mag 08, 2019 alle 18:12
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.2.12
 
@@ -21,6 +21,20 @@ SET time_zone = "+00:00";
 --
 -- Database: `unihungry`
 --
+
+DELIMITER $$
+--
+-- Procedure
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `unlock_user` (IN `id` INT)  NO SQL
+BEGIN
+
+UPDATE users SET locked=0 WHERE user_id = id;
+DELETE FROM login_attempts WHERE user_id = id;
+
+END$$
+
+DELIMITER ;
 
 -- --------------------------------------------------------
 
