@@ -19,6 +19,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   <script type="text/javascript" src="../js/modifiche.js"></script>
+  <script type="text/javascript" src="../js/handleModify.js"></script>
   <!-- Page informations and icon -->
   <title>UniHungry - Modifiche</title>
   <link rel="shortcut icon" href="../res/icon.ico" />
@@ -48,41 +49,41 @@
                </div>
              </div>
              <?php
-             $sql = "SELECT oggetto, descrizione FROM modifiche";
+             $sql = "SELECT id_modifica, oggetto, descrizione FROM modifiche WHERE approvata IS NULL";
              $result = $mysqli->query($sql);
              if ($result->num_rows > 0) {
                // output data of each row
                while($row = $result->fetch_assoc()) {
-                 echo'
+                 echo"
                  <hr/>
-                 <div class="row">
-                   <div class="col-4">'
-                    .$row["oggetto"].'
+                 <div class='row'>
+                   <div class='col-4'>"
+                    .$row['oggetto']."
                    </div>
-                   <div class="col-6">'.
-                    $row["descrizione"].'
+                   <div class='col-6'>".
+                    $row['descrizione']."
                    </div>
-                   <div class="col-2">
-                     <div class="row">
-                       <div class="col-6">
-                         <button onclick="" class="btn green">Approva</button>
+                   <div class='col-2'>
+                     <div class='row'>
+                       <div class='col-6'>
+                         <button onclick=\"handleModify('Approved', ".$row['id_modifica']." );\" class='btn green'>Approva</button>
                        </div>
-                       <div class="col-6">
-                         <button onclick="" class="btn purple">Rifiuta</button>
+                       <div class='col-6'>
+                         <button onclick=\"handleModify('Rejected', ".$row['id_modifica']." );\" class='btn purple'>Rifiuta</button>
                        </div>
                      </div>
                    </div>
-                 </div>';
+                 </div>";
                }
              } else {
-               echo'
+               echo"
                <hr/>
-               <div class="row">
-               <div class="col">
-               echo "0 results";
+               <div class='row'>
+               <div class='col'>
+               No Results
                </div>
                </div>
-               ';
+               ";
              }
               ?>
            </div>
@@ -97,15 +98,34 @@
                  DESCRIZIONE
                </div>
              </div>
-             <hr/>
-             <div class="row">
-               <div class="col-4">
-                 Ciao
+             <?php
+             $sql = "SELECT id_modifica, oggetto, descrizione FROM modifiche WHERE approvata = 1";
+             $result = $mysqli->query($sql);
+             if ($result->num_rows > 0) {
+               // output data of each row
+               while($row = $result->fetch_assoc()) {
+                 echo"
+                 <hr/>
+                 <div class='row'>
+                   <div class='col-4'>"
+                    .$row['oggetto']."
+                   </div>
+                   <div class='col-6'>".
+                    $row['descrizione']."
+                   </div>
+                 </div>";
+               }
+             } else {
+               echo"
+               <hr/>
+               <div class='row'>
+               <div class='col'>
+               No Results
                </div>
-               <div class="col-8">
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                </div>
-             </div>
+               ";
+             }
+              ?>
            </div>
          </div>
          <div class="tab-pane fade in blackCol" id="denied">
@@ -118,22 +138,41 @@
                  DESCRIZIONE
                </div>
              </div>
-             <hr/>
-             <div class="row">
-               <div class="col-4">
-                 Ciao
-               </div>
-               <div class="col-6">
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-               </div>
-               <div class="col-2">
-                 <div class="row">
-                   <div class="col">
-                     <button class="btn green">Approva</button>
+             <?php
+             $sql = "SELECT id_modifica, oggetto, descrizione FROM modifiche WHERE approvata = 0";
+             $result = $mysqli->query($sql);
+             if ($result->num_rows > 0) {
+               // output data of each row
+               while($row = $result->fetch_assoc()) {
+                 echo"
+                 <hr/>
+                 <div class='row'>
+                   <div class='col-4'>"
+                    .$row['oggetto']."
                    </div>
-                 </div>
+                   <div class='col-6'>".
+                    $row['descrizione']."
+                   </div>
+                   <div class='col-2'>
+                     <div class='row'>
+                       <div class='col'>
+                         <button onclick=\"handleModify('Approved', ".$row['id_modifica']." );\" class='btn green'>Approva</button>
+                       </div>
+                     </div>
+                   </div>
+                 </div>";
+               }
+             } else {
+               echo"
+               <hr/>
+               <div class='row'>
+               <div class='col'>
+               No Results
                </div>
-             </div>
+               </div>
+               ";
+             }
+              ?>
            </div>
          </div>
        </div>
