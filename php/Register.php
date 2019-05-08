@@ -24,6 +24,7 @@
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
+      <?php include 'navbar.php'; ?>
       <div class="container">
               <form id="registerform" class="col" action="action_register.php"  method="post">
                       <h2>Iscriviti </h2>

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/home.css">
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
 			  src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -21,9 +22,7 @@
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
-      <?php include 'navbar.php';
-      //echo $_SERVER['PHP_SELF'];
-      ?>
-
+      <?php include 'navbar.php';?>
+      
   </body>
 </html>
