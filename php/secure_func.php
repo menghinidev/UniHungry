@@ -13,19 +13,23 @@ function sec_session_start() {
 
 
 function login($email, $password, $mysqli) {
-   if ($stmt = $mysqli->prepare("SELECT user_id, password, salt, user_type FROM users WHERE email = ? LIMIT 1")) {
+   if ($stmt = $mysqli->prepare("SELECT user_id, password, salt, user_type, locked FROM users WHERE email = ? LIMIT 1")) {
       $stmt->bind_param('s', $email); // esegue il bind del parametro '$email'.
       $stmt->execute();
       $stmt->store_result();
-      $stmt->bind_result($user_id, $db_password, $salt, $user_type);
+      $stmt->bind_result($user_id, $db_password, $salt, $user_type, $locked);
       $stmt->fetch();
+      if($locked){
+          header('Location: ./ACCOUNT_LOCKED');
+      }
       $password = hash('sha512', $password.$salt); // codifica la password usando una chiave univoca.
       if($stmt->num_rows == 1) {
          // verifichiamo che non sia disabilitato in seguito all'esecuzione di 10 tentativi di accesso errati.
          if(checkbrute($user_id, $mysqli, 10) == true) {
             // Account disabilitato
+            $mysqli->query("UPDATE users SET locked=1 WHERE user_id =".$user_id);
+            header('Location: ./ACCOUNT_LOCKED');
             // Invia un e-mail all'utente avvisandolo che il suo account è stato disabilitato.
-            return false;
          } else {
          if($db_password == $password) {
             // Password corretta!

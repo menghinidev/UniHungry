@@ -41,7 +41,7 @@ $_SESSION['user_type'] --> Cliente / Fornitore / Admin
 ^V^ NEXT_GOALS ^v^
 1-login + registrazione (php sicuro) OK
 2-Navbar php module QUASI
-3-Admin view per le modifiche (anche abbozzo)
+3-Admin view per le modifiche (anche abbozzo) --> deve anche poter sbloccare gli account (COME?)
 4-Profilo fornitori
 
 -Products php module database

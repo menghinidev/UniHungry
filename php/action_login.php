@@ -8,7 +8,7 @@ if(isset($_POST['email'], $_POST['pw'])) {
    if(login($email, $password, $mysqli) == true) {
       header('Location: ../php/HomePage.php');
    } else {
-      header('Location: ');
+      header('Location: WRONG ATTEMPT');
    }
 } else {
    // Le variabili corrette non sono state inviate a questa pagina dal metodo POST.
