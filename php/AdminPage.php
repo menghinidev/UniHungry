@@ -110,7 +110,7 @@
                    <div class='col-4'>"
                     .$row['oggetto']."
                    </div>
-                   <div class='col-6'>".
+                   <div class='col-8'>".
                     $row['descrizione']."
                    </div>
                  </div>";
