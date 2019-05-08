@@ -31,8 +31,8 @@
                if($insert_stmt->execute())
                {
                    #####AUTO LOGIN#####
-                   if(login($email, $password, $mysqli) == true) {
-                      header('Location: ./php/HomePage.php');
+                   if(login($email, $_POST['pw'], $mysqli) == true) {
+                      header('Location: ./HomePage.php');
                    } else {
                       header('Location: NOT LOGGED');
                    }
