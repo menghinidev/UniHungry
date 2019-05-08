@@ -1,52 +1,30 @@
 TODO:
--AdminView(come?)
--Notifiche
-
-Samu
->Home (html OK / NO php)
->Registrazione nuovo Utente (html OK / NO php)
->Profilo utente (html OK / NO php)
->Profilo fornitore + Modifica Listino (html OK / NO php)
-> Ordini in corso ed elaborazione fornitore (html OK / NO php)
-
-> richiesta modifiche admin (iniziata)
-
-
-
-
-Mengo
--Contenuti ricerca (Html OK, NO php)
--Carrello (Html OK, NO php)
--Conferma ordine pagamento (Html OK, NO php)
--Pagina conferma ordine (html OK, NO php)
--Login utente registrato (html OK, NO php)
--AdminView (!)
-
 <<<<FIX>>>>
 -Profilo Fornitore (interno) -> aggiungere modifiche dei campi mancanti + cambio struttura
 -Profilo fornitore (esterno) -> Deve mostrare LOGO, orari, indirizzo, prodotti + aggiungi al carrello.
 -Admin View con storico modifiche e pulsanti approva/Rifiuta
 -Aggiungi modifica -> 	Oggetto, descrizione + Rimuovere campo stato dalla view
 
- ???NOTIFICHE???
- -dropdown notifiche navbar dopo il Login
- -pagina tutte le notifiche
- -click notifica link(?)
-
 ==SESSIONE==
 $_SESSION['user_id'] --> int
 $_SESSION['user_type'] --> Cliente / Fornitore / Admin
 //Array carrello???
 
-^V^ NEXT_GOALS ^v^
-1-login + registrazione (php sicuro) OK
-2-Navbar php module QUASI
-3-Admin view per le modifiche (anche abbozzo) --> deve anche poter sbloccare gli account (COME?)
-4-Profilo fornitori
+/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+GOALS
+
+1- (OK) login + registrazione
+2- (OK) Navbar php module       ||HomePage mobile dropdown visualizzato male||
+
+3-Admin view per le modifiche
+4-Profilo clienti --> iniziato
+5-Profilo fornitori
 
 -Products php module database
 -Ordini + carrello
 -notifiche
 -Email
 -Pagine di arrivo statiche
+-Blocco e sblocco account
 poi modifiche alla parte "statica"
