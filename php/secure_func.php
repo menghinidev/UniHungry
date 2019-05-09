@@ -13,8 +13,6 @@ function sec_session_start() {
 
 
 function login($email, $password, $mysqli) {
-    unset($_SESSION['login_fail']);
-    unset($_SESSION['remaining']);
    if ($stmt = $mysqli->prepare("SELECT user_id, password, salt, user_type, locked FROM users WHERE email = ? LIMIT 1")) {
       $stmt->bind_param('s', $email); // esegue il bind del parametro '$email'.
       $stmt->execute();
@@ -51,14 +49,11 @@ function login($email, $password, $mysqli) {
             $now = time();
             $mysqli->query("INSERT INTO login_attempts (user_id, time) VALUES ('$user_id', '$now')");
             $remaining = getRemainingAttempts($user_id, $mysqli, 5);
-            $_SESSION['login_fail'] = 'pw';
-            $_SESSION['remaining'] = $remaining;
-            header('Location: ./Login.php');
+            header('Location: ./Login.php?login_fail=pw&remaining='.$remaining);
          }
       }
       } else {
-         $_SESSION['login_fail'] = 'email';
-         header('Location: ./Login.php');
+         header('Location: ./Login.php?login_fail=email');
       }
    }
 }

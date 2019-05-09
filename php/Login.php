@@ -52,19 +52,19 @@
                   </div>
                 </div>
             </form>
-            <?php if(isset($_SESSION['login_fail'], $_SESSION['remaining'])) {
-                    if($_SESSION['login_fail'] == 'pw'){
+            <?php if(isset($_GET['login_fail'], $_GET['remaining'])) {
+                    if($_GET['login_fail'] == 'pw'){
                     ?>
             <div class="alert alert-warning" role="alert">
-              <strong>Attenzione</strong> hai inserito una password non valida, ti rimangono soltanto <?php echo $_SESSION['remaining'] ?> tentativi!
+              <strong>Attenzione</strong> hai inserito una password non valida, ti rimangono soltanto <?php echo $_GET['remaining'] ?> tentativi!
             </div>
         <?php }} ?>
 
-        <?php if(isset($_SESSION['login_fail'])) {
-                if($_SESSION['login_fail'] == 'email'){
+        <?php if(isset($_GET['login_fail'])) {
+                if($_GET['login_fail'] == 'email'){
                 ?>
         <div class="alert alert-warning" role="alert">
-          <strong>Attenzione</strong> l'email che hai inserito non corrisponde ad un account. Prova a registrarti prima a <a href="./Register.php">questo link</a>
+          <strong>Attenzione</strong> l'email che hai inserito non corrisponde a nessun account. Prova a registrarti prima a questo <a href="./Register.php">link</a>
         </div>
     <?php }} ?>
     </div>
