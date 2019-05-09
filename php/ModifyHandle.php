@@ -7,7 +7,11 @@ $status = $_POST['status'];
 $id = $_POST['id'];
 if($status == "Approved") {
   $sql = "UPDATE modifiche SET approvata = 1 WHERE id_modifica = $id";
-  $result = $mysqli->query($sql);
+  $mysqli->query($sql);
+  $querymodifica = "SELECT query FROM modifiche WHERE id_modifica = $id";
+  $result = $mysqli->query($querymodifica);
+  $row = $result->fetch_assoc();
+  $mysqli->query($row['query']);
 } else {
   $sql = "UPDATE modifiche SET approvata = 0 WHERE id_modifica = $id";
   $result = $mysqli->query($sql);
