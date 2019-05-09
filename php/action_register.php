@@ -47,7 +47,7 @@
             $query_modifica = "INSERT INTO fornitore  (id_fornitore, nome, cognome, telefono, nome_fornitore, descrizione_breve, indirizzo) VALUES ($last_id, {$_POST['nome']}, {$_POST['cognome']},{$_POST['telefono']}, {$_POST['nome_fornitore']}, {$_POST['descrizione_breve']}, {$_POST['indirizzo']})";
 
             $oggetto = "Registrazione fornitore {$_POST['nome_fornitore']} ";
-            $descrizione = "{$_POST['descrizione_breve']}<\br> Il fornitore si trova in {$_POST['indirizzo']}";
+            $descrizione = "{$_POST['descrizione_breve']}. Il fornitore si trova in {$_POST['indirizzo']}";
             if ($insert_stmt = $mysqli->prepare("INSERT INTO modifiche  (oggetto, descrizione, query, id_fornitore) VALUES (?, ?, ?, ?)")) {
                $insert_stmt->bind_param('sssi', $oggetto, $descrizione, $query_modifica, $last_id);
                if($insert_stmt->execute())
