@@ -44,17 +44,24 @@
         }
         else if($user_type == "Fornitore") {
             ####CREARE MODIFICA DA SOTTOPORRE AD APPROVAZIONE ADMIN###
-            $query_modifica = "INSERT INTO fornitore  (id_fornitore, nome, cognome, telefono, nome_fornitore, descrizione_breve, indirizzo) VALUES ($last_id, {$_POST['nome']}, {$_POST['cognome']},{$_POST['telefono']}, {$_POST['nome_fornitore']}, {$_POST['descrizione_breve']}, {$_POST['indirizzo']})";
+            $nome = "'".mysqli_real_escape_string($mysqli, $_POST['nome'])."'";
+            $cognome = "'".mysqli_real_escape_string($mysqli, $_POST['cognome'])."'";
+            $nome_fornitore = "'".mysqli_real_escape_string($mysqli, $_POST['nome_fornitore'])."'";
+            $descrizione_breve = "'".mysqli_real_escape_string($mysqli, $_POST['descrizione_breve'])."'";
+            $indirizzo = "'".mysqli_real_escape_string($mysqli, $_POST['indirizzo'])."'";
+
+            $query_modifica = "INSERT INTO fornitori (id_fornitore, nome, cognome, telefono, nome_fornitore, descrizione_breve, indirizzo) VALUES ($last_id, $nome, $cognome, {$_POST['telefono']}, $nome_fornitore, $descrizione_breve, $indirizzo)";
 
             $oggetto = "Registrazione fornitore {$_POST['nome_fornitore']} ";
             $descrizione = "{$_POST['descrizione_breve']}. Il fornitore si trova in {$_POST['indirizzo']}";
-            if ($insert_stmt = $mysqli->prepare("INSERT INTO modifiche  (oggetto, descrizione, query, id_fornitore) VALUES (?, ?, ?, ?)")) {
+            if ($insert_stmt = $mysqli->prepare("INSERT INTO modifiche (oggetto, descrizione, query, id_fornitore) VALUES (?, ?, ?, ?)")) {
                $insert_stmt->bind_param('sssi', $oggetto, $descrizione, $query_modifica, $last_id);
                if($insert_stmt->execute())
                {
                   header('Location: CONFIRM');
                } else {
-                   header('Location: ERROR');
+                 echo $query_modifica;
+                   //header('Location: ERROR');
                }
             }
         }
