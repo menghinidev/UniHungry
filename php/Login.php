@@ -18,6 +18,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
   <script src="../js/sha512.js" charset="utf-8"></script>
   <script src="../js/passwordFormClick.js" charset="utf-8"></script>
+  <script src="../js/LoginValidation.js" charset="utf-8"></script>
   <!-- Page informations and icon -->
   <title>UniHungry - Login</title>
   <link rel="shortcut icon" href="../res/icon.ico" />
@@ -25,26 +26,40 @@
 <body>
     <?php include 'navbar.php'; ?>
     <div class="container">
-            <form id="registerform" class="col" action="../php/action_login.php" method="post">
+            <form id="registerform" class="col needs-validation" action="../php/action_login.php" method="post" novalidate>
                     <h2>Accedi</h2>
                 <div class="form-row">
                     <div class="form-group col">
                       <label for="email">Email</label>
-                      <input type="email" class="form-control" name="email" id="email" placeholder="mario.rossi@mail.com">
+                      <input type="email" class="form-control" name="email" id="email" placeholder="mario.rossi@mail.com" required>
+                      <div class="invalid-feedback">
+                         Non hai inserito un'email valida.
+                      </div>
                     </div>
                 </div>
                 <div class="form-row">
                   <div class="form-group col">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                     <div class="invalid-feedback">
+                        Non hai inserito una password.
+                     </div>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col">
-                    <button type="submit" onclick="formhash(this.form, this.form.password)" class="centered btn green">Accedi</button>
+                    <button type="submit" class="centered btn green">Accedi</button>
                   </div>
                 </div>
             </form>
+            <?php if(isset($_SESSION['login_fail'], $_SESSION['remaining'])) {
+                    if($_SESSION['login_fail'] == 'pw'){
+                    ?>
+            <div class="alert alert-warning" role="alert">
+              Attenzione ti rimangono soltanto <?php echo $_SESSION['remaining'] ?> tentativi!
+            </div>
+        <?php }} ?>
     </div>
+
 </body>
 </html>

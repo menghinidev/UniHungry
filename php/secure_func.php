@@ -13,6 +13,8 @@ function sec_session_start() {
 
 
 function login($email, $password, $mysqli) {
+    unset($_SESSION['login_fail']);
+    unset($_SESSION['remaining']);
    if ($stmt = $mysqli->prepare("SELECT user_id, password, salt, user_type, locked FROM users WHERE email = ? LIMIT 1")) {
       $stmt->bind_param('s', $email); // esegue il bind del parametro '$email'.
       $stmt->execute();
@@ -48,13 +50,31 @@ function login($email, $password, $mysqli) {
             // Registriamo il tentativo fallito nel database.
             $now = time();
             $mysqli->query("INSERT INTO login_attempts (user_id, time) VALUES ('$user_id', '$now')");
-            header('Location: ./WRONG_ATTEMPT');
+            $remaining = getRemainingAttempts($user_id, $mysqli, 5);
+            $_SESSION['login_fail'] = 'pw';
+            $_SESSION['remaining'] = $remaining;
+            header('Location: ./Login.php');
          }
       }
       } else {
-         header('Location: ./Register.php');
+         $_SESSION['login_fail'] = 'email';
+         header('Location: ./Login.php');
       }
    }
+}
+
+function getRemainingAttempts($user_id, $mysqli, $max_attempts){
+    // Recupero il timestamp
+    $now = time();
+    // Vengono analizzati tutti i tentativi di login a partire dalle ultime due ore.
+    $valid_attempts = $now - (2 * 60 * 60);
+    if ($stmt = $mysqli->prepare("SELECT time FROM login_attempts WHERE user_id = ? AND time > '$valid_attempts'")) {
+       $stmt->bind_param('i', $user_id);
+       // Eseguo la query creata.
+       $stmt->execute();
+       $stmt->store_result();
+      return $max_attempts - $stmt->num_rows;
+    }
 }
 
 function checkbrute($user_id, $mysqli, $max_attempts) {
@@ -68,7 +88,7 @@ function checkbrute($user_id, $mysqli, $max_attempts) {
       $stmt->execute();
       $stmt->store_result();
       // Verifico l'esistenza di più di  $max_attempts tentativi di login falliti.
-      if($stmt->num_rows > $max_attempts) {
+      if($stmt->num_rows >= $max_attempts) {
          return true;
       } else {
          return false;

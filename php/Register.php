@@ -19,6 +19,7 @@
     <script src="../js/sha512.js" charset="utf-8"></script>
     <script src="../js/passwordFormClick.js" charset="utf-8"></script>
     <script src="../js/registerClick.js" charset="utf-8"></script>
+    <script src="../js/registerFornitore.js" charset="utf-8"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Registrati</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -83,5 +84,5 @@
 
 
       <!-- Optional JavaScript -->
-      <script src="../js/fornitore.js" charset="utf-8"></script>
+
       </body>

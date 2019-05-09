@@ -29,3 +29,15 @@ GOALS
 -Pagine di arrivo statiche
 -Blocco e sblocco account
 poi modifiche alla parte "statica"
+
+_________________________________________
+NAMING CONVENTIONS
+
+##PHP##
+Prima lettera maiuscola = pagina
+action_qualcosa = form action
+script_qualcosa = redirect script
+minuscole = include
+
+##JS##
+nomepaginaincuièusato+scopo
