@@ -36,10 +36,12 @@ function login($email, $password, $mysqli) {
                $user_browser = $_SERVER['HTTP_USER_AGENT']; // Recupero il parametro 'user-agent' relativo all'utente corrente.
 
                $user_id = preg_replace("/[^0-9]+/", "", $user_id); // ci proteggiamo da un attacco XSS
+//VARIABILI DI SESSIONE
                $_SESSION['user_id'] = $user_id;
                $_SESSION['login_string'] = hash('sha512', $password.$user_browser);
-               //GESTISCO LA DIFFERENZIAZIONE TRA FORNITORE, CLIENTE, ADMIN
                $_SESSION['user_type'] = $user_type;
+               $_SESSION['email'] = $email;
+//VARIABILI DI SESSIONE
                return true;
          } else {
             // Password incorretta.
@@ -111,6 +113,7 @@ function login_check($mysqli) {
     if(!DB_check($mysqli)){
         unset($_SESSION['user_id']);
         unset($_SESSION['login_string']);
+        unset($_SESSION['email']);
     }
 }
 

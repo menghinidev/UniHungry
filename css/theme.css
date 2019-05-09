@@ -153,6 +153,14 @@ a:visited {
     color:white;
     text-decoration: none;
 }
+
+@media screen and (max-width:1000px) {
+    #nav_username
+    {
+        display:none;
+    }
+}
+
 /*behaviour*/
 /*html {
     scroll-behavior: smooth;

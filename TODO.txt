@@ -8,6 +8,7 @@ TODO:
 ==SESSIONE==
 $_SESSION['user_id'] --> int
 $_SESSION['user_type'] --> Cliente / Fornitore / Admin
+$_SESSION['email'] --> email utente
 //Array carrello???
 
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\

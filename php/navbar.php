@@ -117,6 +117,13 @@ $PROFILO_FORNITORE = $prefix.'ProfiloFornitore.php'
 
             <?php } else { ?>
                 <li class="nav-item">
+                  <a class="nav-link" id="nav_username" href="./script_profile.php">
+                      <?php
+                        echo $_SESSION['email'];
+                      ?>
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a class="btn purple noVisitedLink" href="./script_logout.php">Logout</a>
                 </li>
             <?php } ?>
