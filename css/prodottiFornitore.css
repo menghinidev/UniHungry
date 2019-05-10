@@ -1,0 +1,88 @@
+.total {
+  margin-top: 4%;
+}
+
+.content {
+  border-left: 1px solid rgba(0,0,0,.1);
+  max-width: 80%;
+  flex: 0 0 80%;
+}
+
+.distanced {
+  margin-top: 2%;
+}
+
+.changeScreen {
+  max-width: 100%;
+  flex: 0 0 100%;
+}
+
+#filters {
+  max-width: 20%;
+  flex: 0 0 20%;
+}
+
+#myFiltersNav {
+  margin-bottom: 2%;
+}
+
+#filtersList {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+#mobileFilters {
+  width: 100%;
+}
+
+.nav-tabs {
+  border-bottom: none;
+}
+
+.centered {
+  text-align: center;
+}
+
+.rangelabels {
+  width: 50%;
+  float: left;
+  margin-top: -5%;
+}
+
+.tre {
+  width: 26%;
+  float: left;
+  font-size: 15px;
+}
+
+.fixedMargin {
+  margin-top: 5%;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.reduced {
+  max-width: 50%;
+}
+
+ .marginAccordion {
+   margin-top: 1%;
+   margin-bottom: 1%;
+   margin-right: 5px;
+   font-weight: lighter;
+ }
+
+ .informazionLink {
+   color: #F1B07C;
+   font-weight: bold;
+ }
+
+ .informazionLink:hover {
+   color: #9D5C28;
+ }

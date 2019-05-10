@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/theme.css">
+    <link rel="stylesheet" href="../css/sheet.css">
+    <link rel="stylesheet" href="../css/search.css">
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/search.js"></script>
+
+    <!-- Page informations and icon -->
+    <title>UniHungry - Cerca</title>
+    <link rel="shortcut icon" href="../res/icon.ico" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md sticky-top">
+       <a id="brand" class="navbar-brand nav-link" href="HomePage.html">
+          <img src="../res/logo.png" height="40" alt="UniHungry">
+       </a>
+       <div class= "ml-auto">
+          <div class="dropdown">
+              <button type="button" class="nav-item btn green dropdown-toggle navbar-toggler" data-toggle="dropdown">
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item notUnderlined" href="Cart.html">
+                    <img src="../res/shoppingCart.png" height="40" alt="UniHungry"> Cart
+                  </a>
+                  <a class="dropdown-item notUnderlined" href="ProfiloUtente.html">
+                    <img src="../res/profile.png" height="40" alt="UniHungry"> Profile
+                  </a>
+              </div>
+          </div>
+
+           <!-- Navbar links -->
+           <div class="collapse navbar-collapse" id="collapsibleNavbar">
+             <ul class="navbar-nav">
+               <li class="nav-item">
+                 <a class="nav-link" href="Cart.html">
+                   <img src="../res/shoppingCart.png" height="40" alt="Cart">
+                 </a>
+               </li>
+               <li class="nav-item">
+                 <a class="nav-link" href="ProfiloUtente.html">
+                   <img src="../res/profile.png" height="40" alt="Profile">
+                 </a>
+               </li>
+             </ul>
+           </div>
+      </div>
+    </nav>
+    <div class="container fullScreen">
+      <div class="row" id="searchToHide">
+          <div class="col-md-3">
+              <div class="input-group mb-3 total">
+                  <input type="text" class="form-control" placeholder="Cerca prodotti, fornitori..">
+                  <div class="input-group-append">
+                    <button type="button" class="btn green" name="button">Vai</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row" id="myFiltersNav">
+        <div class="col-md-3">
+          <ul class="nav nav-tabs">
+            <li><button class="btn orange noradius active" data-toggle="tab" href="#content">Prodotti</a></li>
+            <li><button class="btn orange noradius" data-toggle="tab" href="#mobileFilters">Filtri</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row tab-content">
+        <div class="tab-pane fade" id="mobileFilters">
+          <div class="col-md-3">
+            <div class="fixedMargin">
+              <h4>Categorie:</h4>
+              <div class="form-check" id="filtersList">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Tutti</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Hamburger</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Pizza</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Pasta</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Sushi</label>
+              </div>
+              <h4>Fascie di prezzo:</h4>
+              <div>
+                <div class="radio tre">
+                  <input type="radio" name="optradio" checked>
+                </div>
+                <div class="radio tre">
+                  <input type="radio" name="optradio" checked>
+                </div>
+                <div class="radio tre">
+                  <input type="radio" name="optradio" checked>
+                </div>
+              </div>
+              <div>
+                <div class="tre">
+                  Max 5€
+                </div>
+                <div class="tre">
+                  Max 10€
+                </div>
+                <div class="tre">
+                  Max 15€
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4" id="filters">
+          <div class="row">
+              <div class="col">
+                  <div class="input-group mb-3 total">
+                      <input type="text" class="form-control" placeholder="Cerca..">
+                      <div class="input-group-append">
+                        <button type="button" class="btn green" name="button">Vai</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-check">
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Tutti</label>
+                  <hr/>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Hamburger</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Pizza</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Pasta</label>
+                  <br>
+                  <input type="checkbox" class="form-check-input">
+                  <label class="form-check-label">Sushi</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-8 content tab-pane active distanced" id="content">
+          <div class="row">
+            <div class="col-2 logo">
+              <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
+            </div>
+            <div class="col-10 contenuto">
+              <div class="row">
+                <div class="col">
+                  <h5>Titolo</h5>
+                </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col">
+                  <div class="row">
+                    <div class="col-12">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <p>Prezzo: </p>
+                    </div>
+                    <div class="col-6">
+                      <a class="informazionLink" data-toggle="collapse" href="#information1" role="button" aria-expanded="false">Ingredienti:</a>
+                    </div>
+                  </div>
+                  <div class="row collapse" id="information1">
+                    <div class="col card card-body marginAccordion">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-3 buttonToHide">
+                  <button type="button" class="btn green reduced" name="button">Aggiungi al carrello</button>
+                </div>
+              </div>
+              <div class="row buttonAppear">
+                <div class="col-12">
+                  <button type="button" class="btn green" name="button">Aggiungi al carrello</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="col-2 logo">
+            <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
+          </div>
+          <div class="col-10 contenuto">
+            <div class="row">
+              <div class="col">
+                <h5>Titolo</h5>
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="col">
+                <div class="row">
+                  <div class="col-12">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <p>Prezzo: </p>
+                  </div>
+                  <div class="col-6">
+                    <a class="informazionLink" data-toggle="collapse" href="#information2" role="button" aria-expanded="false">Ingredienti:</a>
+                  </div>
+                </div>
+                <div class="row collapse" id="information2">
+                  <div class="col card card-body marginAccordion">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3 buttonToHide">
+                <button type="button" class="btn green reduced" name="button">Aggiungi al carrello</button>
+              </div>
+            </div>
+            <div class="row buttonAppear">
+              <div class="col-12">
+                <button type="button" class="btn green" name="button">Aggiungi al carrello</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr/>
+        <div class="row">
+          <div class="col-2 logo">
+            <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
+          </div>
+          <div class="col-10 contenuto">
+            <div class="row">
+              <div class="col">
+                <h5>Titolo</h5>
+              </div>
+            </div>
+            <hr/>
+            <div class="row">
+              <div class="col">
+                <div class="row">
+                  <div class="col-12">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <p>Prezzo: </p>
+                  </div>
+                  <div class="col-6">
+                    <a class="informazionLink" data-toggle="collapse" href="#information3" role="button" aria-expanded="false">Ingredienti:</a>
+                  </div>
+                </div>
+                <div class="row collapse" id="information3">
+                  <div class="col card card-body marginAccordion">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-3 buttonToHide">
+                <button type="button" class="btn green reduced" name="button">Aggiungi al carrello</button>
+              </div>
+            </div>
+            <div class="row buttonAppear">
+              <div class="col-12">
+                <button type="button" class="btn green" name="button">Aggiungi al carrello</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr/>
+      </div>
+    </div>
+  </body>
+</html>
