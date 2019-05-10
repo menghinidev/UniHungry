@@ -48,25 +48,25 @@
                 </div>
                 <div class="form-row">
                   <div class="col">
-                    <button type="submit" class="centered btn green">Accedi</button>
+                    <button type="submit" onsubmit="" class="centered btn green">Accedi</button>
                   </div>
                 </div>
             </form>
-            <?php if(isset($_GET['login_fail'], $_GET['remaining'])) {
-                    if($_GET['login_fail'] == 'pw'){
+            <?php if(isset($_SESSION['login_fail'], $_SESSION['remaining'])) {
+                    if($_SESSION['login_fail'] == 'pw'){
                     ?>
             <div class="alert alert-warning" role="alert">
-              <strong>Attenzione</strong> hai inserito una password non valida, ti rimangono soltanto <?php echo $_GET['remaining'] ?> tentativi!
+              <strong>Attenzione</strong> hai inserito una password non valida, ti rimangono soltanto <?php echo $_SESSION['remaining']; ?> tentativi!
             </div>
-        <?php }} ?>
+        <?php }} unset($_SESSION['login_fail']); unset($_SESSION['remaining']) ?>
 
-        <?php if(isset($_GET['login_fail'])) {
-                if($_GET['login_fail'] == 'email'){
+        <?php if(isset($_SESSION['login_fail'])) {
+                if($_SESSION['login_fail'] == 'email'){
                 ?>
         <div class="alert alert-warning" role="alert">
           <strong>Attenzione</strong> l'email che hai inserito non corrisponde a nessun account. Prova a registrarti prima a questo <a href="./Register.php">link</a>
         </div>
-    <?php }} ?>
+    <?php }} unset($_SESSION['login_fail']); unset($_SESSION['remaining'])?>
     </div>
 
 </body>
