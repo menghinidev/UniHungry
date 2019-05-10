@@ -51,9 +51,9 @@
                                   <label for="idprodotto">ID prodotto</label>
                                   <?php
                                   if(!isset($_GET['id'])) {
-                                    echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' disabled>";
+                                    echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' readonly>";
                                   } else {
-                                    echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' placeholder='".$row['id_prodotto']."' disabled>";
+                                    echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' placeholder='".$row['id_prodotto']."' readonly>";
                                   }
                                   ?>
                             </div>

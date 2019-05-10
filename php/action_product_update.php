@@ -10,7 +10,7 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
   $descrizione = "'".mysqli_real_escape_string($mysqli, $_POST['descrizione'])."'";
   $ingredienti = "'".mysqli_real_escape_string($mysqli, $_POST['ingredienti'])."'";
 
-  $isUpdate = $mysqli->query("SELECT * FROM prodotti WHERE id_prodotto = ".$_POST['idprodotto']."");
+  $isUpdate = $mysqli->query("SELECT * FROM prodotti WHERE id_prodotto = 1");
   if($isUpdate->num_rows != 0){
     //UPDATE
     $mysqli->query("UPDATE prodotti SET nome = $nome, categoria = $categoria, descrizione = $descrizione, prezzo = {$_POST['prezzo']}, ingredienti = $ingredienti WHERE id_prodotto = ".$_POST['idprodotto']."");

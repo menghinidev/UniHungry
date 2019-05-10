@@ -63,7 +63,7 @@
                     </div>
                     <div class="col">
                         <div class="tabledispl">
-                            <a id="addLink" href="./ModificaProdotto.html">
+                            <a id="addLink" href="./ModificaProdotto.php">
                                 <img src="../res/plusicon.png" alt="" width=20px;>
                                 <span class="nopadding">Nuovo prodotto</span>
                             </a>
