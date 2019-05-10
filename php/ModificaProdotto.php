@@ -29,7 +29,7 @@
       $categorie = $mysqli->query("SELECT * FROM categorie ORDER BY nome");
     }
     if(isset($_GET['id'])){
-      $result = $mysqli->query("SELECT * FROM prodotti WHERE id_prodotto = ".$_GET['id']."");
+      $result = $mysqli->query("SELECT * FROM prodotti WHERE id_prodotto = ".$_GET['id']." AND id_fornitore = ".$_SESSION['user_id']."");
       if($result->num_rows == 0){
         header('Location: ./ERROR');
       } else {
@@ -53,7 +53,7 @@
                                   if(!isset($_GET['id'])) {
                                     echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' readonly>";
                                   } else {
-                                    echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' placeholder='".$row['id_prodotto']."' readonly>";
+                                    echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' value='".$row['id_prodotto']."' readonly>";
                                   }
                                   ?>
                             </div>
