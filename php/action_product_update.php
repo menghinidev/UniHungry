@@ -16,7 +16,8 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
     //UPDATE
     $sql = "UPDATE prodotti SET nome = $nome, categoria = $categoria, descrizione = $descrizione, prezzo_unitario = {$_POST['prezzo']}, ingredienti = $ingredienti WHERE id_prodotto = $currentId";
     $mysqli->query($sql);
-    header('Location: CONFIRM');
+
+    header('Location: /uniHungry/php/ProfiloFornitore.php');
   } else {
     //INSERT
     $id_fornitore = $_SESSION['user_id'];
@@ -25,7 +26,7 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
     $insert_stmt->bind_param('ssisis', $_POST['nome'], $_POST['descrizione'], $_POST['prezzo'], $_POST['ingredienti'], $id_fornitore, $_POST['categoria']);
        if($insert_stmt->execute())
        {
-           header('Location: INSERITO');
+        header('Location: /uniHungry/php/ProfiloFornitore.php');
        }
    }
   }

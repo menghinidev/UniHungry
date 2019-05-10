@@ -27,6 +27,12 @@
         <?php include 'navbar.php';
         if(!is_logged()){
             header('Location: ./ERROR');
+        } else {
+          $sqlprodotti = "SELECT * FROM prodotti WHERE id_fornitore = ".$_SESSION['user_id'];
+          $result = $mysqli->query($sqlprodotti);
+          $sqlfornitore = "SELECT * FROM fornitori WHERE id_fornitore = ".$_SESSION['user_id'];
+          $resultfornitore = $mysqli->query($sqlfornitore);
+          $fornitore = $resultfornitore->fetch_assoc();
         }?>
         <div class="container nopadding row fullScreen">
             <div id="profileInfoBox" class="col-md-4 col-xl-2">
@@ -40,12 +46,12 @@
                     </div>
                     <hr/>
                     <div class="form-group">
-                        <label for="nome">Nome Attività</label>
-                        <input type="text" class="form-control" id="nome" value="Melting Pot">
+                        <label for="nome">Nome</label>
+                        <input type="text" class="form-control" id="nome" value="<?php echo $fornitore['nome_fornitore']; ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="descrizione">Descrizione</label>
-                        <textarea class="form-control" id="descrizione" rows="3" aria-describedby="descrizioneHelp" maxlength="100">Cucina multietnica per un vero incontro tra culture.</textarea>
+                        <textarea class="form-control" id="descrizione" rows="3" aria-describedby="descrizioneHelp" maxlength="100" readonly><?php echo $fornitore['descrizione_breve']; ?></textarea>
                         <small id="descrizioneHelp" class="form-text">Max 100 caratteri</small>
                     </div>
                     <div class="form-row">
@@ -73,47 +79,53 @@
                     </div>
                 </div>
                 <hr/>
-                <div class="row">
-                  <div class="col-2 logo">
-                    <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
-                  </div>
-                  <div class="col-10 contenuto">
-                    <div class="row">
-                      <div class="col">
-                        <h5>Titolo</h5>
+                <?php
+                if($result->num_rows > 0){
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<div class='row distanced'>
+                      <div class='col-2 logo'>
+                        <img class='reslogo nopadding img-fluid' src='../res/res2.jpg' alt='logo'>
                       </div>
-                    </div>
-                    <hr/>
-                    <div class="row">
-                      <div class="col">
-                        <div class="row">
-                          <div class="col-12">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-                            </p>
+                      <div class='col-10 contenuto'>
+                        <div class='row'>
+                          <div class='col'>
+                            <h5>".$row['nome']."</h5>
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-6">
-                            <p>Prezzo: </p>
-                          </div>
-                          <div class="col-6">
-                            <a class="informazionLink" data-toggle="collapse" href="#information1" role="button" aria-expanded="false">Ingredienti:</a>
+                        <hr/>
+                        <div class='row'>
+                          <div class='col'>
+                            <div class='row'>
+                              <div class='col-12'>
+                                <p>".$row['descrizione']."</p>
+                              </div>
+                            </div>
+                            <div class='row'>
+                              <div class='col-6'>
+                                <p>Prezzo: ".$row['prezzo_unitario']."€</p>
+                              </div>
+                              <div class='col-6'>
+                                <a class='informazionLink' data-toggle='collapse' href='#id".$row['id_prodotto']."' role='button' aria-expanded='false'>Ingredienti:</a>
+                              </div>
+                            </div>
+                            <div class='row collapse' id='id".$row['id_prodotto']."'>
+                              <div class='col card card-body marginAccordion'>
+                                <p>".$row['ingredienti']."</p>
+                              </div>
+                            </div>
                           </div>
                         </div>
-                        <div class="row collapse" id="information1">
-                          <div class="col card card-body marginAccordion">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <div class='row'>
+                          <div class='col-12'>
+                            <a class='btn orange noVisitedLink' href='./ModificaProdotto.php?id=".$row['id_prodotto']."'>Modifica Prodotto</a>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-12">
-                        <button type="button" class="btn green" name="button">Modifica Prodotto</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                    </hr>";
+                  }
+                }
+                 ?>
             </div>
         </div>
 
