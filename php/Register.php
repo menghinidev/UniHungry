@@ -20,6 +20,7 @@
     <script src="../js/passwordFormClick.js" charset="utf-8"></script>
     <script src="../js/registerClick.js" charset="utf-8"></script>
     <script src="../js/registerFornitore.js" charset="utf-8"></script>
+    <script src="../js/registerValidation.js" charset="utf-8"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Registrati</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -27,31 +28,33 @@
   <body>
       <?php include 'navbar.php'; ?>
       <div class="container">
-              <form id="registerform" class="col" action="action_register.php"  method="post">
+              <form id="registerform" class="col needs-validation"  action="./action_register.php"  method="post" novalidate>
                       <h2>Iscriviti </h2>
                   <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="nome">Nome</label>
-                        <input type="text" name ="nome" class="form-control" id="nome" placeholder="Mario">
+                        <input type="text" name ="nome" class="form-control" id="nome" placeholder="Mario" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="cognome">Cognome</label>
-                        <input type="text" name ="cognome" class="form-control" id="cognome" placeholder="Rossi">
+                        <input type="text" name ="cognome" class="form-control" id="cognome" placeholder="Rossi" required>
                       </div>
                   </div>
                   <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="email">Email</label>
-                        <input type="email" name ="email" class="form-control" id="email" placeholder="mario.rossi@mail.com">
+                        <input type="email" name ="email" class="form-control" id="email" placeholder="mario.rossi@mail.com" required>
                       </div>
                       <div class="form-group col-md-6">
                         <label for="password">Password</label>
-                        <input type="password" name ="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" name ="password" class="form-control" id="password" placeholder="Password" required>
                       </div>
                   </div>
                   <div class="form-group">
-                      <label for="cellulare">Numero di telefono</label>
-                      <input type="text" name ="telefono" class="form-control" id="cellulare" placeholder="3456789100">
+                      <label for="telefono">Numero di telefono</label>
+                      <input type="tel" name ="telefono" class="form-control" id="telefono"
+                      pattern ='^\d{10}$'
+                      placeholder="3456789100" required>
                   </div>
 
                   <div class="form-group">
@@ -67,7 +70,7 @@
                       <p>La tua richiesta verrà sottoposta all'amministratore, ti invieremo una mail appena confermata
                       e potrai completare la pagina fornitore dal tuo profilo.</p>
                       <label for="nomefornitore">Nome Attività</label>
-                      <input type="text" name="nome_fornitore" class="form-control" id="nomefornitore" placeholder="Pizzeria da Mario">
+                      <input type="text" name="nome_fornitore" class="form-control" id="nome_fornitore" placeholder="Pizzeria da Mario">
                       <label for="indirizzo">Indirizzo</label>
                       <input type="text" name="indirizzo" class="form-control" id="indirizzo" placeholder="Via Garibaldi 25">
                       <label for="descrizione_breve">Descrizione</label>
@@ -76,7 +79,7 @@
                   </div>
                   <div class="form-row">
                     <div class="col">
-                      <button id="registrati" type="submit" onclick="registerClick(this.form, this.form.password)" class="centered btn green">Registrati</button>
+                      <button id="registrati" type="submit" onsubmit="" class="centered btn green">Registrati</button>
                     </div>
                   </div>
               </form>
