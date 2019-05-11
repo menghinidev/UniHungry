@@ -16,6 +16,7 @@
 			  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/modificaProdotto.js"></script>
 
     <!-- Page informations and icon -->
     <title>UniHungry - Modifica Prodotto</title>
@@ -38,13 +39,20 @@
     }
     ?>
         <div id="pageBody" class="container fullScreen ">
-                    <form id="modificaform" class="col" action="action_product_update.php"  method="post">
+                    <form id="modificaform" class="col" action="action_product_update.php" method="post" enctype="multipart/form-data">
                         <div class="form-row">
                             <div id="selectImg" class="form-group col-md-6">
                                 <label for="imgupload">
-                                <img class="btn nopadding img-thumbnail" id="foodImg" src="../res/default_food.png" alt="immagine cibo default">
-                                <input type="file" class="form-control-file" id="imgupload" hidden>
+                                  <?php
+                                  if(isset($row['immagine'])){
+                                    echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='data:image/jpeg;base64,".base64_encode( $row['immagine'])."' alt='immagine cibo default'>";
+                                  } else {
+                                    echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='../res/default_food.png' alt='immagine cibo default'>";
+                                  }
+                                   ?>
+                                <input type="file" onchange="readURL(this);" class="form-control-file" id="imgupload" name="image" hidden>
                                 <p>clicca per caricare un'immagine</p>
+                                <a href="" class="noVisitedLink" id="reset">resetta immagine</a>
                                 </label>
                             </div>
                             <div class="form-group col-md-6">
