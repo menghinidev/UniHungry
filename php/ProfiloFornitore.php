@@ -54,11 +54,6 @@
                         <textarea class="form-control" id="descrizione" rows="3" aria-describedby="descrizioneHelp" maxlength="100" readonly><?php echo $fornitore['descrizione_breve']; ?></textarea>
                         <small id="descrizioneHelp" class="form-text">Max 100 caratteri</small>
                     </div>
-                    <div class="form-row">
-                    <div class="col-4"></div>
-                    <button id="registrati" type="submit" class="col-4 btn orange">Modifica</button>
-                    <div class="col-4"></div>
-                    </div>
                 </form>
                 <div id="modificaUtente" >
                     <a href="./ModificaProfiloFornitore.php">modifica impostazioni utente</a>
@@ -93,7 +88,7 @@
                       <div class='col-10 contenuto'>
                         <div class='row'>
                           <div class='col'>
-                            <h5>".$row['nome']."</h5>
+                            <h4>".$row['nome']."</h4>
                           </div>
                         </div>
                         <hr/>

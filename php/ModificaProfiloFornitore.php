@@ -23,7 +23,14 @@
   </head>
   <body>
       <?php include 'navbar.php';
-      ?>
+      if(!is_logged()){
+          header('Location: /uniHungry/php/Login.php');
+      } else {
+        $id = $_SESSION['user_id'];
+        $sql = "SELECT * FROM fornitori WHERE id_fornitore = $id";
+        $result = $mysqli->query($sql);
+        $row = $result->fetch_assoc();
+      }?>
       <div class="container" id="profile">
           <form id="modificaform" class="col">
                   <h2>Modifica informazioni</h2>
@@ -32,11 +39,11 @@
                         <label for="imgupload">
                           <?php
                           if(isset($row['immagine'])){
-                            echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='data:image/jpeg;base64,".base64_encode($row['immagine'])."' alt='immagine cibo default'>";
+                            echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='data:image/jpeg;base64,".base64_encode($row['logo'])."' alt='immagine cibo default'>";
                           } else {
                             echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='../res/default_food.png' alt='immagine cibo default'>";
                           }
-                           ?>
+                          ?>
                         <input type="file" onchange="readURL(this);" class="form-control-file" id="imgupload" name="image" hidden>
                         <small class="form-text">Clicca l'immagine per caricarne una</small>
                         <a href="" class="noVisitedLink" id="reset">Resetta immagine</a>
@@ -47,24 +54,44 @@
                     </div>
                   </div>
               <div class="form-row">
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-4">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome">
+                    <input type="text" value="<?php echo $row['nome']; ?>" class="form-control" id="nome">
                   </div>
-                  <div class="form-group col-md-6">
+                  <div class="form-group col-md-4">
                     <label for="cognome">Cognome</label>
-                    <input type="text" class="form-control" id="cognome">
+                    <input type="text" value="<?php echo $row['cognome']; ?>" class="form-control" id="cognome">
+                  </div>
+                  <div class="form-group col-md-4">
+                      <label for="cellulare">Numero Cellulare</label>
+                      <input type="text" value="<?php echo $row['telefono']; ?>" class="form-control" id="cellulare">
                   </div>
               </div>
               <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="nomeAttivita">Nome Attività</label>
-                    <input type="text" class="form-control" id="nomeAttivita">
+                    <input type="text" value="<?php echo $row['nome_fornitore']; ?>" class="form-control" id="nomeAttivita">
                   </div>
                   <div class="form-group col-md-6">
-                      <label for="cellulare">Numero cellulare</label>
-                      <input type="text" class="form-control" id="cellulare">
+                      <label for="cellulare">Indirizzo</label>
+                      <input type="text" value="<?php echo $row['indirizzo']; ?>" name="indirizzo" class="form-control" id="cellulare">
                   </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="textArea">Descrizione Breve</label>
+                  <textarea class="form-control" name="descrizioneBreve" id="textArea" rows="2"><?php echo $row['descrizione_breve']; ?></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="textArea">Descrizione Estesa</label>
+                  <?php
+                  if(isset($row['descrizione'])){
+                    echo "<textarea class='form-control' name='descrizioneEstesa' id='textArea' rows='5'>".$row['descrizione']."</textarea>";
+                  } else {
+                    echo "<textarea class='form-control' name='descrizioneEstesa' id='textArea' rows='5'></textarea>";
+                  }
+                  ?>
+                </div>
               </div>
               <h4>Informazioni accesso</h4>
               <div class="form-group">
@@ -76,9 +103,9 @@
                   <input type="password" class="form-control" id="passwordNewConfirm">
               </div>
               <div class="form-row">
-              <div class="col-4"></div>
-              <button id="registrati" type="submit" class="col-4 btn green">Modifica</button>
-              <div class="col-4"></div>
+                <div class="col-4"></div>
+                  <button id="registrati" type="submit" class="col-4 btn green">Modifica</button>
+                <div class="col-4"></div>
               </div>
           </form>
       </div>

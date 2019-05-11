@@ -30,7 +30,7 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
         echo "false";
       }
     } else {
-      $sql = "UPDATE prodotti SET nome = $nome, categoria = $categoria, immagine = null, descrizione = $descrizione, prezzo_unitario = $prezzo, ingredienti = $ingredienti WHERE id_prodotto = $currentId";
+      $sql = "UPDATE prodotti SET nome = $nome, categoria = $categoria, descrizione = $descrizione, prezzo_unitario = $prezzo, ingredienti = $ingredienti WHERE id_prodotto = $currentId";
       $mysqli->query($sql);
     }
 
