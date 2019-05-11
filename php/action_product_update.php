@@ -12,11 +12,29 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
   $currentId = $_POST['idprodotto'];
 
   $isUpdate = $mysqli->query("SELECT * FROM prodotti WHERE id_prodotto = $currentId");
+
   if($isUpdate->num_rows > 0){
     //UPDATE
+    if (file_exists($_FILES['image']['tmp_name'])) {
+      $imagename = $_FILES['image']['name'];
+      $check = getimagesize($_FILES['image']['tmp_name']);
+      if ($check !== false) {
+        $image = $_FILES['image']['tmp_name'];
+        $imgContent = addslashes(file_get_contents($image));
+        $sql = "UPDATE prodotti SET nome = $nome, categoria = $categoria, immagine = '$imgContent', descrizione = $descrizione, prezzo_unitario = {$_POST['prezzo']}, ingredienti = $ingredienti WHERE id_prodotto = $currentId";
+        $mysqli->query($sql);
+        $imagesql = "INSERT INTO immagini (immagine) VALUES ('$imgContent')";
+        $res = $mysqli->query($imagesql);
+      } else {
+        echo "false";
+      }
+    } else {
+      //FILE NOT INSERED
+      echo "false File not insered";
+    }
+
     $sql = "UPDATE prodotti SET nome = $nome, categoria = $categoria, descrizione = $descrizione, prezzo_unitario = {$_POST['prezzo']}, ingredienti = $ingredienti WHERE id_prodotto = $currentId";
     $mysqli->query($sql);
-
     header('Location: /uniHungry/php/ProfiloFornitore.php');
   } else {
     //INSERT
@@ -31,6 +49,6 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
    }
   }
 } else {
-  header('Location: ERROR');
+  header('Location: ./ERROR');
 }
  ?>
