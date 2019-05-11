@@ -8,7 +8,7 @@ $HOME = $prefix.'HomePage.php';
 $PROFILO_UTENTE = $prefix.'ProfiloCliente.php';
 $PROFILO_FORNITORE = $prefix.'ProfiloFornitore.php'
 ?>
-<nav class="navbar navbar-expand-md sticky-top">
+<nav class="navbar navbar-expand-md sticky-top selectDisable">
      <!-- Brand -->
      <?php if($_SERVER['PHP_SELF'] == $HOME) { ?>
          <a id="brand" class="navbar-brand nav-link" href="#">
