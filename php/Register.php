@@ -59,7 +59,7 @@
 
                   <div class="form-group">
                       <div class="form-check">
-                          <input class="form-check-input" name="fornitore" type="checkbox" id="fornitoreCheck">
+                          <input class="form-check-input" name="fornitore" type="checkbox" <?php echo ((isset($_GET['type']) && $_GET['type']=='fornitore') ? 'checked' : '');  ?> id="fornitoreCheck">
                           <label class="form-check-label" for="gridCheck">
                           Registrati come fornitore
                           </label>

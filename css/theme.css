@@ -162,6 +162,13 @@ a:visited {
 }
 
 /*behaviour*/
+.selectDisable {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
 /*html {
     scroll-behavior: smooth;
 }*/

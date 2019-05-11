@@ -159,7 +159,7 @@
         <div class="col-8 content tab-pane active distanced" id="content">
           <div class="row">
             <div class="col-2 logo">
-              <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
+              <img class="reslogo nopadding img-fluid" src="../res/default_food.png" alt="logo">
             </div>
             <div class="col-10 contenuto">
               <div class="row">
