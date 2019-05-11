@@ -58,7 +58,7 @@
             <div class="alert alert-warning" role="alert">
               <strong>Attenzione</strong> hai inserito una password non valida, ti rimangono soltanto <?php echo $_SESSION['remaining']; ?> tentativi!
             </div>
-        <?php }} unset($_SESSION['login_fail']); unset($_SESSION['remaining']) ?>
+        <?php }}  ?>
 
         <?php if(isset($_SESSION['login_fail'])) {
                 if($_SESSION['login_fail'] == 'email'){
