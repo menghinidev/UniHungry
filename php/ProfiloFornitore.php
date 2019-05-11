@@ -39,9 +39,13 @@
                 <form>
                     <div id="changeLogo" class="form-group">
                         <label for="logoupload">
-                        <img class="btn nopadding profilePic" src="../res/res1.jpg" alt="">
-                        <input type="file" class="form-control-file" id="logoupload" hidden>
-                        <p>clicca per cambiare logo</p>
+                        <?php
+                        if(isset($fornitore['logo'])){
+                          echo "<img class='nopadding profilePic' id='foodImg' src='data:image/jpeg;base64,".base64_encode($fornitore['logo'])."' alt='immagine fornitore default'>";
+                        } else {
+                          echo "<img class='nopadding profilePic' id='foodImg' src='../res/default_food.png' alt='immagine cibo default'>";
+                        }
+                        ?>
                         </label>
                     </div>
                     <hr/>
@@ -52,7 +56,6 @@
                     <div class="form-group">
                         <label for="descrizione">Descrizione</label>
                         <textarea class="form-control" id="descrizione" rows="3" aria-describedby="descrizioneHelp" maxlength="100" readonly><?php echo $fornitore['descrizione_breve']; ?></textarea>
-                        <small id="descrizioneHelp" class="form-text">Max 100 caratteri</small>
                     </div>
                 </form>
                 <div id="modificaUtente" >

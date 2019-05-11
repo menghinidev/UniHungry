@@ -24,8 +24,6 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
         $imgContent = addslashes(file_get_contents($image));
         $sql = "UPDATE prodotti SET nome = $nome, categoria = $categoria, immagine = '$imgContent', descrizione = $descrizione, prezzo_unitario = {$_POST['prezzo']}, ingredienti = $ingredienti WHERE id_prodotto = $currentId";
         $mysqli->query($sql);
-        $imagesql = "INSERT INTO immagini (immagine) VALUES ('$imgContent')";
-        $res = $mysqli->query($imagesql);
       } else {
         echo "false";
       }
