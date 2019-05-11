@@ -28,7 +28,8 @@
         if(!is_logged()){
             header('Location: ./ERROR');
         } else {
-          $sqlprodotti = "SELECT * FROM prodotti WHERE id_fornitore = ".$_SESSION['user_id'];
+          $id = $_SESSION['user_id'];
+          $sqlprodotti = "SELECT * FROM prodotti WHERE id_fornitore = $id ORDER BY nome";
           $result = $mysqli->query($sqlprodotti);
           $sqlfornitore = "SELECT * FROM fornitori WHERE id_fornitore = ".$_SESSION['user_id'];
           $resultfornitore = $mysqli->query($sqlfornitore);
@@ -64,8 +65,8 @@
             </div>
             <div id="prodottiBox" class="col">
                 <div id="titleBox" class="row">
-                    <div class="col-6">
-                        <h2>I tuoi prodotti</h2>
+                    <div class="col-4">
+                        <h2>I Tuoi Prodotti</h2>
                     </div>
                     <div class="col">
                         <div class="tabledispl">
@@ -123,11 +124,34 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                    </hr>";
+                    </div>";
                   }
                 }
                  ?>
+              <hr/>
+              <div class="row">
+                <div class="col middleCol">
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
             </div>
         </div>
 
