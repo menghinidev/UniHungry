@@ -61,7 +61,7 @@
                     </div>
                 </form>
                 <div id="modificaUtente" >
-                    <a href="./ProfiloUtente.html">modifica impostazioni utente</a>
+                    <a href="./ModificaProfiloFornitore.php">modifica impostazioni utente</a>
                 </div>
             </div>
             <div id="prodottiBox" class="col">
@@ -89,8 +89,7 @@
                       } else {
                         echo "<img class='reslogo nopadding img-fluid' src='../res/res2.jpg' alt='logo'>";
                       }
-                      echo "<img class='reslogo nopadding img-fluid' src='../res/res2.jpg' alt='logo'>
-                      </div>
+                      echo "</div>
                       <div class='col-10 contenuto'>
                         <div class='row'>
                           <div class='col'>
