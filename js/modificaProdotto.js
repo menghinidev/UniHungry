@@ -5,11 +5,11 @@ function readURL(input) {
         reader.onload = function (e) {
             $('#foodImg').attr('src', e.target.result)
         };
-        
+
         reader.readAsDataURL(input.files[0]);
     }
 }
 
 $("#reset").on('click', function() {
-  $('#foodImg').attr('src', "../res/default_food.png");
+  $('#foodImg').attr('src', '../res/default_food.png');
 });

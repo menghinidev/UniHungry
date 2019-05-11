@@ -83,8 +83,13 @@
                 if($result->num_rows > 0){
                   while ($row = $result->fetch_assoc()) {
                     echo "<div class='row distanced'>
-                      <div class='col-2 logo'>
-                        <img class='reslogo nopadding img-fluid' src='../res/res2.jpg' alt='logo'>
+                      <div class='col-2 logo'>";
+                      if (isset($row['immagine'])) {
+                        echo "<img class='reslogo nopadding img-fluid' src='data:image/jpeg;base64,".base64_encode( $row['immagine'])."' alt='logo'>";
+                      } else {
+                        echo "<img class='reslogo nopadding img-fluid' src='../res/res2.jpg' alt='logo'>";
+                      }
+                      echo "<img class='reslogo nopadding img-fluid' src='../res/res2.jpg' alt='logo'>
                       </div>
                       <div class='col-10 contenuto'>
                         <div class='row'>

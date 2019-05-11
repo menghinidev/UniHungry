@@ -44,7 +44,7 @@
                             <div id="selectImg" class="form-group col-md-6">
                                 <label for="imgupload">
                                   <?php
-                                  if($row['immagine'] !== null){
+                                  if(isset($row['immagine'])){
                                     echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='data:image/jpeg;base64,".base64_encode( $row['immagine'])."' alt='immagine cibo default'>";
                                   } else {
                                     echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='../res/default_food.png' alt='immagine cibo default'>";
