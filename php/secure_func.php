@@ -21,8 +21,20 @@ function login($email, $password, $mysqli) {
       $stmt->store_result();
       $stmt->bind_result($user_id, $db_password, $salt, $user_type, $locked);
       $stmt->fetch();
+      //Fornitore abilitato?
+      if($user_type == "Fornitore")
+      {
+          $sql = "SELECT id_fornitore FROM fornitori WHERE id_fornitore = ".$user_id;
+          $res = $mysqli->query($sql);
+          if($res->num_rows == 0) {
+             header('Location: ./NOT_YET_APPROVED');
+             return false;
+          }
+      }
+
       if($locked){
           header('Location: ./ACCOUNT_LOCKED');
+          return false;
       }
       $password = hash('sha512', $password.$salt); // codifica la password usando una chiave univoca.
       if($stmt->num_rows == 1) {
@@ -30,7 +42,7 @@ function login($email, $password, $mysqli) {
          if(checkbrute($user_id, $mysqli, 5) == true) {
             // Account disabilitato
             $mysqli->query("UPDATE users SET locked=1 WHERE user_id =".$user_id);
-            header('Location: ./ACCOUNT_LOCKED');
+            //header('Location: ./ACCOUNT_LOCKED');
             // Invia un e-mail all'utente avvisandolo che il suo account è stato disabilitato.
          } else {
          if($db_password == $password) {
@@ -54,11 +66,13 @@ function login($email, $password, $mysqli) {
             header('Location: ./Login.php');
             $_SESSION['login_fail'] = "pw";
             $_SESSION['remaining'] = $remaining;
+            return false;
          }
       }
       } else {
          header('Location: ./Login.php');
          $_SESSION['login_fail'] = "email";
+         return false;
       }
    }
 }
