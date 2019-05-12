@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 08, 2019 alle 18:12
--- Versione del server: 10.1.37-MariaDB
--- Versione PHP: 7.2.12
+-- Creato il: Mag 12, 2019 alle 19:06
+-- Versione del server: 10.1.38-MariaDB
+-- Versione PHP: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,20 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `unihungry`
 --
-
-DELIMITER $$
---
--- Procedure
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `unlock_user` (IN `id` INT)  NO SQL
-BEGIN
-
-UPDATE users SET locked=0 WHERE user_id = id;
-DELETE FROM login_attempts WHERE user_id = id;
-
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -72,13 +58,6 @@ CREATE TABLE `clienti` (
   `telefono` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dump dei dati per la tabella `clienti`
---
-
-INSERT INTO `clienti` (`id_cliente`, `nome`, `cognome`, `telefono`) VALUES
-(1, 'Mario', 'Rossi', '123456789');
-
 -- --------------------------------------------------------
 
 --
@@ -93,7 +72,7 @@ CREATE TABLE `fornitori` (
   `nome_fornitore` varchar(50) NOT NULL,
   `descrizione` text,
   `descrizione_breve` char(50) NOT NULL,
-  `logo` varchar(200) DEFAULT NULL,
+  `logo` longblob,
   `indirizzo` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -193,7 +172,7 @@ CREATE TABLE `prodotti` (
   `nome` varchar(30) NOT NULL,
   `descrizione` varchar(100) NOT NULL,
   `prezzo_unitario` decimal(4,2) NOT NULL,
-  `immagine` varchar(100) NOT NULL,
+  `immagine` longblob,
   `ingredienti` text NOT NULL,
   `id_fornitore` int(11) NOT NULL,
   `categoria` varchar(30) NOT NULL
@@ -213,13 +192,6 @@ CREATE TABLE `users` (
   `user_type` enum('Admin','Cliente','Fornitore') NOT NULL,
   `locked` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dump dei dati per la tabella `users`
---
-
-INSERT INTO `users` (`user_id`, `email`, `password`, `salt`, `user_type`, `locked`) VALUES
-(1, 'mariorossi@mail.com', 'c4fda3327216d581e8838198d278bbcb7b1c4b36c24e6a8d9fa1fe5f8c49d2adcaee8f52149500048e8c64043878775d49e4b58c55f7a79b6774ac1bbc0c8ef3', '83e1c74edcf51151c08e993812b83320147c134014d9ce1cfd4d4a2f2e157635ccdf14709ebdb91857f9aa8cd52c5f63c28f28ba85de2ad50b1e8cfba43d3760', 'Cliente', 0);
 
 --
 -- Indici per le tabelle scaricate
@@ -324,7 +296,7 @@ ALTER TABLE `prodotti`
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
