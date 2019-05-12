@@ -53,6 +53,12 @@
 
 }
 
+.middleCol {
+  width: 33%;
+  margin-right: 33%;
+  margin-left: 33%;
+}
+
 #addLink, #addLink:hover {
     text-decoration:none;
     display: table-cell;
