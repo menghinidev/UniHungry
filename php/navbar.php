@@ -46,10 +46,10 @@ $PROFILO_FORNITORE = $prefix.'ProfiloFornitore.php'
                     <?php } ?>
                     <!--ProfiloFornitore-->
                     <?php if($_SERVER['PHP_SELF'] == $PROFILO_FORNITORE) { ?>
-                        <li>
+                        <li class="nav-item">
                             <a class="nav-link" href="./*****">Ordini</a>
                         </li>
-                        <li>
+                        <li class="nav-item">
                           <a class="nav-link" href="./********">Modifiche</a>
                         </li>
                     <?php } ?>
