@@ -32,7 +32,7 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
       $mysqli->query($sql);
     }
 
-    header('Location: /uniHungry/php/ProfiloFornitore.php');
+    header('Location: /unihungry/php/ProfiloFornitore.php');
   } else {
     //INSERT
 
@@ -52,7 +52,7 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
       $sql = "INSERT INTO prodotti (nome, descrizione, prezzo_unitario, ingredienti, id_fornitore, categoria) VALUES ($nome, $descrizione, $prezzo, $ingredienti, $id_fornitore, $categoria)";
       $res = $mysqli->query($sql);
     }
-    header('Location: /uniHungry/php/ProfiloFornitore.php');
+    header('Location: /unihungry/php/ProfiloFornitore.php');
   }
 } else {
   header('Location: ./ERROR');
