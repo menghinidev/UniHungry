@@ -69,7 +69,7 @@
                          <button onclick=\"handleModify('Approved', ".$row['id_modifica']." );\" class='btn green'>Approva</button>
                        </div>
                        <div class='col-6'>
-                         <button onclick=\"handleModify('Rejected', ".$row['id_modifica']." );\" class='btn purple'>Rifiuta</button>
+                         <button onclick=\"handleModify('Rejected', ".$row['id_modifica']." );\" class='btn red'>Rifiuta</button>
                        </div>
                      </div>
                    </div>

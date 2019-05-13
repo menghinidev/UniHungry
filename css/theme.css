@@ -112,6 +112,16 @@ a:visited {
     color:white;
 }
 
+.red {
+    background-color: #DC143C;
+    color: white;
+}
+
+.red:hover{
+    background-color: #B22222;
+    color: white;
+}
+
 /*Single components*/
 
 .navbar {

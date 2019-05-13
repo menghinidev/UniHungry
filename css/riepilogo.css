@@ -1,12 +1,4 @@
-.red {
-    background-color: #DC143C;
-    color: white;
-}
 
-.red:hover{
-    background-color: #B22222;
-    color: white;
-}
 
 .buttons {
     display:flex;
