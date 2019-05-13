@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/modificaProfiloFornitore.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -17,16 +18,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/modificaFornitore.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
 
     <!-- Page informations and icon -->
     <title>UniHungry - Modifca Profilo</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
-      <?php include 'navbar.php';
+      <?php
+      include 'navbar.php';
+      include 'hour_manager.php';
+      if(!isset($_SESSION['day'])) {
+        $_SESSION['day'] = 'lunedi';
+      }
       if(!is_logged()){
-          header('Location: /uniHungry/php/Login.php');
+        header('Location: /unihungry/php/Login.php');
       } else {
+        //FORNITORE SECTION
         $id = $_SESSION['user_id'];
         $sql = "SELECT * FROM fornitori WHERE id_fornitore = $id";
         $result = $mysqli->query($sql);
@@ -51,7 +60,37 @@
                         </label>
                     </div>
                     <div class="form-group col-md-6">
-                      ORARI
+                      <div class="form-row">
+                        <div class="col-md-3">
+                          <label for="giorno">Giorno</label>
+                          <select class="form-control" onchange="handleChange(this)" name="giorno" id="giorno">
+                            <option value="lunedi" <?php if($_SESSION['day'] == 'lunedi') echo "selected"; ?>>lunedi</option>
+                            <option value="martedi" <?php if($_SESSION['day'] == 'martedi') echo "selected"; ?>>martedi</option>
+                            <option value="mercoledi" <?php if($_SESSION['day'] == 'mercoledi') echo "selected"; ?>>mercoledi</option>
+                            <option value="giovedi" <?php if($_SESSION['day'] == 'giovedi') echo "selected"; ?>>giovedi</option>
+                            <option value="venerdi" <?php if($_SESSION['day'] == 'venerdi') echo "selected"; ?>>venerdi</option>
+                            <option value="sabato" <?php if($_SESSION['day'] == 'sabato') echo "selected"; ?>>sabato</option>
+                            <option value="domenica" <?php if($_SESSION['day'] == 'domenica') echo "selected"; ?>>domenica</option>
+                          </select>
+
+                        </div>
+                        <div class="col-md-3">
+                          <label for="orarioInizio">Orario Inizio</label>
+                          <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio[$_SESSION['day']]['apertura'])) ? $orarioInizio[$_SESSION['day']]['apertura'] : '');?>" class="timepicker vertical" name="start"/>
+                        </div>
+                        <div class="col-md-3">
+                          <label for="orarioFine">Orario Fine</label>
+                          <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine[$_SESSION['day']]['chiusura'])) ? $orarioFine[$_SESSION['day']]['chiusura'] : '');?>" class="timepicker vertical" name="end"/>
+                        </div>
+                        <?php unset($_SESSION['day']); ?>
+                        <div class="col-md-3">
+                          <label class="form-check-label" for="gridCheck">
+                          Orario continuato
+                          </label>
+                          <input class="vertical" name="fornitore" type="checkbox" id="fornitoreCheck" checked>
+                        </div>
+                        <div id="message"></div>
+                      </div>
                     </div>
                   </div>
               <div class="form-row">
@@ -74,22 +113,22 @@
                     <input type="text" name="nomeAttivitaFornitore" value="<?php echo $row['nome_fornitore']; ?>" class="form-control" id="nomeAttivita">
                   </div>
                   <div class="form-group col-md-6">
-                      <label for="cellulare">Indirizzo</label>
-                      <input type="text" name="indirizzoFornitore" value="<?php echo $row['indirizzo']; ?>" name="indirizzo" class="form-control" id="cellulare">
+                      <label for="indirizzo">Indirizzo</label>
+                      <input type="text" name="indirizzoFornitore" value="<?php echo $row['indirizzo']; ?>" name="indirizzo" class="form-control" id="indirizzo">
                   </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="textArea">Descrizione Breve</label>
-                  <textarea class="form-control" name="descrizioneBreve" id="textArea" rows="2"><?php echo $row['descrizione_breve']; ?></textarea>
+                  <label for="descrizioneBreve">Descrizione Breve</label>
+                  <textarea class="form-control" name="descrizioneBreve" id="descrizioneBreve" rows="2"><?php echo $row['descrizione_breve']; ?></textarea>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="textArea">Descrizione Estesa</label>
+                  <label for="descrizioneEstesa">Descrizione Estesa</label>
                   <?php
                   if(isset($row['descrizione'])){
-                    echo "<textarea class='form-control' name='descrizioneEstesa' id='textArea' rows='5'>".$row['descrizione']."</textarea>";
+                    echo "<textarea class='form-control' name='descrizioneEstesa' id='descrizioneEstesa' rows='5'>".$row['descrizione']."</textarea>";
                   } else {
-                    echo "<textarea class='form-control' name='descrizioneEstesa' id='textArea' rows='5'></textarea>";
+                    echo "<textarea class='form-control' name='descrizioneEstesa' id='descrizioneEstesa' rows='5'></textarea>";
                   }
                   ?>
                 </div>
@@ -110,6 +149,5 @@
               </div>
           </form>
       </div>
-
   </body>
 </html>
