@@ -23,41 +23,7 @@
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
-    <nav class="navbar navbar-expand-md sticky-top">
-       <a id="brand" class="navbar-brand nav-link" href="HomePage.html">
-          <img src="../res/logo.png" height="40" alt="UniHungry">
-       </a>
-       <div class= "ml-auto">
-          <div class="dropdown">
-              <button type="button" class="nav-item btn green dropdown-toggle navbar-toggler" data-toggle="dropdown">
-              </button>
-              <div class="dropdown-menu dropdown-menu-right">
-                  <a class="dropdown-item notUnderlined" href="Cart.html">
-                    <img src="../res/shoppingCart.png" height="40" alt="UniHungry"> Cart
-                  </a>
-                  <a class="dropdown-item notUnderlined" href="ProfiloUtente.html">
-                    <img src="../res/profile.png" height="40" alt="UniHungry"> Profile
-                  </a>
-              </div>
-          </div>
-
-           <!-- Navbar links -->
-           <div class="collapse navbar-collapse" id="collapsibleNavbar">
-             <ul class="navbar-nav">
-               <li class="nav-item">
-                 <a class="nav-link" href="Cart.html">
-                   <img src="../res/shoppingCart.png" height="40" alt="Cart">
-                 </a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link" href="ProfiloUtente.html">
-                   <img src="../res/profile.png" height="40" alt="Profile">
-                 </a>
-               </li>
-             </ul>
-           </div>
-      </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
     <div class="container fullScreen">
       <div class="row" id="searchToHide">
           <div class="col-md-3">

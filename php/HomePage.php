@@ -46,7 +46,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <a href="Search.html">o visualizza i nostri prodotti</a>
+                        <a href="./Search.php">o visualizza i nostri prodotti</a>
                     </div>
                 </div>
             </div>
