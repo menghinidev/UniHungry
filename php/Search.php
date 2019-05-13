@@ -23,12 +23,23 @@
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
-    <?php include 'navbar.php'; ?>
+    <?php include 'navbar.php';
+    //$param = explode(" ",$_GET['s']);
+    if(isset($_GET['s'])){
+    $param = "%".$_GET['s']."%";
+    $param = "'".mysqli_real_escape_string($mysqli, $param)."'";
+    $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore
+    AND (P.nome LIKE $param OR F.nome_fornitore LIKE $param OR P.categoria LIKE $param)";
+    } else {
+        $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore";
+    }
+    $products = $mysqli->query($sql);
+    ?>
     <div class="container fullScreen">
       <div class="row" id="searchToHide">
           <div class="col-md-3">
               <div class="input-group mb-3 total">
-                  <input type="text" class="form-control" placeholder="Cerca prodotti, fornitori..">
+                  <input type="text" class="form-control" placeholder="Cerca...">
                   <div class="input-group-append">
                     <button type="button" class="btn green" name="button">Vai</button>
                   </div>
@@ -44,6 +55,12 @@
         </div>
       </div>
       <div class="row tab-content">
+      <?php
+      $r = $mysqli->query("SELECT nome FROM categorie");
+      while($cat_row = $r->fetch_assoc()){
+          $categories[] = $cat_row;
+      }
+       ?>
         <div class="tab-pane fade" id="mobileFilters">
           <div class="col-md-3">
             <div class="fixedMargin">
@@ -52,41 +69,35 @@
                   <input type="checkbox" class="form-check-input">
                   <label class="form-check-label">Tutti</label>
                   <br>
+                  <?php foreach($categories as $cat){ ?>
                   <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label">Hamburger</label>
+                  <label class="form-check-label"><?php echo $cat['nome']; ?></label>
                   <br>
-                  <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label">Pizza</label>
-                  <br>
-                  <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label">Pasta</label>
-                  <br>
-                  <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label">Sushi</label>
+                  <?php } ?>
               </div>
-              <h4>Fascie di prezzo:</h4>
-              <div>
-                <div class="radio tre">
-                  <input type="radio" name="optradio" checked>
-                </div>
-                <div class="radio tre">
-                  <input type="radio" name="optradio" checked>
-                </div>
-                <div class="radio tre">
-                  <input type="radio" name="optradio" checked>
-                </div>
-              </div>
-              <div>
-                <div class="tre">
-                  Max 5€
-                </div>
-                <div class="tre">
-                  Max 10€
-                </div>
-                <div class="tre">
-                  Max 15€
-                </div>
-              </div>
+                  <h4>Fasce di prezzo:</h4>
+                  <div>
+                    <div class="radio tre">
+                      <input type="radio" name="optradio" checked>
+                    </div>
+                    <div class="radio tre">
+                      <input type="radio" name="optradio" checked>
+                    </div>
+                    <div class="radio tre">
+                      <input type="radio" name="optradio" checked>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="tre">
+                      Max 5€
+                    </div>
+                    <div class="tre">
+                      Max 10€
+                    </div>
+                    <div class="tre">
+                      Max 15€
+                    </div>
+                  </div>
             </div>
           </div>
         </div>
@@ -107,158 +118,65 @@
                   <input type="checkbox" class="form-check-input">
                   <label class="form-check-label">Tutti</label>
                   <hr/>
+                  <?php foreach($categories as $cat){ ?>
                   <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label">Hamburger</label>
-                  <br>
-                  <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label">Pizza</label>
-                  <br>
-                  <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label">Pasta</label>
-                  <br>
-                  <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label">Sushi</label>
+                  <label class="form-check-label"><?php echo $cat['nome']; ?></label>
+                  <?php } ?>
               </div>
             </div>
           </div>
         </div>
         <div class="col-8 content tab-pane active distanced" id="content">
-          <div class="row">
-            <div class="col-2 logo">
-              <img class="reslogo nopadding img-fluid" src="../res/default_food.png" alt="logo">
-            </div>
-            <div class="col-10 contenuto">
-              <div class="row">
-                <div class="col">
-                  <h5>Titolo</h5>
-                </div>
-              </div>
-              <hr/>
-              <div class="row">
-                <div class="col">
-                  <div class="row">
-                    <div class="col-12">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-                      </p>
+        <?php if($products->num_rows>0) {
+                while ($row = $products->fetch_assoc()) {?>
+                    <div class="row">
+                    <div class="col-2 logo">
+                        <?php  echo "<img class='reslogo nopadding img-fluid' src='data:image/jpeg;base64,".base64_encode($row['immagine'])."' alt='immagine prodotto'>";
+                        ?>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-6">
-                      <p>Prezzo: </p>
+                    <div class="col-10 contenuto">
+                      <div class="row">
+                        <div class="col">
+                          <h5><?php echo $row['nome'] ?></h5>
+                        </div>
+                      </div>
+                      <hr/>
+                      <div class="row">
+                        <div class="col">
+                          <div class="row">
+                            <div class="col-12">
+                              <p><?php echo $row['descrizione'] ?>
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+                              <p>Prezzo: <?php echo $row['prezzo_unitario'] ?> </p>
+                            </div>
+                            <div class="col-6">
+                              <a class="informazionLink" data-toggle="collapse" href="#information1" role="button" aria-expanded="false">Ingredienti:</a>
+                            </div>
+                          </div>
+                          <div class="row collapse" id="information1">
+                            <div class="col card card-body marginAccordion">
+                              <p><?php echo $row['ingredienti'] ?></p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-3 buttonToHide">
+                          <button type="button" class="btn green reduced" name="button">Aggiungi al carrello</button>
+                        </div>
+                      </div>
+                      <div class="row buttonAppear">
+                        <div class="col-12">
+                          <button type="button" class="btn green" name="button">Aggiungi al carrello</button>
+                        </div>
+                      </div>
                     </div>
-                    <div class="col-6">
-                      <a class="informazionLink" data-toggle="collapse" href="#information1" role="button" aria-expanded="false">Ingredienti:</a>
                     </div>
-                  </div>
-                  <div class="row collapse" id="information1">
-                    <div class="col card card-body marginAccordion">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-3 buttonToHide">
-                  <button type="button" class="btn green reduced" name="button">Aggiungi al carrello</button>
-                </div>
-              </div>
-              <div class="row buttonAppear">
-                <div class="col-12">
-                  <button type="button" class="btn green" name="button">Aggiungi al carrello</button>
-                </div>
-              </div>
-            </div>
-        </div>
-        <hr/>
-        <div class="row">
-          <div class="col-2 logo">
-            <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
-          </div>
-          <div class="col-10 contenuto">
-            <div class="row">
-              <div class="col">
-                <h5>Titolo</h5>
-              </div>
-            </div>
             <hr/>
-            <div class="row">
-              <div class="col">
-                <div class="row">
-                  <div class="col-12">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-6">
-                    <p>Prezzo: </p>
-                  </div>
-                  <div class="col-6">
-                    <a class="informazionLink" data-toggle="collapse" href="#information2" role="button" aria-expanded="false">Ingredienti:</a>
-                  </div>
-                </div>
-                <div class="row collapse" id="information2">
-                  <div class="col card card-body marginAccordion">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-3 buttonToHide">
-                <button type="button" class="btn green reduced" name="button">Aggiungi al carrello</button>
-              </div>
-            </div>
-            <div class="row buttonAppear">
-              <div class="col-12">
-                <button type="button" class="btn green" name="button">Aggiungi al carrello</button>
-              </div>
-            </div>
-          </div>
+        <?php }} ?>
         </div>
-        <hr/>
-        <div class="row">
-          <div class="col-2 logo">
-            <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
-          </div>
-          <div class="col-10 contenuto">
-            <div class="row">
-              <div class="col">
-                <h5>Titolo</h5>
-              </div>
-            </div>
-            <hr/>
-            <div class="row">
-              <div class="col">
-                <div class="row">
-                  <div class="col-12">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-                    </p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-6">
-                    <p>Prezzo: </p>
-                  </div>
-                  <div class="col-6">
-                    <a class="informazionLink" data-toggle="collapse" href="#information3" role="button" aria-expanded="false">Ingredienti:</a>
-                  </div>
-                </div>
-                <div class="row collapse" id="information3">
-                  <div class="col card card-body marginAccordion">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-3 buttonToHide">
-                <button type="button" class="btn green reduced" name="button">Aggiungi al carrello</button>
-              </div>
-            </div>
-            <div class="row buttonAppear">
-              <div class="col-12">
-                <button type="button" class="btn green" name="button">Aggiungi al carrello</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr/>
       </div>
-    </div>
   </body>
 </html>
