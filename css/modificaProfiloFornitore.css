@@ -1,7 +1,9 @@
 body {
-    background-image: url("../res/textureDark.jpg");
-    background-attachment: fixed;
-    background-size: 250px;
+
+}
+
+#modificaform {
+  color:white;
 }
 
 #profile {
@@ -21,4 +23,14 @@ body {
 
 #selectImg {
     text-align: left;
+}
+
+.fit {
+  max-width: 100%;
+}
+
+.vertical {
+  height: 52%;
+  max-width: 100%;
+  text-align: center;
 }

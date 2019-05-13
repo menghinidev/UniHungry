@@ -26,13 +26,19 @@ if(isset($_POST['nomeFornitore'], $_POST['cognomeFornitore'], $_POST['cellulareF
     } else {
       echo "false";
     }
-    header('Location: /unihungry/php/ProfiloFornitore.php');
+    //header('Location: /unihungry/php/ProfiloFornitore.php');
   } else {
     $sql = "UPDATE fornitori SET nome = $nomeFornitore, cognome = $cognomeFornitore, telefono = $cellulare, nome_fornitore = $attivita, descrizione = $descrizioneEstesa, descrizione_breve = $descrizioneBreve WHERE id_fornitore = $currentId";
     $mysqli->query($sql);
-    header('Location: /unihungry/php/ProfiloFornitore.php');
+    //header('Location: /unihungry/php/ProfiloFornitore.php');
   }
 } else {
   echo "NOT SET";
+}
+
+if (isset($_POST['giorno'], $_POST['start'], $_POST['end'])) {
+  $day = $_POST['giorno'];
+  $startTime = $_POST['start'].":00";
+  $endTime = $_POST['end'].":00";
 }
  ?>
