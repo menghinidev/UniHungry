@@ -5,6 +5,7 @@
     <?php
     require 'db_connect.php';
     require 'secure_func.php';
+    require 'mail_composer.php';
     sec_session_start(); // usiamo la nostra funzione per avviare una sessione php sicura
     if(isset($_POST['email'], $_POST['pw'], $_POST['user_type'], $_POST['nome'], $_POST['cognome'], $_POST['telefono'] )) {
         // Recupero i dati postati dal form
@@ -30,6 +31,7 @@
                $insert_stmt->bind_param('isss',$last_id ,$_POST['nome'] , $_POST['cognome'], $_POST['telefono']);
                if($insert_stmt->execute())
                {
+                   conferma_utente($email, $_POST['nome'] , $_POST['cognome']);
                    #####AUTO LOGIN#####
                    if(login($email, $_POST['pw'], $mysqli) == true) {
                       header('Location: ../php/HomePage.php');
@@ -58,10 +60,10 @@
                $insert_stmt->bind_param('sssi', $oggetto, $descrizione, $query_modifica, $last_id);
                if($insert_stmt->execute())
                {
-                  header('Location: CONFIRM');
+                  attendi_approvazione($email, $_POST['nome'], $_POST['cognome'], $_POST['nome_fornitore']);
+                  header('Location: ./CONFIRM');
                } else {
-                 echo $query_modifica;
-                   //header('Location: ERROR');
+                  header('Location: ./ERROR');
                }
             }
         }

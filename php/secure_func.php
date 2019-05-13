@@ -42,7 +42,8 @@ function login($email, $password, $mysqli) {
          if(checkbrute($user_id, $mysqli, 5) == true) {
             // Account disabilitato
             $mysqli->query("UPDATE users SET locked=1 WHERE user_id =".$user_id);
-            //header('Location: ./ACCOUNT_LOCKED');
+            $_SESSION['login_fail'] = "locked";
+            return false;
             // Invia un e-mail all'utente avvisandolo che il suo account è stato disabilitato.
          } else {
          if($db_password == $password) {
@@ -63,10 +64,18 @@ function login($email, $password, $mysqli) {
             $now = time();
             $mysqli->query("INSERT INTO login_attempts (user_id, time) VALUES ('$user_id', '$now')");
             $remaining = getRemainingAttempts($user_id, $mysqli, 5);
-            header('Location: ./Login.php');
-            $_SESSION['login_fail'] = "pw";
-            $_SESSION['remaining'] = $remaining;
-            return false;
+            if(checkbrute($user_id, $mysqli, 5) == true) {
+               // Account disabilitato
+               $mysqli->query("UPDATE users SET locked=1 WHERE user_id =".$user_id);
+               $_SESSION['login_fail'] = "locked";
+               return false;
+               // Invia un e-mail all'utente avvisandolo che il suo account è stato disabilitato.
+            } else {
+                header('Location: ./Login.php');
+                $_SESSION['login_fail'] = "pw";
+                $_SESSION['remaining'] = $remaining;
+                return false;
+            }
          }
       }
       } else {
