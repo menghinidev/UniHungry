@@ -30,11 +30,14 @@ $(document).ready(function(){
 });
 
 function handleChange(obj){
+  var start = document.getElementById('orarioInizio').value;
+  var end = document.getElementById('orarioFine').value;
   $.ajax({
     type: "POST",
     url: "day_setter.php",
-    data: {selectedDay: obj.value}
-  }).done(function() {
+    data: {selectedDay: obj.value, inizio: start, fine: end}
+  }).done(function(data) {
+    alert(data);
     window.location.reload(true);
   });
 }
