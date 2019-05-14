@@ -203,6 +203,12 @@
                 <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['Domenica']['fine_pausa'])) ? $orarioFinePausa['Domenica']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="endPausaDomenica"/>
               </div>
             </div>
+            <div class="alert alert-warning alert-dismissible fade show alertLayout topdistance" role="alert" id="error">
+              <strong>Attenzione:</strong> Uno o più orari inseriti non sono validi!
+              <button type="button" class="close" onclick="dismissAlert()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
             <div class="form-row topdistance">
               <div class="col">
                 <button type="submit" onsubmit="" class="btn green centered">Modifica</button>
