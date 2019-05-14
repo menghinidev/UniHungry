@@ -36,24 +36,28 @@
     $products = $mysqli->query($sql);
     ?>
     <div class="container fullScreen">
-      <div class="row" id="searchToHide">
-          <div class="col-md-3">
-              <div class="input-group mb-3 total">
-                  <input type="text" class="form-control" placeholder="Cerca...">
-                  <div class="input-group-append">
-                    <button type="button" class="btn green" name="button">Vai</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="row" id="myFiltersNav">
-        <div class="col-md-3">
-          <ul class="nav nav-tabs">
-            <li><button class="btn orange noradius active" data-toggle="tab" href="#content">Prodotti</a></li>
-            <li><button class="btn orange noradius" data-toggle="tab" href="#mobileFilters">Filtri</a></li>
-          </ul>
+    <nav id="mobileNav">
+    <div id="mobileNavContent">
+        <div class="row" id="searchToHide">
+            <div class="col-md-3">
+                <form class="input-group mb-3 total" action="./Search.php" method="get">
+                    <input type="text" class="form-control" name="s" placeholder="Cerca...">
+                    <div class="input-group-append">
+                      <button type="submit" class="btn green">Vai</button>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
+        <div class="row" id="myFiltersNav">
+        <div class="col-md-3">
+            <ul class="nav nav-tabs">
+              <li><button class="btn orange noradius active" data-toggle="tab" href="#content">Prodotti</a></li>
+              <li><button class="btn orange noradius" data-toggle="tab" href="#mobileFilters">Filtri</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    </nav>
       <div class="row tab-content">
       <?php
       $r = $mysqli->query("SELECT nome FROM categorie");
@@ -68,23 +72,23 @@
               <div class="form-check" id="filtersList">
                   <input type="checkbox" class="form-check-input">
                   <label class="form-check-label">Tutti</label>
-                  <br>
+                  <br/>
                   <?php foreach($categories as $cat){ ?>
                   <input type="checkbox" class="form-check-input">
                   <label class="form-check-label"><?php echo $cat['nome']; ?></label>
-                  <br>
+                  <br/>
                   <?php } ?>
               </div>
                   <h4>Fasce di prezzo:</h4>
                   <div>
                     <div class="radio tre">
-                      <input type="radio" name="optradio" checked>
+                      <input type="radio" name="max5">
                     </div>
                     <div class="radio tre">
-                      <input type="radio" name="optradio" checked>
+                      <input type="radio" name="max10">
                     </div>
                     <div class="radio tre">
-                      <input type="radio" name="optradio" checked>
+                      <input type="radio" name="max15">
                     </div>
                   </div>
                   <div>
@@ -102,36 +106,52 @@
           </div>
         </div>
         <div class="col-4" id="filters">
+        <div id="filtersContent">
           <div class="row">
               <div class="col">
-                  <div class="input-group mb-3 total">
-                      <input type="text" class="form-control" placeholder="Cerca..">
+                  <form class="input-group mb-3 total" action="./Search.php" method="get">
+                      <input type="text" class="form-control" name="s" placeholder="Cerca...">
                       <div class="input-group-append">
-                        <button type="button" class="btn green" name="button">Vai</button>
+                        <button type="submit" class="btn green">Vai</button>
                       </div>
-                  </div>
+                  </form>
               </div>
           </div>
           <div class="row">
             <div class="col">
+            <h4>Categorie:</h4>
               <div class="form-check">
                   <input type="checkbox" class="form-check-input">
                   <label class="form-check-label">Tutti</label>
-                  <hr/>
+                  <br/>
                   <?php foreach($categories as $cat){ ?>
                   <input type="checkbox" class="form-check-input">
                   <label class="form-check-label"><?php echo $cat['nome']; ?></label>
+                  <br/>
                   <?php } ?>
               </div>
+            <h4>Fasce di prezzo:</h4>
+            <div >
+              <input type="radio" name="optradio" name= "max5">
+              <label for="max5">Max 5€</label>
+              <br/>
+              <input type="radio" name="optradio" name= "max10">
+              <label for="max10">Max 10€</label>
+              <br/>
+              <input type="radio" name="optradio" name= "max15">
+              <label for="max15">Max 15€</label>
+            </div>
             </div>
           </div>
+        </div>
         </div>
         <div class="col-8 content tab-pane active distanced" id="content">
         <?php if($products->num_rows>0) {
                 while ($row = $products->fetch_assoc()) {?>
                     <div class="row">
                     <div class="col-2 logo">
-                        <?php  echo "<img class='reslogo nopadding img-fluid' src='data:image/jpeg;base64,".base64_encode($row['immagine'])."' alt='immagine prodotto'>";
+                        <?php
+                        echo "<img class='reslogo nopadding img-fluid' src='data:image/jpeg;base64,".base64_encode($row['immagine'])."' alt='immagine prodotto'>";
                         ?>
                     </div>
                     <div class="col-10 contenuto">
@@ -154,10 +174,10 @@
                               <p>Prezzo: <?php echo $row['prezzo_unitario'] ?> </p>
                             </div>
                             <div class="col-6">
-                              <a class="informazionLink" data-toggle="collapse" href="#information1" role="button" aria-expanded="false">Ingredienti:</a>
+                              <a class="informazionLink" data-toggle="collapse" href="#id<?php echo $row['id_prodotto'] ?>" role="button" aria-expanded="false">Ingredienti:</a>
                             </div>
                           </div>
-                          <div class="row collapse" id="information1">
+                          <div class="row collapse" id="id<?php echo $row['id_prodotto']?>">
                             <div class="col card card-body marginAccordion">
                               <p><?php echo $row['ingredienti'] ?></p>
                             </div>

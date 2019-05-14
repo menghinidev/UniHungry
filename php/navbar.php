@@ -102,13 +102,6 @@ $SEARCH = $prefix.'Search.php';
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <!-- Login -->
             <ul class="navbar-nav">
-            <?php if($_SERVER['PHP_SELF'] == $SEARCH) {
-                if(is_logged() && $_SESSION['user_type']=='Cliente') {
-                ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="./*****">Carrello</a>
-                </li>
-            <?php }} else {?>
                 <?php if(!is_logged()){ ?>
                  <li class="nav-item">
                    <a class="btn orange noVisitedLink" href="./Login.php">Accedi</a>
@@ -116,8 +109,14 @@ $SEARCH = $prefix.'Search.php';
                  <li class="nav-item">
                    <a class="btn purple noVisitedLink" href="./Register.php">Registrati</a>
                  </li>
-
                 <?php } else { ?>
+                    <?php if($_SERVER['PHP_SELF'] == $SEARCH) {
+                        if($_SESSION['user_type']=='Cliente') {
+                        ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./*****">Carrello</a>
+                        </li>
+                    <?php }} else {?>
                     <li class="nav-item">
                       <a class="nav-link" id="nav_username" href="./script_profile.php">
                           <?php

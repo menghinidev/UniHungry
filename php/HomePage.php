@@ -36,12 +36,12 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Cerca...">
+                        <form  class="input-group mb-3" action="./Search.php" method="get">
+                            <input type="text" class="form-control" name="s" placeholder="Cerca...">
                             <div class="input-group-append">
-                              <button type="button" class="btn green" name="button">Vai</button>
+                              <button type="submit" class="btn green">Vai</button>
                             </div>
-                          </div>
+                        </form>
                     </div>
                 </div>
                 <div class="row">
