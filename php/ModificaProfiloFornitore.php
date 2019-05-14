@@ -55,6 +55,9 @@
                         <a href="" class="noVisitedLink" id="reset">Resetta immagine</a>
                         </label>
                     </div>
+                    <div class="col-md-6">
+                      <a class="btn purple noVisitedLink" href="./Orari.php">Modifica Orari</a>
+                    </div>
                   </div>
               <div class="form-row">
                   <div class="form-group col-md-4">
