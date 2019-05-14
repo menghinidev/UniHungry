@@ -76,6 +76,7 @@ function showOptional(obj, name) {
       }
     }
   } else {
+    testCorrectHours();
     obj.checked = true;
   }
 }
@@ -95,6 +96,22 @@ function prePost() {
   for (var i = 0; i < hours.length; i++) {
     if (hours[i].value == '') {
       hours[i].disabled = true;
+    }
+  }
+}
+
+function testCorrectHours(){
+  var days = ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi', 'Sabato', 'Domenica'];
+  for (var i = 0; i < days.length; i++) {
+    var x = document.getElementById(days[i]).getElementsByClassName('optional');
+    var start = document.getElementById(days[i]).getElementsByClassName('vertical')[0];
+    var end = document.getElementById(days[i]).getElementsByClassName('vertical')[1];
+    if((start.value != '') && (end.value != '')) {
+      var startDate = new Date('1995-12-17T' + start.value + ':00');
+      var endDate = new Date('1995-12-17T' + end.value + ':00');
+      if(startDate - endDate > 0) {
+        return false;
+      }
     }
   }
 }
