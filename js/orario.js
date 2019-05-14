@@ -76,8 +76,6 @@ function showOptional(obj, name) {
   var x = document.getElementById(name).getElementsByClassName('optional');
   var start = document.getElementById(name).getElementsByClassName('vertical')[0];
   var end = document.getElementById(name).getElementsByClassName('vertical')[1];
-  var e = checkIfAreNumbers();
-  alert(e);
   if ((start.value != '') && (end.value != '')) {
     if(obj.checked) {
       for (i = 0; i < x.length; i++) {
@@ -172,43 +170,4 @@ function dismissAlert(){
   for (var x = 0; x < arr.length; x++) {
     arr[x].classList.remove('lighted');
   }
-}
-
-function checkIfAreNumbers(){
-  var days = ['Lunedi', 'Martedi', 'Mercoledi', 'Giovedi', 'Venerdi', 'Sabato', 'Domenica'];
-  var ok = true;
-  var result = true;
-  for (var i = 0; i < days.length; i++) {
-    var startPausa = document.getElementById(days[i]).getElementsByClassName('optional')[0];
-    var endPausa = document.getElementById(days[i]).getElementsByClassName('optional')[1];
-    var start = document.getElementById(days[i]).getElementsByClassName('vertical')[0];
-    var end = document.getElementById(days[i]).getElementsByClassName('vertical')[1];
-    if((start.value != '') && (end.value != '')) {
-      ok = /^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$/.test(start.value);
-      alert(ok + start.value);
-      if (!ok) {
-        result = false;
-        start.classList.add('lighted');
-      }
-      ok = /^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$/.test(end.value);
-      alert(ok + end.value)
-      if (!ok) {
-        result = false;
-        end.classList.add('lighted');
-      }
-      if (!startPausa.disabled) {
-        ok = /^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$/.test(startPausa.value);
-        if (!ok) {
-          result = false;
-          startPausa.classList.add('lighted');
-        }
-        ok = /^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$/.test(endPausa.value);
-        if (!ok) {
-          result = false;
-          endPausa.classList.add('lighted');
-        }
-      }
-    }
-  }
-  return result;
 }

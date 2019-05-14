@@ -37,13 +37,6 @@ body {
 
 .centered {
   text-align: center;
-  width: 33%;
-  margin-right: 33%;
-  margin-left: 33%;
-}
-
-.alertLayout {
-  text-align: center;
   width: 50%;
   margin-right: 25%;
   margin-left: 25%;
