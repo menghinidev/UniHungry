@@ -17,19 +17,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/search.js"></script>
-
+    <script type="text/javascript" src="../js/search_filter.js"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Cerca</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
     <?php include 'navbar.php';
-    //$param = explode(" ",$_GET['s']);
+    if(isset($_GET['cat'])){
+        $filtercat = explode(" ",$_GET['cat']);
+    }
+    if(isset($_GET['price'])){
+        $price = $_GET['price'];
+    }
     if(isset($_GET['s'])){
-    $param = "%".$_GET['s']."%";
-    $param = "'".mysqli_real_escape_string($mysqli, $param)."'";
+    $s = "%".$_GET['s']."%";
+    $s = "'".mysqli_real_escape_string($mysqli, $s)."'";
     $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore
-    AND (P.nome LIKE $param OR F.nome_fornitore LIKE $param OR P.categoria LIKE $param)";
+    AND (P.nome LIKE $s OR F.nome_fornitore LIKE $s OR P.categoria LIKE $s)";
     } else {
         $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore";
     }
@@ -40,12 +45,12 @@
     <div id="mobileNavContent">
         <div class="row" id="searchToHide">
             <div class="col-md-3">
-                <form class="input-group mb-3 total" action="./Search.php" method="get">
+                <div class="input-group mb-3 total">
                     <input type="text" class="form-control" name="s" placeholder="Cerca...">
                     <div class="input-group-append">
-                      <button type="submit" class="btn green">Vai</button>
+                      <button class="btn green" onclick="applica()">Vai</button>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
         <div class="row" id="myFiltersNav">
@@ -70,38 +75,28 @@
             <div class="fixedMargin">
               <h4>Categorie:</h4>
               <div class="form-check" id="filtersList">
-                  <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label">Tutti</label>
-                  <br/>
                   <?php foreach($categories as $cat){ ?>
-                  <input type="checkbox" class="form-check-input">
+                  <input type="checkbox" class="form-check-input filter">
                   <label class="form-check-label"><?php echo $cat['nome']; ?></label>
                   <br/>
                   <?php } ?>
               </div>
-                  <h4>Fasce di prezzo:</h4>
-                  <div>
-                    <div class="radio tre">
-                      <input type="radio" name="max5">
-                    </div>
-                    <div class="radio tre">
-                      <input type="radio" name="max10">
-                    </div>
-                    <div class="radio tre">
-                      <input type="radio" name="max15">
-                    </div>
-                  </div>
-                  <div>
-                    <div class="tre">
-                      Max 5€
-                    </div>
-                    <div class="tre">
-                      Max 10€
-                    </div>
-                    <div class="tre">
-                      Max 15€
-                    </div>
-                  </div>
+              <h4>Fasce di prezzo:</h4>
+              <div >
+                <input class="priceFilter" type="radio" name="optradio" name= "nessuna">
+                <label for="max3">Nessuna</label>
+                <br/>
+                <input class="priceFilter" type="radio" name="optradio" name= "max3">
+                <label for="max3">Max 3€</label>
+                <br/>
+                <input class="priceFilter" type="radio" name="optradio" name= "max6">
+                <label for="max6">Max 6€</label>
+                <br/>
+                <input class="priceFilter" type="radio" name="optradio" name= "max10">
+                <label for="max10">Max 10€</label>
+              </div>
+               <button class="btn green applica">Applica filtri</button>
+               <button class="btn purple reset">Resetta filtri</button>
             </div>
           </div>
         </div>
@@ -109,38 +104,71 @@
         <div id="filtersContent">
           <div class="row">
               <div class="col">
-                  <form class="input-group mb-3 total" action="./Search.php" method="get">
-                      <input type="text" class="form-control" name="s" placeholder="Cerca...">
+                  <div class="input-group mb-3 total" >
+                      <input type="text" class="searchbar form-control" <?php if($_GET['s']!==''){echo "value=".$_GET['s'];} ?> name="s" placeholder="Cerca...">
                       <div class="input-group-append">
-                        <button type="submit" class="btn green">Vai</button>
+                        <button class="btn green" onclick="applica()">Vai</button>
                       </div>
-                  </form>
+                  </div>
               </div>
           </div>
           <div class="row">
             <div class="col">
             <h4>Categorie:</h4>
               <div class="form-check">
-                  <input type="checkbox" class="form-check-input">
-                  <label class="form-check-label">Tutti</label>
-                  <br/>
                   <?php foreach($categories as $cat){ ?>
-                  <input type="checkbox" class="form-check-input">
+                  <input type="checkbox" class="form-check-input filter"
+                  <?php if(isset($_GET['cat'])){
+                      if(!(array_search($cat['nome'], $filtercat)===FALSE)){
+                          echo " checked ";
+                      }
+                  }
+                  ?>
+                  >
                   <label class="form-check-label"><?php echo $cat['nome']; ?></label>
                   <br/>
                   <?php } ?>
               </div>
             <h4>Fasce di prezzo:</h4>
             <div >
-              <input type="radio" name="optradio" name= "max5">
-              <label for="max5">Max 5€</label>
+              <input class="priceFilter" type="radio" name="optradio" name= "nessuna"
+              <?php if(isset($_GET['price'])){
+                  if($price == 'Nessuna'){
+                      echo " checked ";
+                  }
+              }
+              ?>>
+              <label for="max3">Nessuna</label>
               <br/>
-              <input type="radio" name="optradio" name= "max10">
+              <input class="priceFilter" type="radio" name="optradio" name= "max3"
+              <?php if(isset($_GET['price'])){
+                  if($price == 'Max 3€'){
+                      echo " checked ";
+                  }
+              }
+              ?>>
+              <label for="max3">Max 3€</label>
+              <br/>
+              <input class="priceFilter" type="radio" name="optradio" name= "max6"
+              <?php if(isset($_GET['price'])){
+                  if($price == 'Max 6€'){
+                      echo " checked ";
+                  }
+              }
+              ?>>
+              <label for="max6">Max 6€</label>
+              <br/>
+              <input class="priceFilter" type="radio" name="optradio" name= "max10"
+              <?php if(isset($_GET['price'])){
+                  if($price == 'Max 10€'){
+                      echo " checked ";
+                  }
+              }
+              ?>>
               <label for="max10">Max 10€</label>
-              <br/>
-              <input type="radio" name="optradio" name= "max15">
-              <label for="max15">Max 15€</label>
             </div>
+             <button class="btn green applica">Applica filtri</button>
+             <button class="btn purple reset">Resetta filtri</button>
             </div>
           </div>
         </div>

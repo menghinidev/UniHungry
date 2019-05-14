@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   var alterClass = function() {
     var ww = document.body.clientWidth;
-    if (ww < 1250) {
+    if (ww < 1270) {
       $('.content').addClass('changeScreen');
       $('.changeScreen').removeClass('content');
       $('.logo').removeClass('col-2');

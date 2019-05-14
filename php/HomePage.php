@@ -16,7 +16,8 @@
 			  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
+    <!-- Optional JavaScript -->
+    <script src="../js/home.js" charset="utf-8"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - HomePage</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -36,8 +37,10 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <form  class="input-group mb-3" action="./Search.php" method="get">
+                        <form  id="searchForm" class="input-group mb-3" action="./Search.php" method="get">
                             <input type="text" class="form-control" name="s" placeholder="Cerca...">
+                            <input type="hidden" name="cat" value="">
+                            <input type="hidden" name="price" value="Nessuna">
                             <div class="input-group-append">
                               <button type="submit" class="btn green">Vai</button>
                             </div>
@@ -46,7 +49,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <a href="./Search.php">o visualizza i nostri prodotti</a>
+                        <a href="./Search.php?s=&cat=Tutti&price=Nessuna">o visualizza i nostri prodotti</a>
                     </div>
                 </div>
             </div>
@@ -216,7 +219,6 @@
 
 
       </div>
-  <!-- Optional JavaScript -->
-  <script src="../js/home.js" charset="utf-8"></script>
+
   </body>
 </html>
