@@ -29,8 +29,13 @@ $(document).ready(function(){
   $(window).resize(function(){
     alterClass();
   });
+
   setDisabled();
   alterClass();
+
+  $("#modificaform").submit(function(event) {
+    prePost();
+  });
 
 });
 
@@ -55,12 +60,41 @@ function checkChange(obj, name) {
   }
 }
 
+function showOptional(obj, name) {
+  var x = document.getElementById(name).getElementsByClassName('optional');
+  var start = document.getElementById(name).getElementsByClassName('vertical')[0];
+  var end = document.getElementById(name).getElementsByClassName('vertical')[1];
+  if ((start.value != '') && (end.value != '')) {
+    if(obj.checked) {
+      for (i = 0; i < x.length; i++) {
+        x[i].disabled = true;
+        x[i].value = '';
+      }
+    } else {
+      for (i = 0; i < x.length; i++) {
+        x[i].disabled = false;
+      }
+    }
+  } else {
+    obj.checked = true;
+  }
+}
+
 function setDisabled(){
   var checkbox = document.getElementsByClassName('form-check-input');
   for (var i = 0; i < checkbox.length; i++) {
     if (checkbox[i].checked) {
       var parentRowId = checkbox[i].parentNode.parentNode.id;
       checkChange(checkbox[i], parentRowId);
+    }
+  }
+}
+
+function prePost() {
+  var hours = document.getElementsByClassName('vertical');
+  for (var i = 0; i < hours.length; i++) {
+    if (hours[i].value == '') {
+      hours[i].disabled = true;
     }
   }
 }

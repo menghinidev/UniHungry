@@ -59,8 +59,11 @@
                         <textarea class="form-control" id="descrizione" rows="3" aria-describedby="descrizioneHelp" maxlength="100" readonly><?php echo $fornitore['descrizione_breve']; ?></textarea>
                     </div>
                 </form>
-                <div id="modificaUtente" >
+                <div class="modificaUtente" >
                     <a href="./ModificaProfiloFornitore.php">modifica impostazioni utente</a>
+                </div>
+                <div class="modificaUtente">
+                  <a class="btn orange noVisitedLink" href="./Orari.php">Modifica Orari</a>
                 </div>
             </div>
             <div id="prodottiBox" class="col">

@@ -56,156 +56,156 @@
               </div>
             </div>
             <hr/>
-            <div class="form-row center" id="lunedi">
+            <div class="form-row center" id="Lunedi">
               <div class="col-md-2 center">
                 <h5>Lunedì</h5>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['lunedi']['apertura'])) ? $orarioInizio['lunedi']['apertura'] : '');?>" class="timepicker vertical" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['Lunedi']['apertura'])) ? $orarioInizio['Lunedi']['apertura'] : '');?>" class="timepicker vertical" name="startLunedi"/>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['lunedi']['chiusura'])) ? $orarioFine['lunedi']['chiusura'] : '');?>" class="timepicker vertical" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['Lunedi']['chiusura'])) ? $orarioFine['Lunedi']['chiusura'] : '');?>" class="timepicker vertical" name="endLunedi"/>
               </div>
               <div class="col-md-2 center">
-                <input type="checkbox" onclick="checkChange(this, 'lunedi');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['lunedi']['inizio_pausa'])) ? '' : 'checked');?>>
+                <input type="checkbox" onclick="showOptional(this, 'Lunedi');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['Lunedi']['inizio_pausa'])) ? '' : 'checked');?>>
                 <label class="form-check-label" for="exampleCheck1">Orario Continuato</label>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['lunedi']['inizio_pausa'])) ? $orarioInizioPausa['lunedi']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['Lunedi']['inizio_pausa'])) ? $orarioInizioPausa['Lunedi']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="startPausaLunedi"/>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['lunedi']['fine_pausa'])) ? $orarioFinePausa['lunedi']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['Lunedi']['fine_pausa'])) ? $orarioFinePausa['Lunedi']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="endPausaLunedi"/>
               </div>
             </div>
-            <div class="form-row center" id="martedi">
+            <div class="form-row center" id="Martedi">
               <div class="col-md-2 center">
                 <h5>Martedì</h5>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['martedi']['apertura'])) ? $orarioInizio['martedi']['apertura'] : '');?>" class="timepicker vertical" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['Martedi']['apertura'])) ? $orarioInizio['Martedi']['apertura'] : '');?>" class="timepicker vertical" name="startMartedi"/>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['martedi']['chiusura'])) ? $orarioFine['martedi']['chiusura'] : '');?>" class="timepicker vertical" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['Martedi']['chiusura'])) ? $orarioFine['Martedi']['chiusura'] : '');?>" class="timepicker vertical" name="endMartedi"/>
               </div>
               <div class="col-md-2 center">
-                <input type="checkbox" onchange="checkChange(this, 'martedi');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['martedi']['inizio_pausa'])) ? '' : 'checked');?>>
+                <input type="checkbox" onchange="showOptional(this, 'Martedi');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['Martedi']['inizio_pausa'])) ? '' : 'checked');?>>
                 <label class="form-check-label" for="exampleCheck1">Orario Continuato</label>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['martedi']['inizio_pausa'])) ? $orarioInizioPausa['martedi']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['Martedi']['inizio_pausa'])) ? $orarioInizioPausa['Martedi']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="startPausaMartedi"/>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['martedi']['fine_pausa'])) ? $orarioFinePausa['martedi']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['Martedi']['fine_pausa'])) ? $orarioFinePausa['Martedi']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="endPausaMartedi"/>
               </div>
             </div>
-            <div class="form-row center" id="mercoledi">
+            <div class="form-row center" id="Mercoledi">
               <div class="col-md-2 center">
                 <h5>Mercoledì</h5>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['mercoledi']['apertura'])) ? $orarioInizio['mercoledi']['apertura'] : '');?>" class="timepicker vertical" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['Mercoledi']['apertura'])) ? $orarioInizio['Mercoledi']['apertura'] : '');?>" class="timepicker vertical" name="startMercoledi"/>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['mercoledi']['chiusura'])) ? $orarioFine['mercoledi']['chiusura'] : '');?>" class="timepicker vertical" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['Mercoledi']['chiusura'])) ? $orarioFine['Mercoledi']['chiusura'] : '');?>" class="timepicker vertical" name="endMercoledi"/>
               </div>
               <div class="col-md-2 center">
-                <input type="checkbox" onchange="checkChange(this, 'mercoledi');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['mercoledi']['inizio_pausa'])) ? '' : 'checked');?>>
+                <input type="checkbox" onchange="showOptional(this, 'Mercoledi');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['Mercoledi']['inizio_pausa'])) ? '' : 'checked');?>>
                 <label class="form-check-label" for="exampleCheck1">Orario Continuato</label>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['mercoledi']['inizio_pausa'])) ? $orarioInizioPausa['mercoledi']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['Mercoledi']['inizio_pausa'])) ? $orarioInizioPausa['Mercoledi']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="startPausaMercoledi"/>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['mercoledi']['fine_pausa'])) ? $orarioFinePausa['mercoledi']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['Mercoledi']['fine_pausa'])) ? $orarioFinePausa['Mercoledi']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="endPausaMercoledi"/>
               </div>
             </div>
-            <div class="form-row center" id="giovedi">
+            <div class="form-row center" id="Giovedi">
               <div class="col-md-2 center">
                 <h5>Giovedì</h5>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['giovedi']['apertura'])) ? $orarioInizio['giovedi']['apertura'] : '');?>" class="timepicker vertical" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['Giovedi']['apertura'])) ? $orarioInizio['Giovedi']['apertura'] : '');?>" class="timepicker vertical" name="startGiovedi"/>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['giovedi']['chiusura'])) ? $orarioFine['giovedi']['chiusura'] : '');?>" class="timepicker vertical" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['Giovedi']['chiusura'])) ? $orarioFine['Giovedi']['chiusura'] : '');?>" class="timepicker vertical" name="endGiovedi"/>
               </div>
               <div class="col-md-2 center">
-                <input type="checkbox" onchange="checkChange(this, 'giovedi');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['giovedi']['inizio_pausa'])) ? '' : 'checked');?>>
+                <input type="checkbox" onchange="showOptional(this, 'Giovedi');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['Giovedi']['inizio_pausa'])) ? '' : 'checked');?>>
                 <label class="form-check-label" for="exampleCheck1">Orario Continuato</label>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['giovedi']['inizio_pausa'])) ? $orarioInizioPausa['giovedi']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['Giovedi']['inizio_pausa'])) ? $orarioInizioPausa['Giovedi']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="startPausaGiovedi"/>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['giovedi']['fine_pausa'])) ? $orarioFinePausa['giovedi']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['Giovedi']['fine_pausa'])) ? $orarioFinePausa['Giovedi']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="endPausaGiovedi"/>
               </div>
             </div>
-            <div class="form-row center" id="venerdi">
+            <div class="form-row center" id="Venerdi">
               <div class="col-md-2 center">
                 <h5>Venerdi</h5>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['venerdi']['apertura'])) ? $orarioInizio['venerdi']['apertura'] : '');?>" class="timepicker vertical" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['Venerdi']['apertura'])) ? $orarioInizio['Venerdi']['apertura'] : '');?>" class="timepicker vertical" name="startVenerdi"/>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['venerdi']['chiusura'])) ? $orarioFine['venerdi']['chiusura'] : '');?>" class="timepicker vertical" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['Venerdi']['chiusura'])) ? $orarioFine['Venerdi']['chiusura'] : '');?>" class="timepicker vertical" name="endVenerdi"/>
               </div>
               <div class="col-md-2 center">
-                <input type="checkbox" onclick="checkChange(this, 'venerdi');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['venerdi']['inizio_pausa'])) ? '' : 'checked');?>>
+                <input type="checkbox" onclick="showOptional(this, 'Venerdi');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['Venerdi']['inizio_pausa'])) ? '' : 'checked');?>>
                 <label class="form-check-label" for="exampleCheck1">Orario Continuato</label>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['venerdi']['inizio_pausa'])) ? $orarioInizioPausa['venerdi']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['Venerdi']['inizio_pausa'])) ? $orarioInizioPausa['Venerdi']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="startPausaVenerdi"/>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['venerdi']['fine_pausa'])) ? $orarioFinePausa['venerdi']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['Venerdi']['fine_pausa'])) ? $orarioFinePausa['Venerdi']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="endPausaVenerdi"/>
               </div>
             </div>
-            <div class="form-row center" id="sabato">
+            <div class="form-row center" id="Sabato">
               <div class="col-md-2 center">
                 <h5>Sabato</h5>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['sabato']['apertura'])) ? $orarioInizio['sabato']['apertura'] : '');?>" class="timepicker vertical" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['Sabato']['apertura'])) ? $orarioInizio['Sabato']['apertura'] : '');?>" class="timepicker vertical" name="startSabato"/>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['sabato']['chiusura'])) ? $orarioFine['sabato']['chiusura'] : '');?>" class="timepicker vertical" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['Sabato']['chiusura'])) ? $orarioFine['Sabato']['chiusura'] : '');?>" class="timepicker vertical" name="endSabato"/>
               </div>
               <div class="col-md-2 center">
-                <input type="checkbox" onclick="checkChange(this, 'sabato');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['sabato']['inizio_pausa'])) ? '' : 'checked');?>>
+                <input type="checkbox" onclick="showOptional(this, 'Sabato');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['Sabato']['inizio_pausa'])) ? '' : 'checked');?>>
                 <label class="form-check-label" for="exampleCheck1">Orario Continuato</label>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['sabato']['inizio_pausa'])) ? $orarioInizioPausa['sabato']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['Sabato']['inizio_pausa'])) ? $orarioInizioPausa['Sabato']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="startPausaSabato"/>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['sabato']['fine_pausa'])) ? $orarioFinePausa['sabato']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['Sabato']['fine_pausa'])) ? $orarioFinePausa['Sabato']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="endPausaSabato"/>
               </div>
             </div>
-            <div class="form-row center" id="domenica">
+            <div class="form-row center" id="Domenica">
               <div class="col-md-2 center">
                 <h5>Domenica</h5>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['domenica']['apertura'])) ? $orarioInizio['domenica']['apertura'] : '');?>" class="timepicker vertical" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio['Domenica']['apertura'])) ? $orarioInizio['Domenica']['apertura'] : '');?>" class="timepicker vertical" name="startDomenica"/>
               </div>
               <div class="col-2 larger">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['domenica']['chiusura'])) ? $orarioFine['domenica']['chiusura'] : '');?>" class="timepicker vertical" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine['Domenica']['chiusura'])) ? $orarioFine['Domenica']['chiusura'] : '');?>" class="timepicker vertical" name="endDomenica"/>
               </div>
               <div class="col-md-2 center">
-                <input type="checkbox" onclick="checkChange(this, 'domenica');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['domenica']['inizio_pausa'])) ? '' : 'checked');?>>
+                <input type="checkbox" onclick="showOptional(this, 'Domenica');" class="form-check-input" <?php echo ((isset($orarioInizioPausa['Domenica']['inizio_pausa'])) ? '' : 'checked');?>>
                 <label class="form-check-label" for="exampleCheck1">Orario Continuato</label>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['domenica']['inizio_pausa'])) ? $orarioInizioPausa['domenica']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="start"/>
+                <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizioPausa['Domenica']['inizio_pausa'])) ? $orarioInizioPausa['Domenica']['inizio_pausa'] : '');?>" class="timepicker vertical optional" name="startPausaDomenica"/>
               </div>
               <div class="col-2 larger newline">
-                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['domenica']['fine_pausa'])) ? $orarioFinePausa['domenica']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="end"/>
+                <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFinePausa['Domenica']['fine_pausa'])) ? $orarioFinePausa['Domenica']['fine_pausa'] : '');?>" class="timepicker vertical optional" name="endPausaDomenica"/>
               </div>
             </div>
             <div class="form-row topdistance">
               <div class="col">
-                <button type="submit" class="btn green centered">Modifica</button>
+                <button type="submit" onsubmit="" class="btn green centered">Modifica</button>
               </div>
             </div>
           </form>

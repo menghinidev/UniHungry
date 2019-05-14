@@ -31,13 +31,13 @@
     border: 1px solid white;
 }
 
-#modificaUtente {
+.modificaUtente {
     margin-top:10px;
     font-size: 10pt;
     text-align: center;
 }
 
-#modificaUtente a, #modificaUtente a:hover, #modificaUtente a:visited{
+.modificaUtente a, .modificaUtente a:hover, .modificaUtente a:visited{
     color:white;
 }
 

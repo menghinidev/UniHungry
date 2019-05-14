@@ -2,7 +2,7 @@
 $id = $_SESSION['user_id'];
 $sql = "SELECT * FROM orari_giornalieri WHERE id_fornitore = $id";
 $result = $mysqli->query($sql);
-$_SESSION['day'] = 'lunedi';
+
 while ($row = $result->fetch_assoc()) {
   $day = $row['giorno_settimana'];
   $orarioInizio[$day]['apertura'] = substr_replace($row['apertura'] ,"",-3);
