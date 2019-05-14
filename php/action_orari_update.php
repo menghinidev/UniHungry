@@ -29,10 +29,19 @@ for ($i = 0; $i < $size; $i++) {
       } else {
         $sql = "INSERT INTO orari_giornalieri (id_fornitore, giorno_settimana, apertura, chiusura, inizio_pausa, fine_pausa) VALUES ($id, $day, $apertura, $chiusura, $inizioPausa, $finePausa)";
       }
+    } else if(isset($_POST['startPausa'.$days[$i]]) || isset($_POST['endPausa'.$days[$i]])){
+      $_SESSION['alert'] = true;
     }
     $mysqli->query($sql);
-    header('Location: ./ProfiloFornitore.php');
+  } else if(isset($_POST['start'.$days[$i]]) || isset($_POST['end'.$days[$i]])){
+    $_SESSION['alert'] = true;
   }
+}
+
+if (isset($_SESSION['alert'])) {
+  header('Location: ./Orari.php');
+} else {
+  header('Location: ./ProfiloFornitore.php');
 }
 
 function defineUpdate($day, $mysqli) {

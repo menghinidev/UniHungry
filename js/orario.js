@@ -34,7 +34,7 @@ $(document).ready(function(){
   alterClass();
 
   $("#modificaform").submit(function(event) {
-    var areNumbers = true;
+    var areNumbers = checkIfAreNumbers();
     if (areNumbers) {
       var areHourOk = testCorrectHours();
       if (areHourOk) {
@@ -93,7 +93,15 @@ function showOptional(obj, name) {
 }
 
 function setDisabled(){
-  $('#error').hide();
+  $.ajax({
+  type: "POST",
+  url: "check_error.php",
+}).done(function(data) {
+  if (data == 'ok') {
+    $('#error').hide();
+  }
+});
+
   var checkbox = document.getElementsByClassName('form-check-input');
   for (var i = 0; i < checkbox.length; i++) {
     if (checkbox[i].checked) {
@@ -170,4 +178,8 @@ function dismissAlert(){
   for (var x = 0; x < arr.length; x++) {
     arr[x].classList.remove('lighted');
   }
+}
+
+function checkIfAreNumbers(){
+  return true;
 }
