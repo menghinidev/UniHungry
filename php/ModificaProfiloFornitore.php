@@ -28,10 +28,6 @@
   <body>
       <?php
       include 'navbar.php';
-      include 'hour_manager.php';
-      if(!isset($_SESSION['day'])) {
-        $_SESSION['day'] = 'lunedi';
-      }
       if(!is_logged()){
         header('Location: /unihungry/php/Login.php');
       } else {
@@ -58,39 +54,6 @@
                         <small class="form-text">Clicca l'immagine per caricarne una</small>
                         <a href="" class="noVisitedLink" id="reset">Resetta immagine</a>
                         </label>
-                    </div>
-                    <div class="form-group col-md-6">
-                      <div class="form-row">
-                        <div class="col-md-3">
-                          <label for="giorno">Giorno</label>
-                          <select class="form-control" onchange="handleChange(this)" name="giorno" id="giorno">
-                            <option value="lunedi" <?php if($_SESSION['day'] == 'lunedi') echo "selected"; ?>>lunedi</option>
-                            <option value="martedi" <?php if($_SESSION['day'] == 'martedi') echo "selected"; ?>>martedi</option>
-                            <option value="mercoledi" <?php if($_SESSION['day'] == 'mercoledi') echo "selected"; ?>>mercoledi</option>
-                            <option value="giovedi" <?php if($_SESSION['day'] == 'giovedi') echo "selected"; ?>>giovedi</option>
-                            <option value="venerdi" <?php if($_SESSION['day'] == 'venerdi') echo "selected"; ?>>venerdi</option>
-                            <option value="sabato" <?php if($_SESSION['day'] == 'sabato') echo "selected"; ?>>sabato</option>
-                            <option value="domenica" <?php if($_SESSION['day'] == 'domenica') echo "selected"; ?>>domenica</option>
-                          </select>
-
-                        </div>
-                        <div class="col-md-3">
-                          <label for="orarioInizio">Orario Inizio</label>
-                          <input type="text" id="orarioInizio" value="<?php echo ((isset($orarioInizio[$_SESSION['day']]['apertura'])) ? $orarioInizio[$_SESSION['day']]['apertura'] : '');?>" class="timepicker vertical" name="start"/>
-                        </div>
-                        <div class="col-md-3">
-                          <label for="orarioFine">Orario Fine</label>
-                          <input type="text" id="orarioFine" value="<?php echo ((isset($orarioFine[$_SESSION['day']]['chiusura'])) ? $orarioFine[$_SESSION['day']]['chiusura'] : '');?>" class="timepicker vertical" name="end"/>
-                        </div>
-                        <?php unset($_SESSION['day']); ?>
-                        <div class="col-md-3">
-                          <label class="form-check-label" for="gridCheck">
-                          Orario continuato
-                          </label>
-                          <input class="vertical" name="fornitore" type="checkbox" id="fornitoreCheck" checked>
-                        </div>
-                        <div id="message"></div>
-                      </div>
                     </div>
                   </div>
               <div class="form-row">
