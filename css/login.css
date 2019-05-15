@@ -21,3 +21,8 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
 }
+
+#registratiLink,#registratiLink:visited{
+    color:white;
+    text-decoration:underline;
+}

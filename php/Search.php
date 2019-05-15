@@ -24,7 +24,9 @@
   </head>
   <body>
     <?php include 'navbar.php';
-
+    if(!is_logged()){
+        $_SESSION['should_login'] = true;
+    }
     $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore";
     if(isset($_GET['s'])){
         if($_GET['s'] != ''){
@@ -71,18 +73,24 @@
     }
      ?>
     <div class="container fullScreen">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="input-group mb-3 top_margin" >
+        <div class="row fullScreen justify-content-between mb-3 mt-3">
+            <div class="col-lg-4 col-9">
+                <div class="input-group" >
                     <input type="text" class="searchbar form-control" <?php if($_GET['s']!==''){echo "value=".$_GET['s'];} ?> name="s" placeholder="Cerca...">
                     <div class="input-group-append">
                       <button type="button" class="btn green" onclick="applica()">Vai</button>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <button class="btn orange" id="filterButton" onclick="$('#filters').toggle();">Filtri</button>
+            <?php if(is_logged() && $_SESSION['user_type'] == 'Cliente'){ ?>
+            <div class="col-lg-2 col-3">
+                <button type="button" class="btn btn-primary" name="button">Carrello</button>
             </div>
+            <?php } ?>
+
+        </div>
+        <div class="row col">
+            <button class="btn orange" id="filterButton" onclick="$('#filters').toggle();">Filtri</button>
         </div>
 
       <div class="row">
@@ -185,6 +193,7 @@
                             </div>
                           </div>
                         </div>
+                        <?php if(is_logged() && $_SESSION['user_type'] == 'Cliente'){ ?>
                         <div class="col-3 buttonPC">
                           <button type="button" class="btn green reduced" name="button">Aggiungi al carrello</button>
                         </div>
@@ -194,6 +203,19 @@
                           <button type="button" class="btn green" name="button">Aggiungi al carrello</button>
                         </div>
                       </div>
+                  <?php } else if(!is_logged()){?>
+                      <div class="col-3 buttonPC">
+                        <a type="button" class="btn noVisitedLink green reduced" name="button" href="./Login.php">Aggiungi al carrello</a>
+                      </div>
+                    </div>
+                    <div class="row buttonMobile">
+                      <div class="col-12">
+                        <a type="button" class="btn noVisitedLink green" name="button" href="./Login.php">Aggiungi al carrello</a>
+                      </div>
+                    </div>
+                  <?php } else {
+                       echo '</div>';
+                  }?>
                     </div>
                     </div>
             <hr/>

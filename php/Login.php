@@ -51,18 +51,28 @@
                     <button type="submit" onsubmit="" class="centered btn green">Accedi</button>
                   </div>
                 </div>
+                <div class="form-row">
+                    <p class="col">Non hai un account?
+                    <a id="registratiLink" href="./Register.php"> Registrati qui</a>
+                    </p>
+                </div>
             </form>
+
+            <?php if(isset($_SESSION['should_login'])) {
+                unset($_SESSION['should_login']);?>
+                <div class="alert alert-warning" role="alert">
+                  <strong>Attenzione</strong> devi essere loggato per eseguire azioni sul nostro sito!
+                </div>
+            <?php } ?>
             <?php if(isset($_SESSION['login_fail'], $_SESSION['remaining'])) {
-                    if($_SESSION['login_fail'] == 'pw'){
-                    ?>
+                    if($_SESSION['login_fail'] == 'pw'){ ?>
             <div class="alert alert-warning" role="alert">
               <strong>Attenzione</strong> hai inserito una password non valida, ti rimangono soltanto <?php echo $_SESSION['remaining']; ?> tentativi!
             </div>
         <?php }}  ?>
 
         <?php if(isset($_SESSION['login_fail'])) {
-                if($_SESSION['login_fail'] == 'email'){
-                ?>
+                if($_SESSION['login_fail'] == 'email'){ ?>
         <div class="alert alert-warning" role="alert">
           <strong>Attenzione</strong> l'email che hai inserito non corrisponde a nessun account. Prova a registrarti prima a questo <a href="./Register.php">link</a>
         </div>

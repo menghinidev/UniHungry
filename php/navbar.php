@@ -74,10 +74,7 @@ $SEARCH = $prefix.'Search.php';
                 <?php } else { ?>
                     <a class="dropdown-item" href="./HomePage.php">Home</a>
                 <?php } ?>
-                <?php if($_SERVER['PHP_SELF'] == $SEARCH) {
-                    if(is_logged() && $_SESSION['user_type']=='Cliente') {?>
-                    <a class="dropdown-item" href="./*****">Carrello</a>
-                <?php }}?>
+                
                 <!--not logged-->
                 <?php if(!is_logged()){ ?>
                     <div class="dropdown-divider"></div>
@@ -110,13 +107,6 @@ $SEARCH = $prefix.'Search.php';
                    <a class="btn purple noVisitedLink" href="./Register.php">Registrati</a>
                  </li>
                 <?php } else { ?>
-                    <?php if($_SERVER['PHP_SELF'] == $SEARCH) {
-                        if($_SESSION['user_type']=='Cliente') {
-                        ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./*****">Carrello</a>
-                        </li>
-                    <?php }} else {?>
                     <li class="nav-item">
                       <a class="nav-link" id="nav_username" href="./script_profile.php">
                           <?php
@@ -128,7 +118,6 @@ $SEARCH = $prefix.'Search.php';
                       <a class="btn purple noVisitedLink" href="./script_logout.php">Logout</a>
                     </li>
                 <?php } ?>
-            <?php } ?>
             </ul>
         </div>
     </div>
