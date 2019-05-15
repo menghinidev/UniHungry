@@ -24,20 +24,46 @@
   </head>
   <body>
     <?php include 'navbar.php';
+
+    $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore";
+    if(isset($_GET['s'])){
+        if($_GET['s'] != ''){
+        $s = "%".$_GET['s']."%";
+        $s = "'".mysqli_real_escape_string($mysqli, $s)."'";
+        $sql = $sql. " AND (P.nome LIKE $s OR F.nome_fornitore LIKE $s OR P.categoria LIKE $s)";
+        }
+    }
     if(isset($_GET['cat'])){
         $filtercat = explode(" ",$_GET['cat']);
+        if($_GET['cat'] != ''){
+            $sql = $sql. " AND(";
+            $first = true;
+            foreach($filtercat as $filter){
+                if(!$first){
+                    $sql = $sql. " OR ";
+                }
+                $filter = "'".mysqli_real_escape_string($mysqli, $filter)."'";
+                $sql = $sql." P.categoria = $filter";
+                $first=false;
+            }
+            $sql = $sql. ")";
+        }
     }
     if(isset($_GET['price'])){
         $price = $_GET['price'];
+        $val = preg_replace("/[^0-9\.]/", '', $price);
+        if($val != ''){
+            $sql = $sql." AND P.prezzo_unitario <= $val ";
+        }
     }
-    if(isset($_GET['s'])){
-    $s = "%".$_GET['s']."%";
-    $s = "'".mysqli_real_escape_string($mysqli, $s)."'";
-    $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore
-    AND (P.nome LIKE $s OR F.nome_fornitore LIKE $s OR P.categoria LIKE $s)";
-    } else {
-        $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore";
-    }
+
+    /*if(isset($_GET['s'])){
+        if($_GET['s'] != ''){
+            $s = "'".mysqli_real_escape_string($mysqli, $_GET['s'])."'";
+            $sql = $sql. " ORDER BY levenshtein($s, P.nome), levenshtein($s, F.nome_fornitore)";
+        }
+    }*/
+    //echo $sql;
     $products = $mysqli->query($sql);
     $r = $mysqli->query("SELECT nome FROM categorie");
     while($cat_row = $r->fetch_assoc()){
@@ -50,7 +76,7 @@
                 <div class="input-group mb-3 top_margin" >
                     <input type="text" class="searchbar form-control" <?php if($_GET['s']!==''){echo "value=".$_GET['s'];} ?> name="s" placeholder="Cerca...">
                     <div class="input-group-append">
-                      <button class="btn green" onclick="applica()">Vai</button>
+                      <button type="button" class="btn green" onclick="applica()">Vai</button>
                     </div>
                 </div>
             </div>
@@ -118,15 +144,19 @@
              <button class="btn purple reset top_margin">Resetta filtri</button>
         </div>
         <div class="col distanced" id="content">
-        <?php if($products->num_rows>0) {
+        <?php
+        if($products->num_rows <= 0){
+            echo "Nessun risultato!";
+        }
+        else {
                 while ($row = $products->fetch_assoc()) {?>
                     <div class="row">
-                    <div class="col-3 logo">
+                    <div class="col-2 logo">
                         <?php
                         echo "<img class='reslogo nopadding img-fluid' src='data:image/jpeg;base64,".base64_encode($row['immagine'])."' alt='immagine prodotto'>";
                         ?>
                     </div>
-                    <div class="col-9 contenuto">
+                    <div class="col contenuto">
                       <div class="row">
                         <div class="col">
                           <h5><?php echo $row['nome'] ?></h5>

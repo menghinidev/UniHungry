@@ -49,7 +49,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <a href="./Search.php?s=&cat=Tutti&price=Nessuna">o visualizza i nostri prodotti</a>
+                        <a href="./Search.php?s=&cat=&price=Indifferente">o visualizza i nostri prodotti</a>
                     </div>
                 </div>
             </div>

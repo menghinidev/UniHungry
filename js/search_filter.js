@@ -25,6 +25,13 @@ $(document).ready(function () {
         });
         applica();
     });
+
+    $('.searchbar').keypress( function( e ) {
+    var code = e.keyCode || e.which;
+    if( code === 13 ) {
+        applica();
+    }
+    });
 });
 
 function applica(){
