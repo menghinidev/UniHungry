@@ -15,21 +15,33 @@ $_SESSION['email'] --> email utente
 
 GOALS
 
-1- (OK) login + registrazione
-2- (OK) Navbar php module       ||HomePage mobile dropdown visualizzato male||
+1. (OK) login + registrazione
+2. (OK) Navbar php module       ||HomePage mobile dropdown visualizzato male||
+3. (OK) Admin view per le modifiche
+4. (OK) Ricerca prodotti  ||Link al fornitore + paginazione?||
+5. (OK) Email di conferma ||Mancano relative agli ordini||
 
-3-Admin view per le modifiche
-4-Profilo clienti --> iniziato
-5-Profilo fornitori
+NEXT:
+-Ordini + carrello (Samu)
+-Modifica profilo fornitori -> manca validazione
+-Gestione prodotti fornitore -> manca validazione
 
--Products php module database
--Ordini + carrello
--notifiche
--Email
--Pagine di arrivo statiche
--Blocco e sblocco account
-poi modifiche alla parte "statica"
+-notifiche /!\IMPORTANTE/!\
 
+-Modifica profilo clienti (easy)
+-Riepilogo ordini clienti (easy)
+-Riepilogo ordini fornitori
+
+AT LAST:
+-Richiesta modifiche fornitore (easy)
+-HomePage da sistemare
+-Profilo fornitore per i clienti (easy)
+-Pagine di arrivo statiche (easypeasy)
+
+EXTRA(?):
+-sezione "contattaci" + relativa vista admin
+-image crop
+-popolare bene il db
 _________________________________________
 NAMING CONVENTIONS
 
