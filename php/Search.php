@@ -56,11 +56,11 @@
             $sql = $sql." AND P.prezzo_unitario <= $val ";
         }
     }
-
-    /*if(isset($_GET['s'])){
+    /*
+    if(isset($_GET['s'])){
         if($_GET['s'] != ''){
-            $s = "'".mysqli_real_escape_string($mysqli, $_GET['s'])."'";
-            $sql = $sql. " ORDER BY levenshtein($s, P.nome), levenshtein($s, F.nome_fornitore)";
+            $string = "'".mysqli_real_escape_string($mysqli, $_GET['s'])."'";
+            $sql = $sql. " ORDER BY levenshtein($string, P.nome), levenshtein($string, F.nome_fornitore)";
         }
     }*/
     //echo $sql;
@@ -122,14 +122,14 @@
               ?>>
               <label for="max3">Max 3€</label>
               <br/>
-              <input class="priceFilter" type="radio" name="optradio" name= "max6"
+              <input class="priceFilter" type="radio" name="optradio" name= "max5"
               <?php if(isset($_GET['price'])){
-                  if($price == 'Max 6€'){
+                  if($price == 'Max 5€'){
                       echo " checked ";
                   }
               }
               ?>>
-              <label for="max6">Max 6€</label>
+              <label for="max5">Max 5€</label>
               <br/>
               <input class="priceFilter" type="radio" name="optradio" name= "max10"
               <?php if(isset($_GET['price'])){
