@@ -14,6 +14,7 @@ $(document).ready(function() {
       document.getElementById('myFiltersNav').style.display = "block";
       changeDisplay('buttonAppear', 'block');
       changeDisplay('buttonToHide', 'none');
+      filterReload();
     } else {
       $('.logo').removeClass('col-4');
       $('.logo').addClass('col-2');
@@ -26,6 +27,7 @@ $(document).ready(function() {
       document.getElementById('searchToHide').style.display = "none";
       $('.changeScreen').addClass('content');
       $('.content').removeClass('changeScreen');
+      filterReload();
     }
   };
 

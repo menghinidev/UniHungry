@@ -40,7 +40,7 @@
                         <form  id="searchForm" class="input-group mb-3" action="./Search.php" method="get">
                             <input type="text" class="form-control" name="s" placeholder="Cerca...">
                             <input type="hidden" name="cat" value="">
-                            <input type="hidden" name="price" value="Nessuna">
+                            <input type="hidden" name="price" value="Indifferente">
                             <div class="input-group-append">
                               <button type="submit" class="btn green">Vai</button>
                             </div>

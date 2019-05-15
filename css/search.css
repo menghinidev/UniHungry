@@ -1,11 +1,5 @@
-.total {
+.top_margin {
   margin-top: 4%;
-}
-
-.content {
-  border-left: 1px solid rgba(0,0,0,.1);
-  max-width: 80%;
-  flex: 0 0 80%;
 }
 
 .distanced {
@@ -17,27 +11,27 @@
   flex: 0 0 100%;
 }
 
-#filters {
-  max-width: 20%;
-  flex: 0 0 20%;
+ #filters{
+     background-color: white;
+     z-index: 999;
 }
 
-#myFiltersNav {
-  margin-bottom: 2%;
+#filterButton{
+    border-radius: 0px;
+    margin: 0;
 }
 
-#filtersList {
-  margin-top: 2%;
-  margin-bottom: 2%;
+.filterBorder {
+    border-right: 1px solid rgba(0,0,0,.1);
 }
 
-#mobileFilters {
-  width: 100%;
-}
-
-.nav-tabs {
-  border-bottom: none;
-}
+ .fullwidth{
+     width:96%;
+     padding:2%;
+     margin-left: 15px;
+     border-radius: 0px 20px 20px 20px;
+     border: 3px solid #F1B07C;
+ }
 
 .centered {
   text-align: center;
@@ -68,7 +62,7 @@
 }
 
 .reduced {
-  max-width: 50%;
+  max-width: 70%;
 }
 
  hr {

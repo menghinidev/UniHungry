@@ -7,8 +7,6 @@ $(document).ready(function () {
         $('.applica').removeClass( "green" ).addClass( "orange" );
     });
 
-
-
     $('.applica').click(function(){
         applica();
     });
@@ -19,7 +17,7 @@ $(document).ready(function () {
         });
         $('.priceFilter').each(function(){
             var val = $(this).next('label').text()
-            if(val == 'Nessuna'){
+            if(val == 'Indifferente'){
                 $(this).prop("checked", true);
             } else {
                 $(this).prop("checked", false);

@@ -17,7 +17,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/search_filter.js"></script>
-    <script type="text/javascript" src="../js/search_layout.js"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Cerca</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -39,28 +38,81 @@
         $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore";
     }
     $products = $mysqli->query($sql);
-    $r = $mysqli->query("SELECT nome FROM categorie");
-    while($cat_row = $r->fetch_assoc()){
-        $categories[] = $cat_row;
-    }
-     ?>
+    ?>
     <div class="container fullScreen">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="input-group mb-3 top_margin" >
-                    <input type="text" class="searchbar form-control" <?php if($_GET['s']!==''){echo "value=".$_GET['s'];} ?> name="s" placeholder="Cerca...">
+    <nav id="mobileNav">
+    <div id="mobileNavContent">
+        <div class="row" id="searchToHide">
+            <div class="col-md-3">
+                <div class="input-group mb-3 total">
+                    <input type="text" class="form-control" name="s" placeholder="Cerca...">
                     <div class="input-group-append">
                       <button class="btn green" onclick="applica()">Vai</button>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <button class="btn orange" id="filterButton" onclick="$('#filters').toggle();">Filtri</button>
-            </div>
         </div>
-
-      <div class="row">
-        <div class="col-2 filterBorder" id="filters">
+        <div class="row" id="myFiltersNav">
+        <div class="col-md-3">
+            <ul class="nav nav-tabs">
+              <li><button class="btn orange noradius active" data-toggle="tab" href="#content">Prodotti</a></li>
+              <li><button class="btn orange noradius" data-toggle="tab" href="#mobileFilters">Filtri</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    </nav>
+      <div class="row tab-content">
+      <?php
+      $r = $mysqli->query("SELECT nome FROM categorie");
+      while($cat_row = $r->fetch_assoc()){
+          $categories[] = $cat_row;
+      }
+       ?>
+        <div class="tab-pane fade" id="mobileFilters">
+          <div class="col-md-3">
+            <div class="fixedMargin">
+              <h4>Categorie:</h4>
+              <div class="form-check" id="filtersList">
+                  <?php foreach($categories as $cat){ ?>
+                  <input type="checkbox" class="form-check-input filter">
+                  <label class="form-check-label"><?php echo $cat['nome']; ?></label>
+                  <br/>
+                  <?php } ?>
+              </div>
+              <h4>Fasce di prezzo:</h4>
+              <div >
+                <input class="priceFilter" type="radio" name="optradio" name= "nessuna">
+                <label for="max3">Nessuna</label>
+                <br/>
+                <input class="priceFilter" type="radio" name="optradio" name= "max3">
+                <label for="max3">Max 3€</label>
+                <br/>
+                <input class="priceFilter" type="radio" name="optradio" name= "max6">
+                <label for="max6">Max 6€</label>
+                <br/>
+                <input class="priceFilter" type="radio" name="optradio" name= "max10">
+                <label for="max10">Max 10€</label>
+              </div>
+               <button class="btn green applica">Applica filtri</button>
+               <button class="btn purple reset">Resetta filtri</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-4" id="filters">
+        <div id="filtersContent">
+          <div class="row">
+              <div class="col">
+                  <div class="input-group mb-3 total" >
+                      <input type="text" class="searchbar form-control" <?php if($_GET['s']!==''){echo "value=".$_GET['s'];} ?> name="s" placeholder="Cerca...">
+                      <div class="input-group-append">
+                        <button class="btn green" onclick="applica()">Vai</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col">
             <h4>Categorie:</h4>
               <div class="form-check">
                   <?php foreach($categories as $cat){ ?>
@@ -76,16 +128,16 @@
                   <br/>
                   <?php } ?>
               </div>
-            <h4>Prezzo:</h4>
+            <h4>Fasce di prezzo:</h4>
             <div >
-              <input class="priceFilter" type="radio" name="optradio" name= "indifferente"
+              <input class="priceFilter" type="radio" name="optradio" name= "nessuna"
               <?php if(isset($_GET['price'])){
-                  if($price == 'Indifferente'){
+                  if($price == 'Nessuna'){
                       echo " checked ";
                   }
               }
               ?>>
-              <label for="max3">Indifferente</label>
+              <label for="max3">Nessuna</label>
               <br/>
               <input class="priceFilter" type="radio" name="optradio" name= "max3"
               <?php if(isset($_GET['price'])){
@@ -114,19 +166,22 @@
               ?>>
               <label for="max10">Max 10€</label>
             </div>
-             <button class="btn green applica top_margin">Applica filtri</button>
-             <button class="btn purple reset top_margin">Resetta filtri</button>
+             <button class="btn green applica">Applica filtri</button>
+             <button class="btn purple reset">Resetta filtri</button>
+            </div>
+          </div>
         </div>
-        <div class="col distanced" id="content">
+        </div>
+        <div class="col-8 content tab-pane active distanced" id="content">
         <?php if($products->num_rows>0) {
                 while ($row = $products->fetch_assoc()) {?>
                     <div class="row">
-                    <div class="col-3 logo">
+                    <div class="col-2 logo">
                         <?php
                         echo "<img class='reslogo nopadding img-fluid' src='data:image/jpeg;base64,".base64_encode($row['immagine'])."' alt='immagine prodotto'>";
                         ?>
                     </div>
-                    <div class="col-9 contenuto">
+                    <div class="col-10 contenuto">
                       <div class="row">
                         <div class="col">
                           <h5><?php echo $row['nome'] ?></h5>
@@ -155,11 +210,11 @@
                             </div>
                           </div>
                         </div>
-                        <div class="col-3 buttonPC">
+                        <div class="col-3 buttonToHide">
                           <button type="button" class="btn green reduced" name="button">Aggiungi al carrello</button>
                         </div>
                       </div>
-                      <div class="row buttonMobile">
+                      <div class="row buttonAppear">
                         <div class="col-12">
                           <button type="button" class="btn green" name="button">Aggiungi al carrello</button>
                         </div>
