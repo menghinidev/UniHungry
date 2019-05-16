@@ -39,7 +39,7 @@
       }?>
       <div class="container" id="profile">
           <form id="modificaform" class="col" action="action_fornitore_update.php" method="post" enctype="multipart/form-data">
-                  <h2>Modifica informazioni</h2>
+                  <h2>Modifica Profilo</h2>
                   <div class="form-row">
                     <div id="selectImg" class="form-group col-md-6">
                         <label for="imgupload">

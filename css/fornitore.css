@@ -32,7 +32,6 @@
 }
 
 .modificaUtente {
-    margin-top:10px;
     font-size: 10pt;
     text-align: center;
 }
@@ -71,4 +70,12 @@
 
 #addLink:visited:hover, #addLink:hover {
     color: #598C5F;
+}
+
+.moredistanced {
+  margin-top: 10%;
+}
+
+.centered {
+  text-align: center;
 }

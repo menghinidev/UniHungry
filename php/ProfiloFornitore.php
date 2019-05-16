@@ -37,32 +37,28 @@
         }?>
         <div class="container nopadding row fullScreen">
             <div id="profileInfoBox" class="col-md-4 col-xl-2">
-                <form>
-                    <div id="changeLogo" class="form-group">
-                        <label for="logoupload">
-                        <?php
-                        if(isset($fornitore['logo'])){
-                          echo "<img class='nopadding profilePic' id='foodImg' src='data:image/jpeg;base64,".base64_encode($fornitore['logo'])."' alt='immagine fornitore'>";
-                        } else {
-                          echo "<img class='nopadding profilePic' id='foodImg' src='../res/default_food.png' alt='immagine cibo default'>";
-                        }
-                        ?>
-                        </label>
-                    </div>
-                    <hr/>
-                    <div class="form-group">
-                        <label for="nome">Nome</label>
-                        <input type="text" class="form-control" id="nome" value="<?php echo $fornitore['nome_fornitore']; ?>" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="descrizione">Descrizione</label>
-                        <textarea class="form-control" id="descrizione" rows="3" aria-describedby="descrizioneHelp" maxlength="100" readonly><?php echo $fornitore['descrizione_breve']; ?></textarea>
-                    </div>
-                </form>
-                <div class="modificaUtente" >
-                    <a href="./ModificaProfiloFornitore.php">modifica impostazioni utente</a>
+                  <div id="changeLogo">
+                      <label for="logoupload">
+                      <?php
+                      if(isset($fornitore['logo'])){
+                        echo "<img class='nopadding profilePic' id='foodImg' src='data:image/jpeg;base64,".base64_encode($fornitore['logo'])."' alt='immagine fornitore'>";
+                      } else {
+                        echo "<img class='nopadding profilePic' id='foodImg' src='../res/default_food.png' alt='immagine cibo default'>";
+                      }
+                      ?>
+                      </label>
+                  </div>
+                  <hr/>
+                  <div class="centered">
+                    <h4><?php echo $fornitore['nome_fornitore']; ?></h4>
+                  </div>
+                  <div class="distanced centered">
+                      <h6><?php echo $fornitore['descrizione_breve']; ?></h6>
+                  </div>
+                <div class="modificaUtente moredistanced">
+                    <a class="btn orange noVisitedLink" href="./ModificaProfiloFornitore.php">Modifica Profilo</a>
                 </div>
-                <div class="modificaUtente">
+                <div class="modificaUtente distanced">
                   <a class="btn orange noVisitedLink" href="./Orari.php">Modifica Orari</a>
                 </div>
             </div>
