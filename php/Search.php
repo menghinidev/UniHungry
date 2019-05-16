@@ -18,15 +18,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/search_filter.js"></script>
     <script type="text/javascript" src="../js/search_layout.js"></script>
+    <script type="text/javascript" src="../js/search_ajax.js"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Cerca</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
     <?php include 'navbar.php';
-    if(!is_logged()){
-        $_SESSION['should_login'] = true;
-    }
     $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore";
     if(isset($_GET['s'])){
         if($_GET['s'] != ''){
@@ -84,7 +82,7 @@
             </div>
             <?php if(is_logged() && $_SESSION['user_type'] == 'Cliente'){ ?>
             <div class="col-lg-2 col-3">
-                <button type="button" class="btn btn-primary" name="button">Carrello</button>
+                <button id="cartButton" type="button" class="btn btn-primary" name="button">Carrello <?php if(isset($_SESSION['tot_products'])){echo $_SESSION['tot_products'];} ?></button>
             </div>
             <?php } ?>
 
@@ -167,7 +165,9 @@
                     <div class="col contenuto">
                       <div class="row">
                         <div class="col">
-                          <h5><?php echo $row['nome'] ?></h5>
+                          <strong><?php echo $row['nome'] ?> </strong>
+                          <span> - </span>
+                          <a href="./Fornitore?id=<?php echo $row['id_fornitore'] ?>"><?php echo $row['nome_fornitore'] ?></a>
                         </div>
                       </div>
                       <hr/>
@@ -194,28 +194,20 @@
                           </div>
                         </div>
                         <?php if(is_logged() && $_SESSION['user_type'] == 'Cliente'){ ?>
-                        <div class="col-3 buttonPC">
-                          <button type="button" class="btn green reduced" name="button">Aggiungi al carrello</button>
+                        <div class="col-lg-3 buttonPC">
+                        <?php if(isset($_SESSION['cart'][$row['id_prodotto']])){?>
+                            <button type="button" class="btn orange reduced" name="button" onclick="addCart(<?php echo $row['id_prodotto']?>,this)">Aggiungi un altro</button>
+                        <?php } else { ?>
+                            <button type="button" class="btn green reduced" name="button" onclick="addCart(<?php echo $row['id_prodotto']?>,this)">Aggiungi al carrello</button>
+                        <?php }?>
                         </div>
-                      </div>
-                      <div class="row buttonMobile">
-                        <div class="col-12">
-                          <button type="button" class="btn green" name="button">Aggiungi al carrello</button>
-                        </div>
-                      </div>
                   <?php } else if(!is_logged()){?>
-                      <div class="col-3 buttonPC">
-                        <a type="button" class="btn noVisitedLink green reduced" name="button" href="./Login.php">Aggiungi al carrello</a>
+                      <div class="col-lg-3 buttonPC">
+                        <a type="button" class="btn noVisitedLink green reduced" onclick="not_loggedClick(); return false;" name="button" href="#">Aggiungi al carrello</a>
                       </div>
+                  <?php }?>
+
                     </div>
-                    <div class="row buttonMobile">
-                      <div class="col-12">
-                        <a type="button" class="btn noVisitedLink green" name="button" href="./Login.php">Aggiungi al carrello</a>
-                      </div>
-                    </div>
-                  <?php } else {
-                       echo '</div>';
-                  }?>
                     </div>
                     </div>
             <hr/>

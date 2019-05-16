@@ -11,13 +11,13 @@ alterClass();
 
 function alterClass() {
   var ww = document.body.clientWidth;
-  if (ww < 1000) {
+  /*if (ww < 1000) {
       $('.buttonMobile').show();
       $('.buttonPC').hide();
   } else {
       $('.buttonMobile').hide();
       $('.buttonPC').show();
-  }
+  }*/
   var f = $('#filters');
   if(ww < 850){
       $('.logo').removeClass('col-2').addClass('col-4');

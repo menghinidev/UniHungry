@@ -33,9 +33,9 @@ NEXT:
 -Riepilogo ordini fornitori
 
 AT LAST:
+-Profilo fornitore per i clienti (easy)
 -Richiesta modifiche fornitore (easy)
 -HomePage da sistemare
--Profilo fornitore per i clienti (easy)
 -Pagine di arrivo statiche (easypeasy)
 
 EXTRA(?):

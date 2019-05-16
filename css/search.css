@@ -63,6 +63,7 @@
 }
 
 .reduced {
+  width: 70%;
   max-width: 70%;
 }
 
@@ -78,10 +79,14 @@
  }
 
  .informazionLink {
-   color: #F1B07C;
+   color: grey;
    font-weight: bold;
  }
 
  .informazionLink:hover {
-   color: #9D5C28;
+   color: grey;
  }
+
+strong{
+    font-size: 20px;
+}
