@@ -82,7 +82,7 @@
             </div>
             <?php if(is_logged() && $_SESSION['user_type'] == 'Cliente'){ ?>
             <div class="col-lg-2 col-3">
-                <button id="cartButton" type="button" class="btn btn-primary" name="button">Carrello <?php if(isset($_SESSION['tot_products'])){echo $_SESSION['tot_products'];} ?></button>
+                <a id="cartButton" class="btn btn-primary" href="./Cart.php" name="button">Carrello <?php if(isset($_SESSION['tot_products'])){echo $_SESSION['tot_products'];} ?></a>
             </div>
             <?php } ?>
 

@@ -74,7 +74,7 @@
         <?php if(isset($_SESSION['login_fail'])) {
                 if($_SESSION['login_fail'] == 'email'){ ?>
         <div class="alert alert-warning" role="alert">
-          <strong>Attenzione</strong> l'email che hai inserito non corrisponde a nessun account. Prova a registrarti prima a questo <a href="./Register.php">link</a>
+          <strong>Attenzione</strong> l'email che hai inserito non corrisponde a nessun account. Prova a registrarti prima a questo <a class=".alert-link" href="./Register.php">link</a>
         </div>
     <?php }} unset($_SESSION['login_fail']); unset($_SESSION['remaining'])?>
     </div>
