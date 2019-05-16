@@ -1,0 +1,54 @@
+#changeLogo {
+    text-align: center;
+}
+
+#profileInfoBox {
+    background-color: #832250;
+    color: white;
+    padding: 10px;
+    margin: 0px;
+    height: 90vh;
+}
+
+.profilePic {
+    width:100%;
+    border: 5px solid #F1B07C;
+    border-radius: 100%;
+    max-height:300px;
+}
+
+@media screen and (max-width:1200px) {
+    .profilePic {
+        max-height:150px;
+        max-width: 150px;
+    }
+
+    #profileInfoBox {
+      height: 100%;
+    }
+}
+
+.profilePic:hover {
+    border: 7px solid #F1B07C;
+}
+
+#prodottiBox {
+    margin-top: 20px;
+}
+
+.centered {
+  text-align: center;
+}
+
+.field {
+  margin-top: 10%;
+}
+
+.orari {
+  margin-bottom:10px;
+  padding: 1% 0;
+}
+
+.distanced {
+  margin-top: 1%;
+}

@@ -167,7 +167,7 @@
                         <div class="col">
                           <strong><?php echo $row['nome'] ?> </strong>
                           <span> - </span>
-                          <a href="./Fornitore?id=<?php echo $row['id_fornitore'] ?>"><?php echo $row['nome_fornitore'] ?></a>
+                          <a href="./Fornitore.php?id=<?php echo $row['id_fornitore'] ?>"><?php echo $row['nome_fornitore'] ?></a>
                         </div>
                       </div>
                       <hr/>

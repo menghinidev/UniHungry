@@ -44,7 +44,9 @@ a:visited {
      text-decoration:underline;
  }
 
-
+.navbar {
+  height: 10vh;
+}
 .nav-link {
     color:white;
     text-decoration: none;
