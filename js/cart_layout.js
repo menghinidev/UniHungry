@@ -39,7 +39,7 @@ function alterImage() {
   } else {
       $('.logo').removeClass('col-4').addClass('col-2');
   }
-  if(document.body.scrollHeight > screen.height){
+  if(document.body.scrollHeight > screen.height && ww < 750){
       $("#toShow").show();
   } else {
       $("#toShow").hide();

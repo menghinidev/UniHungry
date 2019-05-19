@@ -36,7 +36,7 @@
     if(isset($_GET['cat'])){
         $filtercat = explode(" ",$_GET['cat']);
         if($_GET['cat'] != ''){
-            $sql = $sql. " AND(";
+            $sql = "$sql AND (";
             $first = true;
             foreach($filtercat as $filter){
                 if(!$first){
@@ -56,15 +56,14 @@
             $sql = $sql." AND P.prezzo_unitario <= $val ";
         }
     }
-    /*
     if(isset($_GET['s'])){
         if($_GET['s'] != ''){
             $string = "'".mysqli_real_escape_string($mysqli, $_GET['s'])."'";
-            $sql = $sql. " ORDER BY levenshtein($string, P.nome), levenshtein($string, F.nome_fornitore)";
+            $sql = "$sql ORDER BY levenshtein($string, P.nome), levenshtein($string, F.nome_fornitore)";
         }
-    }*/
-    //echo $sql;
+    }
     $products = $mysqli->query($sql);
+    //echo $products;
     $r = $mysqli->query("SELECT nome FROM categorie");
     while($cat_row = $r->fetch_assoc()){
         $categories[] = $cat_row;
@@ -198,7 +197,7 @@
                         <?php if(isset($_SESSION['cart'][$row['id_prodotto']])){?>
                             <button type="button" class="btn orange reduced" name="button" onclick="addCart(<?php echo $row['id_prodotto']?>,this)">Aggiungi un altro</button>
                         <?php } else { ?>
-                            <button type="button" class="btn green reduced" name="button" onclick="addCart(<?php echo $row['id_prodotto']?>,this)">Aggiungi al carrello</button>
+                            <button type="button" class="btn green reduced" name="button" onclick="addCart(<?php echo $row['id_prodotto'].", ".$row['id_fornitore']?>,this)">Aggiungi al carrello</button>
                         <?php }?>
                         </div>
                   <?php } else if(!is_logged()){?>

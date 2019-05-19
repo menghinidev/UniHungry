@@ -23,7 +23,30 @@
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
-    <?php include 'navbar.php' ?>
+    <?php include 'navbar.php';
+    if(isset($_SESSION['cart'])){
+        $sql = "SELECT * FROM prodotti WHERE id_prodotto in (";
+        foreach ($_SESSION['cart'] as $productID => $quantity){
+            $sql = "$sql $productID,";
+        }
+        $sql = substr($sql, 0, -1);
+        $sql = "$sql ) ORDER BY id_fornitore";
+        $result = $mysqli->query($sql);
+        $diversi = count($_SESSION['fornitori']);
+        while($product = $result->fetch_assoc()){
+            $products_array[$product['id_prodotto']] = $product;
+        }
+    }
+    ?>
+    <?php if(isset($_SESSION['cart']) && $diversi > 1 ){ ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            Attenzione stai ordinando da <?php echo $diversi; ?> fornitori diversi, riceverai quindi altrettanti
+            ordini con possibili differenze nell'orario di consegna!
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+    <?php } ?>
     <div class="container fullScreen">
       <div class="row top_nav" id="toShow">
             <a href="#toScroll" class="scrolling btn btn-primary">Ordina ora</a>
@@ -31,6 +54,12 @@
 
       <div class="row" id="body">
         <div class="col-md-8 tofullscreen" id="content">
+            <?php if(!isset($_SESSION['cart'])) {
+                echo 'Il carrello è vuoto!';
+                //FIX MESSAGE POSITION
+            } else {
+                foreach($products_array as $product){
+            ?>
           <div class="row" id="prodotto">
             <div class="col-2 logo">
               <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
@@ -38,17 +67,17 @@
             <div class="col contenuto">
               <div class="row">
                 <div class="col-12">
-                  <h5>Titolo</h5>
+                  <h5><?php echo $product['nome']; ?></h5>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-8 description">
                   <div class="row col">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+                      <p><?php echo $product['descrizione']; ?>
                       </p>
                   </div>
                   <div class="row col">
-                      <p>Prezzo: </p>
+                      <p>Prezzo: <?php echo $product['prezzo_unitario'];?> </p>
                   </div>
                   <div class="row col">
                      <a href="" class="rimuovi"><small>Rimuovi dal carrello</small></a>
@@ -57,7 +86,7 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label for="q">Quantità</label>
-                    <input class="spinner" type="number" id="q" name="q" value="1" min="1" >
+                    <input class="spinner" type="number" id="q" name="q" value="<?php $id = $product['id_prodotto']; echo $_SESSION['cart'][$id] ?>" min="1" >
                   </div>
                 </div>
               </div>
@@ -65,15 +94,25 @@
           </div>
           <hr/>
 
+
+    <?php }}?>
         </div>
         <hr/>
-
       <div class="col" id="checkout">
             <div class="row col">
               <div class="head">
                 <strong for="totale">Totale:</strong>
               </div>
-              <label id="totale">13€</label>
+              <?php if(!isset($_SESSION['cart'])) { ?>
+                  <label id="totale">0€</label>
+              <?php } else {
+                  $tot = 0;
+                  foreach($products_array as $id => $p){
+                      $tot += $p['prezzo_unitario'] * $_SESSION['cart'][$id];
+                  }
+              ?>
+                  <label id="totale"><?php echo $tot. "€"; ?></label>
+              <?php } ?>
             </div>
           <hr/>
           <div class="form-check">

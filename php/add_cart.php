@@ -10,13 +10,25 @@ if(isset($_SESSION['cart']))
     } else {
         $_SESSION['cart'][$_POST['idProdotto']] = 1;
     }
+    if(isset($_SESSION['fornitori'][$_POST['idFornitore']])){
+        $_SESSION['fornitori'][$_POST['idFornitore']] += 1;
+    } else {
+        $_SESSION['fornitori'][$_POST['idFornitore']] = 1;
+    }
+
 } else {
-    $_SESSION['tot_products'] = 0;
+    $fornitori = array();
+    $fornitori[$_POST['idFornitore']] = 1;
+    $_SESSION['fornitori'] = $fornitori;
+
     $cart = array();
     $cart[$_POST['idProdotto']] = 1;
     $_SESSION['cart'] = $cart;
-
 }
-$_SESSION['tot_products'] +=1;
-echo $_SESSION['tot_products'];
+$tot = 0;
+foreach($_SESSION['cart'] as $q){
+    $tot +=$q;
+}
+$_SESSION['tot_products'] = $tot;
+echo $tot;
 ?>

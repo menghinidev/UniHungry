@@ -8,11 +8,11 @@ function not_loggedClick(){
 }
 
 
-function addCart(id, button){
+function addCart(id, id_fornitore, button){
     $.ajax({
     type: "POST",
     url: "add_cart.php",
-    data: { idProdotto: id }
+    data: { idProdotto: id, idFornitore: id_fornitore }
 }).done(function(data) {
     //updatecartIcon
     $('#cartButton').text("Carrello "+data);
