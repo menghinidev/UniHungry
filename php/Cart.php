@@ -17,6 +17,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="../js/bootstrap-input-spinner.js"></script>
     <script type="text/javascript" src="../js/cart_layout.js"></script>
+    <script type="text/javascript" src="../js/cart_behaviour.js"></script>
 
     <!-- Page informations and icon -->
     <title>UniHungry - Cart</title>
@@ -86,7 +87,7 @@
                 <div class="col-lg-4">
                   <div class="form-group">
                     <label for="q">Quantità</label>
-                    <input class="spinner" type="number" id="q" name="q" value="<?php $id = $product['id_prodotto']; echo $_SESSION['cart'][$id] ?>" min="1" >
+                    <input class="spinner" type="number" id="q" name="q" onchange="changeQuantity(this, <?php echo $product['id_prodotto'].", ".$product['id_fornitore'] ; ?>)" value="<?php $id = $product['id_prodotto']; echo $_SESSION['cart'][$id] ?>" min="1" >
                   </div>
                 </div>
               </div>
