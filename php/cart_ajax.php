@@ -34,6 +34,32 @@ if(isset($_POST['action'])){
         }
         echo $tot;
     }
+
+    if($action == "removeProduct"){
+        $id = $_POST['idProdotto'];
+        $old = $_SESSION['cart'][$id];
+        $reload = false;
+        //remove the product from cart
+        unset($_SESSION['cart'][$id]);
+        //update fornitore count
+        $_SESSION['fornitori'][$_POST['idFornitore']] -= $old;
+        if($_SESSION['fornitori'][$_POST['idFornitore']] == 0){
+            //remove fornitore
+            unset($_SESSION['fornitori'][$_POST['idFornitore']]);
+            $reload = true;
+        }
+        //update total count
+        $_SESSION['tot_products'] -= $old;
+        if($_SESSION['tot_products'] == 0){
+        //UNSET CART
+        unset($_SESSION['cart']);
+        unset($_SESSION['fornitori']);
+        unset($_SESSION['tot_products']);
+        }
+
+        echo $reload;
+
+    }
 }
 
  ?>

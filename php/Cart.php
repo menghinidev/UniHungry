@@ -40,7 +40,7 @@
     }
     ?>
     <?php if(isset($_SESSION['cart']) && $diversi > 1 ){ ?>
-        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div id="fornitoriAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
             Attenzione stai ordinando da <?php echo $diversi; ?> fornitori diversi, riceverai quindi altrettanti
             ordini con possibili differenze nell'orario di consegna!
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -61,7 +61,7 @@
             } else {
                 foreach($products_array as $product){
             ?>
-          <div class="row" id="prodotto">
+          <div class="row product" id="prodotto<?php echo $product['id_prodotto'];?>">
             <div class="col-2 logo">
               <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
             </div>
@@ -81,7 +81,7 @@
                       <p>Prezzo: <?php echo $product['prezzo_unitario'];?> </p>
                   </div>
                   <div class="row col">
-                     <a href="" class="rimuovi"><small>Rimuovi dal carrello</small></a>
+                     <button type="button" class="rimuovi btn btn-link" onclick="removeProduct(<?php echo $product['id_prodotto'].", ".$product['id_fornitore'] ; ?>)"><small>Rimuovi dal carrello</small></button>
                   </div>
                 </div>
                 <div class="col-lg-4">
@@ -93,7 +93,7 @@
               </div>
             </div>
           </div>
-          <hr/>
+
 
 
     <?php }}?>
