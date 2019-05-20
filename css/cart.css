@@ -37,6 +37,12 @@
     padding:0px;
 }
 
+.fornitore{
+    margin-left:1px;
+    margin-bottom: 10px;
+    color: #60BB6B;
+    border-bottom: 3px solid #60BB6B;
+}
 
 .labels {
   margin-left: 1%;

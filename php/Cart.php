@@ -26,7 +26,7 @@
   <body>
     <?php include 'navbar.php';
     if(isset($_SESSION['cart'])){
-        $sql = "SELECT * FROM prodotti WHERE id_prodotto in (";
+        $sql = "SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE P.id_fornitore = F.id_fornitore AND id_prodotto in (";
         foreach ($_SESSION['cart'] as $productID => $quantity){
             $sql = "$sql $productID,";
         }
@@ -59,7 +59,29 @@
                 echo 'Il carrello è vuoto!';
                 //FIX MESSAGE POSITION
             } else {
+                $first = true;
+                $fornitoreID = 0;
                 foreach($products_array as $product){
+                    if($first){
+                        $fornitoreID = $product['id_fornitore'];
+                        //print fornitore data
+                        ?>
+                         <div class="row fornitore">
+                             <h4><?php echo $product['nome_fornitore']; ?></h4>
+                         </div>
+                        <?php
+                        $first = false;
+                    } else {
+                        if($fornitoreID != $product['id_fornitore']){
+                            $fornitoreID = $product['id_fornitore'];
+                            //print fornitore data
+                            ?>
+                            <div class="row fornitore">
+                                <h4><?php echo $product['nome_fornitore']; ?></h4>
+                            </div>
+                            <?php
+                        }
+                    }
             ?>
           <div class="row product" id="prodotto<?php echo $product['id_prodotto'];?>">
             <div class="col-2 logo">
