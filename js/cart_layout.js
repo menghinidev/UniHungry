@@ -3,16 +3,24 @@ $(document).ready(function() {
   $("#consegna").click(function() {
       if(this.checked) {
           $('#myForm').collapse('hide');
-      } else {
-          $('#myForm').collapse('show');
+          $("#nome").prop('required',false);
+          $("#cognome").prop('required',false);
+          $("#numero_carta").prop('required',false);
+          $("#cvv").prop('required',false);
+          $("#anno_scadenza").prop('required',false);
+          $("#mese_scadenza").prop('required',false);
       }
   });
 
   $("#ora").click(function() {
       if(this.checked) {
           $('#myForm').collapse('show');
-      } else {
-          $('#myForm').collapse('hide');
+          $("#nome").prop('required',true);
+          $("#cognome").prop('required',true);
+          $("#numero_carta").prop('required',true);
+          $("#cvv").prop('required',true);
+          $("#anno_scadenza").prop('required',true);
+          $("#mese_scadenza").prop('required',true);
       }
   });
 

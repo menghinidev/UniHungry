@@ -33,6 +33,7 @@
         $sql = substr($sql, 0, -1);
         $sql = "$sql ) ORDER BY id_fornitore";
         $result = $mysqli->query($sql);
+        $products_array = array();
         $diversi = count($_SESSION['fornitori']);
         while($product = $result->fetch_assoc()){
             $products_array[$product['id_prodotto']] = $product;
@@ -66,7 +67,7 @@
                         $fornitoreID = $product['id_fornitore'];
                         //print fornitore data
                         ?>
-                         <div class="row fornitore">
+                         <div class="row fornitore" id="fornitore<?php echo $product['id_fornitore']; ?>">
                              <h4><?php echo $product['nome_fornitore']; ?></h4>
                          </div>
                         <?php
@@ -76,7 +77,7 @@
                             $fornitoreID = $product['id_fornitore'];
                             //print fornitore data
                             ?>
-                            <div class="row fornitore">
+                            <div class="row fornitore" id="fornitore<?php echo $product['id_fornitore']; ?>">
                                 <h4><?php echo $product['nome_fornitore']; ?></h4>
                             </div>
                             <?php
@@ -102,9 +103,6 @@
                   <div class="row col">
                       <p>Prezzo: <?php echo $product['prezzo_unitario'];?> </p>
                   </div>
-                  <div class="row col">
-                     <button type="button" class="rimuovi btn btn-link" onclick="removeProduct(<?php echo $product['id_prodotto'].", ".$product['id_fornitore'] ; ?>)"><small>Rimuovi dal carrello</small></button>
-                  </div>
                 </div>
                 <div class="col-lg-4">
                   <div class="form-group">
@@ -112,16 +110,18 @@
                     <input class="spinner" type="number" id="q" name="q" onchange="changeQuantity(this, <?php echo $product['id_prodotto'].", ".$product['id_fornitore'] ; ?>)" value="<?php $id = $product['id_prodotto']; echo $_SESSION['cart'][$id] ?>" min="1" >
                   </div>
                 </div>
+                <div class="row col">
+                   <button type="button" class="rimuovi btn btn-link" onclick="removeProduct(<?php echo $product['id_prodotto'].", ".$product['id_fornitore'] ; ?>)"><small>Rimuovi dal carrello</small></button>
+                </div>
               </div>
             </div>
           </div>
-
-
-
     <?php }}?>
         </div>
-        <hr/>
+
+
       <div class="col" id="checkout">
+      <form action="action_ordina.php"method="post">
             <div class="row col">
               <div class="head">
                 <strong for="totale">Totale:</strong>
@@ -137,58 +137,88 @@
                   <label id="totale"><?php echo $tot. "€"; ?></label>
               <?php } ?>
             </div>
-          <hr/>
+            <hr/>
+            <div class="form-group">
+              <label for="luogo_ritiro">Luogo di ritiro:</label>
+              <select id="luogo_ritiro" name="luogo_ritiro" class="form-control" required>
+                  <option value="Ingresso Via dell'Università">Ingresso Via dell'Università</option>
+                  <option value="Ingresso Via Macchiavelli">Ingresso Via Macchiavelli</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="ora_ritiro">Ora</label>
+              <input type="time" id="ora_ritiro" name="ora_ritiro" class="form-control" value="<?php
+              $minTime = time() + (30 * 60);
+              date_default_timezone_set("Europe/Rome");
+              echo date("H:i",$minTime); ?>" required>
+            </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optradio" id="ora">Paga ora
+              <input type="radio" class="form-check-input" name="optradio" name="ora" id="ora">Paga ora
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optradio" id="consegna" checked>Paga alla consegna
+              <input type="radio" class="form-check-input" name="optradio" id="consegna" name="consegna" checked>Paga alla consegna
             </label>
           </div>
-          <form class="collapse" id="myForm">
+
+          <div class="collapse" id="myForm">
+            <hr/>
             <div class="form-row">
               <div class="form-group col-6">
-                <label for="inputEmail4">Nome</label>
-                <input type="text" class="form-control"placeholder="Nome">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" class="form-control"placeholder="Nome">
               </div>
               <div class="form-group col-6">
-                <label for="inputPassword4">Cognome</label>
-                <input type="text" class="form-control"placeholder="Cognome">
+                <label for="cognome">Cognome</label>
+                <input type="text" id="cognome" name="cognome" class="form-control"placeholder="Cognome">
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-8">
-                <label for="inputEmail4">Numero carta</label>
-                <input type="text" class="form-control" placeholder="Numero">
+                <label for="numero_carta">Numero carta</label>
+                <input type="text" id="numero_carta" name="numero_carta" class="form-control" placeholder="1111 1111 1111 1111" pattern ='^\d{16}$'>
               </div>
               <div class="form-group col-4">
-                <label>CVV</label>
-                <input type="text" class="form-control" placeholder="CVV">
+                <label for="cvv">CVV</label>
+                <input type="text" name="cvv" id="cvv" class="form-control" placeholder="CVV" pattern ='^\d{3}$'>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-4">
-                <label for="inputState">Anno scadenza</label>
-                  <select id="inputState" class="form-control date" placeholder="Anno">
-                    <option>19</option>
+                <label for="anno_scadenza">Anno scadenza</label>
+                  <select id="anno_scadenza" name="anno_scadenza" class="form-control date">
+                    <?php
+                    for ($i=0; $i <= 11 ; $i++) {
+                        $s= date("Y");
+                        $s += $i;
+                        echo "<option value='$s'>$s</option>";
+                    }
+                     ?>
                   </select>
               </div>
               <div class="form-group col-4">
-                <label for="inputState">Mese scadenza</label>
-                <select id="inputState" class="form-control date" placeholder="Mese">
-                  <option>01</option>
+                <label for="mese_scadenza">Mese scadenza</label>
+                <select id="mese_scadenza" name="mese_scadenza" class="form-control date" placeholder="Mese">
+                  <?php
+                  for ($i=1; $i <= 12 ; $i++) {
+                      if($i < 10){
+                          $s = "0".$i;
+                      } else {
+                          $s = $i;
+                      }
+                      echo "<option value='$s'>$s</option>";
+                  }
+                   ?>
                 </select>
               </div>
             </div>
+            </div>
+            <div class="sendNext">
+                <button type="submit" class="btn btn-primary order"  id="toScroll">Ordina ora</button>
+            </div>
           </form>
-          <div class="sendNext">
-            <form action="Confirm.html" method="post">
-              <button type="submit" class="btn btn-primary order"  id="toScroll">Ordina ora</button>
-            </form>
-          </div>
         </div>
       </div>
     </div>

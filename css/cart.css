@@ -38,10 +38,13 @@
 }
 
 .fornitore{
-    margin-left:1px;
     margin-bottom: 10px;
     color: #60BB6B;
     border-bottom: 3px solid #60BB6B;
+}
+
+.fornitore>h4{
+    margin-left: 15px;
 }
 
 .labels {
@@ -52,6 +55,9 @@
     margin-left: 5px;
 }
 
+hr {
+    margin:5px 0px;
+}
 .head {
   text-align: left;
 }
@@ -62,10 +68,6 @@
 
 .date {
   width: 100%;
-}
-
-form {
-  margin-top: 5%;
 }
 
 .order {
