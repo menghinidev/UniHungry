@@ -28,15 +28,18 @@ if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
     $luogo = "'".mysqli_real_escape_string($mysqli, $_POST['luogo_ritiro'])."'";
 
     foreach($fornitori_IDs as $F_id){
-    $query = "INSERT INTO ordini (data, ora_sottomissione, ora_richiesta, luogo_ritiro, stato_ordine, pagato, id_cliente, id_fornitore) VALUES ({$data}, {$ora_sottomissione}, {$ora_richiesta}, {$luogo}, {$stato_ordine} , false, {$_SESSION['user_id']}, {$F_id} )";
-    echo $query;
-    if($mysqli->query($query)){
+        $query = "INSERT INTO ordini (data, ora_sottomissione, ora_richiesta, luogo_ritiro, stato_ordine, pagato, id_cliente, id_fornitore) VALUES ({$data}, {$ora_sottomissione}, {$ora_richiesta}, {$luogo}, {$stato_ordine} , false, {$_SESSION['user_id']}, {$F_id} )";
+        if($mysqli->query($query)){
             $fornitori_ordini[$F_id] = $mysqli->insert_id;
-        } else {
-            echo "ciao";
         }
     }
-
+    foreach($products_array as $p){
+        $id_prodotto = $p['id_prodotto'];
+        $id_ordine = $fornitori_ordini[$p['id_fornitore']];
+        $q = $_SESSION['cart'][$id_prodotto];
+        $query = "INSERT INTO ordinazioni VALUES ($id_prodotto, $id_ordine ,$q )";
+        $mysqli->query($query);
+    }
 }
 //header("Location: ../html/EndPoints/Confirm.html");
  ?>
