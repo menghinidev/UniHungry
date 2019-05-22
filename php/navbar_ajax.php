@@ -48,7 +48,15 @@ if(isset($_POST['action'])){
     }
 
     if($action == 'set_seen'){
-
+        $sql = "UPDATE notifiche SET visualizzata = true WHERE id_notifica IN ";
+        $range = "(";
+        foreach($_POST['ids'] as $nId){
+            $range .= $nId.",";
+        }
+        $range = substr($range, 0, -1);
+        $range .=")";
+        $sql .= $range;
+        echo $mysqli->query($sql);
     }
 }
 

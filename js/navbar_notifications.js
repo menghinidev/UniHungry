@@ -29,10 +29,15 @@ function updateNotifications(){
 }
 
 function setSeen(){
+    //get ids of displayed
+    var ids = [];
+    $('.notify').each(function(){
+        ids.push($(this).attr('id').replace("notifica", ""))
+    });
     $.ajax({
     type: "POST",
     url: "navbar_ajax.php",
-    data: {action: "set_seen" }
+    data: {action: "set_seen", ids: ids }
 }).done(function() {
     //update current view
     $(".notify").removeClass("not-seen");
