@@ -9,41 +9,49 @@ TODO:
 $_SESSION['user_id'] --> int
 $_SESSION['user_type'] --> Cliente / Fornitore / Admin
 $_SESSION['email'] --> email utente
-//Array carrello???
+---carrello---
+$_SESSION['cart'] --> array id=>quantità
+$_SESSION['fornitori'] --> array id=>numero prodotti
+$_SESSION['tot_products'] --> numero totale prodotti
 
 /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 GOALS
 
 1. (OK) login + registrazione
-2. (OK) Navbar php module       ||HomePage mobile dropdown visualizzato male||
+2. (OK) Navbar php module               ||ICONE||
 3. (OK) Admin view per le modifiche
-4. (OK) Ricerca prodotti  ||Link al fornitore + paginazione?||
-5. (OK) Email di conferma ||Mancano relative agli ordini||
-6. (OK) Ordini + carrello ||pulsante per tornare indietro?||
+4. (OK) Ricerca prodotti                ||paginazione?||
+5. (OK) Email di conferma
+6. (OK) Ordini + carrello               ||pulsante per tornare indietro? + carrello vuoto layout||
 
 NEXT:
+-notifiche (Samu)
+-Riepilogo ordini fornitori (Samu)
 
+-Profilo fornitore per i clienti (easy)(Mengo)
+
+WARNING:
 -Modifica profilo fornitori -> manca validazione
 -Gestione prodotti fornitore -> manca validazione
--TUTTI I FORM DA VALIDARE
+-TUTTI I FORM DA RICONTROLLARE E VALIDARE
 
--notifiche /!\IMPORTANTE/!\
 
 -Modifica profilo clienti (easy)
 -Riepilogo ordini clienti (easy)
--Riepilogo ordini fornitori
+
 
 AT LAST:
--Profilo fornitore per i clienti (easy)
+-image crop
+-icone
 -Richiesta modifiche fornitore (easy)
 -HomePage da sistemare
 -Pagine di arrivo statiche (easypeasy)
 
 EXTRA(?):
--sezione "contattaci" + relativa vista admin
--image crop
 -popolare bene il db
+-sezione "contattaci" + relativa vista admin???
+
 _________________________________________
 NAMING CONVENTIONS
 
