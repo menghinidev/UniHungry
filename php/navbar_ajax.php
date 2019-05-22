@@ -4,6 +4,7 @@ include 'secure_func.php';
 sec_session_start();
 if(isset($_POST['action'])){
     $action = $_POST['action'];
+//SET SEEN
     if($action == 'update'){
         //variables
         $u_id = $_SESSION['user_id'];
@@ -15,10 +16,26 @@ if(isset($_POST['action'])){
 
             if($_SESSION['user_type'] == 'Cliente'){
                 //cliente
-
+                $sql = "SELECT N.* from notifiche N, ordini O WHERE O.id_ordine = N.id_ordine AND O.id_cliente = {$u_id} AND N.per_utente = true AND N.visualizzata=false ORDER BY N.id_notifica DESC";
+                $res = $mysqli->query($sql);
+                $newNum = $res->num_rows;
+                if($newNum != 0){
+                    while($n = $res->fetch_assoc()){
+                        $html .= generate($n, true);
+                    }
+                }
+                if($newNum < 5){
+                    $limit = 5 - $res->num_rows;
+                    $sql = "SELECT N.* from notifiche N, ordini O WHERE O.id_ordine = N.id_ordine AND O.id_cliente = {$u_id} AND N.per_utente = true AND N.visualizzata=true ORDER BY N.id_notifica DESC LIMIT $limit";
+                    $res = $mysqli->query($sql);
+                    $seenNum = $res->num_rows;
+                    while($n = $res->fetch_assoc()){
+                        $html .= generate($n, false);
+                    }
+                }
             } else {
                 //fornitore
-                $sql = "SELECT * FROM notifiche WHERE id_fornitore = {$u_id} AND visualizzata=false ORDER BY id_notifica DESC";
+                $sql = "SELECT * FROM notifiche WHERE id_fornitore = {$u_id} AND per_utente = false AND visualizzata=false ORDER BY id_notifica DESC";
                 $res = $mysqli->query($sql);
                 $newNum = $res->num_rows;
                 if($newNum != 0){
@@ -30,23 +47,22 @@ if(isset($_POST['action'])){
                     $limit = 5 - $res->num_rows;
                     $sql = "SELECT * FROM notifiche WHERE id_fornitore = {$u_id} AND visualizzata=true ORDER BY id_notifica DESC LIMIT $limit";
                     $res = $mysqli->query($sql);
-                    if($newNum + $res->num_rows == 0){
-                        echo "0_<p class='dropdown-item'> Non sono presenti notifiche </p>";
-                        return;
-                    } else {
-                        while($n = $res->fetch_assoc()){
-                            $html .= generate($n, false);
-                        }
+                    $seenNum = $res->num_rows;
+                    while($n = $res->fetch_assoc()){
+                        $html .= generate($n, false);
                     }
                 }
-                //stick footer
-                $html .= $footer;
             }
-
+            if($newNum + $seenNum == 0){
+                echo "0_<p class='dropdown-item'> Non sono presenti notifiche </p>";
+                return;
+            }
+            //stick footer
+            $html .= $footer;
+            echo $newNum."_".$html;
         }
-        echo $newNum."_".$html;
     }
-
+//SET SEEN
     if($action == 'set_seen'){
         $sql = "UPDATE notifiche SET visualizzata = true WHERE id_notifica IN ";
         $range = "(";
