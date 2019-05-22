@@ -9,6 +9,7 @@ $PROFILO_UTENTE = $prefix.'ProfiloCliente.php';
 $PROFILO_FORNITORE = $prefix.'ProfiloFornitore.php';
 $SEARCH = $prefix.'Search.php';
 ?>
+<script src="../js/navbar_notifications.js" charset="utf-8"></script>
 <nav class="navbar navbar-expand-md sticky-top selectDisable">
      <!-- Brand -->
      <?php if($_SERVER['PHP_SELF'] == $HOME) { ?>
@@ -50,15 +51,18 @@ $SEARCH = $prefix.'Search.php';
                     <?php } ?>
 
                     <!-- Notification dropdown extended page -->
-                    <div class="btn-group">
-                      <button type="button" class="btn green dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <?php if($_SESSION['user_type'] != 'Admin'){ ?>
+                    <div id="dropdown_parent" class="btn-group dropdown">
+                      <button type="button" id="notifiche_button" class="btn green dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Notifiche
+                        <span id="notifiche_count" class="badge badge-pill badge-danger"></span>
                       </button>
-                      <div class="dropdown-menu dropdown-menu-right">
-                        <a href="#">Notifica 1 ...........................</a>
+                      <div id="drop_notifiche" class="dropdown-menu dropdown-menu-right">
                       </div>
                     </div>
-                <?php } ?>
+                <?php }
+                    }
+                ?>
 
             </ul>
     </div>
@@ -74,12 +78,12 @@ $SEARCH = $prefix.'Search.php';
                 <?php } else { ?>
                     <a class="dropdown-item" href="./HomePage.php">Home</a>
                 <?php } ?>
-                
+
                 <!--not logged-->
                 <?php if(!is_logged()){ ?>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="./Login.php">Accedi</a>
-                    <a class="dropdown-item" href="./Registrati.php">Registrati</a>
+                    <a class="dropdown-item" href="./Register.php">Registrati</a>
                 <?php } else { ?>
                 <?php if($_SERVER['PHP_SELF'] == $PROFILO_FORNITORE) { ?>
                     <a class="dropdown-item" href="./******">Ordini</a>
@@ -88,12 +92,15 @@ $SEARCH = $prefix.'Search.php';
                 <!--logged in mobile-->
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="./script_profile.php">Profilo</a>
-                    <a class="dropdown-item" href="*******">Notifiche</a>
+                    <?php if($_SESSION['user_type'] != 'Admin'){ ?>
+                        <a class="dropdown-item" href="*******">Notifiche</a>
+                    <?php } ?>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="./script_logout.php">Logout</a>
                 <?php } ?>
             </div>
         </div>
+
 
         <!-- Right side buttons -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">

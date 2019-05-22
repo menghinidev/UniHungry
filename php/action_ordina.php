@@ -32,6 +32,11 @@ if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
         if($mysqli->query($query)){
             $fornitori_ordini[$F_id] = $mysqli->insert_id;
         }
+        //Create notification for fornitore
+        $testoNotifica ="Hai ricevuto un nuovo ordine!";
+        $testoNotifica = "'".mysqli_real_escape_string($mysqli,$testoNotifica)."'";
+        $query ="INSERT INTO notifiche (testo, visualizzata, per_utente, id_fornitore, id_ordine) VALUES($testoNotifica, false, false, {$F_id}, {$fornitori_ordini[$F_id]})";
+        $mysqli->query($query);
     }
     foreach($products_array as $p){
         $id_prodotto = $p['id_prodotto'];
@@ -44,9 +49,11 @@ if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
     unset($_SESSION['cart']);
     unset($_SESSION['fornitori']);
     unset($_SESSION['tot_products']);
-    //NOTIFICATIONS
-    
+
+    //USER NOTIFICATION?
+
     //EMAIL?
+
     header("Location: ../html/EndPoints/Confirm.html");
 }
 
