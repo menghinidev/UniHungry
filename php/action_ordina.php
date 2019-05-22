@@ -40,6 +40,14 @@ if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
         $query = "INSERT INTO ordinazioni VALUES ($id_prodotto, $id_ordine ,$q )";
         $mysqli->query($query);
     }
+    //UNSET CART
+    unset($_SESSION['cart']);
+    unset($_SESSION['fornitori']);
+    unset($_SESSION['tot_products']);
+    //NOTIFICATIONS
+    
+    //EMAIL?
+    header("Location: ../html/EndPoints/Confirm.html");
 }
-//header("Location: ../html/EndPoints/Confirm.html");
+
  ?>

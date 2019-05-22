@@ -20,11 +20,13 @@ GOALS
 3. (OK) Admin view per le modifiche
 4. (OK) Ricerca prodotti  ||Link al fornitore + paginazione?||
 5. (OK) Email di conferma ||Mancano relative agli ordini||
+6. (OK) Ordini + carrello ||pulsante per tornare indietro?||
 
 NEXT:
--Ordini + carrello (Samu)
+
 -Modifica profilo fornitori -> manca validazione
 -Gestione prodotti fornitore -> manca validazione
+-TUTTI I FORM DA VALIDARE
 
 -notifiche /!\IMPORTANTE/!\
 

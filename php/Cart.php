@@ -42,7 +42,7 @@
     ?>
     <?php if(isset($_SESSION['cart']) && $diversi > 1 ){ ?>
         <div id="fornitoriAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
-            Attenzione stai ordinando da <?php echo $diversi; ?> fornitori diversi, riceverai quindi altrettanti
+            Attenzione stai ordinando da <span id="fornitoriNum"> <?php echo $diversi; ?></span> fornitori diversi, riceverai quindi altrettanti
             ordini con possibili differenze nell'orario di consegna!
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -51,7 +51,7 @@
     <?php } ?>
     <div class="container fullScreen">
       <div class="row top_nav" id="toShow">
-            <a href="#toScroll" class="scrolling btn btn-primary">Ordina ora</a>
+            <a href="#ordina" class="scrolling btn btn-primary">Ordina ora</a>
       </div>
 
       <div class="row" id="body">
@@ -86,7 +86,9 @@
             ?>
           <div class="row product" id="prodotto<?php echo $product['id_prodotto'];?>">
             <div class="col-2 logo">
-              <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
+                <?php
+                echo "<img class='reslogo nopadding img-fluid' src='data:image/jpeg;base64,".base64_encode($product['immagine'])."' alt='immagine prodotto'>";
+                ?>
             </div>
             <div class="col contenuto">
               <div class="row">
@@ -121,7 +123,7 @@
 
 
       <div class="col" id="checkout">
-      <form action="action_ordina.php"method="post">
+      <form  id="checkoutForm" action="action_ordina.php"method="post">
             <div class="row col">
               <div class="head">
                 <strong for="totale">Totale:</strong>
@@ -216,7 +218,7 @@
             </div>
             </div>
             <div class="sendNext">
-                <button type="submit" class="btn btn-primary order"  id="toScroll">Ordina ora</button>
+                <button type="submit" class="btn btn-primary order" id="ordina" <?php if(!isset($_SESSION['cart'])){echo "disabled='disabled'";} ?>>Ordina ora</button>
             </div>
           </form>
         </div>

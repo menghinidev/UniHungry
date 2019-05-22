@@ -27,13 +27,27 @@ function removeProduct(prod_id, fornitore_id){
     type: "POST",
     url: "cart_ajax.php",
     data: { action: "removeProduct",  idProdotto: prod_id, idFornitore: fornitore_id}
-}).done(function(reload) {
+}).done(function(param) {
     updateTotal();
-    if(reload){
-        window.location.reload();
+    var array = param.split(",");
+    var fornitori = array[0];
+    var f_delete = array[1];
+    if(fornitori > 1){
+        //reload banner
+        $("#fornitoriNum").text(fornitori);
     } else {
-        //remove row
-        $("#prodotto"+prod_id).remove();
+        //remove banner
+        $("#fornitoriAlert").hide();
     }
-  });
+    if(f_delete){
+        $("#fornitore"+fornitore_id).remove();
+    }
+    //remove product row
+    $("#prodotto"+prod_id).remove();
+
+    if(fornitori == 0){
+        $("#content").text("Il carrello è vuoto!");
+        $("#ordina").attr("disabled","disabled");
+    }
+    });
 }

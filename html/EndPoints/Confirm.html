@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/theme.css">
-  <link rel="stylesheet" href="../css/sheet.css">
-  <link rel="stylesheet" href="../css/confirm.css">
+  <link rel="stylesheet" href="../../css/theme.css">
+  <link rel="stylesheet" href="../../css/sheet.css">
+  <link rel="stylesheet" href="../../css/confirm.css">
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -17,29 +17,21 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
   <!-- Page informations and icon -->
-  <title>Grazie per il tuo ordine :)</title>
-  <link rel="shortcut icon" href="../res/icon.ico" />
+  <title>Conferma ordine</title>
+  <link rel="shortcut icon" href="../../res/icon.ico" />
 </head>
   <body>
     <nav class="navbar navbar-expand-md sticky-top">
-       <a id="brand" class="navbar-brand nav-link" href="HomePage.html">
-          <img src="../res/logo.png" height="40" alt="UniHungry">
+       <a id="brand" class="navbar-brand nav-link" href="../../php/HomePage.php">
+          <img src="../../res/logo.png" height="40" alt="UniHungry">
        </a>
     </nav>
     <div class="message">
       <h1>Grazie per aver ordinato!</h1>
       <hr/>
-      <p class="centered">Ti invieremo una notifica quando il tuo ordine sarà in consegna, tieni d'occhio i messaggi
-      per eventuali comunicazioni dal fornitore</p>
+      <p class="centered">Ti invieremo una notifica quando il tuo ordine sarà in consegna.</p>
       <div class="distance">
-        <form action="HomePage.html" method="post">
-          <button type="submit" class="btn green">Vai alla Home Page</button>
-        </form>
-      </div>
-      <div>
-        <form action="ProfiloUtente.html" method="post">
-          <button type="submit" class="btn green">Il tuo profilo</button>
-        </form>
+        <a class="btn green" href="../../php/HomePage.php">Torna alla HomePage</a>
       </div>
     </div>
   </body>
