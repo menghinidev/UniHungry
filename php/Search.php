@@ -34,7 +34,7 @@
         }
     }
     if(isset($_GET['cat'])){
-        $filtercat = explode(" ",$_GET['cat']);
+        $filtercat = explode("_",$_GET['cat']);
         if($_GET['cat'] != ''){
             $sql = "$sql AND (";
             $first = true;

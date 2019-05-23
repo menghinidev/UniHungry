@@ -52,7 +52,7 @@ function applica(){
                 queryParameters['cat']=value;
                 first = false;
             } else {
-                queryParameters['cat']+=' '+value;
+                queryParameters['cat']+='_'+value;
             }
         }
     });

@@ -7,7 +7,7 @@
     color: white;
     padding: 10px;
     margin: 0px;
-    height: 90vh;
+    height: 92vh;
 }
 
 .profilePic {
@@ -26,10 +26,6 @@
     #profileInfoBox {
       height: 100%;
     }
-}
-
-.profilePic:hover {
-    border: 7px solid #F1B07C;
 }
 
 #prodottiBox {

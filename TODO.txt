@@ -19,9 +19,9 @@ $_SESSION['tot_products'] --> numero totale prodotti
 GOALS
 
 1. (OK) login + registrazione
-2. (OK) Navbar php module               ||ICONE||
+2. (OK) Navbar php module               ||icone||
 3. (OK) Admin view per le modifiche
-4. (OK) Ricerca prodotti                ||paginazione?||
+4. (OK) Ricerca prodotti                ||paginazione||
 5. (OK) Email di conferma
 6. (OK) Ordini + carrello               ||pulsante per tornare indietro? + carrello vuoto layout||
 
@@ -29,17 +29,18 @@ NEXT:
 -notifiche (Samu)
 -Riepilogo ordini fornitori (Samu)
 
--Profilo fornitore per i clienti (easy)(Mengo)
+-Inserimento orari (Mengo) ||Orario max senza limitazione||
+-Profilo fornitore per i clienti (easy)(Mengo) ||se non ci sono orari? + link alla ricerca + layout mobile||
+
+-Modifica profilo clienti (easy)
+-Riepilogo ordini clienti (easy)
 
 WARNING:
 -Modifica profilo fornitori -> manca validazione
 -Gestione prodotti fornitore -> manca validazione
 -TUTTI I FORM DA RICONTROLLARE E VALIDARE
 
-
--Modifica profilo clienti (easy)
--Riepilogo ordini clienti (easy)
-
+WARNING GESTIONE ORARI FORNITORI NELLA RICERCA/ORDINAZIONE
 
 AT LAST:
 -image crop
