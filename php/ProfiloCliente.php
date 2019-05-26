@@ -57,8 +57,7 @@
                 </div>
                 <?php
                 if ($resultOrdiniInCorso->num_rows == 0) {
-                  echo '</div>
-                      </div>';
+                  echo '';
                 } else {
                   while ($row = $resultOrdiniInCorso->fetch_assoc()) {
                     $id = $row['id_ordine'];
@@ -110,8 +109,7 @@
                 </div>
                 <?php
                 if ($resultOrdiniPassati->num_rows == 0) {
-                  echo '</div>
-                      </div>';
+                  echo '';
                 } else {
                   while ($row = $resultOrdiniPassati->fetch_assoc()) {
                     $id = $row['id_ordine'];
