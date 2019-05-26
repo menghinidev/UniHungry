@@ -26,7 +26,12 @@
       <?php include 'navbar.php';
       if(!is_logged()){
 
-      } else if($_SESSION['user_type'] = 'Fornitore'){ ?>
+      } else if($_SESSION['user_type'] = 'Fornitore'){
+          $id = $_SESSION['user_id'];
+          $sql = "SELECT * FROM ordini WHERE id_fornitore = $id AND stato_ordine!='rifiutato'";
+          $sql .=" ORDER BY data DESC, ora_richiesta DESC";
+          $result = $mysqli->query($sql);
+     ?>
 
       <div class="row" id="filterBar">
               <form class="col-6 form-inline">
@@ -39,19 +44,25 @@
                   <div class="form-inline" id="checkBoxes">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="accettati">
-                        <label class="form-check-label" for="defaultCheck2">
+                        <label class="form-check-label" for="accettati">
+                          Ricevuti
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="accettati">
+                        <label class="form-check-label" for="accettati">
                           Accettati
                         </label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="completati">
-                        <label class="form-check-label" for="defaultCheck2">
+                        <label class="form-check-label" for="completati">
                           Completati
                         </label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="consegnati">
-                        <label class="form-check-label" for="defaultCheck2">
+                        <label class="form-check-label" for="consegnati">
                           Consegnati
                         </label>
                       </div>
@@ -62,7 +73,10 @@
   </div>
 
   <div class="container fullScreen" id="ordini">
-
+      <?php if($result->num_rows <= 0){
+          echo "Non ci sono ordini";
+      } else {
+      ?>
       <div class="container riepilogoOrdine fullScreen">
           <h2>Ordini</h2>
           <div class=" row">
@@ -73,51 +87,38 @@
       </div>
 
       <div id="accordion">
+          <?php
+          while($ordine = $result->fetch_assoc()){
+              $sql = "SELECT P.nome, P.prezzo_unitario, O.quantita FROM ordinazioni O, prodotti P where P.id_prodotto = O.id_prodotto AND id_ordine = {$ordine['id_ordine']}";
+              $prodotti = $mysqli->query($sql);
+           ?>
         <div class="card">
-          <div class="card-header nopadding" id="headingOne">
-                  <div class="container fullScreen btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <div class="card-header nopadding" id="heading<?php echo $ordine['id_ordine']; ?>">
+                  <div class="container fullScreen btn" data-toggle="collapse" data-target="#collapse<?php echo $ordine['id_ordine']; ?>" aria-expanded="true" aria-controls="collapse<?php echo $ordine['id_ordine']; ?>">
                       <div class="row">
-                          <p class="col-4">#222222222 </p>
-                          <p class="col-4">30/01/19 - 10:14 </p>
-                          <p class="col-4"> stato ordine</p>
+                          <p class="col-4"><?php echo "#".$ordine['id_ordine']; ?> </p>
+                          <p class="col-4"><?php echo date("d/m/y",strtotime($ordine['data']))." alle ".$ordine['ora_richiesta']; ?> </p>
+                          <p class="col-4"> <?php echo $ordine['stato_ordine']; ?></p>
                       </div>
                   </div>
           </div>
 
-          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+          <div id="collapse<?php echo $ordine['id_ordine']; ?>" class="collapse" aria-labelledby="heading<?php echo $ordine['id_ordine']; ?>" data-parent="#accordion">
             <div class="card-body">
-                <p>Luogo ritiro: [campus]</p>
+                <p>Luogo ritiro: <?php echo $ordine['luogo_ritiro']; ?></p>
               <ul>
+                  <?php while($p = $prodotti->fetch_assoc()){ ?>
                   <li>
                       <div class="row">
                           <div class="col-9">
-                              <a href="./Search.html">Prodotto</a> x2
+                              <a href="./Search.html?pid=<?php echo $p['id_prodotto']; ?>"><?php echo $p['nome'] ?></a> x <?php echo $p['quantita']; ?>
                           </div>
                           <div class="col prezzo">
-                              8.50€
+                              <?php echo $p['prezzo_unitario']*$p['quantita'];?> €
                           </div>
                       </div>
                   </li>
-                  <li>
-                      <div class="row">
-                          <div class="col-9">
-                              Prodotto x1
-                          </div>
-                          <div class="col prezzo">
-                              12.99€
-                          </div>
-                      </div>
-                  </li>
-                  <li>
-                      <div class="row">
-                          <div class="col-9">
-                              Prodotto con nome lungo
-                          </div>
-                          <div class="col prezzo">
-                              3.50€
-                          </div>
-                      </div>
-                  </li>
+              <?php } ?>
               </ul>
               <div class="buttons">
                   <button class="btn green" type="button" name="accetta">
@@ -132,4 +133,7 @@
           </div>
         </div>
     <?php } ?>
-  </body>
+    </div>
+<?php } ?>
+<?php } ?>
+</body>

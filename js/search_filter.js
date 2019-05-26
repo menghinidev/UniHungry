@@ -36,11 +36,14 @@ $(document).ready(function () {
 
 function applica(){
     $('applica').removeClass( "orange" ).addClass( "green" );
+
     var queryParameters = {}, queryString = location.search.substring(1),
     re = /([^&=]+)=([^&]*)/g, m;
     while (m = re.exec(queryString)) {
     queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
     }
+    delete queryParameters['fid'];
+    delete queryParameters['pid'];
     var searchvalue = $('.searchbar').val();
     queryParameters['s'] = searchvalue;
     queryParameters['cat']='';

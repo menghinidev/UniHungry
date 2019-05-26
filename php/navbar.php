@@ -43,7 +43,7 @@ $SEARCH = $prefix.'Search.php';
                     <!--ProfiloFornitore-->
                     <?php if($_SERVER['PHP_SELF'] == $PROFILO_FORNITORE) { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="./*****">Ordini</a>
+                            <a class="nav-link" href="./GestioneOrdini.php">Ordini</a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="./********">Modifiche</a>
@@ -86,7 +86,7 @@ $SEARCH = $prefix.'Search.php';
                     <a class="dropdown-item" href="./Register.php">Registrati</a>
                 <?php } else { ?>
                 <?php if($_SERVER['PHP_SELF'] == $PROFILO_FORNITORE) { ?>
-                    <a class="dropdown-item" href="./******">Ordini</a>
+                    <a class="dropdown-item" href="./GestioneOrdini.php">Ordini</a>
                     <a class="dropdown-item" href="./******">Modifiche</a>
                 <?php } ?>
                 <!--logged in mobile-->

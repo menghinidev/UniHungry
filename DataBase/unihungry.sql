@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 24, 2019 alle 11:01
+-- Creato il: Mag 26, 2019 alle 17:59
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.2.12
 
@@ -187,7 +187,8 @@ CREATE TABLE `login_attempts` (
 INSERT INTO `login_attempts` (`user_id`, `time`) VALUES
 (4, '1558077318'),
 (1, '1558540241'),
-(2, '1558541528');
+(2, '1558541528'),
+(2, '1558689196');
 
 -- --------------------------------------------------------
 

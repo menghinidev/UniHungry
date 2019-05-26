@@ -12,10 +12,6 @@
     }
 }
 
-.profilePic:hover {
-    border: 7px solid #F1B07C;
-}
-
 #changeLogo {
     text-align: center;
 }

@@ -30,7 +30,7 @@
         $sql .= " AND P.id_prodotto = {$_GET['pid']}";
     } else if(isset($_GET['fid'])){
         $sql .= " AND P.id_fornitore = {$_GET['fid']}";
-    }else {
+    }
         if(isset($_GET['s'])){
             if($_GET['s'] != ''){
             $s = "%".$_GET['s']."%";
@@ -68,7 +68,6 @@
                 $sql = "$sql ORDER BY levenshtein($string, P.nome), levenshtein($string, F.nome_fornitore)";
             }
         }
-    }
     $products = $mysqli->query($sql);
     //echo $products;
     $r = $mysqli->query("SELECT nome FROM categorie");
