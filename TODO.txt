@@ -33,8 +33,9 @@ NEXT:
 -Riepilogo ordini clienti (easy)
 
 WARNING:
--Modifica profilo fornitori -> manca validazione
--Gestione prodotti fornitore -> manca validazione
+-Modifica profilo fornitori -> manca validazione !! VALIDAZIONE INSERITA
+-Gestione prodotti fornitore -> manca validazione !! VALIDAZIONE INSERITA
+-Manca modifica password
 -TUTTI I FORM DA RICONTROLLARE E VALIDARE
 
 WARNING GESTIONE ORARI FORNITORI NELLA RICERCA/ORDINAZIONE

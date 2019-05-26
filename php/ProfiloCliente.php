@@ -31,8 +31,12 @@
      }
      $id = $_SESSION['user_id'];
      $query = "SELECT * FROM clienti INNER JOIN users ON clienti.id_cliente = users.user_id WHERE id_cliente = $id";
+     $ordiniInCorsoQuery = "SELECT * FROM ordini WHERE id_cliente = $id AND stato_ordine IN ('accettato', 'in consegna', 'ricevuto')";
+     $ordiniPassatiQuery = "SELECT * FROM ordini WHERE id_cliente = $id AND stato_ordine IN ('rifiutato', 'consegnato')";
+     $resultOrdiniInCorso = $mysqli->query($ordiniInCorsoQuery);
+     $resultOrdiniPassati = $mysqli->query($ordiniPassatiQuery);
      $result = $mysqli->query($query);
-     $row = $result->fetch_assoc();
+     $rowInfo = $result->fetch_assoc();
      ?>
       <div class="col" id="menu-box">
           <nav>
@@ -43,68 +47,59 @@
           </nav>
           <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="ordini" role="tabpanel" aria-labelledby="ordini-tab">
-
                 <div class="container riepilogoOrdine fullScreen">
                     <h4>Ordini in corso</h4>
-                    <div class=" row">
+                    <div class="row">
                         <p class="col-4">Id ordine: </p>
                         <p class="col-4">Data e ora: </p>
                         <p class="col-4">Stato ordine </p>
                     </div>
                 </div>
+                <?php
+                if ($resultOrdiniInCorso->num_rows == 0) {
+                  echo '</div>
+                      </div>';
+                } else {
+                  while ($row = $resultOrdiniInCorso->fetch_assoc()) {
+                    $id = $row['id_ordine'];
+                    $sqlProdotti = "SELECT * FROM ordinazioni INNER JOIN prodotti ON ordinazioni.id_prodotto = prodotti.id_prodotto WHERE id_ordine = $id";
+                    $prodotti = $mysqli->query($sqlProdotti);
+                    echo '<div id="accordion">
+                      <div class="card">
+                        <div class="card-header nopadding" id="headingOne">
+                                <button class="container fullScreen btn" data-toggle="collapse" data-target="#collapse'.$row['id_ordine'].'" aria-expanded="true" aria-controls="collapseOne">
+                                    <div class=" row">
+                                        <p class="col-4">#'.$row['id_ordine'].'</p>
+                                        <p class="col-4">'.$row['data'].' : '.$row['ora_richiesta'].'</p>
+                                        <p class="col-4">'.$row['stato_ordine'].'</p>
+                                    </div>
+                                </button>
+                        </div>
 
-                <div id="accordion">
-                  <div class="card">
-                    <div class="card-header nopadding" id="headingOne">
-                            <button class="container fullScreen btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <div class=" row">
-                                    <p class="col-4">#222222222 </p>
-                                    <p class="col-4">30/01/19 - 10:14 </p>
-                                    <p class="col-4">In consegna </p>
-                                </div>
-                            </button>
-                    </div>
-
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                      <div class="card-body">
-                          <p>Luogo ritiro: [campus]</p>
-                        <ul>
-                            <li>
-                                <div class="row">
-                                    <div class="col-9">
-                                        <a href="./Search.html">Prodotto</a> x2
-                                    </div>
-                                    <div class="col prezzo">
-                                        8.50€
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-9">
-                                        Prodotto x1
-                                    </div>
-                                    <div class="col prezzo">
-                                        12.99€
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-9">
-                                        Prodotto con nome lungo
-                                    </div>
-                                    <div class="col prezzo">
-                                        3.50€
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                        <div id="collapse'.$row['id_ordine'].'" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                          <div class="card-body">
+                              <p>Luogo ritiro: '.$row['luogo_ritiro'].'</p>
+                            <ul>';
+                            while ($prodotto = $prodotti->fetch_assoc()) {
+                              echo '<li>
+                                  <div class="row">
+                                      <div class="col-9">
+                                          <a href="./Search.php?pid='.$prodotto['id_prodotto'].'">'.$prodotto['nome'].'</a> x '.$prodotto['quantita'].'
+                                      </div>
+                                      <div class="col prezzo">
+                                          '.$prodotto['prezzo_unitario'].'
+                                      </div>
+                                  </div>
+                              </li>';
+                            }
+                            echo '</ul>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-
+                    </div>';
+                  }
+                }
+                ?>
                 <div class="container riepilogoOrdine fullScreen">
                     <h4>Ordini Passati</h4>
                     <div class="row">
@@ -113,58 +108,51 @@
                         <p class="col-4">Stato ordine </p>
                     </div>
                 </div>
+                <?php
+                if ($resultOrdiniPassati->num_rows == 0) {
+                  echo '</div>
+                      </div>';
+                } else {
+                  while ($row = $resultOrdiniPassati->fetch_assoc()) {
+                    $id = $row['id_ordine'];
+                    $sqlProdotti = "SELECT * FROM ordinazioni INNER JOIN prodotti ON ordinazioni.id_prodotto = prodotti.id_prodotto WHERE id_ordine = $id";
+                    $prodotti = $mysqli->query($sqlProdotti);
+                    echo '<div id="accordion">
+                      <div class="card">
+                        <div class="card-header nopadding" id="headingOne">
+                                <button class="container fullScreen btn" data-toggle="collapse" data-target="#collapse'.$row['id_ordine'].'" aria-expanded="true" aria-controls="collapseOne">
+                                    <div class=" row">
+                                        <p class="col-4">#'.$row['id_ordine'].'</p>
+                                        <p class="col-4">'.$row['data'].' : '.$row['ora_richiesta'].'</p>
+                                        <p class="col-4">'.$row['stato_ordine'].'</p>
+                                    </div>
+                                </button>
+                        </div>
 
-                <div id="accordion">
-                  <div class="card">
-                    <div class="card-header nopadding" id="headingtwo">
-                            <button class="container fullScreen btn" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapseOne">
-                                <div class=" row">
-                                    <p class="col-4">#222222222 </p>
-                                    <p class="col-4">27/01/18 - 12:45 </p>
-                                    <p class="col-4">Consegnato </p>
-                                </div>
-                            </button>
-                    </div>
-
-                    <div id="collapsetwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                      <div class="card-body">
-                          <p>Luogo ritiro: [campus]</p>
-                        <ul>
-                            <li>
-                                <div class="row">
-                                    <div class="col-9">
-                                        <a href="./Search.html">Prodotto</a> x2
-                                    </div>
-                                    <div class="col prezzo">
-                                        8.50€
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-9">
-                                        Prodotto x1
-                                    </div>
-                                    <div class="col prezzo">
-                                        12.99€
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-9">
-                                        Prodotto con nome lungo
-                                    </div>
-                                    <div class="col prezzo">
-                                        3.50€
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                        <div id="collapse'.$row['id_ordine'].'" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                          <div class="card-body">
+                              <p>Luogo ritiro: '.$row['luogo_ritiro'].'</p>
+                            <ul>';
+                            while ($prodotto = $prodotti->fetch_assoc()) {
+                              echo '<li>
+                                  <div class="row">
+                                      <div class="col-9">
+                                          <a href="./Search.html">'.$prodotto['nome'].'</a> x '.$prodotto['quantita'].'
+                                      </div>
+                                      <div class="col prezzo">
+                                          '.$prodotto['prezzo_unitario'].'
+                                      </div>
+                                  </div>
+                              </li>';
+                            }
+                            echo '</ul>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
+                    </div>';
+                  }
+                }
+                ?>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <form id="modificaform" class="col needs-validation" method="post" action="action_profile_update.php" novalidate>
@@ -172,17 +160,17 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="nome">Nome</label>
-                          <input type="text" class="form-control" name="nome" value="<?php echo $row['nome']; ?>" id="nome" required>
+                          <input type="text" class="form-control" name="nome" value="<?php echo $rowInfo['nome']; ?>" id="nome" required>
                         </div>
                         <div class="form-group col-md-6">
                           <label for="cognome">Cognome</label>
-                          <input type="text" class="form-control"name="cognome" value="<?php echo $row['cognome']; ?>" id="cognome" required>
+                          <input type="text" class="form-control"name="cognome" value="<?php echo $rowInfo['cognome']; ?>" id="cognome" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="email">Email</label>
-                          <input type="email" class="form-control" value="<?php echo $row['email']; ?>" id="email" disabled>
+                          <input type="email" class="form-control" value="<?php echo $rowInfo['email']; ?>" id="email" disabled>
                           <small id="emailHelp" class="form-text">Ci dispiace non puoi modificare la tua mail</small>
                         </div>
                         <div class="form-group col-md-6">
