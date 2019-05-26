@@ -29,8 +29,8 @@ NEXT:
 -notifiche (Samu)
 -Riepilogo ordini fornitori (Samu)
 
--Modifica profilo clienti (easy)
--Riepilogo ordini clienti (easy)
+-Modifica profilo clienti (easy) (FATTO)
+-Riepilogo ordini clienti (easy) (FATTO)
 
 WARNING:
 -Modifica profilo fornitori -> manca validazione !! VALIDAZIONE INSERITA
