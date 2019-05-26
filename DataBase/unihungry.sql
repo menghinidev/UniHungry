@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 22, 2019 alle 12:15
+-- Creato il: Mag 24, 2019 alle 11:01
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.2.12
 
@@ -185,7 +185,9 @@ CREATE TABLE `login_attempts` (
 --
 
 INSERT INTO `login_attempts` (`user_id`, `time`) VALUES
-(4, '1558077318');
+(4, '1558077318'),
+(1, '1558540241'),
+(2, '1558541528');
 
 -- --------------------------------------------------------
 
@@ -226,6 +228,14 @@ CREATE TABLE `notifiche` (
   `id_ordine` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dump dei dati per la tabella `notifiche`
+--
+
+INSERT INTO `notifiche` (`id_notifica`, `testo`, `visualizzata`, `per_utente`, `id_fornitore`, `id_ordine`) VALUES
+(1, 'Hai ricevuto un nuovo ordine!', 1, 0, 2, 1),
+(2, 'Hai ricevuto un nuovo ordine!', 1, 0, 2, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -241,6 +251,14 @@ CREATE TABLE `orari_giornalieri` (
   `fine_pausa` time DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dump dei dati per la tabella `orari_giornalieri`
+--
+
+INSERT INTO `orari_giornalieri` (`id_fornitore`, `giorno_settimana`, `apertura`, `chiusura`, `inizio_pausa`, `fine_pausa`) VALUES
+(2, 'Lunedi', '09:00:00', '18:00:00', NULL, NULL),
+(2, 'Martedi', '09:00:00', '18:00:00', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -250,8 +268,16 @@ CREATE TABLE `orari_giornalieri` (
 CREATE TABLE `ordinazioni` (
   `id_prodotto` int(11) NOT NULL,
   `id_ordine` int(11) NOT NULL,
-  `quantità` int(11) NOT NULL
+  `quantita` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `ordinazioni`
+--
+
+INSERT INTO `ordinazioni` (`id_prodotto`, `id_ordine`, `quantita`) VALUES
+(1, 1, 1),
+(2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -270,6 +296,14 @@ CREATE TABLE `ordini` (
   `id_cliente` int(11) NOT NULL,
   `id_fornitore` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dump dei dati per la tabella `ordini`
+--
+
+INSERT INTO `ordini` (`id_ordine`, `data`, `ora_sottomissione`, `ora_richiesta`, `luogo_ritiro`, `stato_ordine`, `pagato`, `id_cliente`, `id_fornitore`) VALUES
+(1, '2019-05-22', '23:10:30', '23:40:00', 'Ingresso Via dell\'UniversitÃ ', 'ricevuto', 0, 4, 2),
+(2, '2019-05-23', '00:50:53', '01:20:00', 'Ingresso Via dell\'UniversitÃ ', 'ricevuto', 0, 4, 2);
 
 -- --------------------------------------------------------
 
@@ -412,7 +446,7 @@ ALTER TABLE `modifiche`
 -- AUTO_INCREMENT per la tabella `notifiche`
 --
 ALTER TABLE `notifiche`
-  MODIFY `id_notifica` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_notifica` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `ordini`
