@@ -26,40 +26,47 @@
   <body>
     <?php include 'navbar.php';
     $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore";
-    if(isset($_GET['s'])){
-        if($_GET['s'] != ''){
-        $s = "%".$_GET['s']."%";
-        $s = "'".mysqli_real_escape_string($mysqli, $s)."'";
-        $sql = $sql. " AND (P.nome LIKE $s OR F.nome_fornitore LIKE $s OR P.categoria LIKE $s)";
-        }
-    }
-    if(isset($_GET['cat'])){
-        $filtercat = explode("_",$_GET['cat']);
-        if($_GET['cat'] != ''){
-            $sql = "$sql AND (";
-            $first = true;
-            foreach($filtercat as $filter){
-                if(!$first){
-                    $sql = $sql. " OR ";
-                }
-                $filter = "'".mysqli_real_escape_string($mysqli, $filter)."'";
-                $sql = $sql." P.categoria = $filter";
-                $first=false;
+    if(isset($_GET['pid'])){
+        $sql .= " AND P.id_prodotto = {$_GET['pid']}";
+    } else if(isset($_GET['fid'])){
+        $sql .= " AND P.id_fornitore = {$_GET['fid']}";
+    }else {
+        if(isset($_GET['s'])){
+            if($_GET['s'] != ''){
+            $s = "%".$_GET['s']."%";
+            $s = str_replace(" ","%", $s);
+            $s = "'".mysqli_real_escape_string($mysqli, $s)."'";
+            $sql = $sql. " AND (P.nome LIKE $s OR F.nome_fornitore LIKE $s OR P.categoria LIKE $s)";
             }
-            $sql = $sql. ")";
         }
-    }
-    if(isset($_GET['price'])){
-        $price = $_GET['price'];
-        $val = preg_replace("/[^0-9\.]/", '', $price);
-        if($val != ''){
-            $sql = $sql." AND P.prezzo_unitario <= $val ";
+        if(isset($_GET['cat'])){
+            $filtercat = explode("_",$_GET['cat']);
+            if($_GET['cat'] != ''){
+                $sql = "$sql AND (";
+                $first = true;
+                foreach($filtercat as $filter){
+                    if(!$first){
+                        $sql = $sql. " OR ";
+                    }
+                    $filter = "'".mysqli_real_escape_string($mysqli, $filter)."'";
+                    $sql = $sql." P.categoria = $filter";
+                    $first=false;
+                }
+                $sql = $sql. ")";
+            }
         }
-    }
-    if(isset($_GET['s'])){
-        if($_GET['s'] != ''){
-            $string = "'".mysqli_real_escape_string($mysqli, $_GET['s'])."'";
-            $sql = "$sql ORDER BY levenshtein($string, P.nome), levenshtein($string, F.nome_fornitore)";
+        if(isset($_GET['price'])){
+            $price = $_GET['price'];
+            $val = preg_replace("/[^0-9\.]/", '', $price);
+            if($val != ''){
+                $sql = $sql." AND P.prezzo_unitario <= $val ";
+            }
+        }
+        if(isset($_GET['s'])){
+            if($_GET['s'] != ''){
+                $string = "'".mysqli_real_escape_string($mysqli, $_GET['s'])."'";
+                $sql = "$sql ORDER BY levenshtein($string, P.nome), levenshtein($string, F.nome_fornitore)";
+            }
         }
     }
     $products = $mysqli->query($sql);
@@ -73,7 +80,7 @@
         <div class="row fullScreen justify-content-between mb-3 mt-3">
             <div class="col-lg-4 col-9">
                 <div class="input-group" >
-                    <input type="text" class="searchbar form-control" <?php if($_GET['s']!==''){echo "value=".$_GET['s'];} ?> name="s" placeholder="Cerca...">
+                    <input type="text" class="searchbar form-control" <?php if(isset($_GET['s']) && $_GET['s']!==''){echo "value='".$_GET['s']."'";} ?> name="s" placeholder="Cerca...">
                     <div class="input-group-append">
                       <button type="button" class="btn green" onclick="applica()">Vai</button>
                     </div>
