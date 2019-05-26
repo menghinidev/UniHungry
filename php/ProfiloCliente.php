@@ -19,7 +19,7 @@
 			  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" src="../js/ProfiloCliente.js"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Il tuo profilo</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -28,11 +28,16 @@
      <?php include 'navbar.php';
      if(!is_logged()){
          header('Location: ./ERROR');
-     }?>
+     }
+     $id = $_SESSION['user_id'];
+     $query = "SELECT * FROM clienti INNER JOIN users ON clienti.id_cliente = users.user_id WHERE id_cliente = $id";
+     $result = $mysqli->query($query);
+     $row = $result->fetch_assoc();
+     ?>
       <div class="col" id="menu-box">
           <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active tabLink" id="ordini-tab" data-toggle="tab" href="#ordini" role="tab" aria-controls="ordini" aria-selected="true">I miei Ordini</a>
+              <a class="nav-item nav-link tabLink active" id="ordini-tab" data-toggle="tab" href="#ordini" role="tab" aria-controls="ordini" aria-selected="true">I miei Ordini</a>
               <a class="nav-item nav-link tabLink" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Modifica profilo</a>
             </div>
           </nav>
@@ -162,27 +167,27 @@
                 </div>
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <form id="modificaform" class="col">
+                <form id="modificaform" class="col needs-validation" method="post" action="action_profile_update.php" novalidate>
                         <h2>Modifica informazioni</h2>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="nome">Nome</label>
-                          <input type="text" class="form-control" id="nome">
+                          <input type="text" class="form-control" name="nome" value="<?php echo $row['nome']; ?>" id="nome" required>
                         </div>
                         <div class="form-group col-md-6">
                           <label for="cognome">Cognome</label>
-                          <input type="text" class="form-control" id="cognome">
+                          <input type="text" class="form-control"name="cognome" value="<?php echo $row['cognome']; ?>" id="cognome" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                           <label for="email">Email</label>
-                          <input type="email" class="form-control" id="email" disabled>
+                          <input type="email" class="form-control" value="<?php echo $row['email']; ?>" id="email" disabled>
                           <small id="emailHelp" class="form-text">Ci dispiace non puoi modificare la tua mail</small>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cellulare">Numero cellulare</label>
-                            <input type="text" class="form-control" id="cellulare">
+                            <input type="text" class="form-control" name="telefono" value="<?php echo $row['telefono']; ?>" id="cellulare" required>
                         </div>
                     </div>
                     <div class="form-group">

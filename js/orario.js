@@ -3,8 +3,6 @@ $(document).ready(function(){
   $('.timepicker').timepicker({
     timeFormat: 'H:mm',
     interval: 15,
-    minTime: '8:00am',
-    maxTime: '6:00pm',
     startTime: '08:00',
     dynamic: false,
     dropdown: true,

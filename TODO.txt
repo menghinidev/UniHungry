@@ -29,9 +29,6 @@ NEXT:
 -notifiche (Samu)
 -Riepilogo ordini fornitori (Samu)
 
--Inserimento orari (Mengo) ||Orario max senza limitazione||
--Profilo fornitore per i clienti (easy)(Mengo) ||se non ci sono orari? + link alla ricerca + layout mobile||
-
 -Modifica profilo clienti (easy)
 -Riepilogo ordini clienti (easy)
 

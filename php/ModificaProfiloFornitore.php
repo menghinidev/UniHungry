@@ -38,7 +38,7 @@
         $row = $result->fetch_assoc();
       }?>
       <div class="container" id="profile">
-          <form id="modificaform" class="col" action="action_fornitore_update.php" method="post" enctype="multipart/form-data">
+          <form id="modificaform" class="col needs-validation" action="action_fornitore_update.php" method="post" enctype="multipart/form-data" novalidate>
                   <h2>Modifica Profilo</h2>
                   <div class="form-row">
                     <div id="selectImg" class="form-group col-md-6">
@@ -59,25 +59,25 @@
               <div class="form-row">
                   <div class="form-group col-md-4">
                     <label for="nome">Nome</label>
-                    <input type="text" name="nomeFornitore" value="<?php echo $row['nome']; ?>" class="form-control" id="nome">
+                    <input type="text" name="nomeFornitore" value="<?php echo $row['nome']; ?>" class="form-control" id="nome" required>
                   </div>
                   <div class="form-group col-md-4">
                     <label for="cognome">Cognome</label>
-                    <input type="text" name="cognomeFornitore" value="<?php echo $row['cognome']; ?>" class="form-control" id="cognome">
+                    <input type="text" name="cognomeFornitore" value="<?php echo $row['cognome']; ?>" class="form-control" id="cognome" required>
                   </div>
                   <div class="form-group col-md-4">
                       <label for="cellulare">Numero Cellulare</label>
-                      <input type="text" name="cellulareFornitore" value="<?php echo $row['telefono']; ?>" class="form-control" id="cellulare">
+                      <input type="text" name="cellulareFornitore" value="<?php echo $row['telefono']; ?>" class="form-control" id="cellulare" required>
                   </div>
               </div>
               <div class="form-row">
                   <div class="form-group col-md-6">
                     <label for="nomeAttivita">Nome Attività</label>
-                    <input type="text" name="nomeAttivitaFornitore" value="<?php echo $row['nome_fornitore']; ?>" class="form-control" id="nomeAttivita">
+                    <input type="text" name="nomeAttivitaFornitore" value="<?php echo $row['nome_fornitore']; ?>" class="form-control" id="nomeAttivita" required>
                   </div>
                   <div class="form-group col-md-6">
                       <label for="indirizzo">Indirizzo</label>
-                      <input type="text" name="indirizzoFornitore" value="<?php echo $row['indirizzo']; ?>" name="indirizzo" class="form-control" id="indirizzo">
+                      <input type="text" name="indirizzoFornitore" value="<?php echo $row['indirizzo']; ?>" name="indirizzo" class="form-control" id="indirizzo" required>
                   </div>
               </div>
               <div class="form-row">

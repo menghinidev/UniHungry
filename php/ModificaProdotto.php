@@ -39,7 +39,7 @@
     }
     ?>
         <div id="pageBody" class="container fullScreen ">
-                    <form id="modificaform" class="col" action="action_product_update.php" method="post" enctype="multipart/form-data">
+                    <form id="modificaform" class="col needs-validation" action="action_product_update.php" method="post" enctype="multipart/form-data" novalidate>
                         <div class="form-row">
                             <div id="selectImg" class="form-group col-md-6">
                                 <label for="imgupload">
@@ -71,15 +71,15 @@
                               <label for="nome">Nome Prodotto</label>
                               <?php
                               if(isset($_GET['id'])){
-                                echo "<input type='text' name='nome' class='form-control' id='nome' value='".$row['nome']."'>";
+                                echo "<input type='text' name='nome' class='form-control' id='nome' value='".$row['nome']."' required>";
                               } else {
-                                echo "<input type='text' name='nome' class='form-control' id='nome' placeholder='Hamburger'>";
+                                echo "<input type='text' name='nome' class='form-control' id='nome' placeholder='Hamburger' required>";
                               }
                                ?>
                             </div>
                             <div class="form-group col-md-6">
                               <label for="categoria">Categoria</label>
-                              <select class="form-control" name='categoria' id="categoria">
+                              <select class="form-control" name='categoria' id="categoria" required>
                                 <?php
                                 while ($cat = $categorie->fetch_assoc()) {
                                   echo "<option>".$cat['nome']."</option>";
@@ -93,9 +93,9 @@
                               <label for="descrizione">Descrizione Prodotto</label>
                               <?php
                               if(isset($_GET['id'])){
-                                echo "<input type='text' name='descrizione' class='form-control' id='descrizione' value='".$row['descrizione']."' maxlength='100'>";
+                                echo "<input type='text' name='descrizione' class='form-control' id='descrizione' value='".$row['descrizione']."' maxlength='100' required>";
                               } else {
-                                echo "<input type='text' name='descrizione' class='form-control' id='descrizione' placeholder='Hamburger con bacon croccante, insalata e pomodoro' maxlength='100'>";
+                                echo "<input type='text' name='descrizione' class='form-control' id='descrizione' placeholder='Hamburger con bacon croccante, insalata e pomodoro' maxlength='100' required>";
                               }
                                ?>
                             </div>
@@ -103,9 +103,9 @@
                                 <label for="prezzo">Prezzo unitario</label>
                                 <?php
                                 if(isset($_GET['id'])){
-                                  echo "<input type='text' name='prezzo' class='form-control' id='prezzo' value='".$row['prezzo_unitario']."'>";
+                                  echo "<input type='text' name='prezzo' class='form-control' id='prezzo' value='".$row['prezzo_unitario']."'required>";
                                 } else {
-                                  echo "<input type='text' name='prezzo' class='form-control' id='prezzo' placeholder='10€'>";
+                                  echo "<input type='text' name='prezzo' class='form-control' id='prezzo' placeholder='10€' required>";
                                 }
                                  ?>
                             </div>
@@ -114,9 +114,9 @@
                             <label for="ingredienti">Ingredienti</label>
                             <?php
                             if(isset($_GET['id'])){
-                              echo "<textarea class='form-control' name='ingredienti' id='ingredienti' aria-describedby='ingredientiHelp' rows='2'>".$row['ingredienti']."</textarea>";
+                              echo "<textarea class='form-control' name='ingredienti' id='ingredienti' aria-describedby='ingredientiHelp' rows='2' required>".$row['ingredienti']."</textarea>";
                             } else {
-                              echo "<textarea class='form-control' name='ingredienti' id='ingredienti' aria-describedby='ingredientiHelp' rows='2'></textarea>";
+                              echo "<textarea class='form-control' name='ingredienti' id='ingredienti' aria-describedby='ingredientiHelp' rows='2' required></textarea>";
                             }
                              ?>
                             <small id="ingredientiHelp" class="form-text">Per favore elenca tutti gli ingredienti e le possibili contaminazioni</small>

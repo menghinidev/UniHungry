@@ -72,9 +72,19 @@
             </div>
             <hr/>
             <div class="row justify-content-md-center distanced">
+              <a class="btn orange noVisitedLink" href="./Search.php?fid=<?php echo $id; ?>">Tutti i prodotti</a>
+            </div>
+            <div class="row justify-content-md-center distanced">
               <div class="col-md-6 orari">
                 <h4 class="centered">Orari Apertura</h4>
                 <?php
+                if($orariResult->num_rows == 0) {
+                  echo '<div class="row">
+                    <div class="col centered">
+                      <strong>Non ci sono orari per questo fornitore</strong>
+                    </div>
+                  </div>';
+                }
                 while ($orari = $orariResult->fetch_assoc()) {
                 ?>
                 <div class="row">
