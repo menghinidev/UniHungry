@@ -83,7 +83,7 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="descrizioneBreve">Descrizione Breve</label>
-                  <textarea class="form-control" name="descrizioneBreve" id="descrizioneBreve" rows="2"><?php echo $row['descrizione_breve']; ?></textarea>
+                  <textarea class="form-control" name="descrizioneBreve" id="descrizioneBreve" rows="2" required><?php echo $row['descrizione_breve']; ?></textarea>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="descrizioneEstesa">Descrizione Estesa</label>
