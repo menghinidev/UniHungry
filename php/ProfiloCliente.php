@@ -173,7 +173,7 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cellulare">Numero cellulare</label>
-                            <input type="text" class="form-control" name="telefono" value="<?php echo $row['telefono']; ?>" id="cellulare" required>
+                            <input type="text" class="form-control" name="telefono" value="<?php echo $rowInfo['telefono']; ?>" id="cellulare" required>
                         </div>
                     </div>
                     <div class="form-group">
