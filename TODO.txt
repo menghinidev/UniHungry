@@ -19,16 +19,17 @@ $_SESSION['tot_products'] --> numero totale prodotti
 GOALS
 
 1. (OK) login + registrazione
-2. (OK) Navbar php module               ||icone||
+2. (OK) Navbar php module               || icone ||
 3. (OK) Admin view per le modifiche
-4. (OK) Ricerca prodotti                ||paginazione||
+4. (OK) Ricerca prodotti                || paginazione ||
 5. (OK) Email di conferma
-6. (OK) Ordini + carrello               ||pulsante per tornare indietro? + carrello vuoto layout||
+6. (OK) Ordini + carrello               || pulsante per tornare indietro? + carrello vuoto layout ||
+7. (OK) notifiche                       || VISUALIZZAZIONE MOBILE + link? ||
+8. (OK) Riepilogo ordini fornitori      || FILTRI NON ATTIVI ||
 
 NEXT:
--notifiche (Samu)
--Riepilogo ordini fornitori (Samu)
-
+-image crop
+-Pagina tutte le notifiche
 -Modifica profilo clienti (easy) (FATTO)
 -Riepilogo ordini clienti (easy) (FATTO)
 
@@ -41,7 +42,7 @@ WARNING:
 WARNING GESTIONE ORARI FORNITORI NELLA RICERCA/ORDINAZIONE
 
 AT LAST:
--image crop
+
 -icone
 -Richiesta modifiche fornitore (easy)
 -HomePage da sistemare
