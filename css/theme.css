@@ -186,8 +186,20 @@ a:visited {
 
 
 /*NOTIFICATIONS*/
-.notify{
 
+.dropdown-menu{
+    width: 500px;
+}
+
+@media screen and (max-width:700px) {
+    .dropdown-menu{
+        width: 200px;
+    }
+}
+
+
+.notify{
+    white-space: normal;
 }
 
 .not-seen{
