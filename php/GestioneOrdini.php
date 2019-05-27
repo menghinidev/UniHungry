@@ -89,7 +89,7 @@
       <div id="accordion">
           <?php
           while($ordine = $result->fetch_assoc()){
-              $sql = "SELECT P.nome, P.prezzo_unitario, O.quantita FROM ordinazioni O, prodotti P where P.id_prodotto = O.id_prodotto AND id_ordine = {$ordine['id_ordine']}";
+              $sql = "SELECT P.id_prodotto, P.nome, P.prezzo_unitario, O.quantita FROM ordinazioni O, prodotti P where P.id_prodotto = O.id_prodotto AND id_ordine = {$ordine['id_ordine']}";
               $prodotti = $mysqli->query($sql);
            ?>
         <div class="card">
@@ -111,7 +111,7 @@
                   <li>
                       <div class="row">
                           <div class="col-9">
-                              <a href="./Search.html?pid=<?php echo $p['id_prodotto']; ?>"><?php echo $p['nome'] ?></a> x <?php echo $p['quantita']; ?>
+                              <a href="./Search.php?pid=<?php echo $p['id_prodotto']; ?>"><?php echo $p['nome'] ?></a> x <?php echo $p['quantita']; ?>
                           </div>
                           <div class="col prezzo">
                               <?php echo $p['prezzo_unitario']*$p['quantita'];?> €
