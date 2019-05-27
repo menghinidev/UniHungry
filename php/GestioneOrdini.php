@@ -17,7 +17,7 @@
 			  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
+    <script src="../js/gestioneOrdini_behaviour.js" charset="utf-8"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Riepilogo</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -121,12 +121,22 @@
               <?php } ?>
               </ul>
               <div class="buttons">
-                  <button class="btn green" type="button" name="accetta">
+                  <?php if($ordine['stato_ordine'] == 'ricevuto'){ ?>
+                  <button class="btn green" type="button" name="accetta" onclick="buttonClick('accetta',<?php echo $ordine['id_ordine']; ?> )">
                       Accetta
                   </button>
-                  <button class="btn red" type="button" name="rifiuta">
+                  <button class="btn red" type="button" name="rifiuta" onclick="buttonClick('rifiuta',<?php echo $ordine['id_ordine']; ?> )">
                       Rifiuta
                   </button>
+              <?php } else if($ordine['stato_ordine'] == 'accettato'){ ?>
+                  <button class="btn orange" type="button" name="completato" onclick="buttonClick('completato',<?php echo $ordine['id_ordine']; ?> )">
+                      Completa
+                  </button>
+              <?php }else if($ordine['stato_ordine'] == 'in consegna'){ ?>
+                  <button class="btn purple" type="button" name="consegnato" onclick="buttonClick('consegnato',<?php echo $ordine['id_ordine']; ?> )">
+                      Consegnato
+                  </button>
+              <?php }?>
               </div>
 
             </div>
