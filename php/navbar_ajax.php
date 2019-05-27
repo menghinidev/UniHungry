@@ -16,7 +16,7 @@ if(isset($_POST['action'])){
 
             if($_SESSION['user_type'] == 'Cliente'){
                 //cliente
-                $sql = "SELECT N.* from notifiche N, ordini O WHERE O.id_ordine = N.id_ordine AND O.id_cliente = {$u_id} AND N.per_utente = true AND N.visualizzata=false ORDER BY N.id_notifica DESC";
+                $sql = "SELECT N.* from notifiche N, ordini O WHERE O.id_ordine = N.id_ordine AND O.id_cliente = {$u_id} AND N.per_utente = true AND N.visualizzata=false ORDER BY N.time_stamp DESC";
                 $res = $mysqli->query($sql);
                 $newNum = $res->num_rows;
                 if($newNum != 0){
@@ -26,7 +26,7 @@ if(isset($_POST['action'])){
                 }
                 if($newNum < 5){
                     $limit = 5 - $res->num_rows;
-                    $sql = "SELECT N.* from notifiche N, ordini O WHERE O.id_ordine = N.id_ordine AND O.id_cliente = {$u_id} AND N.per_utente = true AND N.visualizzata=true ORDER BY N.id_notifica DESC LIMIT $limit";
+                    $sql = "SELECT N.* from notifiche N, ordini O WHERE O.id_ordine = N.id_ordine AND O.id_cliente = {$u_id} AND N.per_utente = true AND N.visualizzata=true ORDER BY N.time_stamp DESC LIMIT $limit";
                     $res = $mysqli->query($sql);
                     $seenNum = $res->num_rows;
                     while($n = $res->fetch_assoc()){
@@ -35,7 +35,7 @@ if(isset($_POST['action'])){
                 }
             } else {
                 //fornitore
-                $sql = "SELECT * FROM notifiche WHERE id_fornitore = {$u_id} AND per_utente = false AND visualizzata=false ORDER BY id_notifica DESC";
+                $sql = "SELECT * FROM notifiche WHERE id_fornitore = {$u_id} AND per_utente = false AND visualizzata=false ORDER BY time_stamp DESC";
                 $res = $mysqli->query($sql);
                 $newNum = $res->num_rows;
                 if($newNum != 0){
@@ -45,7 +45,7 @@ if(isset($_POST['action'])){
                 }
                 if($newNum < 5){
                     $limit = 5 - $res->num_rows;
-                    $sql = "SELECT * FROM notifiche WHERE id_fornitore = {$u_id} AND visualizzata=true ORDER BY id_notifica DESC LIMIT $limit";
+                    $sql = "SELECT * FROM notifiche WHERE id_fornitore = {$u_id} AND visualizzata=true ORDER BY time_stamp DESC LIMIT $limit";
                     $res = $mysqli->query($sql);
                     $seenNum = $res->num_rows;
                     while($n = $res->fetch_assoc()){

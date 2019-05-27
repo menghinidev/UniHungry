@@ -34,7 +34,10 @@ if(isset($_POST['action'] ,$_POST['id_ordine'])){
     $mysqli->query($sql);
     //send notification
     $text = "'".mysqli_real_escape_string($mysqli,$text)."'";
-    $query ="INSERT INTO notifiche (testo, visualizzata, per_utente, id_fornitore, id_ordine) VALUES($text, false, true, {$F_id}, {$id})";
+    date_default_timezone_set('Europe/Rome');
+    $date = date("Y-m-d H:i:s");
+    $date = "'".mysqli_real_escape_string($mysqli,$date)."'";
+    $query ="INSERT INTO notifiche (testo, visualizzata, per_utente, id_fornitore, id_ordine, time_stamp) VALUES($text, false, true, {$F_id}, {$id}, {$date})";
     $mysqli->query($query);
 } else {
     echo "error";

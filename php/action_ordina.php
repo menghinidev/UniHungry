@@ -35,7 +35,10 @@ if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
         //Create notification for fornitore
         $testoNotifica ="Hai ricevuto un nuovo ordine!";
         $testoNotifica = "'".mysqli_real_escape_string($mysqli,$testoNotifica)."'";
-        $query ="INSERT INTO notifiche (testo, visualizzata, per_utente, id_fornitore, id_ordine) VALUES($testoNotifica, false, false, {$F_id}, {$fornitori_ordini[$F_id]})";
+        date_default_timezone_set('Europe/Rome');
+        $date = date("Y-m-d H:i:s");
+        $date = "'".mysqli_real_escape_string($mysqli,$date)."'";
+        $query ="INSERT INTO notifiche (testo, visualizzata, per_utente, id_fornitore, id_ordine, time_stamp) VALUES($testoNotifica, false, false, {$F_id}, {$fornitori_ordini[$F_id]}, {$date})";
         $mysqli->query($query);
     }
     foreach($products_array as $p){
