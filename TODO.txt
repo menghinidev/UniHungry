@@ -42,7 +42,6 @@ WARNING:
 WARNING GESTIONE ORARI FORNITORI NELLA RICERCA/ORDINAZIONE
 
 AT LAST:
-
 -icone
 -Richiesta modifiche fornitore (easy)
 -HomePage da sistemare

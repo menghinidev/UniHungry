@@ -197,6 +197,11 @@ a:visited {
     }
 }
 
+#notifiche_count {
+    position:absolute;
+    top: -2px;
+    right: -8px;
+}
 
 .notify{
     white-space: normal;

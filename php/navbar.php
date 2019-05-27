@@ -52,8 +52,8 @@ $SEARCH = $prefix.'Search.php';
 
                     <!-- Notification dropdown extended page -->
                     <?php if($_SESSION['user_type'] != 'Admin'){ ?>
-                    <div id="dropdown_parent" class="btn-group dropdown">
-                      <button type="button" id="notifiche_button" class="btn green dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div id="dropdown_parent" class=" nav-item dropdown">
+                      <button type="button" id="notifiche_button" class="btn green" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Notifiche
                         <span id="notifiche_count" class="badge badge-pill badge-danger"></span>
                       </button>
