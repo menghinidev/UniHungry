@@ -11,7 +11,7 @@ if(isset($_POST['action'])){
         $newNum = 0;
         $html = "";
         $footer="<div class='dropdown-divider'></div>
-        <a class='dropdown-item' href='./Notifications.php'>Mostra tutte le notifiche</a>";
+        <a class='dropdown-item' onclick='mostraTutte()'>Mostra tutte le notifiche</a>";
         if(is_logged()){
 
             if($_SESSION['user_type'] == 'Cliente'){
@@ -21,7 +21,7 @@ if(isset($_POST['action'])){
                 $newNum = $res->num_rows;
                 if($newNum != 0){
                     while($n = $res->fetch_assoc()){
-                        $html .= generate($n, true);
+                        $html .= generate($n, true, false);
                     }
                 }
                 if($newNum < 5){
@@ -30,7 +30,7 @@ if(isset($_POST['action'])){
                     $res = $mysqli->query($sql);
                     $seenNum = $res->num_rows;
                     while($n = $res->fetch_assoc()){
-                        $html .= generate($n, false);
+                        $html .= generate($n, false, false);
                     }
                 }
             } else {
@@ -40,7 +40,7 @@ if(isset($_POST['action'])){
                 $newNum = $res->num_rows;
                 if($newNum != 0){
                     while($n = $res->fetch_assoc()){
-                        $html .= generate($n, true);
+                        $html .= generate($n, true, true);
                     }
                 }
                 if($newNum < 5){
@@ -49,7 +49,7 @@ if(isset($_POST['action'])){
                     $res = $mysqli->query($sql);
                     $seenNum = $res->num_rows;
                     while($n = $res->fetch_assoc()){
-                        $html .= generate($n, false);
+                        $html .= generate($n, false, true);
                     }
                 }
             }
@@ -78,12 +78,17 @@ if(isset($_POST['action'])){
 
 
 
-function generate($n, $new){
+function generate($n, $new, $fornitore){
         $nid= $n['id_notifica'];
-        if($new){
-            $prefix = "<a class='notify not-seen dropdown-item' id='notifica{$nid}'>";
+        if($fornitore){
+            $href = "#";
         } else {
-            $prefix = "<a class='notify dropdown-item' id='notifica{$nid}'>";
+            $href = "#";
+        }
+        if($new){
+            $prefix = "<a {$href} class='notify not-seen dropdown-item' id='notifica{$nid}'>";
+        } else {
+            $prefix = "<a {$href} class='notify dropdown-item' id='notifica{$nid}'>";
         }
         return $prefix.$n['testo']."</a>";
 }

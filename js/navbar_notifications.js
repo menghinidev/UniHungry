@@ -3,10 +3,16 @@ $(document).ready(function(){
 
     setInterval(function(){ updateNotifications(); }, 1000*60);//updates every minute
 
+    //shouldnt set seen if click on show all
     $('#dropdown_parent').on('hidden.bs.dropdown', function () {
         setSeen();
     });
 });
+
+function mostraTutte(){
+    $( "#dropdown_parent" ).off();
+    window.location.href = "../php/Notifications.php";
+}
 
 
 function updateNotifications(){

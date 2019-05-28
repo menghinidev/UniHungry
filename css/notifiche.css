@@ -1,0 +1,29 @@
+.notify-row {
+    padding-top: 10px;
+    border-bottom: 1px solid #d1d1d1;
+    border-top:none;
+    text-decoration:none;
+    color:black;
+}
+
+
+.notify-row:hover {
+    background-color: #F6F6F6;
+    text-decoration:none;
+    color:black;
+}
+
+.notify-row:visited{
+    text-decoration:none;
+    color:black;
+}
+
+.time {
+    color: #afafaf;
+}
+
+.title {
+    margin-top: 10px;
+    padding-left: 15px;
+    border-bottom: 4px solid #60BB6B;
+}

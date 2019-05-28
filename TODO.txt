@@ -26,10 +26,10 @@ GOALS
 6. (OK) Ordini + carrello               || pulsante per tornare indietro? + carrello vuoto layout ||
 7. (OK) notifiche                       || VISUALIZZAZIONE MOBILE + link? ||
 8. (OK) Riepilogo ordini fornitori      || FILTRI NON ATTIVI ||
+9. (OK) Pagina tutte le notifiche       || Caricamento dinamico ||
 
 NEXT:
 -image crop
--Pagina tutte le notifiche
 -Modifica profilo clienti (easy) (FATTO)
 -Riepilogo ordini clienti (easy) (FATTO)
 
