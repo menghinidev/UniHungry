@@ -45,7 +45,7 @@ if(isset($_POST['action'])){
                 }
                 if($newNum < 5){
                     $limit = 5 - $res->num_rows;
-                    $sql = "SELECT * FROM notifiche WHERE id_fornitore = {$u_id} AND visualizzata=true ORDER BY time_stamp DESC LIMIT $limit";
+                    $sql = "SELECT * FROM notifiche WHERE id_fornitore = {$u_id} AND per_utente = false AND visualizzata=true ORDER BY time_stamp DESC LIMIT $limit";
                     $res = $mysqli->query($sql);
                     $seenNum = $res->num_rows;
                     while($n = $res->fetch_assoc()){
@@ -80,15 +80,16 @@ if(isset($_POST['action'])){
 
 function generate($n, $new, $fornitore){
         $nid= $n['id_notifica'];
+        $href="#";
         if($fornitore){
-            $href = "#";
+            $href="./GestioneOrdini.php?oid={$n['id_ordine']}";
         } else {
-            $href = "#";
+            $href="./ProfiloCliente.php?oid={$n['id_ordine']}";
         }
         if($new){
-            $prefix = "<a {$href} class='notify not-seen dropdown-item' id='notifica{$nid}'>";
+            $prefix = "<a href='{$href}' class='notify not-seen dropdown-item' id='notifica{$nid}'>";
         } else {
-            $prefix = "<a {$href} class='notify dropdown-item' id='notifica{$nid}'>";
+            $prefix = "<a href='{$href}' class='notify dropdown-item' id='notifica{$nid}'>";
         }
         return $prefix.$n['testo']."</a>";
 }

@@ -103,7 +103,7 @@
                   </div>
           </div>
 
-          <div id="collapse<?php echo $ordine['id_ordine']; ?>" class="collapse" aria-labelledby="heading<?php echo $ordine['id_ordine']; ?>" data-parent="#accordion">
+          <div id="collapse<?php echo $ordine['id_ordine']; ?>" class="collapse <?php if(isset($_GET['oid']) && $_GET['oid']==$ordine['id_ordine']){echo " show";} ?>" aria-labelledby="heading<?php echo $ordine['id_ordine']; ?>" data-parent="#accordion">
             <div class="card-body">
                 <p>Luogo ritiro: <?php echo $ordine['luogo_ritiro']; ?></p>
               <ul>

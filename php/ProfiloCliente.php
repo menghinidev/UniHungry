@@ -63,6 +63,8 @@
                     $id = $row['id_ordine'];
                     $sqlProdotti = "SELECT * FROM ordinazioni INNER JOIN prodotti ON ordinazioni.id_prodotto = prodotti.id_prodotto WHERE id_ordine = $id";
                     $prodotti = $mysqli->query($sqlProdotti);
+                    $show="";
+                    if(isset($_GET['oid']) && $_GET['oid']==$row['id_ordine']){$show= " show";}
                     echo '<div id="accordion">
                       <div class="card">
                         <div class="card-header nopadding" id="headingOne">
@@ -75,7 +77,7 @@
                                 </button>
                         </div>
 
-                        <div id="collapse'.$row['id_ordine'].'" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapse'.$row['id_ordine'].'" class="collapse'.$show.'" aria-labelledby="headingOne" data-parent="#accordion">
                           <div class="card-body">
                               <p>Luogo ritiro: '.$row['luogo_ritiro'].'</p>
                             <ul>';
@@ -115,6 +117,8 @@
                     $id = $row['id_ordine'];
                     $sqlProdotti = "SELECT * FROM ordinazioni INNER JOIN prodotti ON ordinazioni.id_prodotto = prodotti.id_prodotto WHERE id_ordine = $id";
                     $prodotti = $mysqli->query($sqlProdotti);
+                    $show="";
+                    if(isset($_GET['oid']) && $_GET['oid']==$row['id_ordine']){$show= " show";}
                     echo '<div id="accordion">
                       <div class="card">
                         <div class="card-header nopadding" id="headingOne">
@@ -127,7 +131,7 @@
                                 </button>
                         </div>
 
-                        <div id="collapse'.$row['id_ordine'].'" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapse'.$row['id_ordine'].'" class="collapse'.$show.'" aria-labelledby="headingOne" data-parent="#accordion">
                           <div class="card-body">
                               <p>Luogo ritiro: '.$row['luogo_ritiro'].'</p>
                             <ul>';

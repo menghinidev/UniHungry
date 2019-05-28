@@ -47,8 +47,14 @@
           echo "Nessuna notifica!";
       } else {
           while($n = $notifications->fetch_assoc()){
+              $href="#";
+              if($_SESSION['user_type'] == 'Fornitore'){
+                  $href="./GestioneOrdini.php?oid={$n['id_ordine']}";
+              } else {
+                  $href="./ProfiloCliente.php?oid={$n['id_ordine']}";
+              }
     ?>
-        <a id="notifica<?php echo $n['id_notifica'];?>" href="#" class="row notify-row justify-content-between <?php echo (!$n['visualizzata'])?"not-seen":"" ;?>">
+        <a id="notifica<?php echo $n['id_notifica'];?>" href="<?php echo $href ?>" class="row notify-row justify-content-between <?php echo (!$n['visualizzata'])?"not-seen":"" ;?>">
             <div class="col-12">
                 <?php echo $n['testo']; ?>
             </div>

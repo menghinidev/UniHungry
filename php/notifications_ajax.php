@@ -26,13 +26,20 @@ if(isset($_POST['action'])){
           $query="SELECT * FROM notifiche WHERE id_fornitore = {$u_id} AND per_utente = false AND visualizzata = false ORDER BY time_stamp DESC";
           } else {
           //Cliente
+          $href = "#";
           $query="SELECT N.* from notifiche N, ordini O WHERE O.id_ordine = N.id_ordine AND visualizzata = false AND O.id_cliente = {$u_id} AND N.per_utente = true ORDER BY time_stamp DESC";
           }
         $notifications = $mysqli->query($query);
         if($notifications->num_rows != 0){
             while($n = $notifications->fetch_assoc()){
+                $href="#";
+                if($_SESSION['user_type'] == 'Fornitore'){
+                    $href="./GestioneOrdini.php?oid={$n['id_ordine']}";
+                } else {
+                    $href="./ProfiloCliente.php?oid={$n['id_ordine']}";
+                }
                 $html .= '
-                  <a id="notifica'.$n['id_notifica'].'" href="#" class="row notify-row justify-content-between not-seen">
+                  <a id="notifica'.$n['id_notifica'].'" href="'.$href.'" class="row notify-row justify-content-between not-seen">
                       <div class="col-12">
                           '.$n['testo'].'
                       </div>
