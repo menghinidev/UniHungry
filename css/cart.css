@@ -6,7 +6,7 @@
   width: 40%;
 }
 #body{
-    margin-top: 2%;
+    margin-top: 1%;
 }
 #checkout {
     height: 50%;
@@ -26,10 +26,23 @@
     max-width:30%;
 }
 .top_nav {
-  margin-top: 1%;
-  padding: 2% 0;
-  padding-left: 1.25rem;
-  font-size: 20px;
+  padding: 2px;
+  background-color: #3A3B3A;
+}
+
+#back{
+    padding: 10px;
+    color:white;
+}
+
+.top_nav .btn {
+    float:right;
+    padding:5px;
+    margin:5px;
+}
+
+ #back>i {
+    margin-right:5px;
 }
 
 .rimuovi, .rimuovi:hover, .rimuovi:visited{
