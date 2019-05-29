@@ -8,8 +8,35 @@ $(document).ready(function(){
         location.href = returnFilterUrl();
     });
 
+    setInterval(function(){ checkUpdate(); }, 1000*30);
+
 });
 
+
+function checkUpdate(){
+    var count = 0;
+    $('.order').each(function(){
+        count++;
+    });
+    console.log(count);
+    $.ajax({
+    type: "POST",
+    url: "checkUpdateOrders.php",
+    data: {count: count, ricevuto:isFilterEnabled("#ricevuto"), accettato:isFilterEnabled("#accettato"), consegnato: isFilterEnabled("#consegnato"), completato: isFilterEnabled("#completato"),date: $('#dateFilter').val() }
+}).done(function(update) {
+        console.log(update);
+        if(update == "true"){
+            location.reload();
+        }
+    });
+}
+
+function isFilterEnabled(id){
+    if($(id).prop( "checked" )){
+        return true;
+    }
+    return false;
+}
 
 function returnFilterUrl(){
     var query = "";
