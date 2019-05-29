@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/modificaProfiloFornitore.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <!--FontAwsome-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

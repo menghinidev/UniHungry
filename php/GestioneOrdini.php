@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
   <head>
     <!-- Required meta tags -->
@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/ordini.css">
     <link rel="stylesheet" href="../css/riepilogo.css">
+    <!--FontAwsome-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
 			  src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -29,46 +31,90 @@
       } else if($_SESSION['user_type'] = 'Fornitore'){
           $id = $_SESSION['user_id'];
           $sql = "SELECT * FROM ordini WHERE id_fornitore = $id AND stato_ordine!='rifiutato'";
+          $first = true;
+          if(isset($_GET['ricevuto'])){
+              if($first){
+                  $sql .= " AND "."(";
+                  $first = false;
+              } else {
+                  $sql .= " OR ";
+              }
+              $sql .= " stato_ordine = 'ricevuto'";
+          }
+          if(isset($_GET['accettato'])){
+              if($first){
+                  $sql .= " AND "."(";
+                  $first = false;
+              } else {
+                  $sql .= " OR ";
+              }
+              $sql .= " stato_ordine = 'accettato'";
+          }
+          if(isset($_GET['completato'])){
+              if($first){
+                  $sql .= " AND "."(";
+                  $first = false;
+              } else {
+                  $sql .= " OR ";
+              }
+              $sql .= " stato_ordine = 'in consegna'";
+          }
+          if(isset($_GET['consegnato'])){
+              if($first){
+                  $sql .= " AND "."(";
+                  $first = false;
+              } else {
+                  $sql .= " OR ";
+              }
+              $sql .= " stato_ordine = 'consegnato'";
+          }
+          if(!$first){
+              $sql .= ")";
+          }
+          if(isset($_GET['date'])){
+              $data = "'".mysqli_real_escape_string($mysqli, $_GET['date'])."'";
+              $sql .= "AND data = $data";
+          }
           $sql .=" ORDER BY data DESC, ora_richiesta DESC";
           $result = $mysqli->query($sql);
      ?>
 
       <div class="row" id="filterBar">
-              <form class="col-6 form-inline">
+              <div class="col-6 form-inline">
                   <div class="form-group">
                       <label for="dateFilter">Filtra per data</label>
-                      <input class="form-control" type="date" value="" id="dateFilter">
+                      <input class="form-control" type="date" value="<?php echo isset($_GET['date'])? $_GET['date'] :"" ?>" id="dateFilter">
                   </div>
-              </form>
-              <form class="col-6 form-inline">
+              </div>
+              <div class="col-6 form-inline">
                   <div class="form-inline" id="checkBoxes">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="accettati">
-                        <label class="form-check-label" for="accettati">
+                        <input class="form-check-input filter" type="checkbox" name="ricevuto" <?php echo isset($_GET['ricevuto'])? "checked":"" ?> id="ricevuto">
+                        <label class="form-check-label" for="ricevuti">
                           Ricevuti
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="accettati">
+                        <input class="form-check-input filter" type="checkbox" <?php echo isset($_GET['accettato'])? "checked":"" ?> id="accettato">
                         <label class="form-check-label" for="accettati">
                           Accettati
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="completati">
+                        <input class="form-check-input filter" type="checkbox" <?php echo isset($_GET['completato'])? "checked":"" ?>  id="completato">
                         <label class="form-check-label" for="completati">
                           Completati
                         </label>
                       </div>
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="consegnati">
+                        <input class="form-check-input filter" type="checkbox" <?php echo isset($_GET['consegnato'])? "checked":"" ?> id="consegnato">
                         <label class="form-check-label" for="consegnati">
                           Consegnati
                         </label>
                       </div>
                   </div>
 
-              </form>
+              </div>
           </div>
   </div>
 
@@ -103,7 +149,7 @@
                   </div>
           </div>
 
-          <div id="collapse<?php echo $ordine['id_ordine']; ?>" class="collapse" aria-labelledby="heading<?php echo $ordine['id_ordine']; ?>" data-parent="#accordion">
+          <div id="collapse<?php echo $ordine['id_ordine']; ?>" class="collapse <?php if(isset($_GET['oid']) && $_GET['oid']==$ordine['id_ordine']){echo " show";} ?>" aria-labelledby="heading<?php echo $ordine['id_ordine']; ?>" data-parent="#accordion">
             <div class="card-body">
                 <p>Luogo ritiro: <?php echo $ordine['luogo_ritiro']; ?></p>
               <ul>

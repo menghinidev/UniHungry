@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/tab.css">
     <link rel="stylesheet" href="../css/ordini.css">
     <link rel="stylesheet" href="../css/profile.css">
+    <!--FontAwsome-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -63,19 +65,21 @@
                     $id = $row['id_ordine'];
                     $sqlProdotti = "SELECT * FROM ordinazioni INNER JOIN prodotti ON ordinazioni.id_prodotto = prodotti.id_prodotto WHERE id_ordine = $id";
                     $prodotti = $mysqli->query($sqlProdotti);
+                    $show="";
+                    if(isset($_GET['oid']) && $_GET['oid']==$row['id_ordine']){$show= " show";}
                     echo '<div id="accordion">
                       <div class="card">
                         <div class="card-header nopadding" id="headingOne">
                                 <button class="container fullScreen btn" data-toggle="collapse" data-target="#collapse'.$row['id_ordine'].'" aria-expanded="true" aria-controls="collapseOne">
                                     <div class=" row">
                                         <p class="col-4">#'.$row['id_ordine'].'</p>
-                                        <p class="col-4">'.$row['data'].' : '.$row['ora_richiesta'].'</p>
+                                        <p class="col-4">'.date("d/m/y",strtotime($row['data'])).' alle '.$row['ora_richiesta'].' </p>
                                         <p class="col-4">'.$row['stato_ordine'].'</p>
                                     </div>
                                 </button>
                         </div>
 
-                        <div id="collapse'.$row['id_ordine'].'" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapse'.$row['id_ordine'].'" class="collapse'.$show.'" aria-labelledby="headingOne" data-parent="#accordion">
                           <div class="card-body">
                               <p>Luogo ritiro: '.$row['luogo_ritiro'].'</p>
                             <ul>';
@@ -115,19 +119,21 @@
                     $id = $row['id_ordine'];
                     $sqlProdotti = "SELECT * FROM ordinazioni INNER JOIN prodotti ON ordinazioni.id_prodotto = prodotti.id_prodotto WHERE id_ordine = $id";
                     $prodotti = $mysqli->query($sqlProdotti);
+                    $show="";
+                    if(isset($_GET['oid']) && $_GET['oid']==$row['id_ordine']){$show= " show";}
                     echo '<div id="accordion">
                       <div class="card">
                         <div class="card-header nopadding" id="headingOne">
                                 <button class="container fullScreen btn" data-toggle="collapse" data-target="#collapse'.$row['id_ordine'].'" aria-expanded="true" aria-controls="collapseOne">
                                     <div class=" row">
                                         <p class="col-4">#'.$row['id_ordine'].'</p>
-                                        <p class="col-4">'.$row['data'].' : '.$row['ora_richiesta'].'</p>
+                                        <p class="col-4">'.date("d/m/y",strtotime($row['data'])).' alle '.$row['ora_richiesta'].' </p>
                                         <p class="col-4">'.$row['stato_ordine'].'</p>
                                     </div>
                                 </button>
                         </div>
 
-                        <div id="collapse'.$row['id_ordine'].'" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div id="collapse'.$row['id_ordine'].'" class="collapse'.$show.'" aria-labelledby="headingOne" data-parent="#accordion">
                           <div class="card-body">
                               <p>Luogo ritiro: '.$row['luogo_ritiro'].'</p>
                             <ul>';

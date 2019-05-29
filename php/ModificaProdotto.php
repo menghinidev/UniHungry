@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/modificaProdotto.css">
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.css">
+=======
+    <!--FontAwsome-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+>>>>>>> e97822ab1f4d9440d3314c12e2457add0f4172df
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
 			  src="https://code.jquery.com/jquery-3.3.1.min.js"

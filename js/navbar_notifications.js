@@ -3,10 +3,16 @@ $(document).ready(function(){
 
     setInterval(function(){ updateNotifications(); }, 1000*60);//updates every minute
 
+    //shouldnt set seen if click on show all
     $('#dropdown_parent').on('hidden.bs.dropdown', function () {
         setSeen();
     });
 });
+
+function mostraTutte(){
+    $( "#dropdown_parent" ).off();
+    window.location.href = "../php/Notifications.php";
+}
 
 
 function updateNotifications(){
@@ -22,8 +28,10 @@ function updateNotifications(){
     $("#drop_notifiche").append(html);
     //update button
     if(num>0){
-        $("#notifiche_count").text(num);
-        $("#notifiche_count").show();
+        $(".notifiche_count").text(num);
+        $(".notifiche_count").show();
+        $("#dropdownCount").text(num);
+        $("#dropdownCount").show();
     }
   });
 }
@@ -41,6 +49,7 @@ function setSeen(){
 }).done(function() {
     //update current view
     $(".notify").removeClass("not-seen");
-    $("#notifiche_count").hide();
+    $(".notifiche_count").hide();
+    $("#dropdownCount").hide();
   });
 }
