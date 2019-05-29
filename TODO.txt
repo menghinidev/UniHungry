@@ -27,7 +27,7 @@ GOALS
 7.  (OK) notifiche cliccabili
 8.  (OK) Riepilogo ordini fornitori      || FILTRI NON ATTIVI + UPDATE AUTOMATICO NUOVI ORDINI||
 9.  (OK) Pagina tutte le notifiche       || ?Caricamento dinamico notifiche vecchie? ||
-10. (OK) Icone navbar 
+10. (OK) Icone navbar
 
 
 NEXT:
@@ -41,7 +41,7 @@ WARNING:
 -Manca modifica password
 -TUTTI I FORM DA RICONTROLLARE E VALIDARE
 
-WARNING GESTIONE ORARI FORNITORI NELLA RICERCA/ORDINAZIONE
+WARNING GESTIONE ORARI FORNITORI NELLA RICERCA/ORDINAZIONE + controllo ora ordine
 
 AT LAST:
 -icone varie

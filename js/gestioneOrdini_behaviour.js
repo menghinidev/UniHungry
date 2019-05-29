@@ -1,3 +1,25 @@
+$(document).ready(function(){
+
+    $('.filter').click(function(){
+        applyFilter();
+    });
+
+});
+
+
+function applyFilter(){
+    var query = "";
+    $('.filter').each(function(){
+        if($(this).prop( "checked" )){
+            query+=$(this).attr("id");
+            query+="&";
+        }
+    });
+    query = query.slice(0, -1);
+    query = "?"+query;
+    location.href = "./GestioneOrdini.php"+query;
+}
+
 function buttonClick(action, id_ordine){
     $.ajax({
     type: "POST",
