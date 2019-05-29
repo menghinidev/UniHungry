@@ -71,6 +71,10 @@
           if(!$first){
               $sql .= ")";
           }
+          if(isset($_GET['date'])){
+              $data = "'".mysqli_real_escape_string($mysqli, $_GET['date'])."'";
+              $sql .= "AND data = $data";
+          }
           $sql .=" ORDER BY data DESC, ora_richiesta DESC";
           $result = $mysqli->query($sql);
      ?>
@@ -79,7 +83,7 @@
               <div class="col-6 form-inline">
                   <div class="form-group">
                       <label for="dateFilter">Filtra per data</label>
-                      <input class="form-control" type="date" value="" id="dateFilter">
+                      <input class="form-control" type="date" value="<?php echo isset($_GET['date'])? $_GET['date'] :"" ?>" id="dateFilter">
                   </div>
               </div>
               <div class="col-6 form-inline">

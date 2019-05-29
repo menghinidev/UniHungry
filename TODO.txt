@@ -25,7 +25,7 @@ GOALS
 5.  (OK) Email di conferma
 6.  (OK) Ordini + carrello               || pulsante per tornare indietro? + carrello vuoto layout ||
 7.  (OK) notifiche cliccabili
-8.  (OK) Riepilogo ordini fornitori      || FILTRI NON ATTIVI + UPDATE AUTOMATICO NUOVI ORDINI||
+8.  (OK) Riepilogo ordini fornitori      || UPDATE AUTOMATICO NUOVI ORDINI ||
 9.  (OK) Pagina tutte le notifiche       || ?Caricamento dinamico notifiche vecchie? ||
 10. (OK) Icone navbar
 
