@@ -28,8 +28,10 @@ function updateNotifications(){
     $("#drop_notifiche").append(html);
     //update button
     if(num>0){
-        $("#notifiche_count").text(num);
-        $("#notifiche_count").show();
+        $(".notifiche_count").text(num);
+        $(".notifiche_count").show();
+        $("#dropdownCount").text(num);
+        $("#dropdownCount").show();
     }
   });
 }
@@ -47,6 +49,7 @@ function setSeen(){
 }).done(function() {
     //update current view
     $(".notify").removeClass("not-seen");
-    $("#notifiche_count").hide();
+    $(".notifiche_count").hide();
+    $("#dropdownCount").hide();
   });
 }

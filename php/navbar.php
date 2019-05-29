@@ -54,8 +54,8 @@ $SEARCH = $prefix.'Search.php';
                     <?php if($_SESSION['user_type'] != 'Admin'){ ?>
                     <div id="dropdown_parent" class=" nav-item dropdown">
                       <button type="button" id="notifiche_button" class="btn green" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Notifiche
-                        <span id="notifiche_count" class="badge badge-pill badge-danger"></span>
+                        Notifiche <i class="fa fa-bell"></i>
+                        <span class="badge notifiche_count badge-pill badge-danger"></span>
                       </button>
                       <div id="drop_notifiche" class="dropdown-menu dropdown-menu-right">
                       </div>
@@ -69,6 +69,7 @@ $SEARCH = $prefix.'Search.php';
     <div class= "ml-auto">
         <div class="dropdown">
             <button type="button" class="nav-item btn green dropdown-toggle navbar-toggler" data-toggle="dropdown">
+                <span class="badge notifiche_count badge-pill badge-danger"></span>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
                 <!--Homepage behaviour-->
@@ -93,10 +94,10 @@ $SEARCH = $prefix.'Search.php';
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="./script_profile.php">Profilo</a>
                     <?php if($_SESSION['user_type'] != 'Admin'){ ?>
-                        <a class="dropdown-item" href="*******">Notifiche</a>
+                        <a class="dropdown-item" href="./Notifications.php">Notifiche <span id="dropdownCount" class="badge badge-secondary"></span></a>
                     <?php } ?>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./script_logout.php">Logout</a>
+                    <a class="dropdown-item" href="./script_logout.php"> <i class="fa fa-sign-out"></i> Logout</a>
                 <?php } ?>
             </div>
         </div>

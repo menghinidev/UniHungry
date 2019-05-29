@@ -126,7 +126,7 @@ a:visited {
 /*Single components*/
 
 .navbar {
-    padding: 5px;
+    padding: 5px 10px;
     background-color: #60BB6B;
     color: white;
 }
@@ -197,14 +197,14 @@ a:visited {
     }
 }
 
-#notifiche_count {
-    position:absolute;
+.notifiche_count {
+    position:absolute !important;
     top: -2px;
-    right: -8px;
+    right: -5px;
 }
 
-.notify{
-    white-space: normal;
+#dropdownCount {
+    background-color: #d1d1d1;
 }
 
 
