@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="../css/tab.css">
     <link rel="stylesheet" href="../css/ordini.css">
     <link rel="stylesheet" href="../css/profile.css">
+    <!--FontAwsome-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

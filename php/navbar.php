@@ -32,12 +32,13 @@ $SEARCH = $prefix.'Search.php';
                 </li>
                 <?php } else { ?>
                 <li class="nav-item">
-                 <a class="nav-link" href="./HomePage.php">Home</a>
+                  <i class="fa fa-home"></i><a class="nav-link" href="./HomePage.php">Home</a>
                 </li>
                 <?php } ?>
                 <?php if(is_logged()){ ?>
                     <li class="nav-item">
-                     <a class="nav-link" href="./script_profile.php">Profilo</a>
+                     <a class="nav-link" href="./script_profile.php">
+                         <i class="fa fa-user"></i> Profilo</a>
                     </li>
 
                     <!--ProfiloFornitore-->
@@ -54,7 +55,7 @@ $SEARCH = $prefix.'Search.php';
                     <?php if($_SESSION['user_type'] != 'Admin'){ ?>
                     <div id="dropdown_parent" class=" nav-item dropdown">
                       <button type="button" id="notifiche_button" class="btn green" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Notifiche <i class="fa fa-bell"></i>
+                         <i class="fa fa-bell"></i> Notifiche
                         <span class="badge notifiche_count badge-pill badge-danger"></span>
                       </button>
                       <div id="drop_notifiche" class="dropdown-menu dropdown-menu-right">

@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="../css/sheet.css">
   <link rel="stylesheet" href="../css/tab.css">
   <link rel="stylesheet" href="../css/modifiche.css">
+  <!--FontAwsome-->
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"

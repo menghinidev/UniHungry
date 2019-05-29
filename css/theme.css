@@ -207,6 +207,10 @@ a:visited {
     background-color: #d1d1d1;
 }
 
+.notify {
+    white-space: normal;
+}
+
 
 .not-seen{
     background-color:#CFEAD2;
