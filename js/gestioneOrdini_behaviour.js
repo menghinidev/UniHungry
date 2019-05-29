@@ -67,6 +67,16 @@ function buttonClick(action, id_ordine){
     data: { action: action, id_ordine: id_ordine}
 }).done(function() {
     //update
-    location.reload();
+    refresh();
   });
+}
+
+function refresh(){
+    var queryParameters = {}, queryString = location.search.substring(1),
+    re = /([^&=]+)=([^&]*)/g, m;
+    while (m = re.exec(queryString)) {
+    queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    }
+    delete queryParameters['oid'];
+    location.search = $.param(queryParameters); // Causes page to reload but without oid
 }
