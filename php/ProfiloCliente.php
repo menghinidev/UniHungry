@@ -86,7 +86,7 @@
                                           <a href="./Search.php?pid='.$prodotto['id_prodotto'].'">'.$prodotto['nome'].'</a> x '.$prodotto['quantita'].'
                                       </div>
                                       <div class="col prezzo">
-                                          '.$prodotto['prezzo_unitario'].'
+                                          '.$prodotto['prezzo_unitario'].'€
                                       </div>
                                   </div>
                               </li>';
@@ -138,7 +138,7 @@
                                           <a href="./Search.html">'.$prodotto['nome'].'</a> x '.$prodotto['quantita'].'
                                       </div>
                                       <div class="col prezzo">
-                                          '.$prodotto['prezzo_unitario'].'
+                                          '.$prodotto['prezzo_unitario'].'€
                                       </div>
                                   </div>
                               </li>';

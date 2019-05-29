@@ -34,3 +34,7 @@ body {
   max-width: 100%;
   text-align: center;
 }
+
+img {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+}

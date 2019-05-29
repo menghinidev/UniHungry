@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/modificaProdotto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.css">
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
 			  src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -17,6 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/modificaProdotto.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.js"></script>
 
     <!-- Page informations and icon -->
     <title>UniHungry - Modifica Prodotto</title>
@@ -39,21 +41,23 @@
     }
     ?>
         <div id="pageBody" class="container fullScreen ">
-                    <form id="modificaform" class="col needs-validation" action="action_product_update.php" method="post" enctype="multipart/form-data" novalidate>
+                    <form id="modificaform" class="col needs-validation" method="post" enctype="multipart/form-data" novalidate>
                         <div class="form-row">
                             <div id="selectImg" class="form-group col-md-6">
                                 <label for="imgupload">
                                   <?php
                                   if(isset($row['immagine'])){
-                                    echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='data:image/jpeg;base64,".base64_encode( $row['immagine'])."' alt='immagine cibo default'>";
+                                    echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='data:image/jpeg;base64,".base64_encode($row['immagine'])."' alt='immagine cibo default'>";
                                   } else {
                                     echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='../res/default_food.png' alt='immagine cibo default'>";
                                   }
                                    ?>
                                 <input type="file" onchange="readURL(this);" class="form-control-file" id="imgupload" name="image" hidden>
                                 <p>clicca per caricare un'immagine</p>
-                                <a href="" class="noVisitedLink" id="reset">resetta immagine</a>
                                 </label>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert" id="error">
+                                  <strong>Attenzione:</strong> Immagine troppo pesante! scegliene un'altra più piccola di 1Mb
+                                </div>
                             </div>
                             <div class="form-group col-md-6">
                                   <label for="idprodotto">ID prodotto</label>
@@ -123,14 +127,28 @@
                         </div>
                         <div class="form-row">
                           <div class="col">
-                            <button type="submit" class="btn green centered">Invia</button>
+                            <button id="sumbitForm" type="submit" class="btn green centered">Invia</button>
                           </div>
                         </div>
                     </form>
             </div>
-
-
-
+            <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" style="display: none;" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Cropper</h5>
+                  </div>
+                  <div class="modal-body">
+                    <div class="img-container">
+                      <img id="image" alt="Picture" class="">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button id="crop" type="button" class="btn btn-secondary" data-dismiss="modal">Crop</button>
+                  </div>
+                </div>
+              </div>
+            </div>
   <!-- Optional JavaScript -->
   </body>
 </html>

@@ -15,24 +15,20 @@ if(isset($_POST['nomeFornitore'], $_POST['cognomeFornitore'], $_POST['cellulareF
   $cellulare = $_POST['cellulareFornitore'];
   $currentId = $_SESSION['user_id'];
 
-  if (file_exists($_FILES['fornitoreLogo']['tmp_name'])) {
-    $imagename = $_FILES['fornitoreLogo']['name'];
-    $check = getimagesize($_FILES['fornitoreLogo']['tmp_name']);
+  if (file_exists($_FILES['foto']['tmp_name'])) {
+    $imagename = $_FILES['foto']['name'];
+    $check = getimagesize($_FILES['foto']['tmp_name']);
     if ($check !== false) {
-      $image = $_FILES['fornitoreLogo']['tmp_name'];
+      $image = $_FILES['foto']['tmp_name'];
       $imgContent = addslashes(file_get_contents($image));
       $sql = "UPDATE fornitori SET nome = $nomeFornitore, cognome = $cognomeFornitore, logo = '$imgContent', telefono = $cellulare, nome_fornitore = $attivita, descrizione = $descrizioneEstesa, descrizione_breve = $descrizioneBreve WHERE id_fornitore = $currentId";
       $mysqli->query($sql);
     } else {
       echo "false";
     }
-    header('Location: /unihungry/php/ProfiloFornitore.php');
   } else {
     $sql = "UPDATE fornitori SET nome = $nomeFornitore, cognome = $cognomeFornitore, telefono = $cellulare, nome_fornitore = $attivita, descrizione = $descrizioneEstesa, descrizione_breve = $descrizioneBreve WHERE id_fornitore = $currentId";
     $mysqli->query($sql);
-    header('Location: /unihungry/php/ProfiloFornitore.php');
   }
-} else {
-  echo "NOT SET";
 }
  ?>

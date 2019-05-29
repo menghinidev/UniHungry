@@ -16,11 +16,11 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
 
   if($isUpdate->num_rows > 0){
     //UPDATE
-    if (file_exists($_FILES['image']['tmp_name'])) {
-      $imagename = $_FILES['image']['name'];
-      $check = getimagesize($_FILES['image']['tmp_name']);
+    if (file_exists($_FILES['foto']['tmp_name'])) {
+      $imagename = $_FILES['foto']['name'];
+      $check = getimagesize($_FILES['foto']['tmp_name']);
       if ($check !== false) {
-        $image = $_FILES['image']['tmp_name'];
+        $image = $_FILES['foto']['tmp_name'];
         $imgContent = addslashes(file_get_contents($image));
         $sql = "UPDATE prodotti SET nome = $nome, categoria = $categoria, immagine = '$imgContent', descrizione = $descrizione, prezzo_unitario = {$_POST['prezzo']}, ingredienti = $ingredienti WHERE id_prodotto = $currentId";
         $mysqli->query($sql);
@@ -37,11 +37,11 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
     //INSERT
 
     $id_fornitore = $_SESSION['user_id'];
-    if (file_exists($_FILES['image']['tmp_name'])) {
-      $imagename = $_FILES['image']['name'];
-      $check = getimagesize($_FILES['image']['tmp_name']);
+    if (file_exists($_FILES['foto']['tmp_name'])) {
+      $imagename = $_FILES['foto']['name'];
+      $check = getimagesize($_FILES['foto']['tmp_name']);
       if ($check !== false) {
-        $image = $_FILES['image']['tmp_name'];
+        $image = $_FILES['foto']['tmp_name'];
         $imgContent = addslashes(file_get_contents($image));
         $sql = "INSERT INTO prodotti (nome, descrizione, prezzo_unitario, immagine, ingredienti, id_fornitore, categoria) VALUES ($nome, $descrizione, $prezzo, '$imgContent', $ingredienti, $id_fornitore, $categoria)";
         $res = $mysqli->query($sql);

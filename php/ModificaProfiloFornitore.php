@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/modificaProfiloFornitore.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.css">
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -18,11 +18,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/modificaFornitore.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.js"></script>
 
 
     <!-- Page informations and icon -->
-    <title>UniHungry - Modifca Profilo</title>
+    <title>UniHungry - Modifica Profilo</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
@@ -38,7 +38,7 @@
         $row = $result->fetch_assoc();
       }?>
       <div class="container" id="profile">
-          <form id="modificaform" class="col needs-validation" action="action_fornitore_update.php" method="post" enctype="multipart/form-data" novalidate>
+          <form id="modificaform" class="col needs-validation" method="post" enctype="multipart/form-data" novalidate>
                   <h2>Modifica Profilo</h2>
                   <div class="form-row">
                     <div id="selectImg" class="form-group col-md-6">
@@ -52,8 +52,10 @@
                           ?>
                         <input type="file" onchange="readURL(this);" class="form-control-file" id="imgupload" name="fornitoreLogo" hidden>
                         <small class="form-text">Clicca l'immagine per caricarne una</small>
-                        <a href="" class="noVisitedLink" id="reset">Resetta immagine</a>
                         </label>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="error">
+                          <strong>Attenzione:</strong> Immagine troppo pesante! scegliene un'altra più piccola di 1Mb
+                        </div>
                     </div>
                   </div>
               <div class="form-row">
@@ -107,10 +109,27 @@
               </div>
               <div class="form-row">
                 <div class="col-4"></div>
-                  <button id="registrati" type="submit" class="col-4 btn green">Modifica</button>
+                  <button id="sumbitForm" type="submit" class="col-4 btn green">Modifica</button>
                 <div class="col-4"></div>
               </div>
           </form>
+      </div>
+      <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLabel">Cropper</h5>
+            </div>
+            <div class="modal-body">
+              <div class="img-container">
+                <img id="image" alt="Picture" class="">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="crop" type="button" class="btn btn-secondary" data-dismiss="modal">Crop</button>
+            </div>
+          </div>
+        </div>
       </div>
   </body>
 </html>
