@@ -93,7 +93,7 @@
                 echo '';
               } else {
                 while ($modifica = $modificheInCorso->fetch_assoc()) {
-                  echo '<div class="row content">
+                  echo '<div class="row">
                     <div class="col-6">
                       '.$modifica['oggetto'].'
                     </div>
@@ -122,14 +122,15 @@
                 echo '';
               } else {
                 while ($approvata = $modificheAccettate->fetch_assoc()) {
-                  echo '<div class="row content">
-                    <div class="col-6">
-                      '.$approvata['oggetto'].'
-                    </div>
-                    <div class="col-6">
-                      '.$approvata['descrizione'].'
-                    </div>
-                  </div>';
+                  echo '<div class="row">
+                          <div class="col-6">
+                            '.$approvata['oggetto'].'
+                          </div>
+                          <div class="col-6">
+                            '.$approvata['descrizione'].'
+                          </div>
+                        </div>
+                        <hr/>';
                 }
               }
               ?>
@@ -152,13 +153,14 @@
               } else {
                 while ($rifiutate = $modificheRifiutate->fetch_assoc()) {
                   echo '<div class="row content">
-                    <div class="col-6">
-                      '.$rifiutate['oggetto'].'
-                    </div>
-                    <div class="col-6">
-                      '.$rifiutate['descrizione'].'
-                    </div>
-                  </div>';
+                          <div class="col-6">
+                            '.$rifiutate['oggetto'].'
+                          </div>
+                          <div class="col-6">
+                            '.$rifiutate['descrizione'].'
+                          </div>
+                        </div>
+                        <hr/>';
                 }
               }
               ?>
