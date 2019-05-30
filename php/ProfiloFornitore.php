@@ -35,6 +35,8 @@
           $result = $mysqli->query($sqlprodotti);
           $sqlfornitore = "SELECT * FROM fornitori WHERE id_fornitore = ".$_SESSION['user_id'];
           $resultfornitore = $mysqli->query($sqlfornitore);
+          $sqlOrari = "SELECT * FROM orari_giornalieri WHERE id_fornitore = $id";
+          $resultOrari = $mysqli->query($sqlOrari);
           $fornitore = $resultfornitore->fetch_assoc();
         }?>
         <div class="container nopadding row fullScreen">
@@ -63,6 +65,13 @@
                 <div class="modificaUtente distanced">
                   <a class="btn orange noVisitedLink" href="./Orari.php">Modifica Orari</a>
                 </div>
+                <?php
+                if($resultOrari->num_rows == 0) {
+                  echo '<div class="alert alert-warning fade show centered" role="alert">
+                    <strong>Attenzione:</strong> Devi inserire degli orari per poter rendere i prodotti ordinabili
+                  </div>';
+                }
+                ?>
             </div>
             <div id="prodottiBox" class="col">
                 <div id="titleBox" class="row">
