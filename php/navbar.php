@@ -53,7 +53,7 @@ $SEARCH = $prefix.'Search.php';
 
                     <?php if($_SERVER['PHP_SELF'] == $PROFILO_FORNITORE) { ?>
                         <li class="nav-item">
-                          <a class="nav-link" href="./********"><i class="fa fa-fw  fa-question"></i> Richieste</a>
+                          <a class="nav-link" href="./RichiesteFornitore.php"><i class="fa fa-fw  fa-question"></i> Richieste</a>
                         </li>
                     <?php } ?>
 
@@ -103,7 +103,7 @@ $SEARCH = $prefix.'Search.php';
                     <?php if($_SESSION['user_type'] == 'Fornitore') { ?>
                         <a class="dropdown-item" href="./GestioneOrdini.php">
                             <i class="fa fa-fw  fa-list-ul"></i> Ordini</a>
-                        <a class="dropdown-item" href="./******">
+                        <a class="dropdown-item" href="./RichiesteFornitore.php">
                             <i class="fa fa-fw  fa-question"></i> Richieste</a>
                     <?php } ?>
                     <?php if($_SESSION['user_type'] != 'Admin'){ ?>

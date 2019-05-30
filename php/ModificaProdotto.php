@@ -29,14 +29,14 @@
   <body>
     <?php include 'navbar.php';
     if(!is_logged()){
-        header('Location: ./ERROR');
+        header('Location: ./Login.php');
     } else {
       $categorie = $mysqli->query("SELECT * FROM categorie ORDER BY nome");
     }
     if(isset($_GET['id'])){
       $result = $mysqli->query("SELECT * FROM prodotti WHERE id_prodotto = ".$_GET['id']." AND id_fornitore = ".$_SESSION['user_id']."");
       if($result->num_rows == 0){
-        header('Location: ./ERROR');
+        header('Location: ./Login.php');
       } else {
         $row = $result->fetch_assoc();
       }

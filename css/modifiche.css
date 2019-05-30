@@ -23,9 +23,8 @@
   margin-left: 33%;
 }
 
-#addCat {
-  display: none;
-  width: 100%;
+.content {
+  margin-bottom: 2%;
 }
 
 body {
