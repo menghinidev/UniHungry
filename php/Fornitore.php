@@ -19,7 +19,7 @@
 			  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="../js/profiloFornitore.js"></script>
+
     <!-- Page informations and icon -->
     <title>UniHungry - Profilo Fornitore</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -52,31 +52,29 @@
             </div>
             <hr/>
             <div class="centered field">
-              <h5>Indirizzo</h5>
+              <h5><strong>Indirizzo</strong></h5>
               <?php echo $fornitore['indirizzo']; ?>
             </div>
             <div class="centered field">
-              <h5>Numero Telefono</h5>
+              <h5><strong>Numero Telefono</strong></h5>
               <?php echo $fornitore['telefono']; ?>
             </div>
             <div class="centered field">
-              <h5>Email</h5>
+              <h5><strong>Email</strong></h5>
               <?php echo $email['email']; ?>
             </div>
           </div>
-          <div class="col-md">
+          <div class="col-xl-10">
             <div class="centered distanced">
-              <h1><?php echo $fornitore['nome_fornitore']; ?></h1>
+              <h2><?php echo $fornitore['nome_fornitore']; ?></h2>
             </div>
             <hr/>
             <div class="centered distanced">
               <i><?php echo $fornitore['descrizione']; ?></i>
             </div>
             <hr/>
-            <div class="row justify-content-md-center distanced">
-              <a class="btn orange noVisitedLink" href="./Search.php?fid=<?php echo $id; ?>">Tutti i prodotti</a>
-            </div>
-            <div class="row justify-content-md-center distanced">
+            <div class="row distanced">
+              <div class="col-md-3"></div>
               <div class="col-md-6 orari">
                 <h4 class="centered">Orari Apertura</h4>
                 <?php
@@ -90,10 +88,10 @@
                 while ($orari = $orariResult->fetch_assoc()) {
                 ?>
                 <div class="row">
-                    <div class="col-4 centered">
+                    <div class="col-4 centered nopadding">
                       <strong><?php echo $orari['giorno_settimana']; ?>:</strong>
                     </div>
-                    <div class="col-4 centered"><?php
+                    <div class="col-4 centered nopadding"><?php
                     if (isset($orari["inizio_pausa"])) {
                       echo substr_replace($orari["apertura"] ,"",-3)." - ".substr_replace($orari["inizio_pausa"] ,"",-3);
                     } else {
@@ -101,19 +99,26 @@
                     }
                     ?>
                     </div>
-                    <div class="col-4 centered"><?php
+                    <div class="col-4 centered nopadding"><?php
                     if (isset($orari["inizio_pausa"])) {
                       echo substr_replace($orari["fine_pausa"] ,"",-3).' - '.substr_replace($orari["chiusura"] ,"",-3);
                     }
                     ?>
                     </div>
-                  </div>
+                </div>
                 <?php
                 }
                 ?>
-              </div>
+                <div class="row field">
+                  <div class="col">
+                    <a class="btn orange centered fullwidth noVisitedLink" href="./Search.php?fid=<?php echo $id; ?>">Guarda Tutti i Prodotti</a>
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
           </div>
         </div>
+      </div>
     <!-- Optional JavaScript -->
     </body>
   </html>

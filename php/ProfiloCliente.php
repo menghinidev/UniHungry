@@ -50,7 +50,7 @@
           <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="ordini" role="tabpanel" aria-labelledby="ordini-tab">
                 <div class="container riepilogoOrdine fullScreen">
-                    <h4>Ordini in corso</h4>
+                    <h4>Ordini in Corso</h4>
                     <div class="row">
                         <p class="col-4">Id ordine: </p>
                         <p class="col-4">Data e ora: </p>

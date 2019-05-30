@@ -15,12 +15,12 @@ GOALS
 13. (OK) Modifica profilo clienti        || Manca password ||
 14. (OK) Modifica profilo fornitori      || UNIFORMARE STILE CON PROFILO CLIENTE + Manca password ||
 15. (OK) Gestione prodotti fornitore
+16. (OK) Richiesta modifiche fornitore
+17. (OK) Layout Fornitore.php
 
 
 NEXT:
--Riguardare layout Fornitore.php (Mengo)
 -stile bottone disabled (Mengo)
--Richiesta modifiche fornitore (Mengo)
 
 -Pagine di arrivo statiche (easypeasy)
 
