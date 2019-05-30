@@ -51,11 +51,21 @@
             <div class="tab-pane fade show active" id="ordini" role="tabpanel" aria-labelledby="ordini-tab">
                 <div class="container riepilogoOrdine fullScreen">
                     <h4>Ordini in Corso</h4>
-                    <div class="row">
-                        <p class="col-4">Id ordine: </p>
-                        <p class="col-4">Data e ora: </p>
-                        <p class="col-4">Stato ordine </p>
-                    </div>
+                    <?php
+                    if ($resultOrdiniInCorso->num_rows == 0) {
+                      echo '<div class="row">
+                          <div class="col-4"></div>
+                          <div class="col-4"><i>Non hai Ordini in Corso</i></div>
+                          <div class="col-4"></div>
+                      </div>';
+                    } else {
+                      echo '<div class="row header">
+                          <p class="col-4">Id ordine: </p>
+                          <p class="col-4">Data e ora: </p>
+                          <p class="col-4">Stato ordine </p>
+                      </div>';
+                    }
+                    ?>
                 </div>
                 <?php
                 if ($resultOrdiniInCorso->num_rows == 0) {
@@ -105,11 +115,21 @@
                 ?>
                 <div class="container riepilogoOrdine fullScreen">
                     <h4>Ordini Passati</h4>
-                    <div class="row">
-                        <p class="col-4">Id ordine: </p>
-                        <p class="col-4">Data e ora: </p>
-                        <p class="col-4">Stato ordine </p>
-                    </div>
+                    <?php
+                    if ($resultOrdiniPassati->num_rows == 0) {
+                      echo '<div class="row">
+                          <div class="col-4"></div>
+                          <div class="col-4"><i>Non hai Ordini Passati</i></div>
+                          <div class="col-4"></div>
+                      </div>';
+                    } else {
+                      echo '<div class="row header">
+                          <p class="col-4">Id ordine: </p>
+                          <p class="col-4">Data e ora: </p>
+                          <p class="col-4">Stato ordine </p>
+                      </div>';
+                    }
+                    ?>
                 </div>
                 <?php
                 if ($resultOrdiniPassati->num_rows == 0) {

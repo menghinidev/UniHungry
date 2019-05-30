@@ -61,7 +61,7 @@
                if($insert_stmt->execute())
                {
                   attendi_approvazione($email, $_POST['nome'], $_POST['cognome'], $_POST['nome_fornitore']);
-                  header('Location: ./CONFIRM');
+                  header('Location: ./HomePage.php');
                } else {
                   header('Location: ./ERROR');
                }
