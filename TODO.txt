@@ -13,7 +13,7 @@ GOALS
 11. (OK) Image Crop
 12. (OK) Riepilogo ordini clienti        || Non tutti gli ordini passati? + Rimuovere blocchi vuoti ||
 13. (OK) Modifica profilo clienti        || Manca password ||
-14. (OK) Modifica profilo fornitori      || UNIFORMARE STILE CON PROFILO CLIENTE + Manca password ||
+14. (OK) Modifica profilo fornitori      || Manca password ||
 15. (OK) Gestione prodotti fornitore
 16. (OK) Richiesta modifiche fornitore
 17. (OK) Layout Fornitore.php
@@ -34,6 +34,7 @@ AT LAST:
 -popolare bene il db
 -HomePage da sistemare
 -icone varie
+-Eliminare orario giornaliero (come richiesta modifiche)
 -cropper max-height
 
 EXTRA(?):

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/theme.css">
     <link rel="stylesheet" href="../css/modificaProfiloFornitore.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
     <!--FontAwsome-->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
@@ -40,82 +39,84 @@
         $result = $mysqli->query($sql);
         $row = $result->fetch_assoc();
       }?>
-      <div class="container" id="profile">
+      <div class="container borderOrange">
+        <div id="profile">
           <form id="modificaform" class="col needs-validation" method="post" enctype="multipart/form-data" novalidate>
-                  <h2>Modifica Profilo</h2>
-                  <div class="form-row">
-                    <div id="selectImg" class="form-group col-md-6">
-                        <label for="imgupload">
-                          <?php
-                          if(isset($row['logo'])){
-                            echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='data:image/jpeg;base64,".base64_encode($row['logo'])."' alt='immagine cibo default'>";
-                          } else {
-                            echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='../res/default_food.png' alt='immagine cibo default'>";
-                          }
-                          ?>
-                        <input type="file" onchange="readURL(this);" class="form-control-file" id="imgupload" name="fornitoreLogo" hidden>
-                        <small class="form-text">Clicca l'immagine per caricarne una</small>
-                        </label>
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="error">
-                          <strong>Attenzione:</strong> Immagine troppo pesante! scegliene un'altra più piccola di 1Mb
-                        </div>
-                    </div>
-                  </div>
-              <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="nome">Nome</label>
-                    <input type="text" name="nomeFornitore" value="<?php echo $row['nome']; ?>" class="form-control" id="nome" required>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="cognome">Cognome</label>
-                    <input type="text" name="cognomeFornitore" value="<?php echo $row['cognome']; ?>" class="form-control" id="cognome" required>
-                  </div>
-                  <div class="form-group col-md-4">
-                      <label for="cellulare">Numero Cellulare</label>
-                      <input type="text" name="cellulareFornitore" value="<?php echo $row['telefono']; ?>" class="form-control" id="cellulare" required>
+            <h2>Modifica Profilo</h2>
+            <div class="form-row">
+              <div id="selectImg" class="form-group col-md-6">
+                  <label for="imgupload">
+                    <?php
+                    if(isset($row['logo'])){
+                      echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='data:image/jpeg;base64,".base64_encode($row['logo'])."' alt='immagine cibo default'>";
+                    } else {
+                      echo "<img class='btn nopadding img-thumbnail' id='foodImg' src='../res/default_food.png' alt='immagine cibo default'>";
+                    }
+                    ?>
+                  <input type="file" onchange="readURL(this);" class="form-control-file" id="imgupload" name="fornitoreLogo" hidden>
+                  <small class="form-text">Clicca l'immagine per caricarne una</small>
+                  </label>
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert" id="error">
+                    <strong>Attenzione:</strong> Immagine troppo pesante! scegliene un'altra più piccola di 1Mb
                   </div>
               </div>
-              <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="nomeAttivita">Nome Attività</label>
-                    <input type="text" name="nomeAttivitaFornitore" value="<?php echo $row['nome_fornitore']; ?>" class="form-control" id="nomeAttivita" required>
-                  </div>
-                  <div class="form-group col-md-6">
-                      <label for="indirizzo">Indirizzo</label>
-                      <input type="text" name="indirizzoFornitore" value="<?php echo $row['indirizzo']; ?>" name="indirizzo" class="form-control" id="indirizzo" required>
-                  </div>
-              </div>
-              <div class="form-row">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="nome">Nome</label>
+                  <input type="text" name="nomeFornitore" value="<?php echo $row['nome']; ?>" class="form-control" id="nome" required>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="cognome">Cognome</label>
+                  <input type="text" name="cognomeFornitore" value="<?php echo $row['cognome']; ?>" class="form-control" id="cognome" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="cellulare">Numero Cellulare</label>
+                    <input type="text" name="cellulareFornitore" value="<?php echo $row['telefono']; ?>" class="form-control" id="cellulare" required>
+                </div>
+            </div>
+            <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="descrizioneBreve">Descrizione Breve</label>
-                  <textarea class="form-control" name="descrizioneBreve" id="descrizioneBreve" rows="2" required><?php echo $row['descrizione_breve']; ?></textarea>
+                  <label for="nomeAttivita">Nome Attività</label>
+                  <input type="text" name="nomeAttivitaFornitore" value="<?php echo $row['nome_fornitore']; ?>" class="form-control" id="nomeAttivita" required>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="descrizioneEstesa">Descrizione Estesa</label>
-                  <?php
-                  if(isset($row['descrizione'])){
-                    echo "<textarea class='form-control' name='descrizioneEstesa' id='descrizioneEstesa' rows='5'>".$row['descrizione']."</textarea>";
-                  } else {
-                    echo "<textarea class='form-control' name='descrizioneEstesa' id='descrizioneEstesa' rows='5'></textarea>";
-                  }
-                  ?>
+                    <label for="indirizzo">Indirizzo</label>
+                    <input type="text" name="indirizzoFornitore" value="<?php echo $row['indirizzo']; ?>" name="indirizzo" class="form-control" id="indirizzo" required>
                 </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="descrizioneBreve">Descrizione Breve</label>
+                <textarea class="form-control" name="descrizioneBreve" id="descrizioneBreve" rows="2" required><?php echo $row['descrizione_breve']; ?></textarea>
               </div>
-              <h4>Informazioni accesso</h4>
-              <div class="form-group">
-                  <label for="passwordOld">Vecchia Password</label>
-                  <input type="password" class="form-control" id="passwordOld">
-                  <label for="passwordNew">Nuova Password</label>
-                  <input type="password" class="form-control" id="passwordNew">
-                  <label for="passwordNewConfirm">Conferma nuova Password</label>
-                  <input type="password" class="form-control" id="passwordNewConfirm">
+              <div class="form-group col-md-6">
+                <label for="descrizioneEstesa">Descrizione Estesa</label>
+                <?php
+                if(isset($row['descrizione'])){
+                  echo "<textarea class='form-control' name='descrizioneEstesa' id='descrizioneEstesa' rows='5'>".$row['descrizione']."</textarea>";
+                } else {
+                  echo "<textarea class='form-control' name='descrizioneEstesa' id='descrizioneEstesa' rows='5'></textarea>";
+                }
+                ?>
               </div>
-              <div class="form-row">
-                <div class="col-4"></div>
-                  <button id="sumbitForm" type="submit" class="col-4 btn green">Modifica</button>
-                <div class="col-4"></div>
-              </div>
+            </div>
+            <h4>Informazioni accesso</h4>
+            <div class="form-group">
+                <label for="passwordOld">Vecchia Password</label>
+                <input type="password" class="form-control" id="passwordOld">
+                <label for="passwordNew">Nuova Password</label>
+                <input type="password" class="form-control" id="passwordNew">
+                <label for="passwordNewConfirm">Conferma nuova Password</label>
+                <input type="password" class="form-control" id="passwordNewConfirm">
+            </div>
+            <div class="form-row">
+              <div class="col-4"></div>
+                <button id="sumbitForm" type="submit" class="col-4 btn green">Modifica</button>
+              <div class="col-4"></div>
+            </div>
           </form>
+        </div>
       </div>
       <div id="modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" style="display: none;" aria-hidden="true">
         <div class="modal-dialog" role="document">
