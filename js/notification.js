@@ -4,7 +4,7 @@ $(document).ready(function(){
         setAllSeen();
     });
 
-    setInterval(function(){ updateList(); }, 1000*60);//updates every minute
+    setInterval(function(){ updateList(); }, 1000*30);//updates every minute
 });
 
 function setAllSeen(){

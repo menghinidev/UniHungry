@@ -8,8 +8,35 @@ $(document).ready(function(){
         location.href = returnFilterUrl();
     });
 
+    setInterval(function(){ checkUpdate(); }, 1000*30);
+
 });
 
+
+function checkUpdate(){
+    var count = 0;
+    $('.order').each(function(){
+        count++;
+    });
+    console.log(count);
+    $.ajax({
+    type: "POST",
+    url: "checkUpdateOrders.php",
+    data: {count: count, ricevuto:isFilterEnabled("#ricevuto"), accettato:isFilterEnabled("#accettato"), consegnato: isFilterEnabled("#consegnato"), completato: isFilterEnabled("#completato"),date: $('#dateFilter').val() }
+}).done(function(update) {
+        console.log(update);
+        if(update == "true"){
+            location.reload();
+        }
+    });
+}
+
+function isFilterEnabled(id){
+    if($(id).prop( "checked" )){
+        return true;
+    }
+    return false;
+}
 
 function returnFilterUrl(){
     var query = "";
@@ -40,6 +67,16 @@ function buttonClick(action, id_ordine){
     data: { action: action, id_ordine: id_ordine}
 }).done(function() {
     //update
-    location.reload();
+    refresh();
   });
+}
+
+function refresh(){
+    var queryParameters = {}, queryString = location.search.substring(1),
+    re = /([^&=]+)=([^&]*)/g, m;
+    while (m = re.exec(queryString)) {
+    queryParameters[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+    }
+    delete queryParameters['oid'];
+    location.search = $.param(queryParameters); // Causes page to reload but without oid
 }

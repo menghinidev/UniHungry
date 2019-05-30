@@ -1,7 +1,7 @@
 $(document).ready(function(){
     updateNotifications();
 
-    setInterval(function(){ updateNotifications(); }, 1000*60);//updates every minute
+    setInterval(function(){ updateNotifications(); }, 1000*30);//updates every minute
 
     //shouldnt set seen if click on show all
     $('#dropdown_parent').on('hidden.bs.dropdown', function () {

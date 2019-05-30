@@ -139,7 +139,7 @@
               $prodotti = $mysqli->query($sql);
            ?>
         <div class="card">
-          <div class="card-header nopadding" id="heading<?php echo $ordine['id_ordine']; ?>">
+          <div class="card-header order nopadding" id="heading<?php echo $ordine['id_ordine']; ?>">
                   <div class="container fullScreen btn" data-toggle="collapse" data-target="#collapse<?php echo $ordine['id_ordine']; ?>" aria-expanded="true" aria-controls="collapse<?php echo $ordine['id_ordine']; ?>">
                       <div class="row">
                           <p class="col-4"><?php echo "#".$ordine['id_ordine']; ?> </p>

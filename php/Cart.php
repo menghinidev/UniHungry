@@ -52,8 +52,11 @@
         </div>
     <?php } ?>
     <div class="container fullScreen">
-      <div class="row top_nav" id="toShow">
-            <a href="#ordina" class="scrolling btn btn-primary">Ordina ora</a>
+      <div class="row top_nav justify-content-between" >
+          <div id="back" class="col">
+              <a href="./Search.php?s=&cat=&price=Indifferente" class=" whiteLink"><i class="fa fa-fw fa-reply"></i>Torna ai prodotti</a>
+          </div>
+            <a href="#ordina" id="toShow" class="noVisitedLink col-4 scrolling btn btn-primary">Ordina ora</a>
       </div>
 
       <div class="row" id="body">
