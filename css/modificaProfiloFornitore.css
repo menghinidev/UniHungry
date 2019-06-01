@@ -8,6 +8,14 @@ body {
   color:black;
 }
 
+.btn:disabled {
+  background-color: grey;
+}
+
+.btn:disabled:hover {
+  background-color: grey;
+}
+
 #profile {
   background-color: white;
   border-radius: 20px;

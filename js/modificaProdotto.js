@@ -16,6 +16,12 @@ function readURL(input) {
     }
 }
 
+$(document).ready(function(){
+  if($('#foodImg').attr("src") == '../res/default_food.png') {
+    $("#sumbitForm").attr("disabled", true);
+  }
+});
+
 (function() {
   'use strict';
   window.addEventListener('load', function() {

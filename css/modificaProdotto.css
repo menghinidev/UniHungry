@@ -13,6 +13,15 @@ body {
     margin-top: 30px;
 }
 
+.btn:disabled {
+  background-color: grey;
+}
+
+.btn:disabled:hover {
+  background-color: grey;
+}
+
+
 #modificaform {
     color:white;
     background-color: #F1B07C;

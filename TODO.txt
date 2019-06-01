@@ -20,8 +20,6 @@ GOALS
 
 
 NEXT:
--stile bottone disabled (Mengo)
-
 -Pagine di arrivo statiche (easypeasy)
 
 WARNING:
