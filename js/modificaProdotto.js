@@ -8,7 +8,7 @@ function readURL(input) {
 
         reader.readAsDataURL(input.files[0]);
     }
-    if (input.files[0].size > 1000000) {
+    if (input.files[0].size > 900000) {
       $('#error').show();
     } else {
       $('#error').hide();
