@@ -22,6 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/ProfiloCliente.js"></script>
+    <script type="text/javascript" src="../js/check_password_validity.js"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Il tuo profilo</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -209,10 +210,11 @@
                         <input type="password" class="form-control" id="passwordNew">
                         <label for="passwordNewConfirm">Conferma nuova Password</label>
                         <input type="password" class="form-control" id="passwordNewConfirm">
+                        <small id="valid" class="form-text"></small>
                     </div>
                     <div class="form-row">
                     <div class="col-4"></div>
-                    <button id="registrati" type="submit" class="col-4 btn green">Modifica</button>
+                    <button id="sumbitForm" type="submit" class="col-4 btn green">Modifica</button>
                     <div class="col-4"></div>
                     </div>
                 </form>
