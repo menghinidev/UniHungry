@@ -67,7 +67,8 @@
                                   if(!isset($_GET['id'])) {
                                     echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' readonly>";
                                   } else {
-                                    echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' value='".$row['id_prodotto']."' readonly>";
+                                    echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' value='".$row['id_prodotto']."' readonly>
+                                          <button type='button' class='btn green distanced' onclick='deleteProduct()'>Elimina Prodotto</button>";
                                   }
                                   ?>
                             </div>

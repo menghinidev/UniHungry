@@ -92,3 +92,14 @@ function uploadData() {
     window.location = "/unihungry/php/ProfiloFornitore.php";
   });
 }
+
+function deleteProduct() {
+  var id = $('#idprodotto').val();
+  $.ajax({
+    type: 'POST',
+    url: 'action_delete_product.php',
+    data: {productId: id},
+  }).done(function(data) {
+    window.location = "/unihungry/php/ProfiloFornitore.php";
+  });
+}

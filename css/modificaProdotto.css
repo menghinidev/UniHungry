@@ -21,6 +21,9 @@ body {
   background-color: grey;
 }
 
+.distanced {
+  margin-top: 2%;
+}
 
 #modificaform {
     color:white;
