@@ -93,6 +93,10 @@ function uploadData() {
   });
 }
 
+function showConfirm() {
+  $('#confirm').modal('show');
+}
+
 function deleteProduct() {
   var id = $('#idprodotto').val();
   $.ajax({

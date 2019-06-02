@@ -68,7 +68,7 @@
                                     echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' readonly>";
                                   } else {
                                     echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' value='".$row['id_prodotto']."' readonly>
-                                          <button type='button' class='btn green distanced' onclick='deleteProduct()'>Elimina Prodotto</button>";
+                                          <button type='button' class='btn green distanced' onclick='showConfirm()'>Elimina Prodotto</button>";
                                   }
                                   ?>
                             </div>
@@ -148,6 +148,25 @@
                   </div>
                   <div class="modal-footer">
                     <button id="crop" type="button" class="btn btn-secondary" data-dismiss="modal">Crop</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="confirm" class="modal" tabindex="-1" role="dialog">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" onclick="deleteProduct()" class="btn btn-primary">Conferma</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
                   </div>
                 </div>
               </div>
