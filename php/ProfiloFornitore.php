@@ -37,7 +37,7 @@
           } else {
             $pageno = 1;
           }
-          $no_of_records_per_page = 2;
+          $no_of_records_per_page = 3;
           $offset = ($pageno-1) * $no_of_records_per_page;
 
           $total_pages_sql = "SELECT * FROM prodotti WHERE id_fornitore = $id";
@@ -159,14 +159,14 @@
                 <div class="col middleCol">
                   <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                      <li class="page-item"><a class="page-link" href="?pageno=1">First</a></li>
-                      <li class="page-item" <?php if($pageno <= 1){ echo 'disabled'; } ?>>
+                      <li class="page-item <?php if($pageno <= 1){ echo 'disabled'; } ?>"><a class="page-link" href="?pageno=1">First</a></li>
+                      <li class="page-item <?php if($pageno <= 1){ echo 'disabled'; } ?>">
                         <a class="page-link" href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>"><i class="fa fa-fw  fa-angle-left"></i></a>
                       </li>
-                      <li class="page-item"<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>>
+                      <li class="page-item <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
                         <a class="page-link" href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>"><i class="fa fa-fw  fa-angle-right"></i></a>
                       </li>
-                      <li class="page-item"><a class="page-link" href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
+                      <li class="page-item <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>"><a class="page-link" href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
                     </ul>
                   </nav>
                 </div>
