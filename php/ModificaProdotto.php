@@ -68,7 +68,7 @@
                                     echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' readonly>";
                                   } else {
                                     echo "<input type='text' name='idprodotto' class='form-control' id='idprodotto' value='".$row['id_prodotto']."' readonly>
-                                          <button type='button' class='btn green distanced' onclick='showConfirm()'>Elimina Prodotto</button>";
+                                          <button type='button' class='btn red distanced' onclick='showConfirm()'>Elimina Prodotto</button>";
                                   }
                                   ?>
                             </div>
@@ -165,8 +165,8 @@
                     <p>Modal body text goes here.</p>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" onclick="deleteProduct()" class="btn btn-primary">Conferma</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annulla</button>
+                    <button type="button" onclick="deleteProduct()" class="btn green">Conferma</button>
+                    <button type="button" class="btn red" data-dismiss="modal">Annulla</button>
                   </div>
                 </div>
               </div>
