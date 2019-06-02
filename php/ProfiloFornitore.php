@@ -28,11 +28,23 @@
     <body>
         <?php include 'navbar.php';
         if(!is_logged()){
-            header('Location: ./ERROR');
+            header('Location: ./Login.php');
         } else {
           $id = $_SESSION['user_id'];
 
-          $sqlprodotti = "SELECT * FROM prodotti WHERE id_fornitore = $id ORDER BY nome";
+          if (isset($_GET['pageno'])) {
+            $pageno = $_GET['pageno'];
+          } else {
+            $pageno = 1;
+          }
+          $no_of_records_per_page = 2;
+          $offset = ($pageno-1) * $no_of_records_per_page;
+
+          $total_pages_sql = "SELECT * FROM prodotti WHERE id_fornitore = $id";
+          $num_elements = $mysqli->query($total_pages_sql);
+          $total_pages = ceil($num_elements->num_rows / $no_of_records_per_page);
+
+          $sqlprodotti = "SELECT * FROM prodotti WHERE id_fornitore = $id ORDER BY nome LIMIT $offset, $no_of_records_per_page";
           $result = $mysqli->query($sqlprodotti);
 
           $sqlfornitore = "SELECT * FROM fornitori WHERE id_fornitore = ".$_SESSION['user_id'];
@@ -147,21 +159,14 @@
                 <div class="col middleCol">
                   <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                          <span class="sr-only">Previous</span>
-                        </a>
+                      <li class="page-item"><a class="page-link" href="?pageno=1">First</a></li>
+                      <li class="page-item" <?php if($pageno <= 1){ echo 'disabled'; } ?>>
+                        <a class="page-link" href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>"><i class="fa fa-fw  fa-angle-left"></i></a>
                       </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                          <span class="sr-only">Next</span>
-                        </a>
+                      <li class="page-item"<?php if($pageno >= $total_pages){ echo 'disabled'; } ?>>
+                        <a class="page-link" href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>"><i class="fa fa-fw  fa-angle-right"></i></a>
                       </li>
+                      <li class="page-item"><a class="page-link" href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
                     </ul>
                   </nav>
                 </div>

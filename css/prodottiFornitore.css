@@ -87,3 +87,7 @@
  .informazionLink:hover {
    color: #9D5C28;
  }
+
+ .pagination li.page-item:disabled {
+   background-color: grey;
+ }
