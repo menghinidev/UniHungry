@@ -31,12 +31,16 @@
             header('Location: ./ERROR');
         } else {
           $id = $_SESSION['user_id'];
+
           $sqlprodotti = "SELECT * FROM prodotti WHERE id_fornitore = $id ORDER BY nome";
           $result = $mysqli->query($sqlprodotti);
+
           $sqlfornitore = "SELECT * FROM fornitori WHERE id_fornitore = ".$_SESSION['user_id'];
           $resultfornitore = $mysqli->query($sqlfornitore);
+
           $sqlOrari = "SELECT * FROM orari_giornalieri WHERE id_fornitore = $id";
           $resultOrari = $mysqli->query($sqlOrari);
+
           $fornitore = $resultfornitore->fetch_assoc();
         }?>
         <div class="container nopadding row fullScreen">

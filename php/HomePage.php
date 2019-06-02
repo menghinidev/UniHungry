@@ -25,7 +25,14 @@
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
-      <?php include 'navbar.php';?>
+      <?php include 'navbar.php';
+      $sql = "SELECT f.id_fornitore, f.nome_fornitore, f.descrizione_breve, f.logo, COUNT(o.id_ordine) as TotaleOrdini FROM fornitori f, ordini o WHERE f.id_fornitore = o.id_fornitore GROUP BY o.id_fornitore ORDER BY TotaleOrdini DESC LIMIT 3";
+      $fornitori = $mysqli->query($sql);
+      if($fornitori->num_rows < 3) {
+        $newQuery = "SELECT f.id_fornitore, f.nome_fornitore, f.descrizione_breve, f.logo FROM fornitori f LIMIT 3";
+        $fornitori = $mysqli->query($newQuery);
+      }
+      ?>
       <div id="slideshow" class="carousel slide" data-ride="carousel"  data-interval="7000">
         <div class="carousel-inner">
             <div class="row" id="searchBox">
@@ -79,42 +86,26 @@
 
           <div id="partners" class="container fullScreen">
               <div class ="row">
-                  <div class="col-4 nopadding resBlock">
+                <?php
+                while ($fornitore = $fornitori->fetch_assoc()) {
+                  echo '<div class="col-4 nopadding resBlock">
                       <div class="resback">
                           <div class="rescaption">
-                              <h5>Melting Pot</h5>
-                              <p>Cucina contaminata per un incontro tra culture differenti</p>
-                              <a href="#">scopri di più</a>
+                              <h5>'.$fornitore["nome_fornitore"].'</h5>
+                              <p>'.$fornitore["descrizione_breve"].'</p>
+                              <a href="./Fornitore.php?id='.$fornitore["id_fornitore"].'">scopri di più</a>
                           </div>
-                      </div>
-
-                      <img class="reslogo nopadding img-fluid" src="../res/res1.jpg" alt="logo">
-
-                  </div>
-                  <div class="col-4 nopadding resBlock">
-                      <div class="resback">
-                          <div class="rescaption">
-                              <h5>Melting Pot</h5>
-                              <p>Cucina contaminata per un incontro tra culture differenti</p>
-                              <a href="#">scopri di più</a>
-                          </div>
-                      </div>
-
-                      <img class="reslogo nopadding img-fluid" src="../res/res2.jpg" alt="logo">
-                  </div>
-                  <div class="col-4 nopadding resBlock">
-                      <div class="resback">
-                          <div class="rescaption">
-                              <h5>Melting Pot</h5>
-                              <p>Cucina contaminata per un incontro tra culture differenti</p>
-                              <a href="#">scopri di più</a>
-                          </div>
-                      </div>
-
-                      <img class="reslogo nopadding img-fluid" src="../res/res3.jpg" alt="logo">
-                  </div>
+                      </div>';
+                  if(isset($fornitore["logo"])) {
+                    echo '<img class="reslogo nopadding img-fluid" src="data:image/jpeg;base64,'.base64_encode($fornitore["logo"]).'" alt="logo">
+                    </div>';
+                  } else {
+                    echo '<img class="reslogo nopadding img-fluid" src="../res/default_food.png" alt="logo">
+                    </div>';
+                  }
+                }
+                ?>
               </div>
-
           </div>
           <div id="chisiamo" class="container fullScreen">
               <div class="title">
