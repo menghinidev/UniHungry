@@ -7,7 +7,7 @@ GOALS
 5.  (OK) Email di conferma
 6.  (OK) Ordini + carrello               || carrello vuoto layout + icone pulsanti ||
 7.  (OK) notifiche cliccabili
-8.  (OK) Riepilogo ordini fornitori     
+8.  (OK) Riepilogo ordini fornitori
 9.  (OK) Pagina tutte le notifiche       || ?Caricamento dinamico notifiche vecchie? ||
 10. (OK) Icone navbar
 11. (OK) Image Crop
@@ -21,6 +21,7 @@ GOALS
 
 NEXT:
 -Pagine di arrivo statiche (easypeasy)
+-paginazione fix centered
 
 WARNING:
 -Manca modifica password
@@ -31,7 +32,6 @@ controllo ora ordine
 
 AT LAST:
 -popolare bene il db
--HomePage da sistemare
 -icone varie
 -Eliminare orario giornaliero (come richiesta modifiche)
 -cropper max-height
@@ -39,6 +39,7 @@ AT LAST:
 EXTRA(?):
 -sezione "contattaci" + relativa vista admin???
 -aggiungere altre email
+-unlock user?
 _________________________________________
 NAMING CONVENTIONS
 
