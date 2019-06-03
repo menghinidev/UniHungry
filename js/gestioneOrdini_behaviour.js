@@ -67,7 +67,7 @@ function buttonClick(action, id_ordine){
     data: { action: action, id_ordine: id_ordine}
 }).done(function() {
     //update
-    refresh();
+    location.reload();
   });
 }
 
