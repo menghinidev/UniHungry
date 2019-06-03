@@ -199,8 +199,8 @@
                             </div>
                           </div>
                         </div>
-                        <?php if($row['aperto']) { ?>
                         <?php if(is_logged() && $_SESSION['user_type'] == 'Cliente'){ ?>
+                        <?php if($row['aperto']) { ?>
                         <div class="col-lg-3 buttonPC">
                         <?php if(isset($_SESSION['cart'][$row['id_prodotto']])){?>
                             <button type="button" class="btn orange reduced" name="button" onclick="addCart(<?php echo $row['id_prodotto'].", ".$row['id_fornitore']?>,this)">Aggiungi un altro</button>
