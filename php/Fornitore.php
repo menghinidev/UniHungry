@@ -28,7 +28,7 @@
         <?php
           include 'navbar.php';
           $id = $_GET['id'];
-          $sqlfornitore = "SELECT * FROM fornitori WHERE id_fornitore = $id";
+          $sqlfornitore = "SELECT *, FornitoreAperto(id_fornitore) AS aperto FROM fornitori WHERE id_fornitore = $id";
           $emailfield = "SELECT * FROM fornitori INNER JOIN users ON fornitori.id_fornitore = users.user_id WHERE fornitori.id_fornitore = $id";
           $sqlorari = "SELECT * FROM orari_giornalieri WHERE id_fornitore = $id";
           $result = $mysqli->query($sqlfornitore);
@@ -72,7 +72,7 @@
             <div class="centered distanced">
               <i><?php echo $fornitore['descrizione']; ?></i>
             </div>
-            <hr/>
+            <?php echo isset($fornitore['descrizione'])? "<hr/>": "" ?>
             <div class="row distanced">
               <div class="col-md-3"></div>
               <div class="col-md-6 orari">
@@ -109,6 +109,19 @@
                 <?php
                 }
                 ?>
+                <?php if(!$fornitore['aperto']){ ?>
+                <div class="row field ">
+                    <div class="col centered textred">
+                        Il fornitore è attualmente chiuso, non puoi ordinare i suoi prodotti.
+                    </div>
+                </div>
+            <?php } else { ?>
+                <div class="row field ">
+                    <div class="col centered textgreen">
+                        Il fornitore è aperto.
+                    </div>
+                </div>
+            <?php }?>
                 <div class="row field">
                   <div class="col">
                     <a class="btn orange centered fullwidth noVisitedLink" href="./Search.php?fid=<?php echo $id; ?>">Guarda Tutti i Prodotti</a>

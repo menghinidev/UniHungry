@@ -121,6 +121,14 @@ a:visited {
     color: white;
 }
 
+.textred{
+    color: #DC143C;
+}
+
+.textgreen{
+    color: #1F792A;
+}
+
 /*Single components*/
 
 .navbar {
