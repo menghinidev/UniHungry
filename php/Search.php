@@ -26,7 +26,7 @@
   </head>
   <body>
     <?php include 'navbar.php';
-    $sql ="SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore";
+    $sql ="SELECT P.*, F.nome_fornitore, FornitoreAperto(F.id_fornitore) AS aperto FROM prodotti P, fornitori F WHERE F.id_fornitore = P.id_fornitore";
     if(isset($_GET['pid'])){
         $sql .= " AND P.id_prodotto = {$_GET['pid']}";
     } else if(isset($_GET['fid'])){
@@ -154,7 +154,7 @@
             </div>
              <button class="btn green applica top_margin">Applica filtri</button>
              <button class="btn purple reset top_margin">Resetta filtri</button>
-        </div>
+            </div>
         <div class="col distanced" id="content">
         <?php
         if($products->num_rows <= 0){
@@ -199,12 +199,16 @@
                             </div>
                           </div>
                         </div>
+                        <?php if($row['aperto']) { ?>
                         <?php if(is_logged() && $_SESSION['user_type'] == 'Cliente'){ ?>
                         <div class="col-lg-3 buttonPC">
                         <?php if(isset($_SESSION['cart'][$row['id_prodotto']])){?>
                             <button type="button" class="btn orange reduced" name="button" onclick="addCart(<?php echo $row['id_prodotto'].", ".$row['id_fornitore']?>,this)">Aggiungi un altro</button>
                         <?php } else { ?>
                             <button type="button" class="btn green reduced" name="button" onclick="addCart(<?php echo $row['id_prodotto'].", ".$row['id_fornitore']?>,this)">Aggiungi al carrello</button>
+                        <?php }} else { ?>
+                            <div class="col-lg-3">
+                            <button class="btn chiuso disabled reduced" disabled>Il fornitore è chiuso!</button>
                         <?php }?>
                         </div>
                   <?php } else if(!is_logged()){?>

@@ -87,6 +87,16 @@
    color: grey;
  }
 
+ .chiuso {
+     background-color: #DC143C;
+     color: white;
+ }
+
+ .chiuso:hover {
+     background-color: #DC143C;
+     color: white;
+ }
+
 strong{
     font-size: 20px;
 }
