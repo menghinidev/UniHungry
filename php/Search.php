@@ -79,7 +79,7 @@
       $pageno = 1;
     }
 
-    $no_of_records_per_page = 2;
+    $no_of_records_per_page = 5;
     $offset = ($pageno - 1) * $no_of_records_per_page;
     $total_pages = ceil($products->num_rows / $no_of_records_per_page);
 
@@ -254,7 +254,7 @@
                   } else {
                     echo '<li class="page-item">
                       <a class="page-link" id="'.$i.'" onclick="changePage(this)">'.$i.'</a>
-                    </li>';  
+                    </li>';
                   }
                 }
                 ?>
