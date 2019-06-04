@@ -37,8 +37,9 @@
           } else {
             $pageno = 1;
           }
+
           $no_of_records_per_page = 3;
-          $offset = ($pageno-1) * $no_of_records_per_page;
+          $offset = ($pageno - 1) * $no_of_records_per_page;
 
           $total_pages_sql = "SELECT * FROM prodotti WHERE id_fornitore = $id";
           $num_elements = $mysqli->query($total_pages_sql);

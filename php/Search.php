@@ -20,6 +20,7 @@
     <script type="text/javascript" src="../js/search_filter.js"></script>
     <script type="text/javascript" src="../js/search_layout.js"></script>
     <script type="text/javascript" src="../js/search_ajax.js"></script>
+    <script type="text/javascript" src="../js/search_pagination.js"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Cerca</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -70,6 +71,21 @@
             }
         }
     $products = $mysqli->query($sql);
+
+    //PAGINAZIONE
+    if (isset($_GET['pageno'])) {
+      $pageno = $_GET['pageno'];
+    } else {
+      $pageno = 1;
+    }
+
+    $no_of_records_per_page = 2;
+    $offset = ($pageno - 1) * $no_of_records_per_page;
+    $total_pages = ceil($products->num_rows / $no_of_records_per_page);
+
+    $sql = $sql." LIMIT $offset, $no_of_records_per_page";
+    $products = $mysqli->query($sql);
+    //END PAGINAZIONE
     //echo $products;
     $r = $mysqli->query("SELECT nome FROM categorie");
     while($cat_row = $r->fetch_assoc()){
@@ -222,6 +238,36 @@
                     </div>
             <hr/>
         <?php }} ?>
+        <div class="row">
+          <div class="col middleCol">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item <?php if($pageno <= 1){ echo 'disabled'; } ?>">
+                  <a class="page-link" id="1" onclick="changePage(this)">First</a>
+                </li>
+                <?php
+                for ($i=1; $i < $total_pages + 1; $i++) {
+                  if($i == $pageno) {
+                    echo '<li class="page-item">
+                      <a class="page-link current" id="'.$i.'" onclick="changePage(this)">'.$i.'</a>
+                    </li>';
+                  } else {
+                    echo '<li class="page-item">
+                      <a class="page-link" id="'.$i.'" onclick="changePage(this)">'.$i.'</a>
+                    </li>';  
+                  }
+                }
+                ?>
+                <li class="page-item <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
+                  <a class="page-link" id="<?php echo $total_pages ?>" onclick="changePage(this)">Last</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="test">
+
+        </div>
         </div>
       </div>
   </body>
