@@ -3,7 +3,7 @@ GOALS
 1.  (OK) login + registrazione
 2.  (OK) Navbar php module
 3.  (OK) Admin view per le modifiche
-4.  (OK) Ricerca prodotti                
+4.  (OK) Ricerca prodotti
 5.  (OK) Email di conferma
 6.  (OK) Ordini + carrello               || carrello vuoto layout + icone pulsanti ||
 7.  (OK) notifiche cliccabili
@@ -21,6 +21,12 @@ GOALS
 
 NEXT:
 -Pagine di arrivo statiche (easypeasy)
+    ACCOUNT LOCKED -> action_login.php, secure_func.php
+    ERROR -> action_product_update.php, action_register.php, Notification.php, ProfiloCliente.php
+    NOT LOGGED -> action_register.php
+    NOT YET APPROVED -> secure_func.php
+
+    occhio a GestioneOrdini.php if(notLogged)
 -paginazione fix centered
 
 WARNING:
