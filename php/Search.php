@@ -98,19 +98,25 @@
                 <div class="input-group" >
                     <input type="text" class="searchbar form-control" <?php if(isset($_GET['s']) && $_GET['s']!==''){echo "value='".$_GET['s']."'";} ?> name="s" placeholder="Cerca...">
                     <div class="input-group-append">
-                      <button type="button" class="btn green" onclick="applica()">Vai</button>
+                      <button type="button" class="btn green" onclick="applica()"><i class="fa fa-fw fa-search"></i></button>
                     </div>
                 </div>
             </div>
             <?php if(is_logged() && $_SESSION['user_type'] == 'Cliente'){ ?>
             <div class="col-lg-2 col-3">
-                <a id="cartButton" class="btn btn-primary" href="./Cart.php" name="button">Carrello <?php if(isset($_SESSION['tot_products'])){echo $_SESSION['tot_products'];} ?></a>
+                <div class=" btn btn-primary">
+                    <a id="cartButton" class="noVisitedLink" href="./Cart.php" name="button">
+                        Carrello
+                        <i class="fa fa-fw fa-lg fa-shopping-cart"></i>
+                    </a>
+                    <span id="product_count" class="badge badge-pill badge-danger"><?php if(isset($_SESSION['tot_products'])){echo $_SESSION['tot_products'];} ?></span>
+                </div>
             </div>
             <?php } ?>
 
         </div>
         <div class="row col">
-            <button class="btn orange" id="filterButton" onclick="$('#filters').toggle();">Filtri</button>
+            <button class="btn orange" id="filterButton" onclick="$('#filters').toggle();"><i class="fa fa-filter"></i> Filtri</button>
         </div>
 
       <div class="row">
@@ -203,14 +209,14 @@
                           </div>
                           <div class="row">
                             <div class="col-6">
-                              <p>Prezzo: <?php echo $row['prezzo_unitario'] ?> </p>
+                              <p>Prezzo: <?php echo $row['prezzo_unitario'] ?> €</p>
                             </div>
                             <div class="col-6">
-                              <a class="informazionLink" data-toggle="collapse" href="#id<?php echo $row['id_prodotto'] ?>" role="button" aria-expanded="false">Ingredienti:</a>
+                              <a class="informazionLink" data-toggle="collapse" href="#id<?php echo $row['id_prodotto'] ?>" role="button" aria-expanded="false"><i class="fa fa-info-circle fa-lg"></i></a>
                             </div>
                           </div>
                           <div class="row collapse" id="id<?php echo $row['id_prodotto']?>">
-                            <div class="col card card-body marginAccordion">
+                            <div class="col-lg-7 col-md-8 card card-body marginAccordion">
                               <p><?php echo $row['ingredienti'] ?></p>
                             </div>
                           </div>

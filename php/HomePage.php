@@ -50,7 +50,7 @@
                             <input type="hidden" name="cat" value="">
                             <input type="hidden" name="price" value="Indifferente">
                             <div class="input-group-append">
-                              <button type="submit" class="btn green">Vai</button>
+                              <button type="submit" class="btn green"><i class="fa fa-fw fa-search"></i></button>
                             </div>
                         </form>
                     </div>
@@ -91,9 +91,9 @@
                   echo '<div class="col-4 nopadding resBlock">
                    <a class="noVisitedLink" href="./Fornitore.php?id='.$fornitore["id_fornitore"].'">
                       <div class="resback">
-                          <p class="rescaption">
-                            '.$fornitore["nome_fornitore"].'
-                          </p>
+                          <div class="rescaption">
+                            <p>'.$fornitore["nome_fornitore"].'</p>
+                          </div>
                       </div>
                       </a>';
                   if(isset($fornitore["logo"])) {
@@ -125,8 +125,8 @@
                   <hr/>
               </div>
               <div class="row">
-                  <div class="col-sm chisiamoBoxorange">
-                    <h2>Professionalità</h2>
+                  <div class="col-md-4 chisiamoBoxorange">
+                    <h2><i class="fa fa-cogs"></i> Professionalità</h2>
                     <p>
                         Prendiamo il nostro lavoro con massima serietà, offrendo un servizio
                         affidabile, sicuro e attivo 24 ore su 24.
@@ -134,8 +134,8 @@
                         accuratamente.
                     </p>
                   </div>
-                  <div class="col-sm chisiamoBoxpurple">
-                    <h2>Qualità</h2>
+                  <div class="col-md-4 chisiamoBoxpurple">
+                    <h2><i class="fa fa-crosshairs"></i> Qualità</h2>
                     <p>
                         Selezioniamo i nostri fornitori per portarti solo il meglio delle materie prime ed una
                         qualità da ristorante direttamente sul tuo banco...
@@ -143,8 +143,8 @@
                         è il nostro motto!
                     </p>
                   </div>
-                  <div class="col-sm chisiamoBoxorange">
-                    <h2>Rapidità</h2>
+                  <div class="col-md-4 chisiamoBoxorange">
+                    <h2><i class="fa fa-bolt"></i> Rapidità</h2>
                     <p>
                         Garantiamo tempi di consegna efficaci per i nostri prodotti per non lasciarti mai a corto di energie... sappiamo
                         che è dura resistere ad un attacco di fame!
@@ -153,13 +153,17 @@
               </div>
 
               <div class="row container fullScreen nopadding">
-                  <div class="col-lg title">
+                  <div class="col-md title">
                       <h1>Lavora con noi</h1>
                       <p>
                       <em>Entra a far parte della famiglia di UniHungry: la nostra esperienza al tuo servizio</em>
                       </p>
                       <a class="btn orange noVisitedLink" href="./Register.php?type=fornitore" >Diventa un fornitore</a>
                   </div>
+                   <div class="col-md text-center" id="deal">
+                       <img src="../res/deal.png" class="img-fluid" alt="immagine di una stretta di mano"></img>
+                   </div>
+                  <!--
                   <div class="col-lg inputForm">
                       <form>
                       <h4>Contattaci per maggiori informazioni</h4>
@@ -182,6 +186,7 @@
                         </div>
                       </form>
                   </div>
+                -->
               </div>
 
 
@@ -191,7 +196,7 @@
               <a class="goto-top">
               <div class="row backToTop">
                   <div class="col">
-                      Torna su
+                      <i class="fa fa-chevron-up"></i>
                   </div>
               </div>
               </a>
@@ -203,7 +208,7 @@
 
                   </div>
                   <div class="col-4">
-                      Copyright UniHungry
+                      <i class="fa fa-copyright"></i> Copyright UniHungry
                   </div>
               </div>
           </footer>

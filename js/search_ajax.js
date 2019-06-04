@@ -15,7 +15,7 @@ function addCart(id, id_fornitore, button){
     data: { idProdotto: id, idFornitore: id_fornitore }
 }).done(function(data) {
     //updatecartIcon
-    $('#cartButton').text("Carrello "+data);
+    $('#product_count').text(data);
 
     //update product button
     $(button).text("Aggiungi un altro");

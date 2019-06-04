@@ -108,3 +108,8 @@ strong{
 .current:hover {
   background-color: #A2DDA9;
 }
+
+#product_count {
+    position:absolute !important;
+    top: -5px;
+}

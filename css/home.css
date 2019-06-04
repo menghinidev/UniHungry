@@ -53,6 +53,7 @@ img {
 #caption {
     color:white;
     text-align:center;
+    text-shadow: 0px 0px 6px black;
 }
 
 #pageFlow {
@@ -97,15 +98,6 @@ img {
     }
 }
 
-@media screen and (max-width:500px) {
-    .rescaption {
-        position:relative;
-        top:25%;
-        font-size: 15pt;
-        word-wrap: break-word;
-        line-height: 15pt;
-    }
-}
 
 .title {
     text-align:center;
@@ -133,4 +125,27 @@ img {
     margin: 1%;
     color:white;
     background-color:#60BB6B;
+}
+
+#deal {
+    max-height: 400px;
+    padding: 20px;
+}
+
+#deal img {
+    max-height: 100%;
+}
+
+@media screen and (max-width:500px) {
+    .rescaption {
+        position:relative;
+        top:25%;
+        font-size: 15pt;
+        word-wrap: break-word;
+        line-height: 15pt;
+    }
+    #deal {
+        max-height: 300px;
+        padding: 20px;
+    }
 }

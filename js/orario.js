@@ -11,7 +11,7 @@ $(document).ready(function(){
 
   var alterClass = function() {
     var ww = document.body.clientWidth;
-    if (ww < 1250) {
+    if (ww < 750) {
       $('.larger').removeClass('col-2');
       $('.larger').addClass('col-6');
       $('.newline').addClass('topdistance');

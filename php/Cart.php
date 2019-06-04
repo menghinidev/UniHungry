@@ -118,7 +118,7 @@
                   </div>
                 </div>
                 <div class="row col">
-                   <button type="button" class="rimuovi btn btn-link" onclick="removeProduct(<?php echo $product['id_prodotto'].", ".$product['id_fornitore'] ; ?>)"><small>Rimuovi dal carrello</small></button>
+                   <button type="button" class="rimuovi btn btn-link" onclick="removeProduct(<?php echo $product['id_prodotto'].", ".$product['id_fornitore'] ; ?>)"><small><i class="fa fa-times"></i> Rimuovi dal carrello</small></button>
                 </div>
               </div>
             </div>

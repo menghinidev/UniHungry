@@ -99,7 +99,7 @@
                     <div class="col">
                         <div class="tabledispl">
                             <a id="addLink" href="./ModificaProdotto.php">
-                                <img src="../res/plusicon.png" alt="" width=20px;>
+                                <i class="fa fa-plus-circle"></i>
                                 <span class="nopadding">Nuovo prodotto</span>
                             </a>
                         </div>
@@ -114,7 +114,7 @@
                       if (isset($row['immagine'])) {
                         echo "<img class='reslogo nopadding img-fluid' src='data:image/jpeg;base64,".base64_encode( $row['immagine'])."' alt='logo'>";
                       } else {
-                        echo "<img class='reslogo nopadding img-fluid' src='../res/res2.jpg' alt='logo'>";
+                        echo "<img class='reslogo nopadding img-fluid' src='../res/noImage.svg' alt='logo'>";
                       }
                       echo "</div>
                       <div class='col-10 contenuto'>
@@ -140,7 +140,7 @@
                               </div>
                             </div>
                             <div class='row collapse' id='id".$row['id_prodotto']."'>
-                              <div class='col card card-body marginAccordion'>
+                              <div class='col-lg-8 col-sm-7 card card-body marginAccordion'>
                                 <p>".$row['ingredienti']."</p>
                               </div>
                             </div>
