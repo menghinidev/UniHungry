@@ -37,6 +37,7 @@ var immagine;
           event.stopPropagation();
         } else {
           event.preventDefault();
+          passwordHash(form, form.passwordOld, form.passwordNew);
           uploadData();
         }
         form.classList.add('was-validated');
@@ -82,7 +83,12 @@ function uploadData() {
     data: form,
     processData: false,
     contentType: false
-  }).done(function(data) {
-    window.location = "/unihungry/php/ProfiloFornitore.php";
+}).done(function(data) {
+    if(data != "ERROR"){
+        window.location = "/unihungry/php/ProfiloFornitore.php";
+    } else {
+        location.reload();
+    }
+
   });
 }

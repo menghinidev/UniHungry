@@ -15,6 +15,7 @@ function dismissAlert() {
           event.stopPropagation();
         }else {
             passwordHash(form, form.passwordOld, form.passwordNew);
+            form.submit();
         }
         form.classList.add('was-validated');
       }, false);

@@ -13,7 +13,7 @@ GOALS
 11. (OK) Image Crop
 12. (OK) Riepilogo ordini clienti        || Non tutti gli ordini passati? ||
 13. (OK) Modifica profilo clienti
-14. (OK) Modifica profilo fornitori      || Manca password ||
+14. (OK) Modifica profilo fornitori
 15. (OK) Gestione prodotti fornitore
 16. (OK) Richiesta modifiche fornitore
 17. (OK) Layout Fornitore.php
@@ -30,7 +30,6 @@ NEXT:
 -paginazione fix centered
 
 WARNING:
--Manca modifica password
 -TUTTI I FORM DA RICONTROLLARE E VALIDARE
 WARNING:
 controllo ora ordine

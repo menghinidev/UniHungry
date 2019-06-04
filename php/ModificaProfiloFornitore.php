@@ -23,7 +23,8 @@
     <script type="text/javascript" src="../js/check_password_validity.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.1/cropper.js"></script>
 
-
+    <script src="../js/sha512.js" charset="utf-8"></script>
+    <script src="../js/newPasswordHash.js" charset="utf-8"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Modifica Profilo</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -105,9 +106,15 @@
             <h4>Informazioni accesso</h4>
             <div class="form-group">
                 <label for="passwordOld">Vecchia Password</label>
-                <input type="password" class="form-control" id="passwordOld">
+                <input type="password" name="passwordOld" class="form-control" id="passwordOld">
+                <?php if(isset($_SESSION['change_error'])){ ?>
+                    <small class="form-text textred">
+                        La password che hai inserita non era corretta.
+                    </small>
+
+                <?php unset($_SESSION['change_error']); } ?>
                 <label for="passwordNew">Nuova Password</label>
-                <input type="password" class="form-control" id="passwordNew">
+                <input type="password" name="passwordNew" class="form-control" id="passwordNew">
                 <label for="passwordNewConfirm">Conferma nuova Password</label>
                 <input type="password" class="form-control" id="passwordNewConfirm">
                 <small id="valid" class="form-text"></small>

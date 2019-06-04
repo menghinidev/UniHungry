@@ -16,19 +16,22 @@ if(isset($_POST['newPw'], $_POST['oldPw'])){
     $oldPassword = $_POST['oldPw'];
     $newPassword = $_POST['newPw'];
 
-    $sql = "SELECT password, salt FROM users WHERE user_id = {$_SESSION['user_id']}";
+    $sql = "SELECT email, password, salt FROM users WHERE user_id = {$_SESSION['user_id']}";
     $r = $mysqli->query($sql);
     $r = $r->fetch_assoc();
     $salt = $r['salt'];
     $dbPw = $r['password'];
+    $email = $r['email'];
     $oldPassword = hash('sha512', $oldPassword.$salt); // codifica la password usando una chiave univoca.
     if($oldPassword == $dbPw) {
         // Crea una chiave casuale
         $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
         // Crea una password usando la chiave appena creata.
+        $password = $newPassword;
         $newPassword = hash('sha512', $newPassword.$random_salt);
         $sql = "UPDATE users  SET `password` = '".$newPassword."', salt = '".$random_salt."' WHERE user_id = {$_SESSION['user_id']}";
         $mysqli->query($sql);
+        login($email, $password, $mysqli);
        } else {
        $_SESSION['change_error'] = "wrong";
    }
