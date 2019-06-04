@@ -55,6 +55,7 @@ if(isset($_POST['idprodotto'], $_POST['nome'], $_POST['categoria'], $_POST['desc
     header('Location: /unihungry/php/ProfiloFornitore.php');
   }
 } else {
-  header('Location: ./ERROR');
+  $_SESSION['endpoint'] = "Error";
+  header('Location: ./EndPoint_Confirm.php');
 }
  ?>

@@ -27,13 +27,15 @@ function login($email, $password, $mysqli) {
           $sql = "SELECT id_fornitore FROM fornitori WHERE id_fornitore = ".$user_id;
           $res = $mysqli->query($sql);
           if($res->num_rows == 0) {
-             header('Location: ./NOT_YET_APPROVED');
+            $_SESSION['endpoint'] = "NotApproved";
+             header('Location: /EndPoint_Confirm.php');
              return false;
           }
       }
 
       if($locked){
-          header('Location: ./ACCOUNT_LOCKED');
+          $_SESSION['endpoint'] = "Locked";
+          header('Location: ./EndPoint_Confirm.php');
           return false;
       }
       $password = hash('sha512', $password.$salt); // codifica la password usando una chiave univoca.

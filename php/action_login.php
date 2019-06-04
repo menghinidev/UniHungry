@@ -12,7 +12,8 @@ if(isset($_POST['email'], $_POST['pw'])) {
           require 'mail_composer.php';
           unset($_SESSION['login_fail']);
           account_bloccato($email);
-          header('Location: ./ACCOUNT_LOCKED');
+          $_SESSION['endpoint'] = "Locked";
+          header('Location: ./EndPoint_Confirm.php');
       }
   }
 } else {

@@ -33,7 +33,7 @@
   <body>
      <?php include 'navbar.php';
      if(!is_logged()){
-         header('Location: ./ERROR');
+      header('Location: ./Login.php');
      }
      $id = $_SESSION['user_id'];
      $query = "SELECT * FROM clienti INNER JOIN users ON clienti.id_cliente = users.user_id WHERE id_cliente = $id";

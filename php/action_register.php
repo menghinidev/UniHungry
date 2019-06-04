@@ -36,7 +36,7 @@
                    if(login($email, $_POST['pw'], $mysqli) == true) {
                       header('Location: ../php/HomePage.php');
                    } else {
-                      header('Location: NOT LOGGED');
+                      header('Location: ./Login.php');
                    }
                } else {
                    echo "ERROR";
@@ -63,7 +63,8 @@
                   attendi_approvazione($email, $_POST['nome'], $_POST['cognome'], $_POST['nome_fornitore']);
                   header('Location: ./HomePage.php');
                } else {
-                  header('Location: ./ERROR');
+                 $_SESSION['endpoint'] = "Error";
+                  header('Location: ./EndPoint_Confirm.php');
                }
             }
         }

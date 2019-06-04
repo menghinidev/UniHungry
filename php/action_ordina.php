@@ -56,8 +56,8 @@ if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
     //USER NOTIFICATION?
 
     //EMAIL?
-
-    header("Location: ../html/EndPoints/Confirm.html");
+    $_SESSION['endpoint'] = "Confirm";
+    header("Location: ./EndPoint_Confirm.php");
 }
 
  ?>

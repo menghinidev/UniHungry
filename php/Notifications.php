@@ -27,7 +27,8 @@
   <body>
       <?php include 'navbar.php';
       if(!is_logged()){
-          header('Location: ./ERROR');
+        $_SESSION['endpoint'] = "Error";
+          header('Location: ./EndPoint_Confirm.php');
       }
       ?>
       <div class="container">
