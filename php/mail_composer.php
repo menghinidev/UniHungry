@@ -118,4 +118,44 @@ function account_bloccato($email) {
     ';
     mail($to, $subject, $message, $headers);
 }
+
+function nuovoOrdineRicevuto($id_ordine){
+    $headers .= 'From: UniHungry <unihungry@gmail.com>' . "\r\n";
+    $to  = $email;
+    $subject = 'Hai ricevuto un nuovo ordine!';
+
+    $message = '
+    <html>
+    <head>
+    <title></title>
+    </head>
+    <body>
+    <p>Hai ricevuto un nuovo ordine con id '.$id_ordine.'. Puoi approvarlo dalla sezione ordini del tuo profilo.
+    </p>
+    <a href ="http://localhost/unihungry/php/GestioneOrdini.php?oid='.$id_ordine.'">Clicca per vedere l\'ordine</a>
+    </body>
+    </html>
+    ';
+    mail($to, $subject, $message, $headers);
+}
+
+function ordineApprovato($id_ordine, $fornitore){
+    $headers .= 'From: UniHungry <unihungry@gmail.com>' . "\r\n";
+    $to  = $email;
+    $subject = 'Il tuo ordine è stato approvato';
+
+    $message = '
+    <html>
+    <head>
+    <title></title>
+    </head>
+    <body>
+    <p>'.$fornitore.' ha approvato il tuo ordine e lo sta preparando per te! Segui l\'avanzamento sul tuo profilo.
+    </p>
+    <a href ="http://localhost/unihungry/php/ProfiloCliente.php?oid='.$id_ordine.'">Clicca per vedere lo stato dell\'ordine</a>
+    </body>
+    </html>
+    ';
+    mail($to, $subject, $message, $headers);
+}
 ?>

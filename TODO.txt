@@ -23,19 +23,19 @@ NEXT:
 -paginazione fix centered
 -achecker sulle pagine
 -style no results
+-aggiungere altre email (finire Samu)
 
 HELP:
 come stilizzare meglio le backcard dei fornitori nella HomePage?
 
 AT LAST:
--popolare bene il db
--aggiungere altre email
+-popolare bene il db (Samu)
 -unlock user?
--Eliminare orario giornaliero
--cropper max-height
+-Eliminare orario giornaliero (Mengo)
 
 EXTRA(?):
 -sezione "contattaci" + relativa vista admin???
+-cropper max-height
 
 
 _________________________________________
