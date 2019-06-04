@@ -89,13 +89,13 @@
                 <?php
                 while ($fornitore = $fornitori->fetch_assoc()) {
                   echo '<div class="col-4 nopadding resBlock">
+                   <a class="noVisitedLink" href="./Fornitore.php?id='.$fornitore["id_fornitore"].'">
                       <div class="resback">
-                          <div class="rescaption">
-                              <h5>'.$fornitore["nome_fornitore"].'</h5>
-                              <p>'.$fornitore["descrizione_breve"].'</p>
-                              <a href="./Fornitore.php?id='.$fornitore["id_fornitore"].'">scopri di più</a>
-                          </div>
-                      </div>';
+                          <p class="rescaption">
+                            '.$fornitore["nome_fornitore"].'
+                          </p>
+                      </div>
+                      </a>';
                   if(isset($fornitore["logo"])) {
                     echo '<img class="reslogo nopadding img-fluid" src="data:image/jpeg;base64,'.base64_encode($fornitore["logo"]).'" alt="logo">
                     </div>';

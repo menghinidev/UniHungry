@@ -23,6 +23,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../js/ProfiloCliente.js"></script>
     <script type="text/javascript" src="../js/check_password_validity.js"></script>
+
+    <script src="../js/sha512.js" charset="utf-8"></script>
+    <script src="../js/newPasswordHash.js" charset="utf-8"></script>
     <!-- Page informations and icon -->
     <title>UniHungry - Il tuo profilo</title>
     <link rel="shortcut icon" href="../res/icon.ico" />
@@ -44,12 +47,12 @@
       <div class="col" id="menu-box">
           <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link tabLink active" id="ordini-tab" data-toggle="tab" href="#ordini" role="tab" aria-controls="ordini" aria-selected="true">I miei Ordini</a>
-              <a class="nav-item nav-link tabLink" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Modifica profilo</a>
+              <a class="nav-item nav-link tabLink <?php echo !isset($_SESSION['change_error'])? "active" : "" ?>" id="ordini-tab" data-toggle="tab" href="#ordini" role="tab" aria-controls="ordini" aria-selected="true">I miei Ordini</a>
+              <a class="nav-item nav-link tabLink <?php echo isset($_SESSION['change_error'])? "active" : "" ?>" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Modifica profilo</a>
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="ordini" role="tabpanel" aria-labelledby="ordini-tab">
+            <div class="tab-pane fade <?php echo !isset($_SESSION['change_error'])? "show active" : "" ?>" id="ordini" role="tabpanel" aria-labelledby="ordini-tab">
                 <div class="container riepilogoOrdine fullScreen">
                     <h4>Ordini in Corso</h4>
                     <?php
@@ -179,7 +182,7 @@
                 }
                 ?>
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="tab-pane fade <?php echo isset($_SESSION['change_error'])? "show active" : "" ?> " id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <form id="modificaform" class="col needs-validation" method="post" action="action_profile_update.php" novalidate>
                         <h2>Modifica informazioni</h2>
                     <div class="form-row">
@@ -189,7 +192,7 @@
                         </div>
                         <div class="form-group col-md-6">
                           <label for="cognome">Cognome</label>
-                          <input type="text" class="form-control"name="cognome" value="<?php echo $rowInfo['cognome']; ?>" id="cognome" required>
+                          <input type="text" class="form-control" name="cognome" value="<?php echo $rowInfo['cognome']; ?>" id="cognome" required>
                         </div>
                     </div>
                     <div class="form-row">
@@ -205,9 +208,15 @@
                     </div>
                     <div class="form-group">
                         <label for="passwordOld">Vecchia Password</label>
-                        <input type="password" class="form-control" id="passwordOld">
+                        <input type="password" name="passwordOld" class="form-control" id="passwordOld">
+                        <?php if(isset($_SESSION['change_error'])){ ?>
+                            <small class="form-text textred">
+                                La password che hai inserita non era corretta.
+                            </small>
+
+                        <?php unset($_SESSION['change_error']); } ?>
                         <label for="passwordNew">Nuova Password</label>
-                        <input type="password" class="form-control" id="passwordNew">
+                        <input type="password" name="passwordNew" class="form-control" id="passwordNew">
                         <label for="passwordNewConfirm">Conferma nuova Password</label>
                         <input type="password" class="form-control" id="passwordNewConfirm">
                         <small id="valid" class="form-text"></small>

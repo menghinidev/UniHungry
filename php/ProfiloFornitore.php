@@ -41,9 +41,10 @@
           $no_of_records_per_page = 3;
           $offset = ($pageno - 1) * $no_of_records_per_page;
 
-          $total_pages_sql = "SELECT * FROM prodotti WHERE id_fornitore = $id";
+          $total_pages_sql = "SELECT count(id_prodotto) AS tot FROM prodotti WHERE id_fornitore = $id";
           $num_elements = $mysqli->query($total_pages_sql);
-          $total_pages = ceil($num_elements->num_rows / $no_of_records_per_page);
+          $num_elements = $num_elements->fetch_assoc();
+          $total_pages = ceil($num_elements['tot'] / $no_of_records_per_page);
 
           $sqlprodotti = "SELECT * FROM prodotti WHERE id_fornitore = $id ORDER BY nome LIMIT $offset, $no_of_records_per_page";
           $result = $mysqli->query($sqlprodotti);

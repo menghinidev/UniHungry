@@ -13,6 +13,8 @@ function dismissAlert() {
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
+        }else {
+            passwordHash(form, form.passwordOld, form.passwordNew);
         }
         form.classList.add('was-validated');
       }, false);
