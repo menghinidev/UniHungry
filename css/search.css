@@ -104,3 +104,7 @@ strong{
 .current {
   background-color: lightgreen;
 }
+
+.current:hover {
+  background-color: lightgreen;
+}
