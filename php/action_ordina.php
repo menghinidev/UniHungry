@@ -28,7 +28,12 @@ if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
     $luogo = "'".mysqli_real_escape_string($mysqli, $_POST['luogo_ritiro'])."'";
 
     foreach($fornitori_IDs as $F_id){
-        $query = "INSERT INTO ordini (data, ora_sottomissione, ora_richiesta, luogo_ritiro, stato_ordine, pagato, id_cliente, id_fornitore) VALUES ({$data}, {$ora_sottomissione}, {$ora_richiesta}, {$luogo}, {$stato_ordine} , false, {$_SESSION['user_id']}, {$F_id} )";
+        if(isset($_POST['numero_carta'])){
+            $pagato = true;
+        } else {
+            $pagato = false;
+        }
+        $query = "INSERT INTO ordini (data, ora_sottomissione, ora_richiesta, luogo_ritiro, stato_ordine, pagato, id_cliente, id_fornitore) VALUES ({$data}, {$ora_sottomissione}, {$ora_richiesta}, {$luogo}, {$stato_ordine} , $pagato, {$_SESSION['user_id']}, {$F_id} )";
         if($mysqli->query($query)){
             $fornitori_ordini[$F_id] = $mysqli->insert_id;
         }
@@ -52,9 +57,6 @@ if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
     unset($_SESSION['cart']);
     unset($_SESSION['fornitori']);
     unset($_SESSION['tot_products']);
-
-    //USER NOTIFICATION?
-
     //EMAIL?
     $_SESSION['endpoint'] = "Confirm";
     header("Location: ./EndPoint_Confirm.php");

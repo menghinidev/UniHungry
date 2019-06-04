@@ -6,6 +6,7 @@
 .tabLink:hover {
     text-decoration:none;
     background-color:transparent;
+    color: white;
 }
 
 .nav-tabs .nav-link {

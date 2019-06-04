@@ -1,3 +1,20 @@
+$(document).ready(function(){
+    $("#ora_ritiro").focusout(function(){
+        var time = $(this).val().split(':');
+        var hours = time[0];
+        var minutes = time[1];
+        var time = hours*60*60*1000 + minutes*60*1000;
+        var okHour = new Date($.now());
+        var oktime = okHour.getHours()*60*60*1000 + okHour.getMinutes()*60*1000;
+        if(time - oktime< 0){
+            val = okHour.getHours() +":"+ okHour.getMinutes();
+            $(this).val(val);
+            alert(val);
+        }
+    });
+});
+
+
 function changeQuantity(input, prod_id, fornitore_id){
     var newq = $(input).val();
     $.ajax({
