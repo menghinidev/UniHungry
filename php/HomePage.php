@@ -46,11 +46,11 @@
                 <div class="row">
                     <div class="col">
                         <form  id="searchForm" class="input-group mb-3" action="./Search.php" method="get">
-                            <input type="text" class="form-control" name="s" placeholder="Cerca...">
+                            <input type="text" title="barra di ricerca" class="form-control" name="s" placeholder="Cerca...">
                             <input type="hidden" name="cat" value="">
                             <input type="hidden" name="price" value="Indifferente">
                             <div class="input-group-append">
-                              <button type="submit" class="btn green"><i class="fa fa-fw fa-search"></i></button>
+                              <button type="submit" class="btn green"><span class="fa fa-fw fa-search"></span></button>
                             </div>
                         </form>
                     </div>
@@ -126,7 +126,7 @@
               </div>
               <div class="row">
                   <div class="col-md-4 chisiamoBoxorange">
-                    <h2><i class="fa fa-cogs"></i> Professionalità</h2>
+                    <h2><span class="fa fa-cogs"></span> Professionalità</h2>
                     <p>
                         Prendiamo il nostro lavoro con massima serietà, offrendo un servizio
                         affidabile, sicuro e attivo 24 ore su 24.
@@ -135,7 +135,7 @@
                     </p>
                   </div>
                   <div class="col-md-4 chisiamoBoxpurple">
-                    <h2><i class="fa fa-crosshairs"></i> Qualità</h2>
+                    <h2><span class="fa fa-crosshairs"></span> Qualità</h2>
                     <p>
                         Selezioniamo i nostri fornitori per portarti solo il meglio delle materie prime ed una
                         qualità da ristorante direttamente sul tuo banco...
@@ -144,7 +144,7 @@
                     </p>
                   </div>
                   <div class="col-md-4 chisiamoBoxorange">
-                    <h2><i class="fa fa-bolt"></i> Rapidità</h2>
+                    <h2><span class="fa fa-bolt"></span> Rapidità</h2>
                     <p>
                         Garantiamo tempi di consegna efficaci per i nostri prodotti per non lasciarti mai a corto di energie... sappiamo
                         che è dura resistere ad un attacco di fame!
@@ -196,7 +196,7 @@
               <a class="goto-top">
               <div class="row backToTop">
                   <div class="col">
-                      <i class="fa fa-chevron-up"></i>
+                      <span class="fa fa-chevron-up"></span>
                   </div>
               </div>
               </a>
@@ -208,7 +208,7 @@
 
                   </div>
                   <div class="col-4">
-                      <i class="fa fa-copyright"></i> Copyright UniHungry
+                      <span class="fa fa-copyright"></span> Copyright UniHungry
                   </div>
               </div>
           </footer>

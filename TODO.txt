@@ -5,7 +5,7 @@ GOALS
 3.  (OK) Admin view per le modifiche
 4.  (OK) Ricerca prodotti
 5.  (OK) Email di conferma
-6.  (OK) Ordini + carrello               || carrello vuoto layout ||
+6.  (OK) Ordini + carrello
 7.  (OK) notifiche cliccabili
 8.  (OK) Riepilogo ordini fornitori
 9.  (OK) Pagina tutte le notifiche       || ?Caricamento dinamico notifiche vecchie? ||
@@ -22,6 +22,7 @@ GOALS
 NEXT:
 -paginazione fix centered
 -achecker sulle pagine
+-style no results
 
 HELP:
 come stilizzare meglio le backcard dei fornitori nella HomePage?

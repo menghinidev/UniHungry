@@ -20,40 +20,40 @@ $SEARCH = $prefix.'Search.php';
             <img src="../res/logo.png" height="40" alt="UniHungry">
         </a>
 
-     <div class="collapse navbar-collapse" id="collapsibleNavbar">
+     <div class="collapse navbar-collapse" id="collapsibleNavbarLeft">
           <ul class="navbar-nav">
                 <!--HomePage-->
                 <?php if($_SERVER['PHP_SELF'] == $HOME) { ?>
                 <li class="nav-item">
                  <a class="nav-link scrolling" href="#partners">
-                      <i class="fa fa-fw  fa-briefcase"></i> Partners</a>
+                      <span class="fa fa-fw  fa-briefcase"></span> Partners</a>
                 </li>
                 <li class="nav-item">
                  <a class="nav-link scrolling" href="#chisiamo">
-                      <i class="fa fa-fw  fa-flag"></i> Chi Siamo</a>
+                      <span class="fa fa-fw  fa-flag"></span> Chi Siamo</a>
                 </li>
                 <?php } else { ?>
                 <li class="nav-item">
                  <a class="nav-link" href="./HomePage.php">
-                      <i class="fa fa-fw  fa-home"></i> Home</a>
+                      <span class="fa fa-fw  fa-home"></span> Home</a>
                 </li>
                 <?php } ?>
                 <?php if(is_logged()){ ?>
                     <li class="nav-item">
                      <a class="nav-link" href="./script_profile.php">
-                         <i class="fa fa-fw  fa-user"></i> Profilo</a>
+                         <span class="fa fa-fw  fa-user"></span> Profilo</a>
                     </li>
 
                     <!--Fornitore-->
                     <?php if($_SESSION['user_type'] == 'Fornitore') { ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="./GestioneOrdini.php"><i class="fa fa-fw  fa-list-ul"></i> Ordini</a>
+                            <a class="nav-link" href="./GestioneOrdini.php"><span class="fa fa-fw  fa-list-ul"></span> Ordini</a>
                         </li>
                     <?php } ?>
 
                     <?php if($_SERVER['PHP_SELF'] == $PROFILO_FORNITORE) { ?>
                         <li class="nav-item">
-                          <a class="nav-link" href="./RichiesteFornitore.php"><i class="fa fa-fw  fa-question"></i> Richieste</a>
+                          <a class="nav-link" href="./RichiesteFornitore.php"><span class="fa fa-fw  fa-question"></span> Richieste</a>
                         </li>
                     <?php } ?>
 
@@ -62,7 +62,7 @@ $SEARCH = $prefix.'Search.php';
                     <?php if($_SESSION['user_type'] != 'Admin'){ ?>
                     <div id="dropdown_parent" class=" nav-item dropdown">
                       <button type="button" id="notifiche_button" class="btn nav-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         <i class="fa fa-fw fa-bell"></i> Notifiche
+                         <span class="fa fa-fw fa-bell"></span> Notifiche
                         <span class="badge notifiche_count badge-pill badge-danger"></span>
                       </button>
                       <div id="drop_notifiche" class="dropdown-menu dropdown-menu-right">
@@ -77,55 +77,55 @@ $SEARCH = $prefix.'Search.php';
     <div class= "ml-auto">
         <div class="dropdown">
             <button type="button" class="nav-item btn green navbar-toggler" data-toggle="dropdown">
-                <i class="fa fa-bars"></i>
+                <span class="fa fa-bars"></span>
                 <span class="badge notifiche_count badge-pill badge-danger"></span>
             </button>
             <div class="dropdown-menu dropdown-menu-right">
                 <!--Homepage behaviour-->
                 <?php if($_SERVER['PHP_SELF'] == $HOME) { ?>
                     <a class="dropdown-item scrolling" href="#partners">
-                        <i class="fa fa-fw  fa-briefcase"></i> Partners</a>
+                        <span class="fa fa-fw  fa-briefcase"></span> Partners</a>
                     <a class="dropdown-item scrolling" href="#chisiamo">
-                        <i class="fa fa-fw  fa-flag"></i> Chi Siamo</a>
+                        <span class="fa fa-fw  fa-flag"></span> Chi Siamo</a>
                 <?php } else { ?>
-                    <a class="dropdown-item" href="./HomePage.php"> <i class="fa fa-fw fa-home"></i> Home</a>
+                    <a class="dropdown-item" href="./HomePage.php"> <span class="fa fa-fw fa-home"></span> Home</a>
                 <?php } ?>
 
                 <!--not logged-->
                 <?php if(!is_logged()){ ?>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./Login.php"><i class="fa fa-fw fa-sign-in"></i> Accedi</a>
-                    <a class="dropdown-item" href="./Register.php"><i class="fa fa-fw fa-pencil-square-o"></i> Registrati</a>
+                    <a class="dropdown-item" href="./Login.php"><span class="fa fa-fw fa-sign-in"></span> Accedi</a>
+                    <a class="dropdown-item" href="./Register.php"><span class="fa fa-fw fa-pencil-square-o"></span> Registrati</a>
                 <?php } else { ?>
                 <!--logged in mobile-->
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./script_profile.php"><i class="fa fa-fw fa-user"></i> Profilo</a>
+                    <a class="dropdown-item" href="./script_profile.php"><span class="fa fa-fw fa-user"></span> Profilo</a>
                     <?php if($_SESSION['user_type'] == 'Fornitore') { ?>
                         <a class="dropdown-item" href="./GestioneOrdini.php">
-                            <i class="fa fa-fw  fa-list-ul"></i> Ordini</a>
+                            <span class="fa fa-fw  fa-list-ul"></span> Ordini</a>
                         <a class="dropdown-item" href="./RichiesteFornitore.php">
-                            <i class="fa fa-fw  fa-question"></i> Richieste</a>
+                            <span class="fa fa-fw  fa-question"></span> Richieste</a>
                     <?php } ?>
                     <?php if($_SESSION['user_type'] != 'Admin'){ ?>
-                        <a class="dropdown-item" href="./Notifications.php"><i class="fa fa-fw fa-bell"></i> Notifiche <span id="dropdownCount" class="badge badge-secondary"></span></a>
+                        <a class="dropdown-item" href="./Notifications.php"><span class="fa fa-fw fa-bell"></span> Notifiche <span id="dropdownCount" class="badge badge-secondary"></span></a>
                     <?php } ?>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./script_logout.php"><i class="fa fa-fw fa-sign-out"></i> Logout</a>
+                    <a class="dropdown-item" href="./script_logout.php"><span class="fa fa-fw fa-sign-out"></span> Logout</a>
                 <?php } ?>
             </div>
         </div>
 
 
         <!-- Right side buttons -->
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <div class="collapse navbar-collapse" id="collapsibleNavbarRight">
             <!-- Login -->
             <ul class="navbar-nav">
                 <?php if(!is_logged()){ ?>
                  <li class="nav-item">
-                   <a class="btn orange noVisitedLink" href="./Login.php"> <i class="fa fa-fw  fa-sign-in"></i> Accedi</a>
+                   <a class="btn orange noVisitedLink" href="./Login.php"> <span class="fa fa-fw  fa-sign-in"></span> Accedi</a>
                  </li>
                  <li class="nav-item">
-                   <a class="btn purple noVisitedLink" href="./Register.php"> <i class="fa fa-fw  fa-pencil-square-o"></i> Registrati</a>
+                   <a class="btn purple noVisitedLink" href="./Register.php"> <span class="fa fa-fw  fa-pencil-square-o"></span> Registrati</a>
                  </li>
                 <?php } else { ?>
                     <li class="nav-item">
@@ -136,7 +136,7 @@ $SEARCH = $prefix.'Search.php';
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="btn purple noVisitedLink" href="./script_logout.php"> <i class="fa fa-fw  fa-sign-out"></i>  Logout</a>
+                      <a class="btn purple noVisitedLink" href="./script_logout.php"> <span class="fa fa-fw  fa-sign-out"></span>  Logout</a>
                     </li>
                 <?php } ?>
             </ul>
