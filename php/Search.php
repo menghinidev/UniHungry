@@ -239,8 +239,9 @@
             <hr/>
         <?php }} ?>
         <div class="row">
-          <div class="col middleCol">
-            <nav aria-label="Page navigation example">
+          <div class="col-3"></div>
+          <div class="col-6">
+            <nav>
               <ul class="pagination">
                 <li class="page-item <?php if($pageno <= 1){ echo 'disabled'; } ?>">
                   <a class="page-link" id="1" onclick="changePage(this)">First</a>
@@ -264,9 +265,7 @@
               </ul>
             </nav>
           </div>
-        </div>
-        <div class="test">
-
+          <div class="col-3"></div>
         </div>
         </div>
       </div>

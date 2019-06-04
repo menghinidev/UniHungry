@@ -158,20 +158,33 @@
                  ?>
               <hr/>
               <div class="row">
-                <div class="col middleCol">
-                  <nav aria-label="Page navigation example">
+                <div class="col-3"></div>
+                <div class="col-6">
+                  <nav>
                     <ul class="pagination">
-                      <li class="page-item <?php if($pageno <= 1){ echo 'disabled'; } ?>"><a class="page-link" href="?pageno=1">First</a></li>
                       <li class="page-item <?php if($pageno <= 1){ echo 'disabled'; } ?>">
-                        <a class="page-link" href="<?php if($pageno <= 1){ echo '#'; } else { echo "?pageno=".($pageno - 1); } ?>"><i class="fa fa-fw  fa-angle-left"></i></a>
+                        <a class="page-link" id="1" onclick="changePage(this)">First</a>
                       </li>
+                      <?php
+                      for ($i=1; $i < $total_pages + 1; $i++) {
+                        if($i == $pageno) {
+                          echo '<li class="page-item">
+                            <a class="page-link current" id="'.$i.'" onclick="changePage(this)">'.$i.'</a>
+                          </li>';
+                        } else {
+                          echo '<li class="page-item">
+                            <a class="page-link" id="'.$i.'" onclick="changePage(this)">'.$i.'</a>
+                          </li>';
+                        }
+                      }
+                      ?>
                       <li class="page-item <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>">
-                        <a class="page-link" href="<?php if($pageno >= $total_pages){ echo '#'; } else { echo "?pageno=".($pageno + 1); } ?>"><i class="fa fa-fw  fa-angle-right"></i></a>
+                        <a class="page-link" id="<?php echo $total_pages ?>" onclick="changePage(this)">Last</a>
                       </li>
-                      <li class="page-item <?php if($pageno >= $total_pages){ echo 'disabled'; } ?>"><a class="page-link" href="?pageno=<?php echo $total_pages; ?>">Last</a></li>
                     </ul>
                   </nav>
                 </div>
+                <div class="col-3"></div>
               </div>
             </div>
         </div>

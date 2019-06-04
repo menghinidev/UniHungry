@@ -91,3 +91,11 @@
  .pagination li.page-item:disabled {
    background-color: grey;
  }
+
+ .current {
+   background-color: lightgreen;
+ }
+
+ .current:hover {
+   background-color: lightgreen;
+ }
