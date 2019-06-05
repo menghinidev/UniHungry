@@ -145,16 +145,7 @@
                   }
               }
               ?>>
-              <label for="max3">Indifferente</label>
-              <br/>
-              <input class="priceFilter" type="radio" name="optradio" name= "max3"
-              <?php if(isset($_GET['price'])){
-                  if($price == 'Max 3€'){
-                      echo " checked ";
-                  }
-              }
-              ?>>
-              <label for="max3">Max 3€</label>
+              <label for="max5">Indifferente</label>
               <br/>
               <input class="priceFilter" type="radio" name="optradio" name= "max5"
               <?php if(isset($_GET['price'])){
@@ -163,7 +154,16 @@
                   }
               }
               ?>>
-              <label for="max5">Max 5€</label>
+              <label for="max3">Max 5€</label>
+              <br/>
+              <input class="priceFilter" type="radio" name="optradio" name= "max7"
+              <?php if(isset($_GET['price'])){
+                  if($price == 'Max 7€'){
+                      echo " checked ";
+                  }
+              }
+              ?>>
+              <label for="max5">Max 7€</label>
               <br/>
               <input class="priceFilter" type="radio" name="optradio" name= "max10"
               <?php if(isset($_GET['price'])){
