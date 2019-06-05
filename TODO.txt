@@ -31,7 +31,6 @@ come stilizzare meglio le backcard dei fornitori nella HomePage?
 
 AT LAST:
 -popolare bene il db (Samu)
--unlock user?
 -Eliminare orario giornaliero (Mengo)
 
 EXTRA(?):
