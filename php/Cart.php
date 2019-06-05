@@ -67,7 +67,7 @@
       <div class="row" id="body">
         <div class="col-md-8 tofullscreen" id="content">
             <?php if(!isset($_SESSION['cart'])) {
-                echo 'Il carrello è vuoto!';
+                include 'no_results.php';
                 //FIX MESSAGE POSITION
             } else {
                 $first = true;

@@ -8,7 +8,7 @@ GOALS
 6.  (OK) Ordini + carrello
 7.  (OK) notifiche cliccabili
 8.  (OK) Riepilogo ordini fornitori
-9.  (OK) Pagina tutte le notifiche       || ?Caricamento dinamico notifiche vecchie? ||
+9.  (OK) Pagina tutte le notifiche
 10. (OK) Icone navbar
 11. (OK) Image Crop
 12. (OK) Riepilogo ordini clienti
@@ -20,22 +20,13 @@ GOALS
 
 
 NEXT:
--paginazione fix centered
 -achecker sulle pagine
--style no results
-
-WARNING SECURITY BREACH
 
 HELP:
 come stilizzare meglio le backcard dei fornitori nella HomePage?
 
 AT LAST:
 -popolare bene il db (Samu)
-
-EXTRA(?):
--sezione "contattaci" + relativa vista admin???
--cropper max-height
-
 
 _________________________________________
 NAMING CONVENTIONS

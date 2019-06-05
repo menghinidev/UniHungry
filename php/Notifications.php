@@ -48,7 +48,7 @@
         }
       $notifications = $mysqli->query($query);
       if($notifications->num_rows == 0){
-          echo "Nessuna notifica!";
+          include 'no_results.php';
       } else {
           while($n = $notifications->fetch_assoc()){
               $href="#";
@@ -70,7 +70,7 @@
 
      <?php
           }
-      }
+      }}
       ?>
       </div>
       </div>

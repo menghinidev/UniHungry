@@ -15,11 +15,11 @@
     padding: 10px;
     border-radius: 20px;
 
-    border: 2px solid rgba(0,0,0,.1);
+    border: 2px solid lightgrey;
 }
 
 #toShow{
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid lightgrey;
 }
 
 .spinner{
@@ -95,5 +95,5 @@ hr {
 .product{
     padding-bottom: 15px;
     margin-bottom: 15px;
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid lightgrey;
 }

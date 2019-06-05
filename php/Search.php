@@ -180,7 +180,7 @@
         <div class="col distanced" id="content">
         <?php
         if($products->num_rows <= 0){
-            echo "Nessun risultato!";
+            include 'no_results.php';
         }
         else {
                 while ($row = $products->fetch_assoc()) {?>
@@ -243,7 +243,7 @@
                     </div>
                     </div>
             <hr/>
-        <?php }} ?>
+        <?php }?>
         <div class="row">
           <div class="col-3"></div>
           <div class="col-6">
@@ -274,6 +274,7 @@
           <div class="col-3"></div>
         </div>
         </div>
+        <?php } ?>
       </div>
   </body>
 </html>
