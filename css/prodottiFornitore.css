@@ -99,3 +99,7 @@
  .current:hover {
    background-color: #A2DDA9;
  }
+
+ .pagination {
+   justify-content: center;
+ }

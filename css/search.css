@@ -113,3 +113,7 @@ strong{
     position:absolute !important;
     top: -5px;
 }
+
+.pagination {
+  justify-content: center;
+}
