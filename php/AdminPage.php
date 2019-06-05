@@ -29,7 +29,7 @@
   <body>
       <?php include 'navbar.php';
       if(!is_logged()){
-          header('Location: ./ERROR');
+          header('Location: ./Login.php');
       }?>
      <div class="modifyBox">
        <nav>
