@@ -23,7 +23,8 @@ NEXT:
 -paginazione fix centered
 -achecker sulle pagine
 -style no results
--aggiungere altre email (finire Samu)
+
+WARNING SECURITY BREACH
 
 HELP:
 come stilizzare meglio le backcard dei fornitori nella HomePage?
