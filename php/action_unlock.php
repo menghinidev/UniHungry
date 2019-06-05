@@ -27,7 +27,7 @@ $mysqli->query($sql);
 utenteSbloccato($email, $password);
 
 
-function generate_password($length = 0){
+function generate_password($length = 10){
   $chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.
             '0123456789';
 
