@@ -40,7 +40,7 @@
      $id = $_SESSION['user_id'];
      $query = "SELECT * FROM clienti INNER JOIN users ON clienti.id_cliente = users.user_id WHERE id_cliente = $id";
      $ordiniInCorsoQuery = "SELECT * FROM ordini WHERE id_cliente = $id AND stato_ordine IN ('accettato', 'in consegna', 'ricevuto')";
-     $ordiniPassatiQuery = "SELECT * FROM ordini WHERE id_cliente = $id AND stato_ordine IN ('rifiutato', 'consegnato')";
+     $ordiniPassatiQuery = "SELECT * FROM ordini WHERE id_cliente = $id AND stato_ordine IN ('rifiutato', 'consegnato') LIMIT 20";
      $resultOrdiniInCorso = $mysqli->query($ordiniInCorsoQuery);
      $resultOrdiniPassati = $mysqli->query($ordiniPassatiQuery);
      $result = $mysqli->query($query);
