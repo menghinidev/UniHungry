@@ -70,9 +70,15 @@ window.addEventListener('DOMContentLoaded', function () {
     canvasData = cropper.getCanvasData();
     $('#sumbitForm').removeAttr("disabled");
     cropper.getCroppedCanvas().toBlob((blob) => {
-      immagine = blob;
-      const imageUrl = URL.createObjectURL(blob);
-      $('#foodImg').attr('src', imageUrl);
+      if(blob.size < 1900000) {
+        immagine = blob;
+        const imageUrl = URL.createObjectURL(blob);
+        $('#foodImg').attr('src', imageUrl);
+        $("#sumbitForm").attr("disabled", false);
+      } else {
+        $("#sumbitForm").attr("disabled", true);
+        $('#error').show();
+      }
     });
     cropper.destroy();
   });
