@@ -68,15 +68,13 @@ window.addEventListener('DOMContentLoaded', function () {
   }).on('hidden.bs.modal', function () {
     cropBoxData = cropper.getCropBoxData();
     canvasData = cropper.getCanvasData();
-    $('#sumbitForm').removeAttr("disabled");
     cropper.getCroppedCanvas().toBlob((blob) => {
       if(blob.size < 1900000) {
         immagine = blob;
         const imageUrl = URL.createObjectURL(blob);
         $('#foodImg').attr('src', imageUrl);
-        $("#sumbitForm").attr("disabled", false);
+        $('#sumbitForm').removeAttr("disabled");
       } else {
-        $("#sumbitForm").attr("disabled", true);
         $('#error').show();
       }
     });
