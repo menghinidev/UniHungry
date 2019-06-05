@@ -23,7 +23,7 @@ $newPassword = hash('sha512', $newPassword.$random_salt);
 $sql = "UPDATE users  SET `password` = '".$newPassword."', salt = '".$random_salt."' WHERE user_id = $id";
 $mysqli->query($sql);
 
-utenteSbloccato($email, $newPassword);
+utenteSbloccato($email, $password);
 
  function generate_password($length = 10){
   $chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.

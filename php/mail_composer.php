@@ -175,7 +175,7 @@ function utenteSbloccato($email, $nuovapassword){
     </head>
     <body>
     <p>Il tuo account è stato sbloccato dai nostri amministratori.</p>
-    <p>Usa questa nuova password per accedere: '.$password.'</p>
+    <p>Usa questa nuova password per accedere: '.$nuovapassword.'</p>
     <p>Ricordati di cambiarla con una scelta da te!</p>
     <a href ="http://localhost/unihungry/php/Login.php">Accedi a UniHungry</a>
     </body>
