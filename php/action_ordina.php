@@ -38,9 +38,10 @@ if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
         if($mysqli->query($query)){
             $fornitori_ordini[$F_id] = $mysqli->insert_id;
         }
-        nuovoOrdineRicevuto($id_ordine);
+        $emailTo = $mysqli->query("SELECT email FROM users WHERE user_id = $F_id")->fetch_assoc()['email'];
+        nuovoOrdineRicevuto($emailTo, $fornitori_ordini[$F_id]);
         //Create notification for fornitore
-        $testoNotifica ="Hai ricevuto un nuovo ordine! Id: ".$id_ordine;
+        $testoNotifica ="Hai ricevuto un nuovo ordine! Id: ".$fornitori_ordini[$F_id];
         $testoNotifica = "'".mysqli_real_escape_string($mysqli,$testoNotifica)."'";
         date_default_timezone_set('Europe/Rome');
         $date = date("Y-m-d H:i:s");

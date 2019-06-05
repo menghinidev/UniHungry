@@ -8,14 +8,17 @@ if(isset($_POST['action'] ,$_POST['id_ordine'])){
     $id = $_POST['id_ordine'];
     $F_id = $_SESSION['user_id'];
 
-    $r = $mysqli->query("SELECT nome_fornitore FROM fornitori WHERE fornitore_id = $F_id");
-    $fornitore = $r->fetch_assoc()['nome_fornitore'];
+    $fornitore = $mysqli->query("SELECT nome_fornitore FROM fornitori WHERE id_fornitore = $F_id")->fetch_assoc()['nome_fornitore'];
+    $clienteID = $mysqli->query("SELECT id_cliente FROM ordini WHERE id_ordine =  $id")->fetch_assoc()['id_cliente'];
+    $emailTo =  $mysqli->query("SELECT email FROM users WHERE user_id =$clienteID ")->fetch_assoc()['email'];
+
     $param = "";
     $text = "";
     if($action == 'accetta'){
         $param = 'accettato';
         $text = "Il tuo ordine ".$id." è stato accettato da ".$fornitore.".";
-        ordineApprovato($id_ordine, $fornitore);
+
+        ordineApprovato($emailTo, $id, $fornitore);
     }
 
     if($action == 'rifiuta'){

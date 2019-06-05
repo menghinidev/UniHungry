@@ -87,7 +87,7 @@
                                 <button class="container fullScreen btn" data-toggle="collapse" data-target="#collapse'.$row['id_ordine'].'" aria-expanded="true" aria-controls="collapseOne">
                                     <div class=" row">
                                         <p class="col-4">#'.$row['id_ordine'].'</p>
-                                        <p class="col-4">'.date("d/m/y",strtotime($row['data'])).' alle '.$row['ora_richiesta'].' </p>
+                                        <p class="col-4">'.date("d/m/y",strtotime($row['data'])).' alle '.date("H:i",strtotime($row['ora_richiesta'])).' </p>
                                         <p class="col-4">'.$row['stato_ordine'].'</p>
                                     </div>
                                 </button>
@@ -151,7 +151,7 @@
                                 <button class="container fullScreen btn" data-toggle="collapse" data-target="#collapse'.$row['id_ordine'].'" aria-expanded="true" aria-controls="collapseOne">
                                     <div class=" row">
                                         <p class="col-4">#'.$row['id_ordine'].'</p>
-                                        <p class="col-4">'.date("d/m/y",strtotime($row['data'])).' alle '.$row['ora_richiesta'].' </p>
+                                        <p class="col-4">'.date("d/m/y",strtotime($row['data'])).' alle '.date("H:i",strtotime($row['ora_richiesta'])).' </p>
                                         <p class="col-4">'.$row['stato_ordine'].'</p>
                                     </div>
                                 </button>

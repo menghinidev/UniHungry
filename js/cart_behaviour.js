@@ -9,7 +9,6 @@ $(document).ready(function(){
         if(time - oktime< 0){
             val = okHour.getHours() +":"+ okHour.getMinutes();
             $(this).val(val);
-            alert(val);
         }
     });
 });

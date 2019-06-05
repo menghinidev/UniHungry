@@ -119,7 +119,9 @@ function account_bloccato($email) {
     mail($to, $subject, $message, $headers);
 }
 
-function nuovoOrdineRicevuto($id_ordine){
+function nuovoOrdineRicevuto($email, $id_ordine){
+
+    $headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     $headers .= 'From: UniHungry <unihungry@gmail.com>' . "\r\n";
     $to  = $email;
     $subject = 'Hai ricevuto un nuovo ordine!';
@@ -139,7 +141,9 @@ function nuovoOrdineRicevuto($id_ordine){
     mail($to, $subject, $message, $headers);
 }
 
-function ordineApprovato($id_ordine, $fornitore){
+function ordineApprovato($email, $id_ordine, $fornitore){
+
+    $headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     $headers .= 'From: UniHungry <unihungry@gmail.com>' . "\r\n";
     $to  = $email;
     $subject = 'Il tuo ordine è stato approvato';
