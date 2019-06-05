@@ -91,7 +91,7 @@
               <hr/>
               <?php
               if($modificheInCorso->num_rows == 0) {
-                echo '';
+                echo 'No Results';
               } else {
                 while ($modifica = $modificheInCorso->fetch_assoc()) {
                   echo '<div class="row">
@@ -120,7 +120,7 @@
               <hr/>
               <?php
               if($modificheAccettate->num_rows == 0) {
-                echo '';
+                echo 'No Results';
               } else {
                 while ($approvata = $modificheAccettate->fetch_assoc()) {
                   echo '<div class="row">
@@ -150,7 +150,7 @@
               <hr/>
               <?php
               if($modificheRifiutate->num_rows == 0) {
-                echo '';
+                echo 'No Results';
               } else {
                 while ($rifiutate = $modificheRifiutate->fetch_assoc()) {
                   echo '<div class="row content">

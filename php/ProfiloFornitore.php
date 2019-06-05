@@ -155,7 +155,6 @@
                       </div>
                     </div>";
                   }
-                }
                  ?>
               <hr/>
               <div class="row">
@@ -187,6 +186,9 @@
                 </div>
                 <div class="col-3"></div>
               </div>
+          <?php } else {
+              include "no_results.php";
+          } ?>
             </div>
         </div>
 

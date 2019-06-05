@@ -61,7 +61,7 @@
               </div>';
             }
           } else {
-            echo "No Results";
+            include "no_results.php";
           }
           ?>
         </div>

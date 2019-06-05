@@ -122,7 +122,7 @@
 
   <div class="container fullScreen" id="ordini">
       <?php if($result->num_rows <= 0){
-          echo "Non ci sono ordini";
+         include "no_results.php";
       } else {
       ?>
       <div class="container riepilogoOrdine fullScreen">

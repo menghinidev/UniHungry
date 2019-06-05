@@ -254,7 +254,8 @@ a:visited {
   background-color: white;
   border-radius: 20px;
   padding:100px 20px;
-  margin-top:10%;
+  margin-top:5%;
+  margin-bottom:5%;
   color: lightgrey;
   border:2px solid lightgrey;
 }

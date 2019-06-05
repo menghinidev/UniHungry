@@ -97,6 +97,10 @@
      color: white;
  }
 
+ .alwaysGreen, .alwaysGreen:visited , .alwaysGreen:hover {
+     color:#60BB6B !important; 
+ }
+
 strong{
     font-size: 20px;
 }
