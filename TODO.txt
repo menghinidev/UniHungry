@@ -11,7 +11,7 @@ GOALS
 9.  (OK) Pagina tutte le notifiche       || ?Caricamento dinamico notifiche vecchie? ||
 10. (OK) Icone navbar
 11. (OK) Image Crop
-12. (OK) Riepilogo ordini clienti        || ?Non tutti gli ordini passati? ||
+12. (OK) Riepilogo ordini clienti
 13. (OK) Modifica profilo clienti
 14. (OK) Modifica profilo fornitori
 15. (OK) Gestione prodotti fornitore
@@ -31,8 +31,6 @@ come stilizzare meglio le backcard dei fornitori nella HomePage?
 
 AT LAST:
 -popolare bene il db (Samu)
--unlock user?
--Eliminare orario giornaliero (Mengo)
 
 EXTRA(?):
 -sezione "contattaci" + relativa vista admin???

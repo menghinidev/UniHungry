@@ -35,6 +35,10 @@ for ($i = 0; $i < $size; $i++) {
     $mysqli->query($sql);
   } else if(isset($_POST['start'.$days[$i]]) || isset($_POST['end'.$days[$i]])){
     $_SESSION['alert'] = true;
+  } else if(!isset($_POST['start'.$days[$i]]) && !isset($_POST['end'.$days[$i]])) {
+    $day = "'".mysqli_real_escape_string($mysqli, $days[$i])."'";
+    $sql = "DELETE FROM orari_giornalieri WHERE giorno_settimana = $day AND id_fornitore = $id";
+    $mysqli->query($sql);
   }
 }
 
