@@ -28,8 +28,10 @@
     <body>
         <?php include 'navbar.php';
         if(!is_logged()){
-            header('Location: ./Login.php');
-        } else {
+          header('Location: ./Login.php');
+      } else if($_SESSION['user_type'] != 'Fornitore'){
+              include 'error.php';
+          } else {
           $id = $_SESSION['user_id'];
 
           if (isset($_GET['pageno'])) {
@@ -55,8 +57,7 @@
           $sqlOrari = "SELECT * FROM orari_giornalieri WHERE id_fornitore = $id";
           $resultOrari = $mysqli->query($sqlOrari);
 
-          $fornitore = $resultfornitore->fetch_assoc();
-        }?>
+          $fornitore = $resultfornitore->fetch_assoc();?>
         <div class="container nopadding row fullScreen">
             <div id="profileInfoBox" class="col-md-4 col-xl-2">
                   <div id="changeLogo">
@@ -189,7 +190,7 @@
             </div>
         </div>
 
-
+    <?php } ?>
     <!-- Optional JavaScript -->
     </body>
   </html>

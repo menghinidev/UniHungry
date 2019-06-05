@@ -27,9 +27,10 @@
   <body>
       <?php include 'navbar.php';
       if(!is_logged()){
-        $_SESSION['endpoint'] = "Error";
-          header('Location: ./EndPoint_Confirm.php');
-      }
+        header('Location: ./Login.php');
+    } else if($_SESSION['user_type'] == 'Admin'){
+            include 'error.php';
+        } else {
       ?>
       <div class="container">
       <div class="row title">

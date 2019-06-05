@@ -27,10 +27,12 @@
     <link rel="shortcut icon" href="../res/icon.ico" />
   </head>
   <body>
-    <?php include 'navbar.php';
-    if(!is_logged()){
+      <?php include 'navbar.php';
+      if(!is_logged()){
         header('Location: ./Login.php');
-    } else {
+    } else if($_SESSION['user_type'] != 'Fornitore'){
+            include 'error.php';
+        } else {
       $categorie = $mysqli->query("SELECT * FROM categorie ORDER BY nome");
     }
     if(isset($_GET['id'])){

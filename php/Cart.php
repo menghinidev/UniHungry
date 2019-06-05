@@ -27,6 +27,11 @@
   </head>
   <body>
     <?php include 'navbar.php';
+    if(!is_logged()){
+      header('Location: ./Login.php');
+    } else if($_SESSION['user_type'] != 'Cliente'){
+          include 'error.php';
+      } else {
     if(isset($_SESSION['cart'])){
         $sql = "SELECT P.*, F.nome_fornitore FROM prodotti P, fornitori F WHERE P.id_fornitore = F.id_fornitore AND id_prodotto in (";
         foreach ($_SESSION['cart'] as $productID => $quantity){
@@ -229,5 +234,6 @@
         </div>
       </div>
     </div>
+<?php } ?>
   </body>
 </html>

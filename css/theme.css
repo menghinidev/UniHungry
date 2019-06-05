@@ -225,3 +225,24 @@ a:visited {
 .not-seen:hover, .not-seen:active{
     background-color:#AFDDB5;
 }
+
+/*messages*/
+#message {
+  position: absolute;
+  top: 30%;
+  margin-left: 10%;
+  width: 80%;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  padding:20px 20px;
+}
+
+#message p {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#message .btn {
+  margin-bottom: 2%;
+}

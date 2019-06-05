@@ -31,6 +31,11 @@
       <?php
       include 'navbar.php';
       include 'hour_manager.php';
+      if(!is_logged()){
+        header('Location: ./Login.php');
+    } else if($_SESSION['user_type'] != 'Fornitore'){
+            include 'error.php';
+        } else {
       ?>
       <div class="container" id="form">
           <form id="modificaform" class="col" action="action_orari_update.php" method="post">
@@ -218,5 +223,6 @@
             </div>
           </form>
       </div>
+  <?php } ?>
   </body>
 </html>
