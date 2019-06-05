@@ -28,7 +28,7 @@
       <?php include 'navbar.php';
       if(!is_logged()){
         header('Location: ./Login.php');
-      } else if($_SESSION['user_type'] = 'Fornitore'){
+        } else if($_SESSION['user_type'] == 'Fornitore'){
           $id = $_SESSION['user_id'];
           $sql = "SELECT * FROM ordini WHERE id_fornitore = $id AND stato_ordine!='rifiutato'";
           $first = true;
@@ -191,5 +191,5 @@
     <?php } ?>
     </div>
 <?php } ?>
-<?php } ?>
+<?php }  ?>
 </body>
