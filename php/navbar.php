@@ -39,10 +39,19 @@ $SEARCH = $prefix.'Search.php';
                 </li>
                 <?php } ?>
                 <?php if(is_logged()){ ?>
-                    <li class="nav-item">
-                     <a class="nav-link" href="./script_profile.php">
-                         <span class="fa fa-fw  fa-user"></span> Profilo</a>
-                    </li>
+                    <?php if($_SESSION['user_type'] == 'Admin') { ?>
+                        <li class="nav-item">
+                          <a class="nav-link" href="./AdminPage.php"><span class="fa fa-fw  fa-question"></span> Richieste</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./UnlockUsers.php"><span class="fa fa-fw  fa-unlock-alt"></span> Sblocco Utenti</a>
+                        </li>
+                    <?php } else { ?>
+                        <li class="nav-item">
+                         <a class="nav-link" href="./script_profile.php">
+                             <span class="fa fa-fw  fa-user"></span> Profilo</a>
+                        </li>
+                    <?php } ?>
 
                     <!--Fornitore-->
                     <?php if($_SESSION['user_type'] == 'Fornitore') { ?>
@@ -98,8 +107,14 @@ $SEARCH = $prefix.'Search.php';
                     <a class="dropdown-item" href="./Register.php"><span class="fa fa-fw fa-pencil-square-o"></span> Registrati</a>
                 <?php } else { ?>
                 <!--logged in mobile-->
-                    <div class="dropdown-divider"></div>
+                <div class="dropdown-divider"></div>
+                <?php if($_SESSION['user_type'] == 'Admin') { ?>
+                    <a class="dropdown-item" href="./AdminPage.php"><span class="fa fa-fw fa-question"></span> Richieste</a>
+                    <a class="dropdown-item" href="./UnlockUsers.php"><span class="fa fa-fw fa-unlock-alt"></span> Sblocco Utenti</a>
+                <?php }else { ?>
                     <a class="dropdown-item" href="./script_profile.php"><span class="fa fa-fw fa-user"></span> Profilo</a>
+                <?php } ?>
+
                     <?php if($_SESSION['user_type'] == 'Fornitore') { ?>
                         <a class="dropdown-item" href="./GestioneOrdini.php">
                             <span class="fa fa-fw  fa-list-ul"></span> Ordini</a>
