@@ -14,7 +14,7 @@ $stmt = $mysqli->prepare($query);
 $stmt->bind_param("s", $email);
 $stmt->execute();
 
-$newPassword = generate_password();
+$newPassword = $_POST['pw'];
 
 // Crea una chiave casuale
 $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
@@ -24,16 +24,4 @@ $sql = "UPDATE users  SET `password` = '".$newPassword."', salt = '".$random_sal
 $mysqli->query($sql);
 
 utenteSbloccato($email, $newPassword);
-
- function generate_password($length = 10){
-  $chars =  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'.
-            '0123456789';
-  $str = '';
-  $max = strlen($chars) - 1;
-
-  for ($i=0; $i < $length; $i++)
-    $str .= $chars[random_int(0, $max)];
-
-  return $str;
-}
 ?>
