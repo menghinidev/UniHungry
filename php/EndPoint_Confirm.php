@@ -44,7 +44,7 @@
         }
       } ?>
       <div class="distance">
-        <a class="btn green" href="HomePage.php">Torna alla HomePage</a>
+        <a class="btn noVisitedLink green" href="HomePage.php">Torna alla HomePage</a>
       </div>
     </div>
   </body>

@@ -33,8 +33,10 @@
   <body>
      <?php include 'navbar.php';
      if(!is_logged()){
-      header('Location: ./Login.php');
-     }
+       header('Location: ./Login.php');
+   } else if($_SESSION['user_type'] != 'Cliente'){
+           include 'error.php';
+       } else {
      $id = $_SESSION['user_id'];
      $query = "SELECT * FROM clienti INNER JOIN users ON clienti.id_cliente = users.user_id WHERE id_cliente = $id";
      $ordiniInCorsoQuery = "SELECT * FROM ordini WHERE id_cliente = $id AND stato_ordine IN ('accettato', 'in consegna', 'ricevuto')";
@@ -230,11 +232,7 @@
             </div>
           </div>
       </div>
-
-
-
-
-
+<?php } ?>
   <!-- Optional JavaScript -->
   </body>
 </html>s

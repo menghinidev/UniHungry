@@ -28,13 +28,14 @@
     <?php
     include 'navbar.php';
     if(!is_logged()){
-        header('Location: ./Login.php');
-    } else {
+      header('Location: ./Login.php');
+  } else if($_SESSION['user_type'] != 'Fornitore'){
+          include 'error.php';
+      } else {
       $id = $_SESSION['user_id'];
       $modificheInCorso = $mysqli->query("SELECT * FROM modifiche WHERE id_fornitore = $id AND approvata IS NULL");
       $modificheRifiutate = $mysqli->query("SELECT * FROM modifiche WHERE id_fornitore = $id AND approvata = 0");
       $modificheAccettate = $mysqli->query("SELECT * FROM modifiche WHERE id_fornitore = $id AND approvata = 1");
-    }
     ?>
       <div class="modifyBox">
         <form class="needs-validation" action="action_new_request.php" method="post" novalidate>
@@ -168,5 +169,6 @@
           </div>
         </div>
       </div>
+  <?php } ?>
   </body>
 </html>

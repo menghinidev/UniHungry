@@ -29,8 +29,10 @@
   <body>
       <?php include 'navbar.php';
       if(!is_logged()){
-          header('Location: ./ERROR');
-      }?>
+        header('Location: ./Login.php');
+        } else if($_SESSION['user_type'] != 'Admin'){
+            include 'error.php';
+        } else {?>
      <div class="modifyBox">
        <nav>
          <div class="nav nav-tabs" id="nav-tab" role="tablist">

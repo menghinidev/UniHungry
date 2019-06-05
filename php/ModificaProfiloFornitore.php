@@ -33,8 +33,10 @@
       <?php
       include 'navbar.php';
       if(!is_logged()){
-        header('Location: /unihungry/php/Login.php');
-      } else {
+        header('Location: ./Login.php');
+    } else if($_SESSION['user_type'] != 'Fornitore'){
+            include 'error.php';
+        } else {
         //FORNITORE SECTION
         $id = $_SESSION['user_id'];
         $sql = "SELECT * FROM fornitori WHERE id_fornitore = $id";
