@@ -1,6 +1,7 @@
 <?php
 include 'db_connect.php';
 include 'secure_func.php';
+include 'mail_composer.php';
 sec_session_start();
 if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
     $sql = "SELECT P.id_prodotto, P.id_fornitore FROM prodotti P WHERE id_prodotto in (";
@@ -37,7 +38,7 @@ if(isset($_POST['luogo_ritiro'], $_POST['ora_ritiro'])){
         if($mysqli->query($query)){
             $fornitori_ordini[$F_id] = $mysqli->insert_id;
         }
-        //email
+        nuovoOrdineRicevuto($id_ordine);
         //Create notification for fornitore
         $testoNotifica ="Hai ricevuto un nuovo ordine! Id: ".$id_ordine;
         $testoNotifica = "'".mysqli_real_escape_string($mysqli,$testoNotifica)."'";

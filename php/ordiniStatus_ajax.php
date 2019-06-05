@@ -1,31 +1,36 @@
 <?php
 include 'db_connect.php';
 include 'secure_func.php';
+include 'mail_composer.php';
 sec_session_start();
 if(isset($_POST['action'] ,$_POST['id_ordine'])){
     $action = $_POST['action'];
     $id = $_POST['id_ordine'];
     $F_id = $_SESSION['user_id'];
+
+    $r = $mysqli->query("SELECT nome_fornitore FROM fornitori WHERE fornitore_id = $F_id");
+    $fornitore = $r->fetch_assoc()['nome_fornitore'];
     $param = "";
     $text = "";
     if($action == 'accetta'){
         $param = 'accettato';
-        $text = "Il tuo ordine è stato accettato dal fornitore";
+        $text = "Il tuo ordine ".$id." è stato accettato da ".$fornitore.".";
+        ordineApprovato($id_ordine, $fornitore);
     }
 
     if($action == 'rifiuta'){
         $param = 'rifiutato';
-        $text = "Il tuo ordine è stato rifiutato dal fornitore, provvederemo al più presto al rimborso se necessario";
+        $text = "Il tuo ordine ".$id." è stato rifiutato da ".$fornitore.", provvederemo al più presto al rimborso se necessario";
     }
 
     if($action == 'completato'){
         $param = 'in consegna';
-        $text = "Il tuo ordine è ora in consegna! Presto ti verrà portato dove ci avevi chiesto.";
+        $text = "Il tuo ordine ".$id." è ora in consegna! Presto ti verrà portato dove ci avevi chiesto.";
     }
 
     if($action == 'consegnato'){
         $param = 'consegnato';
-        $text = "Il tuo ordine è arrivato... Buon appetito!";
+        $text = "Il tuo ordine ".$id." è arrivato... Buon appetito!";
         $sql = "UPDATE ordini SET pagato = true WHERE id_ordine = {$id} ";
         $mysqli->query($sql);
     }
