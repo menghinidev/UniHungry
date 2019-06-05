@@ -1,6 +1,4 @@
 <?php
-
-
 function conferma_fornitore($emailFornitore) {
     $headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     $headers .= 'From: UniHungry <unihungry@gmail.com>' . "\r\n";
@@ -157,6 +155,29 @@ function ordineApprovato($email, $id_ordine, $fornitore){
     <p>'.$fornitore.' ha approvato il tuo ordine e lo sta preparando per te! Segui l\'avanzamento sul tuo profilo.
     </p>
     <a href ="http://localhost/unihungry/php/ProfiloCliente.php?oid='.$id_ordine.'">Clicca per vedere lo stato dell\'ordine</a>
+    </body>
+    </html>
+    ';
+    mail($to, $subject, $message, $headers);
+}
+
+function utenteSbloccato($email, $nuovapassword){
+
+    $headers = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $headers .= 'From: UniHungry <unihungry@gmail.com>' . "\r\n";
+    $to  = $email;
+    $subject = 'Il tuo account è stato sbloccato';
+
+    $message = '
+    <html>
+    <head>
+    <title></title>
+    </head>
+    <body>
+    <p>Il tuo account è stato sbloccato dai nostri amministratori.</p>
+    <p>Usa questa nuova password per accedere: '.$password.'</p>
+    <p>Ricordati di cambiarla con una scelta da te!</p>
+    <a href ="http://localhost/unihungry/php/Login.php">Accedi a UniHungry</a>
     </body>
     </html>
     ';

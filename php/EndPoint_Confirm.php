@@ -30,9 +30,9 @@
           <hr/>
           <p class="centered">Ti invieremo una notifica quando il tuo ordine sarà in consegna.</p>';
         } else if ($_SESSION['endpoint'] == "Locked") {
-          echo '<h1>Attenzione! sei stato bloccato per troppi tentativi di login</h1>
+          echo '<h1>Attenzione! Sei stato bloccato.</h1>
           <hr/>
-          <p class="centered">Contatta gli admin all\'indirizzo unihungry@gmail.com per rimediare.</p>';
+          <p class="centered">Hai effettuato troppi tentativi di login errati.<br/>Contatta gli admin all\'indirizzo unihungry@gmail.com per rimediare.</p>';
         } else if ($_SESSION['endpoint'] == "NotApproved") {
           echo '<h1>Attenzione! non sei ancora stato approvato come fornitore</h1>
           <hr/>

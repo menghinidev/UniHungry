@@ -29,7 +29,9 @@
       <?php include 'navbar.php';
       if(!is_logged()){
         header('Location: ./Login.php');
-      } else {
+        } else if($_SESSION['user_type'] != 'Admin'){
+            include 'error.php';
+        } else {
         $sql = "SELECT user_id, email, user_type FROM users WHERE locked = 1";
         $locked = $mysqli->query($sql);
       }
