@@ -92,25 +92,25 @@
                   <div class="form-inline" id="checkBoxes">
                       <div class="form-check">
                         <input class="form-check-input filter" type="checkbox" name="ricevuto" <?php echo isset($_GET['ricevuto'])? "checked":"" ?> id="ricevuto">
-                        <label class="form-check-label" for="ricevuti">
+                        <label class="form-check-label" for="ricevuto">
                           Ricevuti
                         </label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input filter" type="checkbox" <?php echo isset($_GET['accettato'])? "checked":"" ?> id="accettato">
-                        <label class="form-check-label" for="accettati">
+                        <label class="form-check-label" for="accettato">
                           Accettati
                         </label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input filter" type="checkbox" <?php echo isset($_GET['completato'])? "checked":"" ?>  id="completato">
-                        <label class="form-check-label" for="completati">
+                        <label class="form-check-label" for="completato">
                           Completati
                         </label>
                       </div>
                       <div class="form-check">
                         <input class="form-check-input filter" type="checkbox" <?php echo isset($_GET['consegnato'])? "checked":"" ?> id="consegnato">
-                        <label class="form-check-label" for="consegnati">
+                        <label class="form-check-label" for="consegnato">
                           Consegnati
                         </label>
                       </div>
