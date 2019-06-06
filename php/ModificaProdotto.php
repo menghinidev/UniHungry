@@ -91,7 +91,13 @@
                               <select class="form-control" name='categoria' id="categoria" required>
                                 <?php
                                 while ($cat = $categorie->fetch_assoc()) {
-                                  echo "<option>".$cat['nome']."</option>";
+                                   if(isset($_GET['id'])){
+                                       if($row['categoria'] == $cat['nome']){
+                                           echo "<option selected>".$cat['nome']."</option>";
+                                       } else {
+                                           echo "<option>".$cat['nome']."</option>";
+                                       }
+                                   }
                                 }
                                  ?>
                                </select>
