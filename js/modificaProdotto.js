@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', function () {
   $('#modal').on('shown.bs.modal', function () {
     cropper = new Cropper(image, {
       aspectRatio: 1 / 1,
-      autoCropArea: 0.5,
+      autoCropArea: 1,
       ready: function () {
         cropper.setCropBoxData(cropBoxData).setCanvasData(canvasData);
       }

@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', function () {
   $('#modal').on('shown.bs.modal', function () {
     cropper = new Cropper(image, {
       aspectRatio: 1 / 1,
-      autoCropArea: 0.5,
+      autoCropArea: 1,
       ready: function () {
         cropper.setCropBoxData(cropBoxData).setCanvasData(canvasData);
       }
@@ -65,9 +65,14 @@ window.addEventListener('DOMContentLoaded', function () {
     canvasData = cropper.getCanvasData();
     $('#sumbitForm').removeAttr("disabled");
     cropper.getCroppedCanvas().toBlob((blob) => {
-      immagine = blob;
-      const imageUrl = URL.createObjectURL(blob);
-      $('#foodImg').attr('src', imageUrl);
+        if(blob.size < 1900000) {
+          immagine = blob;
+          const imageUrl = URL.createObjectURL(blob);
+          $('#foodImg').attr('src', imageUrl);
+          $('#sumbitForm').removeAttr("disabled");
+        } else {
+          $('#error').show();
+        }
     });
     cropper.destroy();
   });
