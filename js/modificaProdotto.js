@@ -83,6 +83,7 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 function uploadData() {
+  checkPrice();
   var myform = document.getElementById('modificaform');
   var form = new FormData(myform);
   form.append('foto', immagine);
@@ -110,4 +111,12 @@ function deleteProduct() {
   }).done(function(data) {
     window.location = "/unihungry/php/ProfiloFornitore.php";
   });
+}
+
+function checkPrice() {
+  var actualPrice = $("#prezzo").val();
+  if (actualPrice.indexOf(",") > -1) {
+    actualPrice = actualPrice.replace(',', '.');
+    $("#prezzo").val(actualPrice);
+  }
 }
