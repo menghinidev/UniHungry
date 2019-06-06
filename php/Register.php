@@ -31,7 +31,7 @@
       <?php include 'navbar.php'; ?>
       <div class="container">
               <form id="registerform" class="col needs-validation"  action="./action_register.php"  method="post" novalidate>
-                      <h2>Iscriviti </h2>
+                      <h1>Iscriviti</h1>
                   <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="nome">Nome</label>
@@ -62,7 +62,7 @@
                   <div class="form-group">
                       <div class="form-check">
                           <input class="form-check-input" name="fornitore" type="checkbox" <?php echo ((isset($_GET['type']) && $_GET['type']=='fornitore') ? 'checked' : '');  ?> id="fornitoreCheck">
-                          <label class="form-check-label" for="gridCheck">
+                          <label class="form-check-label" for="fornitoreCheck">
                           Registrati come fornitore
                           </label>
                       </div>
@@ -71,7 +71,7 @@
                       <h5>Inserisci i tuoi dati fornitore</h5>
                       <p>La tua richiesta verrà sottoposta all'amministratore, ti invieremo una mail appena confermata
                       e potrai completare la pagina fornitore dal tuo profilo.</p>
-                      <label for="nomefornitore">Nome Attività</label>
+                      <label for="nome_fornitore">Nome Attività</label>
                       <input type="text" name="nome_fornitore" class="form-control" id="nome_fornitore" placeholder="Pizzeria da Mario">
                       <label for="indirizzo">Indirizzo</label>
                       <input type="text" name="indirizzo" class="form-control" id="indirizzo" placeholder="Via Garibaldi 25">
