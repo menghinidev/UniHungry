@@ -67,8 +67,13 @@
         if(isset($_GET['s'])){
             if($_GET['s'] != ''){
                 $string = "'".mysqli_real_escape_string($mysqli, $_GET['s'])."'";
-                $sql = "$sql ORDER BY levenshtein($string, P.nome), levenshtein($string, F.nome_fornitore)";
+                $sql = "$sql ORDER BY levenshtein($string, P.nome), levenshtein($string, F.nome_fornitore), P.nome";
             }
+            else {
+               $sql = "$sql ORDER BY nome";
+           }
+        } else {
+            $sql = "$sql ORDER BY nome";
         }
     $products = $mysqli->query($sql);
 
