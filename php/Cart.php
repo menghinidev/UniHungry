@@ -47,15 +47,7 @@
         }
     }
     ?>
-    <?php if(isset($_SESSION['cart']) && $diversi > 1 ){ ?>
-        <div id="fornitoriAlert" class="alert alert-warning alert-dismissible fade show" role="alert">
-            Attenzione stai ordinando da <span id="fornitoriNum"> <?php echo $diversi; ?></span> fornitori diversi, riceverai quindi altrettanti
-            ordini con possibili differenze nell'orario di consegna!
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-    <?php } ?>
+
     <div class="container fullScreen">
       <div class="row top_nav justify-content-between" >
           <div id="back" class="col">
@@ -63,7 +55,16 @@
           </div>
             <a href="#ordina" id="toShow" class="noVisitedLink col-4 scrolling btn btn-primary">Ordina ora</a>
       </div>
-
+      <?php if(isset($_SESSION['cart']) && $diversi > 1 ){ ?>
+          <div id="fornitoriAlert" class="row alert alert-warning alert-dismissible fade show" role="alert">
+              <span>Attenzione stai ordinando da <strong id="fornitoriNum"> <?php echo ($diversi); ?></strong> fornitori diversi, riceverai quindi altrettanti
+              ordini con possibili differenze nell'orario di consegna!
+          </span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+      <?php } ?>
       <div class="row" id="body">
         <div class="col-md-8 tofullscreen" id="content">
             <?php if(!isset($_SESSION['cart'])) {
