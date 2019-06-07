@@ -100,7 +100,7 @@
                     echo '<img class="reslogo nopadding img-fluid" src="data:image/jpeg;base64,'.base64_encode($fornitore["logo"]).'" alt="logo">
                     </div>';
                   } else {
-                    echo '<img class="reslogo nopadding img-fluid" src="../res/res1.jpg" alt="logo">
+                    echo '<img class="reslogo nopadding img-fluid" src="../res/default_food.png" alt="logo">
                     </div>';
                   }
                 }
